@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Environments (conda prefixes at .venv, as in Exam 1)
+.venv/
+
+# Credentials and robot identity: IP, serial number, per-device key
+.env
+.env.*
+!.env.example
+*.key
+*secret*
+*credentials*
+
+# Robot logs and datasets
+data/
+*.jsonl
+
+# RL checkpoints and training runs (SB3 saves checkpoints as .zip)
+models/
+runs/
+*.zip
+*.pt
+*.pth
+*.onnx
+
+# Raw video; results/ keeps the committed rollout video
+*.mp4
+!results/*.mp4
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/

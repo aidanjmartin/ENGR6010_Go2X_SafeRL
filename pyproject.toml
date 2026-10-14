@@ -1,0 +1,15 @@
+[project]
+name = "go2x"
+version = "0.1.0"
+description = "Go2 X Phase 1: robot interface with safety layer, and RL navigation simulation"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["go2x*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
