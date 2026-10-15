@@ -1,0 +1,15 @@
+# Phase 1 robot test limits. The safety layer (go2x/robot/safety.py) reads only this file.
+# These are deliberately far below the Go2's capability.
+
+max_vx: 0.2            # forward/backward, m/s
+max_vy: 0.2            # lateral, m/s
+max_wz: 0.5            # yaw rate, rad/s
+
+max_lin_accel: 0.5     # rate-of-change limit on linear commands, m/s^2
+max_yaw_accel: 1.0     # rate-of-change limit on yaw command, rad/s^2
+
+command_hz: 20         # rate commands are sent at
+state_timeout_s: 0.5   # no state for this long -> zero velocity and stop
+first_state_timeout_s: 5.0   # wait this long for the first state before giving up
+max_script_s: 90.0     # hard cap on any motion script's total duration
+stop_repeats: 5        # zero-velocity commands sent on stop, before StopMove
