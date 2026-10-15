@@ -1,0 +1,42 @@
+# Simulation defaults for go2x.sim.nav_env.Go2NavEnv. Every number here is a simulation
+# setting, not a measured Go2 X property.
+
+dt: 0.05                    # control period, s (20 Hz)
+max_episode_s: 40.0         # timeout
+
+# Action scaling: the policy outputs [-1, 1]^3, mapped to these limits.
+limits:
+  vx: 0.5                   # forward, m/s
+  vy: 0.3                   # lateral, m/s
+  wz: 0.8                   # yaw rate, rad/s
+
+# ASSUMPTION, NOT FITTED: per-axis first-order lag with dead time, parameters drawn
+# uniformly per episode and per axis. Later phases replace this with fitted and learned models.
+dynamics:
+  tau_range: [0.1, 0.4]     # time constant, s
+  delay_range: [0.0, 0.15]  # dead time, s
+  substeps: 10              # integration substeps per control step
+
+robot_radius: 0.35          # collision circle, about half the Go2 body length
+
+scene:
+  room_size_range: [4.0, 8.0]   # width and depth, m, drawn separately
+  n_obstacles_range: [2, 6]     # inclusive
+  obstacle_types: [box, cylinder]
+  box_half_size_range: [0.15, 0.5]
+  cylinder_radius_range: [0.1, 0.4]
+  min_goal_distance: 2.0        # start to goal, m
+  clearance: 0.2                # free space around start and goal beyond the robot radius, m
+  grid_resolution: 0.1          # reachability check, m
+
+lidar:
+  n_beams: 32               # evenly spaced over 360 degrees, beam 0 straight ahead
+  max_range: 4.0            # m
+
+goal_tolerance: 0.3         # m
+
+reward:
+  progress: 2.0             # per metre of distance reduced
+  success: 10.0
+  collision: -10.0
+  time: -0.005              # per step
