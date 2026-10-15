@@ -53,6 +53,35 @@ Reference: [ENGR6010_Exam1](https://github.com/aidanjmartin/ENGR6010_Exam1) at c
 
 [`docs/LAPTOP_SESSION.md`](docs/LAPTOP_SESSION.md) covers, in order: clone, environment, `go2-eth` and finding the robot, the read-only tests (Exam 1's plus `00_read_state` on both links), the motion scripts one at a time with Aidan's confirmation (DDS first, then WebRTC), recording results, optional training, and what to do if neither backend moves the robot. Aidan runs the motion scripts in his own terminal, because the `yes` prompt and the key-press stop need a real terminal.
 
+## Ubuntu laptop setup and training (2026-10-15)
+
+Machine: laptop, Intel Core i9-13950HX (24 cores: 8 P-cores with Hyper-Threading plus 16 E-cores, 32 threads), 62 GB RAM, NVIDIA RTX 4000 Ada Generation Laptop GPU (12 GB), driver 580.173.02 (CUDA 13.0), Ubuntu 24.04.5 LTS, kernel 7.0.0-31.
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| read-only inspection | `lsb_release -a; nvidia-smi; nproc; lscpu; free -h; ip -brief link` | machine line above. conda and git missing. Interfaces: `enp0s31f6` (built-in Ethernet, `e1000e`, no carrier) and `wlp0s20f3` (Wi-Fi, default route). No USB-C Ethernet adapter attached. |
+| git | installed by Aidan | git 2.43.0 |
+| clone | `git clone <url> ~/ENGR6010_Go2X_SafeRL`; `git clone <url> ~/ENGR6010_Exam1_ref && git -C ~/ENGR6010_Exam1_ref checkout 90150da` | success: project at `9a207c5`, Exam 1 at `90150da` (read-only) |
+| branch | `git switch -c laptop` | success; all laptop work goes on `laptop` |
+| system packages | `sudo apt install build-essential cmake portaudio19-dev` (run by Aidan) | success: build-essential 12.10ubuntu1, cmake 3.28.3, portaudio19-dev 19.6.0 |
+| Miniconda | `bash Miniconda3-latest-Linux-x86_64.sh -b -p ~/miniconda3` (run by Aidan) | success: conda 26.9.3 |
+| build CycloneDDS | `git clone -b releases/0.10.x <url> ~/go2_deps/cyclonedds && git checkout 5041f35`, then `cmake .. -DCMAKE_INSTALL_PREFIX=../install -DBUILD_EXAMPLES=OFF && cmake --build . --target install` | success: `libddsc.so.0.10.5` in `~/go2_deps/cyclonedds/install` |
+| clone the SDK | `git clone <url> ~/go2_deps/unitree_sdk2_python && git checkout 814556d` | success; `setup.py` pins `cyclonedds==0.10.2` and `python_requires='>=3.8'` |
+| conda env | `conda env create -p .venv -f env/environment-ubuntu.yml` | success: Python 3.11.17, pytorch 2.14.1 (CUDA build), unitree_webrtc_connect 2.2.0 (pyaudio built against portaudio19-dev) |
+| SDK install | `CYCLONEDDS_HOME=~/go2_deps/cyclonedds/install .venv/bin/pip install -e ~/go2_deps/unitree_sdk2_python` | success: unitree_sdk2py 1.0.1, cyclonedds 0.10.2 |
+| project install | `.venv/bin/pip install -e . --no-deps` | success: go2x 0.1.0 |
+| import check | `.venv/bin/python -c "import unitree_sdk2py, cyclonedds, unitree_webrtc_connect, torch; ..."` | all four import in one Python 3.11 environment (Exam 1 needed 3.11 for DDS and 3.10 for WebRTC); `torch.cuda.is_available()` is `True` on the RTX 4000 Ada |
+| dependency check | `.venv/bin/pip check` | "No broken requirements found." |
+| tests | `.venv/bin/pytest -q` | 15 passed in 12.2 s |
+| network, state and motion tests | `LAPTOP_SESSION.md` steps 3 to 6 | not run: no robot or USB-C Ethernet adapter on 2026-10-15; they wait for the robot session |
+| PPO throughput | `train_ppo.py --timesteps 200000 --n-envs {16,24}` | 16 envs: 3146 steps/s; 24 envs: 3795 steps/s. Full run uses 24 (one per physical core). Smoke runs deleted. |
+| PPO full run | `train_ppo.py --timesteps 10000000 --n-envs 24 --name full` | success: 2671 s (44.5 min), 3744 steps/s, 86460 episodes. `models/full.zip` and `runs/full/` stay local (gitignored). |
+| evaluation | `evaluate.py --model models/full.zip` | 100 seeded episodes (seeds 10000 to 10099): PPO success 0.79, collision 0.21, timeout 0.00, 5.8 s to goal; random 0.00 / 0.17 / 0.83; go-to-goal 0.69 / 0.31 / 0.00, 6.2 s. Written to `results/eval.md` and `results/eval.json`. |
+| GPU use | (none: reasoning from the code) | Training, evaluation and video all run on the CPU: `train_ppo.py` defaults to `--device cpu`, and `evaluate.py:52` and `record_video.py:25` load the model with `device="cpu"`. The GPU sat essentially idle. Usage was not measured during the run. The GPU is only used by the `torch.cuda.is_available()` check. |
+| git identity | `git commit` (run by Aidan) | failed: `user.name` and `user.email` are not set on the laptop. The files were staged; `git push -u origin laptop` pushed only the existing `9a207c5`. |
+| video | `record_video.py --model models/full.zip` | `results/rollout.mp4`; both episodes reach the goal (3.9 s, 6.1 s) |
+| training curve | `plot_training.py --run runs/full` | `results/training_curve.png`. Success rises from about 0.70 to 0.80 in the first 2M steps, then stays flat at 0.78 to 0.84; the last 500 episodes read success 0.76, collision 0.24. |
+
 ## Differences from Exam 1
 
 | item | Exam 1 | Phase 1 | why |
@@ -66,6 +95,10 @@ Reference: [ENGR6010_Exam1](https://github.com/aidanjmartin/ENGR6010_Exam1) at c
 | upstream clones | `~/go2_deps/`, commits in Exam 1 `q2_sdk/LOG.md` | same location and commits for CycloneDDS and `unitree_sdk2_python`; `unitree_webrtc_connect` installed by pip at `e0abc57` | Exam 1 `q3_apps/requirements.txt` pins it the same way |
 
 ## Problems found
+
+**The 10M-step run is no better than the 200k smoke run.** Full model: success 0.79 on the evaluation seeds; smoke model on the Mac: 0.81. The curve plateaus by about 2M steps. Likely causes, not yet tested: the easy-scenes problem below caps what the policy can gain, and the fixed hyperparameters (`ent_coef=0.0`, constant learning rate) may stop exploration early. Not changed; noted for discussion.
+
+**The laptop trains at about half the Mac's speed.** 3146 steps/s with 16 envs and 3795 with 24 on the i9-13950HX, against 6900 with 16 on the Mac. The cause was not investigated. With 8 P-cores and 16 E-cores, part of each rollout may wait on the slower E-cores.
 
 **The scenes may be too easy to separate the policies.** A proportional go-to-goal controller that ignores obstacles reaches the goal in 69 % of evaluation episodes, because obstacles are placed uniformly and often lie off the start-to-goal line. The headroom for RL, and later for a safety filter, is the remaining 31 %. Not changed yet; noted for discussion.
 

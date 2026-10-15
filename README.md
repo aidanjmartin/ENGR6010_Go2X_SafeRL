@@ -22,7 +22,7 @@ It builds on [ENGR6010_Exam1](https://github.com/aidanjmartin/ENGR6010_Exam1) (c
 | WebRTC backend (`unitree_webrtc_connect` `e0abc57`) | written from the library source; **untested on hardware** |
 | motion test scripts | done; all five run against the mock |
 | RL environment | done; `check_env` and 5 other tests pass |
-| PPO training | 200k-step smoke run on the Mac; full run not yet done |
+| PPO training | 10M-step run on the Ubuntu laptop (44.5 min, 24 envs); evaluation success 0.79, no better than the 200k smoke run |
 
 ## Layout
 
@@ -118,4 +118,12 @@ Robot motion tests: pending (see [`docs/LAPTOP_SESSION.md`](docs/LAPTOP_SESSION.
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | | | | | | |
 
-RL evaluation: pending the full training run.
+RL evaluation, 10M-step PPO run (`models/full.zip`, trained on the Ubuntu laptop on 2026-10-15), 100 seeded episodes (seeds 10000 to 10099):
+
+| policy | success | collision | timeout | mean time to goal (s) |
+| :--- | ---: | ---: | ---: | ---: |
+| PPO | 0.79 | 0.21 | 0.00 | 5.8 |
+| random | 0.00 | 0.17 | 0.83 | n/a |
+| go-to-goal (P, no obstacle awareness) | 0.69 | 0.31 | 0.00 | 6.2 |
+
+PPO beats the obstacle-unaware go-to-goal controller by 10 points of success. The curve ([`results/training_curve.png`](results/training_curve.png)) plateaus by about 2M steps, and the 200k smoke model scored about the same (0.81). See "Problems found" in [`LOG.md`](LOG.md). Rollout video: [`results/rollout.mp4`](results/rollout.mp4).
