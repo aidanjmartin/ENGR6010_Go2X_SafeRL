@@ -78,9 +78,35 @@ Machine: laptop, Intel Core i9-13950HX (24 cores: 8 P-cores with Hyper-Threading
 | PPO full run | `train_ppo.py --timesteps 10000000 --n-envs 24 --name full` | success: 2671 s (44.5 min), 3744 steps/s, 86460 episodes. `models/full.zip` and `runs/full/` stay local (gitignored). |
 | evaluation | `evaluate.py --model models/full.zip` | 100 seeded episodes (seeds 10000 to 10099): PPO success 0.79, collision 0.21, timeout 0.00, 5.8 s to goal; random 0.00 / 0.17 / 0.83; go-to-goal 0.69 / 0.31 / 0.00, 6.2 s. Written to `results/eval.md` and `results/eval.json`. |
 | GPU use | (none: reasoning from the code) | Training, evaluation and video all run on the CPU: `train_ppo.py` defaults to `--device cpu`, and `evaluate.py:52` and `record_video.py:25` load the model with `device="cpu"`. The GPU sat essentially idle. Usage was not measured during the run. The GPU is only used by the `torch.cuda.is_available()` check. |
-| git identity | `git commit` (run by Aidan) | failed: `user.name` and `user.email` are not set on the laptop. The files were staged; `git push -u origin laptop` pushed only the existing `9a207c5`. |
+| git identity | `git commit` (run by Aidan) | failed at first: `user.name` and `user.email` were not set on the laptop, and `git push -u origin laptop` pushed only the existing `9a207c5`. After the identity was set, the work landed as `87a711a` on `laptop`, which was fast-forwarded into `main` on the Mac on 2026-10-17. |
 | video | `record_video.py --model models/full.zip` | `results/rollout.mp4`; both episodes reach the goal (3.9 s, 6.1 s) |
 | training curve | `plot_training.py --run runs/full` | `results/training_curve.png`. Success rises from about 0.70 to 0.80 in the first 2M steps, then stays flat at 0.78 to 0.84; the last 500 episodes read success 0.76, collision 0.24. |
+
+## Mac robot session (2026-10-17)
+
+Machine: MacBook, Apple M5 (10 cores), macOS (Darwin 25.6.0); USB-C Ethernet adapter AX88179B (`en9`) to the robot's wired port; internet on Wi-Fi (`en0`). The Ubuntu laptop was no longer available, so this Mac replaced it for the robot session. Only the WebRTC backend was tested; **the DDS backend is still untested on hardware.** Robot: a Go2 X, possibly not the unit from Exam 1. Its handshake is the same (`data2 = 2`).
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| install | `brew install portaudio` (19.7.0); `CFLAGS=-I/opt/homebrew/include LDFLAGS=-L/opt/homebrew/lib .venv/bin/pip install "unitree_webrtc_connect @ git+...@e0abc57"` | success: unitree_webrtc_connect 2.2.0, aiortc 1.15.0 (same as Exam 1), PyAudio 0.2.14 built from source; numpy 2.4.6 and torch 2.14.1 unchanged; `pip check` clean |
+| retrain PPO (the laptop's `models/full.zip` was not transferable) | `train_ppo.py --timesteps 3000000 --n-envs 8 --name full_mac` | 520 s, 5769 steps per second. Evaluation seeds 10000 to 10099: success 0.75, collision 0.25, 6.0 s to goal (laptop 10M model: 0.79 / 0.21). Used only for the robot demo; the README's evaluation table stays the laptop's. |
+| network | `sudo ifconfig en9 alias 192.168.123.99 netmask 255.255.255.0` (run by Aidan) | a temporary second address next to the adapter's saved `192.168.185.5/16`, which another project uses; saved settings untouched. Ping to `192.168.123.161`: 0.2 to 0.6 ms |
+| handshake probe | Exam 1 `q3_apps/probe_signaling.py 192.168.123.161` | port 9991 open, `data2 = 2` (firmware 1.1.14 or earlier, no AES key) |
+| read-only state | `scripts/motion/00_read_state.py --backend webrtc --seconds 10` | 200 messages in 9.9 s, 20.1 per second, largest gap 62 ms; motion switcher reports `mcf`; body height 0.318 m; real, nonzero data |
+| 01_stand, first try | `01_stand.py --backend webrtc` | failed at connect, nothing sent: `LocalSignalingPortError`. `en9` had lost every address after an Ethernet link drop (see Problems). Fixed by re-adding the alias; from then on a pre-flight `nc -z 192.168.123.161 9991` ran before each script. |
+| 01_stand | `01_stand.py --backend webrtc` | StandUp 0, BalanceStand 0, StopMove 0. Stopped by Ctrl+C at 16.0 s (about 1 s before the planned end). 20.1 per second, largest gap 59 ms; drift 1.1 cm, 5.1 deg; body height 0.318 to 0.336 m; `mode` stayed 0 |
+| 02_forward, 0.2 m/s for 0.5 m | `02_forward.py --backend webrtc --skip-stand` | **first motion.** End of script. Reported vx +0.160 m/s mean (peak 0.215); odometry 0.327 m of 0.500 m commanded; 10 % at 138 ms, 50 % at 191 ms |
+| velocity frame | the same run | **body frame.** IMU yaw was 2.98 rad, so forward motion moved odometry x from -2.043 to -2.369 m while reported vx stayed positive |
+| 03_rotate, 0.3 rad/s | `03_rotate.py --backend webrtc --skip-stand` | **13 deg of 90.** Yaw rate rose to 0.14 rad/s by 0.5 s, then faded to about 0 while 0.3 rad/s was still commanded. Aidan saw the robot trying to turn without turning. |
+| `--wz` option | `scripts/motion/03_rotate.py` | added; default 0.3, refused above `max_wz` |
+| 03_rotate, 0.5 rad/s | `03_rotate.py --backend webrtc --skip-stand --wz 0.5` | **42 deg of 90**, no fade: 0.17 to 0.35 rad/s throughout (mean 0.29); stops within 0.4 s; counterclockwise for positive wz, as in the simulator |
+| 04_lateral, 0.15 m/s | `04_lateral.py --backend webrtc --skip-stand` | no motion: 0.9 cm |
+| `--vy` option | `scripts/motion/04_lateral.py` | added; default 0.15, refused above `max_vy` |
+| 04_lateral, 0.2 m/s | `04_lateral.py --backend webrtc --skip-stand --vy 0.2` | 4 cm, reported vy +0.03 m/s; direction left |
+| raise `max_vy` | `config/safety_limits.yaml`: 0.2 to 0.3 m/s (Aidan's decision) | the robot did not move sideways at 0.15 or 0.2 m/s; 0.3 m/s is the policy's training limit. `max_vx` 0.2 and `max_wz` 0.5 unchanged |
+| summary fix | `summarize_log.py` | a plateau shorter than 2 s gave an empty averaging window (`nan`); it now skips half the plateau instead of 1 s |
+| 04_lateral, 0.3 m/s | `04_lateral.py --backend webrtc --skip-stand --vy 0.3` | 0.17 m of 0.30 m, reported vy +0.173 m/s; **left, as in the simulator** |
+| RL policy | `06_rl_goal.py --backend webrtc --velocity-frame body --skip-stand` (new script, tested on the mock first: goal reached, geofence fires) | **goal reached**: distance 1.00 to 0.30 m in 3.14 s (57 steps at 20 Hz); end of script, StopMove 0. Largest commands sent 0.2 / 0.3 / 0.5, all at the limits. Measured vx +0.201 of 0.2 m/s, vy +0.225 of 0.3, wz -0.453 of -0.5 rad/s; odometry 0.83 m, yaw -41 deg. The policy turned right while stepping left, then turned back toward the goal, as it does in simulation. Pose from odometry and IMU yaw; LiDAR inputs held at max range. |
 
 ## Differences from Exam 1
 
@@ -92,9 +118,19 @@ Machine: laptop, Intel Core i9-13950HX (24 cores: 8 P-cores with Hyper-Threading
 | PyTorch | pip wheel, `cu128` index | conda-forge `pytorch=2.14.1` CUDA 12.9 build | conda-forge only; Exam 1 already used conda-forge-only environments |
 | `.gitignore` | Python template plus a custom section | the custom section only, plus SB3 `.zip` checkpoints, `models/`, `runs/` | SB3 saves checkpoints as `.zip` |
 | `.env.example` | four variables | same four; the AES key is marked not needed on this firmware | Exam 1 found `data2 = 2` |
+| robot computer, final | lab desktop, Ubuntu 26.04 | MacBook (macOS) for the robot session on 2026-10-17 | the Ubuntu laptop was no longer available. Neither library README covers macOS (both give only `apt` steps); WebRTC worked with Homebrew PortAudio. DDS was not set up on the Mac. |
+| robot network | NetworkManager `go2-eth`, static `192.168.123.99/24` | temporary alias `192.168.123.99/24` on the Mac's USB adapter (`ifconfig en9 alias`) | keeps the adapter's saved configuration for another project; the alias is lost on any link drop |
 | upstream clones | `~/go2_deps/`, commits in Exam 1 `q2_sdk/LOG.md` | same location and commits for CycloneDDS and `unitree_sdk2_python`; `unitree_webrtc_connect` installed by pip at `e0abc57` | Exam 1 `q3_apps/requirements.txt` pins it the same way |
 
 ## Problems found
+
+**Small commands barely move this robot.** Yaw at 0.3 rad/s faded to nothing (13 deg of 90); at 0.5 rad/s it turned at about 0.29 rad/s (42 deg). Lateral at 0.15 and 0.2 m/s did not move it; at 0.3 m/s it moved 0.17 m of 0.30. Forward at 0.2 m/s gave 0.33 m of 0.50. During the RL run, with larger commands on several axes at once, it tracked much better (vx 0.20 of 0.20, wz 0.45 of 0.50). The mechanism is not known: a minimum speed in the gait controller fits these runs. This is the first real dynamics data for the fitted and learned models in later phases. The simulator's lag-plus-delay model has no minimum speed.
+
+**The adapter loses its addresses on a link drop.** Between the read-only check (15:11) and the first stand attempt (15:25), `en9` lost both the alias and its saved `192.168.185.5`, though the saved settings were unchanged. The connection failed before any command was sent. The cause of the link drop was not identified.
+
+**Duplicate FFmpeg classes on macOS.** `opencv-python` and `av` (PyAV, used by aiortc) each bundle `libavdevice`, and the Objective-C runtime warns `Class AVFFrameReceiver is implemented in both ...`. Harmless here because no video is decoded, but video on this Mac may be unreliable.
+
+**`SportModeState.mode` stayed 0** through StandUp and BalanceStand, so it does not show posture on this firmware over `rt/lf/sportmodestate`.
 
 **The 10M-step run is no better than the 200k smoke run.** Full model: success 0.79 on the evaluation seeds; smoke model on the Mac: 0.81. The curve plateaus by about 2M steps. Likely causes, not yet tested: the easy-scenes problem below caps what the policy can gain, and the fixed hyperparameters (`ent_coef=0.0`, constant learning rate) may stop exploration early. Not changed; noted for discussion.
 
@@ -102,7 +138,7 @@ Machine: laptop, Intel Core i9-13950HX (24 cores: 8 P-cores with Hyper-Threading
 
 **The scenes may be too easy to separate the policies.** A proportional go-to-goal controller that ignores obstacles reaches the goal in 69 % of evaluation episodes, because obstacles are placed uniformly and often lie off the start-to-goal line. The headroom for RL, and later for a safety filter, is the remaining 31 %. Not changed yet; noted for discussion.
 
-**The frame of `SportModeState.velocity` is not documented in the SDK source.** `_SportModeState_.py` gives only the field types. Unitree's Go1 documentation describes a world frame for its high-level state. The motion summary therefore reports linear velocity as reported and rotated world→body by the IMU yaw. The rotate and square runs on the robot will show which is right.
+**The frame of `SportModeState.velocity` is not documented in the SDK source.** Resolved on 2026-10-17: body frame (see the Mac robot session). `_SportModeState_.py` gives only the field types. Unitree's Go1 documentation describes a world frame for its high-level state. The motion summary therefore reports linear velocity as reported and rotated world→body by the IMU yaw. The rotate and square runs on the robot will show which is right.
 
 **Sport-mode state may read zero on some Go2 firmware.** A forum reply ([mybotshop forum](https://forum.mybotshop.de/t/unitree-go2-cannot-echo-sportmodestate/1810)) reports all-zero sport-mode state on a Go2 and calls it a legacy feature. This is unofficial, and Exam 1's WebRTC run contradicts it on this robot: body height 0.321 m, 20 messages per second. The watchdog depends only on arrival, not on content, but velocity measurements would be lost if it happens over DDS. `00_read_state` checks it first.
 

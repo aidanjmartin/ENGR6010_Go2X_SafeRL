@@ -19,8 +19,8 @@ It builds on [ENGR6010_Exam1](https://github.com/aidanjmartin/ENGR6010_Exam1) (c
 | :--- | :--- |
 | mock robot backend, safety layer, logger | done; 9 tests against the mock pass |
 | DDS backend (`unitree_sdk2_python` `814556d`) | written from the library source; **untested on hardware** |
-| WebRTC backend (`unitree_webrtc_connect` `e0abc57`) | written from the library source; **untested on hardware** |
-| motion test scripts | done; all five run against the mock |
+| WebRTC backend (`unitree_webrtc_connect` `e0abc57`) | **tested on the Go2 X on 2026-10-17**, from a MacBook over the Ethernet tether: stand, forward, rotate, lateral, and an RL policy run |
+| motion test scripts | stand, forward, rotate and lateral run on the robot over WebRTC; square not yet run; an RL policy script (`06_rl_goal.py`) reached its goal on the robot |
 | RL environment | done; `check_env` and 5 other tests pass |
 | PPO training | 10M-step run on the Ubuntu laptop (44.5 min, 24 envs); evaluation success 0.79, no better than the 200k smoke run |
 
@@ -68,7 +68,7 @@ On the Ubuntu laptop, follow [`docs/LAPTOP_SESSION.md`](docs/LAPTOP_SESSION.md).
 | `dds` | Ethernet, CycloneDDS | `rt/lf/sportmodestate` | `SportClient.Move` |
 | `webrtc` | Ethernet, WebRTC data channel | `rt/lf/sportmodestate` | sport request `Move` (api 1008), no reply |
 
-**The DDS and WebRTC backends are untested on hardware.** Every library call in them cites the source file at the pinned commit. Motion scripts never call a backend directly. They go through `SafeRobot` ([`go2x/robot/safety.py`](go2x/robot/safety.py)), which does the following, with limits from [`config/safety_limits.yaml`](config/safety_limits.yaml) only:
+**The DDS backend is untested on hardware. The WebRTC backend was tested on the robot on 2026-10-17** (see Results). Every library call in them cites the source file at the pinned commit. Motion scripts never call a backend directly. They go through `SafeRobot` ([`go2x/robot/safety.py`](go2x/robot/safety.py)), which does the following, with limits from [`config/safety_limits.yaml`](config/safety_limits.yaml) only:
 - clamps commands to 0.2 m/s linear and 0.5 rad/s yaw;
 - limits their rate of change;
 - sends zero velocity when state stops for 0.5 s (in the command loop and in a separate watchdog thread);
@@ -112,11 +112,23 @@ Stopping sends zero velocity, then `StopMove`, never `Damp`. The logger writes t
 
 **Simulation results come from unfitted dynamics. They say nothing about Go2 X performance.** Robot results are filled in after the robot session.
 
-Robot motion tests: pending (see [`docs/LAPTOP_SESSION.md`](docs/LAPTOP_SESSION.md)).
+Robot motion tests, 2026-10-17, WebRTC backend, from a MacBook over the Ethernet tether. The Ubuntu laptop was no longer available, and DDS was not tested. Limits: 0.2 m/s forward, 0.3 m/s lateral (raised from 0.2 during the session), 0.5 rad/s yaw. Measured velocity is the robot's own `SportModeState` estimate (body frame), and displacement is its odometry. Details are in [`LOG.md`](LOG.md).
 
-| backend | script | measured velocity | rough delay (10 % / 50 %) | displacement | stop reason |
+| script | commanded | measured velocity | rough delay (10 % / 50 %) | displacement | stop reason |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| | | | | | |
+| `00_read_state` | none | state at 20.1 per second, largest gap 62 ms | | | read-only |
+| `01_stand` | StandUp, BalanceStand, hold | all calls returned 0 | | 1.1 cm, 5.1 deg | Ctrl+C at 16 s |
+| `02_forward` | 0.2 m/s for 0.5 m | +0.160 m/s | 138 / 191 ms | 0.327 m | end of script |
+| `03_rotate` | 0.3 rad/s for 90 deg | +0.031 rad/s (faded) | 143 / 355 ms | 13 deg | end of script |
+| `03_rotate --wz 0.5` | 0.5 rad/s for 90 deg | +0.292 rad/s | 183 / 534 ms | 42 deg | end of script |
+| `04_lateral` | 0.15 m/s for 0.3 m left | +0.002 m/s | | 0.9 cm | end of script |
+| `04_lateral --vy 0.2` | 0.2 m/s for 0.3 m left | +0.030 m/s | 94 ms / n/a | 4 cm | end of script |
+| `04_lateral --vy 0.3` | 0.3 m/s for 0.3 m left | +0.173 m/s | 190 / 641 ms | 0.17 m | end of script |
+| `06_rl_goal` | PPO policy, goal 1 m ahead | vx +0.201, vy +0.225 m/s, wz -0.453 rad/s | 127 / 227 ms (vx) | 0.83 m, -41 deg | **goal reached**, 3.1 s |
+
+At these speeds the robot under-delivers small single-axis commands: it barely turned at 0.3 rad/s, and it did not move sideways below 0.3 m/s. It tracked the RL policy's larger, combined commands much better. Positive vx, vy and wz move it forward, left and counterclockwise, as in the simulator.
+
+**RL on the robot:** `06_rl_goal.py` ran a PPO policy (`full_mac`: 3M steps, retrained on the Mac because the laptop's model was not transferable; 0.75 success on the evaluation seeds). It drove the robot from 1.0 m to within 0.3 m of a goal in 3.1 s. Every command went through the safety layer. Pose came from the robot's odometry and IMU, and the LiDAR inputs were held at max range, so **the policy could not see obstacles.** This shows the sim-trained policy closing the loop on the robot. It doesn't show obstacle avoidance or measure navigation performance.
 
 RL evaluation, 10M-step PPO run (`models/full.zip`, trained on the Ubuntu laptop on 2026-10-15), 100 seeded episodes (seeds 10000 to 10099):
 

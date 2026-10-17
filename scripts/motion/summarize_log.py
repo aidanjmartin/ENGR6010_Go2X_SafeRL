@@ -63,12 +63,13 @@ def summarize(session, out=print):
             continue
         on = np.abs(sent[:, i] - peak) < 1e-9          # commands at the plateau
         t_first = tc[np.abs(sent[:, i]) > 1e-9][0]       # first nonzero command on this axis
-        # each contiguous plateau (the square has four); skip the first second of each
+        # each contiguous plateau (the square has four); skip the first second of each,
+        # or the first half of a plateau shorter than 2 s
         edges = np.diff(np.concatenate([[0], on.astype(int), [0]]))
         starts, ends = np.where(edges == 1)[0], np.where(edges == -1)[0] - 1
         window = np.zeros(len(t), bool)
         for a, b in zip(starts, ends):
-            window |= (t >= tc[a] + 1.0) & (t <= tc[b])
+            window |= (t >= tc[a] + min(1.0, 0.5 * (tc[b] - tc[a]))) & (t <= tc[b])
         if i < 2:
             m_rep = np.nanmean(v_rep[window, i]) if window.any() else np.nan
             m_rot = np.nanmean(v_rot[window, i]) if window.any() else np.nan

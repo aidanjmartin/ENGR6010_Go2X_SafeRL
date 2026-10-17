@@ -1,7 +1,7 @@
 """WebRTC backend: unitree_webrtc_connect sport requests over the Ethernet tether.
 
-UNTESTED ON HARDWARE. Exam 1 connected to this Go2 X over WebRTC read-only (video, state);
-no sport request has been sent to it yet.
+Tested on a Go2 X on 2026-10-17, from a MacBook over the Ethernet tether: StandUp,
+BalanceStand, StopMove and Move all accepted (see LOG.md, "Mac robot session").
 
 Every library call below is taken from legion1581/unitree_webrtc_connect at commit e0abc57
 (pinned in ENGR6010_Exam1 q3_apps/requirements.txt). Paths are relative to that repository:

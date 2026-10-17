@@ -2,7 +2,7 @@
 # These are deliberately far below the Go2's capability.
 
 max_vx: 0.2            # forward/backward, m/s
-max_vy: 0.2            # lateral, m/s
+max_vy: 0.3            # lateral, m/s. Raised from 0.2 on 2026-10-17 (Aidan): the Go2 X did not move sideways at 0.15 or 0.2 m/s
 max_wz: 0.5            # yaw rate, rad/s
 
 max_lin_accel: 0.5     # rate-of-change limit on linear commands, m/s^2
