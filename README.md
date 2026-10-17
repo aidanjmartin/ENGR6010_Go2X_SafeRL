@@ -20,7 +20,7 @@ It builds on [ENGR6010_Exam1](https://github.com/aidanjmartin/ENGR6010_Exam1) (c
 | mock robot backend, safety layer, logger | done; 9 tests against the mock pass |
 | DDS backend (`unitree_sdk2_python` `814556d`) | written from the library source; **untested on hardware** |
 | WebRTC backend (`unitree_webrtc_connect` `e0abc57`) | **tested on the Go2 X on 2026-10-17**, from a MacBook over the Ethernet tether: stand, forward, rotate, lateral, and an RL policy run |
-| motion test scripts | stand, forward, rotate and lateral run on the robot over WebRTC; square not yet run; an RL policy script (`06_rl_goal.py`) reached its goal on the robot |
+| motion test scripts | stand, forward, rotate, lateral and a 5-trial L-path run on the robot over WebRTC; square not yet run; an RL policy script (`06_rl_goal.py`) reached its goal on the robot |
 | RL environment | done; `check_env` and 5 other tests pass |
 | PPO training | 10M-step run on the Ubuntu laptop (44.5 min, 24 envs); evaluation success 0.79, no better than the 200k smoke run |
 
@@ -127,6 +127,18 @@ Robot motion tests, 2026-10-17, WebRTC backend, from a MacBook over the Ethernet
 | `06_rl_goal` | PPO policy, goal 1 m ahead | vx +0.201, vy +0.225 m/s, wz -0.453 rad/s | 127 / 227 ms (vx) | 0.83 m, -41 deg | **goal reached**, 3.1 s |
 
 At these speeds the robot under-delivers small single-axis commands: it barely turned at 0.3 rad/s, and it did not move sideways below 0.3 m/s. It tracked the RL policy's larger, combined commands much better. Positive vx, vy and wz move it forward, left and counterclockwise, as in the simulator.
+
+**L-path repeatability, 5 trials** ([`results/robot/l_path_trials_webrtc.md`](results/robot/l_path_trials_webrtc.md)): forward 0.5 m at 0.2 m/s, turn left 90 deg at 0.5 rad/s, forward 0.5 m, closed loop on the robot's odometry and IMU (`07_l_path.py`).
+
+| trial | leg 1 (m) | turn (deg) | leg 2 (m) | outcome |
+| ---: | ---: | ---: | ---: | :--- |
+| 1 | 0.412 | 82.5 | 0.450 | completed |
+| 2 | 0.428 | 80.5 | 0.445 | completed |
+| 3 | 0.341 | 80.5 | 0.456 | leg 1 timed out at 8 s |
+| 4 | 0.294 | 85.8 | 0.062 | both legs timed out |
+| 5 | | | | WebRTC connection failed; nothing sent |
+
+Turning was consistent (80 to 86 deg, 0.24 to 0.27 rad/s). Forward speed at the same 0.2 m/s command fell from about 0.11 m/s (trials 1 and 2) to 0.01 to 0.07 m/s (trials 3 and 4), and the cause is not yet known. Completed segments stopped short because the script's early-stop estimate, calibrated on the mock, was too cautious for the robot. All values are the robot's own odometry and IMU, not external measurement. Trial 5's failed handshake is kept as part of the record.
 
 **RL on the robot:** `06_rl_goal.py` ran a PPO policy (`full_mac`: 3M steps, retrained on the Mac because the laptop's model was not transferable; 0.75 success on the evaluation seeds). It drove the robot from 1.0 m to within 0.3 m of a goal in 3.1 s. Every command went through the safety layer. Pose came from the robot's odometry and IMU, and the LiDAR inputs were held at max range, so **the policy could not see obstacles.** This shows the sim-trained policy closing the loop on the robot. It doesn't show obstacle avoidance or measure navigation performance.
 

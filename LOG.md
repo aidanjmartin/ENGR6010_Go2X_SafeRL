@@ -107,6 +107,10 @@ Machine: MacBook, Apple M5 (10 cores), macOS (Darwin 25.6.0); USB-C Ethernet ada
 | summary fix | `summarize_log.py` | a plateau shorter than 2 s gave an empty averaging window (`nan`); it now skips half the plateau instead of 1 s |
 | 04_lateral, 0.3 m/s | `04_lateral.py --backend webrtc --skip-stand --vy 0.3` | 0.17 m of 0.30 m, reported vy +0.173 m/s; **left, as in the simulator** |
 | RL policy | `06_rl_goal.py --backend webrtc --velocity-frame body --skip-stand` (new script, tested on the mock first: goal reached, geofence fires) | **goal reached**: distance 1.00 to 0.30 m in 3.14 s (57 steps at 20 Hz); end of script, StopMove 0. Largest commands sent 0.2 / 0.3 / 0.5, all at the limits. Measured vx +0.201 of 0.2 m/s, vy +0.225 of 0.3, wz -0.453 of -0.5 rad/s; odometry 0.83 m, yaw -41 deg. The policy turned right while stepping left, then turned back toward the goal, as it does in simulation. Pose from odometry and IMU yaw; LiDAR inputs held at max range. |
+| L-path test script | new `scripts/motion/07_l_path.py` and `summarize_trials.py` | forward 0.5 m at 0.2 m/s, turn left 90 deg at 0.5 rad/s, forward 0.5 m. Closed loop on odometry and IMU, with each segment stopping early by a predicted coast (measured speed x 0.2 s, plus the ramp-down) and timing out at 8 s per leg and 10 s for the turn. First mock run overshot to 0.61 m and 108 deg; with the early stop the mock gave 0.53 m and 94 deg. |
+| link drop, again | first `07_l_path.py --trial 1` | failed at connect, nothing sent: `en9` had lost its addresses again (second time, about 20 min after the first). Alias re-added; trial 1 rerun. |
+| L-path trials 1 to 4 | `07_l_path.py --backend webrtc --skip-stand --trial N` | all ended "end of script". Legs (m) / turn (deg): T1 0.412 / 82.5 / 0.450; T2 0.428 / 80.5 / 0.445; T3 0.341 (leg timeout) / 80.5 / 0.456; T4 0.294 (timeout) / 85.8 / 0.062 (timeout). Mean measured forward speed during the legs, at a 0.2 m/s command: T1 0.105 / 0.115, T2 0.110 / 0.110, T3 0.043 / 0.071, T4 0.037 / 0.012 m/s. Turn rate steady at 0.24 to 0.27 rad/s. Table: `results/robot/l_path_trials_webrtc.md` |
+| L-path trial 5 | `07_l_path.py --backend webrtc --skip-stand --trial 5` | **WebRTC connection failed, nothing sent**: `DataChannelTimeoutError` after 15 s (peer stuck at `connecting`, ICE at `checking`). Kept in the record as it happened. |
 
 ## Differences from Exam 1
 
@@ -126,7 +130,13 @@ Machine: MacBook, Apple M5 (10 cores), macOS (Darwin 25.6.0); USB-C Ethernet ada
 
 **Small commands barely move this robot.** Yaw at 0.3 rad/s faded to nothing (13 deg of 90); at 0.5 rad/s it turned at about 0.29 rad/s (42 deg). Lateral at 0.15 and 0.2 m/s did not move it; at 0.3 m/s it moved 0.17 m of 0.30. Forward at 0.2 m/s gave 0.33 m of 0.50. During the RL run, with larger commands on several axes at once, it tracked much better (vx 0.20 of 0.20, wz 0.45 of 0.50). The mechanism is not known: a minimum speed in the gait controller fits these runs. This is the first real dynamics data for the fitted and learned models in later phases. The simulator's lag-plus-delay model has no minimum speed.
 
-**The adapter loses its addresses on a link drop.** Between the read-only check (15:11) and the first stand attempt (15:25), `en9` lost both the alias and its saved `192.168.185.5`, though the saved settings were unchanged. The connection failed before any command was sent. The cause of the link drop was not identified.
+**Forward tracking fell off over the L-path trials.** At the same 0.2 m/s command, mean forward speed was about 0.11 m/s in trials 1 and 2 and 0.01 to 0.07 m/s in trials 3 and 4, which made three legs time out. The turn rate stayed at 0.24 to 0.27 rad/s throughout. The cause is not known. Candidates: the robot's own obstacle avoidance as the chained trials brought it near something, battery level (not logged), or floor surface.
+
+**The L-path early stop was too cautious on the robot.** Legs that reached target ended at 0.41 to 0.45 m of 0.5, and turns at 80 to 86 deg of 90. The robot coasts less than the 0.2 s response time assumed from the mock; `--t-resp` should be lowered for future runs.
+
+**WebRTC connection can time out.** L-path trial 5 failed in the WebRTC handshake (`DataChannelTimeoutError`; the library's message suggests another client holding the slot, a flaky network, or a stale peer on the robot). It was the only handshake failure in the session. Nothing was sent.
+
+**The adapter loses its addresses on a link drop.** It happened twice, about 20 minutes apart. Between the read-only check (15:11) and the first stand attempt (15:25), `en9` lost both the alias and its saved `192.168.185.5`, though the saved settings were unchanged. The connection failed before any command was sent. The cause of the link drop was not identified.
 
 **Duplicate FFmpeg classes on macOS.** `opencv-python` and `av` (PyAV, used by aiortc) each bundle `libavdevice`, and the Objective-C runtime warns `Class AVFFrameReceiver is implemented in both ...`. Harmless here because no video is decoded, but video on this Mac may be unreliable.
 
