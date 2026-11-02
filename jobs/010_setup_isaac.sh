@@ -7,7 +7,7 @@ mkdir -p "$JOB_CACHE/uv" "$SRC_DIR"
 
 stamp "nvidia-smi"
 nvidia-smi | tee "$RESULTS_DIR/nvidia-smi.txt"
-ldd --version | head -1
+ldd --version | sed -n 1p
 
 # 1. uv, used only to download a standalone CPython 3.11 (Ubuntu 24.04 ships 3.12).
 if [ ! -x "$UV_BIN" ]; then
