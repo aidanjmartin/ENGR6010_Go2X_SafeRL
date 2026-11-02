@@ -118,6 +118,7 @@ class AtriumRuntime:
         self.write_parts(env_ids)
         self.feed.reset(env_ids)
         self.first[env_ids] = True
+        self._obs_step = -1            # an explicit env.reset() does not advance the step counter
         self.action_n[env_ids] = 0.0
         self.prev_action_n[env_ids] = 0.0
         pose = torch.cat([start[:, :2], start[:, 2:3]], -1)
