@@ -1,0 +1,28 @@
+# Task 5: natural language target (go2x/grounding/, scripts/ground_prompts.py).
+
+templates:                    # {color} is filled from config/atrium.yaml chair colors
+  chair_color: "go to the {color} chair"
+  chair: "go to the chair"
+  table: "go to the table"
+  person: "go to the person"
+detector_queries:             # text sent to the detector for each template
+  chair_color: "a {color} chair"
+  chair: "a chair"
+  table: "a table"
+  person: "a person"
+
+detector:
+  model: google/owlv2-base-patch16-ensemble
+  revision: cfd3195ba4ea9592eec887ded089f4c08eff231d
+  license_source: "google-research/scenic scenic/projects/owl_vit/README.md, section License (Apache 2.0, code and checkpoints)"
+  transformers_version: "4.57.1"
+  score_threshold: 0.10       # boxes below this are ignored
+  nms_iou: 0.3
+
+mask:
+  # The detector gives a box, not a footprint. The mask is a disk of this radius around the floor point
+  # under the box's bottom center.
+  radius: {chair: 0.30, table: 0.55, person: 0.25}
+
+evaluation:
+  correct_distance: 0.3       # predicted floor point within this distance of the target footprint
