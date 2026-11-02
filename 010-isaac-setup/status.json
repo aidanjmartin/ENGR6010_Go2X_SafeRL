@@ -1,19 +1,14 @@
 {
   "job": "010-isaac-setup",
-  "attempt": 1,
+  "attempt": 2,
   "repo": "ENGR6010_Go2X_SafeRL",
   "ref": "phase2-rl-sim",
   "description": "Install Isaac Sim 5.1.0, Isaac Lab v2.3.2, unitree_rl_lab into JOB_CACHE; report GPU, Python, CUDA and versions",
   "gpu": true,
   "ros": false,
   "robot": false,
-  "commit": "a132dbd7eb357e922d5bf2a11b93093a1b226885",
-  "status": "killed",
-  "reason": "stopped by the KILL file on the Dell",
-  "exit_code": -15,
-  "started": "2026-11-02T14:44:51-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt1.txt",
-  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/output-attempt1",
-  "kept_on_dell": [],
-  "finished": "2026-11-02T14:49:19-06:00"
+  "commit": "e698618ddaf5b6eefef006d512f7ba7c73ee3ef6",
+  "status": "running",
+  "started": "2026-11-02T14:51:27-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt2.txt"
 }
