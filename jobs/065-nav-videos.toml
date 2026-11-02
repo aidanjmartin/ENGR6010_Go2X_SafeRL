@@ -1,0 +1,11 @@
+id = "065-nav-videos"
+description = "Rendered-camera rollout videos: one success and one failure per controller"
+ref = "phase2-rl-sim"
+command = "bash jobs/065_nav_videos.sh"
+timeout_hours = 1.5
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["060-nav-eval", "048-nav-baselines"]
+attempt = 1
