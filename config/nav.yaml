@@ -1,0 +1,68 @@
+# Task 4: navigation policy over the frozen walking policy (go2x/isaac/nav_env.py).
+# Structure follows Isaac Lab v2.3.2 Isaac-Navigation-Flat-Anymal-C-v0 (manager_based/navigation).
+
+timing:
+  nav_hz: 10                  # navigation policy rate
+  walk_steps_per_nav: 5       # walking policy steps (50 Hz) per navigation step
+  episode_s: 20.0
+
+action:                       # velocity target sent to the walking policy (body frame)
+  vx: [0.0, 0.8]              # m/s
+  vy: [-0.3, 0.3]             # m/s
+  wz: [-1.0, 1.0]             # rad/s
+
+success:
+  distance: 0.5               # robot front to the target footprint, m
+  speed: 0.1                  # planar base speed below this, m/s
+
+termination:
+  fall_contact_n: 1.0         # base contact force for a fall (walking task's base_contact threshold)
+  fall_tilt_rad: 0.8          # walking task's bad_orientation limit
+
+reward:                       # per navigation step; every term is logged separately
+  progress: 4.0               # per meter of reduced front-to-target distance
+  success: 20.0
+  collision: -10.0
+  person_near: -0.2           # each step the robot footprint is within person_near_distance of a person
+  fall: -10.0
+  time: -0.02
+  smoothness: -0.05           # times the squared change of the normalized action
+
+policy:
+  cnn_channels: [16, 32, 32]  # stride-2 3x3 convolutions on the stacked image (8 x 64 x 64)
+  cnn_out: 128
+  mlp: [128, 64]
+
+training:
+  num_envs: 256
+  seed: 7
+  num_steps_per_env: 32
+  iterations: 1500
+  save_interval: 50
+  max_checkpoint_minutes: 30
+  short_job_minutes: 15
+  learning_rate: 3.0e-4
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  gamma: 0.99
+  lam: 0.95
+
+baselines:
+  straight:                   # Phase 1 style: turn toward the target and drive straight at it
+    k_yaw: 1.5
+    k_v: 0.8
+    stop_distance: 0.40       # front-to-target distance at which it stops, m
+  astar:
+    inflate_m: 0.25           # obstacles grown by this on the drawn image
+    replan_every: 5           # navigation steps
+    lookahead_m: 0.4
+    k_yaw: 2.0
+    v_max: 0.5
+    stop_distance: 0.40
+
+evaluation:
+  num_scenarios: 200
+  seed: 20261108
+  num_envs: 50                # scenarios run in parallel batches of this size
+  videos: 1                   # one success and one failure per controller
