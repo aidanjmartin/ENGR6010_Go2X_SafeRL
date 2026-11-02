@@ -1,19 +1,14 @@
 {
   "job": "025-nav-smoke",
-  "attempt": 2,
+  "attempt": 3,
   "repo": "ENGR6010_Go2X_SafeRL",
   "ref": "phase2-rl-sim",
   "description": "Navigation environment smoke test: a few minutes of PPO over job 020's walking policy",
   "gpu": true,
   "ros": false,
   "robot": false,
-  "commit": "2b84f36ec88509bbc32a5cf8d5b77ec94550f61d",
-  "status": "succeeded",
-  "reason": "",
-  "exit_code": 0,
-  "started": "2026-11-02T15:28:43-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/025-nav-smoke/log-attempt2.txt",
-  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/025-nav-smoke/output-attempt2",
-  "kept_on_dell": [],
-  "finished": "2026-11-02T15:35:19-06:00"
+  "commit": "b2aa16b0491fa4e342cd23908a4e99ba885a0666",
+  "status": "running",
+  "started": "2026-11-02T15:35:23-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/025-nav-smoke/log-attempt3.txt"
 }
