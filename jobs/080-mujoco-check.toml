@@ -1,0 +1,11 @@
+id = "080-mujoco-check"
+description = "Task 6: walking policy in MuJoCo (unitree_mujoco Go2) on the Isaac evaluation's velocity targets (CPU)"
+ref = "phase2-rl-sim"
+command = "bash jobs/080_mujoco_check.sh"
+timeout_hours = 2
+gpu = false
+ros = false
+robot = false
+code_paths = []
+depends_on = ["040-walk-eval"]
+attempt = 1
