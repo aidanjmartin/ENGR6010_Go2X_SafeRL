@@ -1,0 +1,11 @@
+id = "045-render-scenes"
+description = "Rendered camera check: 60 random atrium scenes with ground truth and drawn top-down images"
+ref = "phase2-rl-sim"
+command = "bash jobs/045_render_scenes.sh"
+timeout_hours = 1
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["030-walk-full"]
+attempt = 1
