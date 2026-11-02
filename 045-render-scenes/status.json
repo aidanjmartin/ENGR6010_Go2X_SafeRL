@@ -1,7 +1,14 @@
 {
   "job": "045-render-scenes",
-  "attempt": 1,
-  "status": "skipped",
-  "reason": "dependency did not succeed: 030-walk-full",
-  "finished": "2026-11-02T15:26:39-06:00"
+  "attempt": 2,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Rendered camera check: 60 random atrium scenes with ground truth and drawn top-down images",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
+  "status": "running",
+  "started": "2026-11-02T16:35:51-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/045-render-scenes/log-attempt2.txt"
 }
