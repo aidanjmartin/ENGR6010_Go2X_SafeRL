@@ -1,0 +1,14 @@
+{
+  "job": "025-nav-smoke",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation environment smoke test: a few minutes of PPO over job 020's walking policy",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "66580cd0cd35b5e4ea926ba161d8792959119102",
+  "status": "running",
+  "started": "2026-11-02T15:25:46-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/025-nav-smoke/log-attempt1.txt"
+}
