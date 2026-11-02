@@ -15,7 +15,8 @@ parser.add_argument("--out", required=True)
 parser.add_argument("--iterations", type=int, default=None)
 parser.add_argument("--minutes", type=float, default=None)
 parser.add_argument("--num_envs", type=int, default=None)
-parser.add_argument("--chunk", type=int, default=50)
+parser.add_argument("--chunk", type=int, default=None,
+                    help="iterations per learn() call (default: all in one call). RSL-RL restarts its episode reward and length statistics at every call, so chunked runs log a sawtooth; use chunks only with --minutes")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 args.headless = True
@@ -57,7 +58,7 @@ runner = OnPolicyRunner(wrapped, agent_dict, log_dir=args.out, device=agent.devi
 t0 = last_save = time.time()
 done, first = 0, True
 while done < total:
-    n = min(args.chunk, total - done)
+    n = min(args.chunk or total, total - done)
     t = time.time()
     runner.learn(num_learning_iterations=n, init_at_random_ep_len=first)
     first = False

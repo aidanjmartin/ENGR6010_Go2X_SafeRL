@@ -19,7 +19,8 @@ parser.add_argument("--out", required=True, help="log and checkpoint folder")
 parser.add_argument("--iterations", type=int, default=None, help="default: training.full_iterations")
 parser.add_argument("--minutes", type=float, default=None, help="stop after this much training time")
 parser.add_argument("--num_envs", type=int, default=None)
-parser.add_argument("--chunk", type=int, default=100, help="iterations per learn() call; RSL-RL saves at the end of each")
+parser.add_argument("--chunk", type=int, default=None,
+                    help="iterations per learn() call (default: all in one call). RSL-RL restarts its episode reward and length statistics at every call, so chunked runs log a sawtooth; use chunks only with --minutes")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 args.headless = True
@@ -75,7 +76,7 @@ t0 = last_save = time.time()
 done, first = 0, True
 timing = []
 while done < total:
-    n = min(args.chunk, total - done)
+    n = min(args.chunk or total, total - done)
     t = time.time()
     runner.learn(num_learning_iterations=n, init_at_random_ep_len=first)
     first = False
