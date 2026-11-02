@@ -1,0 +1,11 @@
+id = "060-nav-eval"
+description = "Navigation policy evaluation on the 200 fixed scenarios"
+ref = "phase2-rl-sim"
+command = "bash jobs/060_nav_eval.sh"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["050-nav-train"]
+attempt = 1

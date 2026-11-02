@@ -1,0 +1,11 @@
+id = "050-nav-train"
+description = "Navigation policy PPO training over the frozen walking policy (1024 envs)"
+ref = "phase2-rl-sim"
+command = "bash jobs/050_nav_train.sh"
+timeout_hours = 8
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["030-walk-full", "025-nav-smoke"]
+attempt = 1

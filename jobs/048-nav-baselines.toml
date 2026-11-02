@@ -1,0 +1,11 @@
+id = "048-nav-baselines"
+description = "Straight-to-target and A* + pure pursuit baselines on the 200 fixed navigation scenarios"
+ref = "phase2-rl-sim"
+command = "bash jobs/048_nav_baselines.sh"
+timeout_hours = 3
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["030-walk-full"]
+attempt = 1
