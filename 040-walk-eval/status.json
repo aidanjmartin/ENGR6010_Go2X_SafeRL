@@ -1,0 +1,7 @@
+{
+  "job": "040-walk-eval",
+  "attempt": 1,
+  "status": "skipped",
+  "reason": "dependency did not succeed: 030-walk-full",
+  "finished": "2026-11-02T15:26:38-06:00"
+}
