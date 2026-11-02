@@ -1,0 +1,7 @@
+{
+  "job": "020-walk-short",
+  "attempt": 1,
+  "status": "skipped",
+  "reason": "dependency did not succeed: 010-isaac-setup",
+  "finished": "2026-11-02T14:51:35-06:00"
+}
