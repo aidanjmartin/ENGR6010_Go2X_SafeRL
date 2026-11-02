@@ -1,0 +1,11 @@
+id = "020-walk-short"
+description = "About 15 minutes of walking-policy PPO training from scratch: confirms training runs, logs rewards, joint order"
+ref = "phase2-rl-sim"
+command = "bash jobs/020_walk_short.sh"
+timeout_hours = 1.5
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["010-isaac-setup"]
+attempt = 1
