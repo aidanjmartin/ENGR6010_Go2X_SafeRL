@@ -153,3 +153,39 @@ Machine: MacBook, Apple M5 (10 cores), macOS (Darwin 25.6.0); USB-C Ethernet ada
 **Sport-mode state may read zero on some Go2 firmware.** A forum reply ([mybotshop forum](https://forum.mybotshop.de/t/unitree-go2-cannot-echo-sportmodestate/1810)) reports all-zero sport-mode state on a Go2 and calls it a legacy feature. This is unofficial, and Exam 1's WebRTC run contradicts it on this robot: body height 0.321 m, 20 messages per second. The watchdog depends only on arrival, not on content, but velocity measurements would be lost if it happens over DDS. `00_read_state` checks it first.
 
 **`unitree_webrtc_connect` has two silent-failure paths.** `pub_sub.publish_without_callback` builds an exception for a closed channel but never raises it, so the message is silently dropped. `publish_request_new` awaits its reply with no timeout. The WebRTC backend checks `channel.readyState` before every `Move` and wraps each request in `asyncio.wait_for` (5 s).
+
+# Phase 2 log: walking policy and atrium navigation in Isaac Lab
+
+Branch: `phase2-rl-sim`. Started 2026-11-02. Deadline 2026-11-08.
+
+Machine for this session: the Dell T2 tower itself (`BASENGD55243`): NVIDIA RTX 4000 Ada Generation (20475 MiB), driver 595.99.02, Ubuntu 24.04.5 LTS, GLIBC 2.39, 24 CPU threads, 62 GiB RAM. The session writes code and runs CPU tests here directly; all Isaac Sim work runs as runner jobs.
+
+## Step 0: runner and reference reading (2026-11-02)
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| job branches | `git ls-remote --heads https://github.com/aidanjmartin/ENGR6010_Go2X_SafeRL` | `dell-jobs` `bccb864` and `dell-results` `b223cfa` exist (created by the runner at 14:32) |
+| heartbeat | `gh api .../contents/_runner/heartbeat.json?ref=dell-results` | 2026-11-02 14:32:31, idle, no pending jobs, GPU visible (1063 MiB used), 892.8 GB free |
+| runner environment | `tr '\0' '\n' < /proc/<runner pid>/environ` | no `CUDA_VISIBLE_DEVICES`, so the hidden-GPU problem from the October weekend (`tourbot` `dell-jobs:notes/weekend-report.md`) is not present |
+| runner code | `~/weekend/tourbot/tools/dell-runner/runner.py` at `tourbot` `7e74205` (branch `dell-runner`) | `DATA_DIR` is per job (`~/dell-runner/data/<repo>/<job-id>`); a job's `ref` resolves to the branch tip when the job starts |
+| reference repos | `tourbot` (read-only) at `aidan/sim-levels-2-3` `2757cf1`, `aidan/ureca-rl` `2a10b64`, `dell-runner` `7e74205`, `dell-jobs` `6ddd78c` | read `aeb_level1.sdf`, `aeb_level1_rooms.csv`, `tourbot_sim/README.md`, `tourbot_rl/models/visitor.sdf`, `tourbot_rl/tourbot_rl/pedestrian.py`, `tools/dell-runner/README.md`, `WEEKEND_RULES.md`, `notes/weekend-report.md` |
+| quick square check (throwaway, outside the repo) | regex parse of the 4,270 `<collision>` boxes in `aeb_level1.sdf` | nothing inside the 3.048 m square at (0, 0); nearest is `glass_3485` at 2.810 m from the center (0.994 m outside the edge); 97 boxes within 3 m of the edge. Repeated by the repository script in Task 2. |
+
+## Version choices (approved by Aidan on 2026-11-02)
+
+| item | choice | primary source |
+| :--- | :--- | :--- |
+| Isaac Sim | 5.1.0, pip (`isaacsim[all,extscache]==5.1.0`, `https://pypi.nvidia.com`) | Isaac Sim 5.1.0 requirements page: Ubuntu 22.04/24.04, driver 580.65.06 or later, 16 GB VRAM, 32 GB RAM. Install page: Python 3.11, GLIBC 2.35 or later, `OMNI_KIT_ACCEPT_EULA=YES` for non-interactive runs. The same page marks 5.1.0 as no longer receiving fixes. |
+| Isaac Lab | v2.3.2, commit `37ddf626871758333d6ed89cf64ad702aef127d0` | Isaac Lab README at v3.0.0: "v2.3.X: Isaac Sim 4.5 / 5.0 / 5.1". v2.3.2 `pip_installation.rst`: `torch==2.7.0 torchvision==0.22.0` from the `cu128` index. Its install docs list Ubuntu 22.04 only (Isaac Sim lists 24.04). |
+| base repo | `unitreerobotics/unitree_rl_lab` `main`, commit `4960b84732b0c2ec593dccbfe963fda1bcd7b1e3` (Apache-2.0) | README badges: Isaac Sim 5.1.0, Isaac Lab 2.3.0. Task `Unitree-Go2-Velocity` (`tasks/locomotion/robots/go2/__init__.py`). Its `isaaclab3.0` branch (`2522f89`, 2026-05-25) targets Isaac Lab 3.0 with Isaac Sim 6.0, a pre-release, so it was not used. |
+| Go2 model | `unitreerobotics/unitree_ros` commit `3ae893d905d11795ddf1075825ee5010364a1109` (BSD-3-Clause), `robots/go2_description/urdf/go2_description.urdf` | `unitree_rl_lab` README recommends the URDF method for Isaac Sim 5.0 or later. Last change to `go2_description`: `a3b70ca`, 2025-06-19. |
+| Python | CPython 3.11.17 through `uv` 0.12.24 (release tarball, SHA-256 `b4dfaef4...bb3da6` checked) | the Dell has only Python 3.12.3 and no conda; standalone CPython lives in `$JOB_CACHE`, nothing system-wide |
+| hierarchical navigation example | `Isaac-Navigation-Flat-Anymal-C-v0`, `isaaclab_tasks/manager_based/navigation/config/anymal_c/` at v2.3.2 | read in the pinned checkout |
+| detector | OWLv2 CLIP B/16 ensemble, Hugging Face `google/owlv2-base-patch16-ensemble` revision `cfd3195ba4ea9592eec887ded089f4c08eff231d` | `google-research/scenic` `scenic/projects/owl_vit/README.md`, "License": "Both the code and the model checkpoints are licensed under the Apache 2.0 license", linking the repository `LICENSE`. The Hugging Face repository has no license file of its own, only an `apache-2.0` metadata tag. |
+
+Isaac Lab 3.0.0 (Isaac Sim 6.2, Python 3.12) was released 2026-10-20 and moved the navigation example to `contrib/`; it is the fallback if 5.1.0 fails on Ubuntu 24.04.
+
+## Step 1: Isaac setup job
+
+| step | command | outcome |
+| :--- | :--- | :--- |
