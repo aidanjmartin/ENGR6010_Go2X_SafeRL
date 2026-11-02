@@ -53,6 +53,7 @@ reachability:
   grid_resolution: 0.05       # m
   inflate: 0.20               # robot half width plus a little, m
   goal_distance: 0.5          # success: front within this distance of the target footprint
+  min_start_extra: 0.5        # the start front must be farther than goal_distance plus this from the target
 
 collision:
   contact_force_threshold: 1.0  # N, robot body to obstacle

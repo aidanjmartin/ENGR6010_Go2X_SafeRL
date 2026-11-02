@@ -58,9 +58,13 @@ def _seg_dist(p, a, b):
     return float(np.linalg.norm(p - (a + t * ab)))
 
 
+def _cross(a, b):
+    return a[..., 0] * b[..., 1] - a[..., 1] * b[..., 0]
+
+
 def _inside(p, poly):
     """Point inside a counterclockwise convex polygon (boundary counts as inside)."""
-    return all(np.cross(poly[(i + 1) % len(poly)] - poly[i], p - poly[i]) >= -1e-12 for i in range(len(poly)))
+    return all(_cross(poly[(i + 1) % len(poly)] - poly[i], p - poly[i]) >= -1e-12 for i in range(len(poly)))
 
 
 def polygon_distance(P, Q):
@@ -80,7 +84,7 @@ def polygon_distance(P, Q):
 
 
 def _segments_cross(a, b, c, d):
-    o = lambda p, q, r: np.sign(np.cross(q - p, r - p))  # noqa: E731
+    o = lambda p, q, r: np.sign(_cross(q - p, r - p))  # noqa: E731
     return o(a, b, c) * o(a, b, d) < 0 and o(c, d, a) * o(c, d, b) < 0
 
 
