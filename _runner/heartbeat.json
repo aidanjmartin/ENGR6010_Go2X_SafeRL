@@ -1,10 +1,13 @@
 {
-  "time": "2026-11-02T15:32:33-06:00",
-  "current_job": "ENGR6010_Go2X_SafeRL/025-nav-smoke",
+  "time": "2026-11-02T16:02:34-06:00",
+  "current_job": "ENGR6010_Go2X_SafeRL/030-walk-full",
   "pending_jobs": [
-    "025-nav-smoke"
+    "030-walk-full",
+    "048-nav-baselines",
+    "050-nav-train",
+    "060-nav-eval"
   ],
-  "gpu": "NVIDIA RTX 4000 Ada Generation, 58 %, 7786 MiB, 20475 MiB, 54",
-  "disk_free_gb": 862.0,
+  "gpu": "NVIDIA RTX 4000 Ada Generation, 75 %, 5918 MiB, 20475 MiB, 63",
+  "disk_free_gb": 861.7,
   "robot_enabled": true
 }
