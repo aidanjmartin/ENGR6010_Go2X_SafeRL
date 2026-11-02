@@ -43,11 +43,19 @@ obstacles:
     segment_duration: [2.0, 5.0]
   gap: 0.10                   # minimum free space between static obstacles, m
   inside_margin: 0.0          # obstacle footprints lie fully inside the square
-  park:                       # unused obstacles wait here, outside the square (env frame)
-    x0: 6.0
-    y0: -4.0
-    spacing: 1.5
   max_tries: 200
+
+# Simulator slots. Each chair color has its own chairs, so a chair's color never changes in the renderer.
+slots:
+  chairs_per_color: 3
+  table_color: [0.55, 0.38, 0.22]
+  person_color: [0.9, 0.5, 0.2]   # tourbot_rl visitor.sdf material
+  park:                           # unused obstacles wait here: outside the square, behind the camera (x > 3 m)
+    x0: 4.0
+    y0: -2.6
+    spacing: 1.3
+    columns: 5
+  env_spacing: 10.0               # m between environment origins; clears the parked obstacles of neighbors
 
 reachability:
   grid_resolution: 0.05       # m
