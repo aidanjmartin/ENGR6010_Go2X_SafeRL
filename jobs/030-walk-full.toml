@@ -1,0 +1,11 @@
+id = "030-walk-full"
+description = "Full walking-policy PPO training from scratch (3000 iterations), training curve, exported policy"
+ref = "phase2-rl-sim"
+command = "bash jobs/030_walk_full.sh"
+timeout_hours = 4
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["020-walk-short"]
+attempt = 1

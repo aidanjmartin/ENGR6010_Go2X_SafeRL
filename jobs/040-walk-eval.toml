@@ -1,0 +1,11 @@
+id = "040-walk-eval"
+description = "Walking-policy evaluation: 100 seeded 20 s episodes, transition log, 20 s video"
+ref = "phase2-rl-sim"
+command = "bash jobs/040_walk_eval.sh"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["030-walk-full"]
+attempt = 1
