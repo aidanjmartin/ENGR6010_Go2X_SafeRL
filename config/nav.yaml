@@ -34,7 +34,7 @@ policy:
   mlp: [128, 64]
 
 training:
-  num_envs: 256
+  num_envs: 1024              # per-physics-step cost was nearly flat in env count (job 025: 5.5 s per iteration at 256)
   seed: 7
   num_steps_per_env: 32
   iterations: 1500
