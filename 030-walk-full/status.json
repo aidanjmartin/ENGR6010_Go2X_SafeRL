@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "66580cd0cd35b5e4ea926ba161d8792959119102",
-  "status": "running",
+  "status": "killed",
+  "reason": "stopped by the KILL file on the Dell",
+  "exit_code": -15,
   "started": "2026-11-02T15:26:01-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/log-attempt1.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/log-attempt1.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/output-attempt1",
+  "kept_on_dell": [],
+  "finished": "2026-11-02T15:26:34-06:00"
 }
