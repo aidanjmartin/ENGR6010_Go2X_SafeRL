@@ -4,10 +4,12 @@
 intrinsics:
   width: 640
   height: 480
-  hfov_deg: 90.0              # fx = fy = (width / 2) / tan(hfov / 2); principal point at the image center
+  hfov_deg: 60.0              # fx = fy = (width / 2) / tan(hfov / 2); principal point at the image center
+  # 90 deg also covers the square but leaves it about 300 x 200 pixels (2 pixels per 5.7 cm at the far edge);
+  # 60 deg gives 3.4 pixels per 5.7 cm and keeps every check point at least 33 pixels inside the image.
 pose:
   position: [3.0, 0.0, 4.0]
-  look_at: [-0.25, 0.0, 0.0]  # aim point on the floor
+  look_at: [0.0, 0.0, 0.0]    # aim point on the floor: the square center
   up: [0.0, 0.0, 1.0]
 coverage:
   margin: 0.3                 # the square plus this margin must be visible

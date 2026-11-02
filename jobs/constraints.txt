@@ -9,6 +9,5 @@ tensordict==0.8.3
 # installs (ipython via isaaclab_mimic) upgrade them to packaging 26.3 and psutil 7.2.2.
 packaging==23.0
 psutil==5.9.8
-# flatdict (needed by isaaclab) builds with pkg_resources, which the newest setuptools no longer ships.
-# PIP_CONSTRAINT also applies inside pip's isolated build environments.
+# keep the venv's setuptools at a release that still ships pkg_resources (flatdict build, see job 010)
 setuptools<80

@@ -57,6 +57,9 @@ clone_at "$UNITREE_ROS_URL" "$UNITREE_ROS_DIR" "$UNITREE_ROS_COMMIT" robots/go2_
 
 # 5. Isaac Lab extensions plus RSL-RL only, then unitree_rl_lab (its README's `pip install -e` step;
 #    unitree_rl_lab.sh -i would also edit shell startup files, so it is not used).
+# flatdict 4.0.1 (pinned by isaaclab) builds with pkg_resources, which pip's isolated build environment no
+# longer has; build it against the venv's own setuptools instead.
+python -m pip install -q --no-build-isolation "flatdict==4.0.1"
 if ! python -c "import isaaclab, rsl_rl" 2>/dev/null; then
     stamp "isaaclab.sh --install rsl_rl"
     (cd "$ISAACLAB_PATH" && ./isaaclab.sh --install rsl_rl)
