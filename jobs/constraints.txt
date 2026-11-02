@@ -1,0 +1,7 @@
+# pip constraints for every install in the Isaac venv (PIP_CONSTRAINT in jobs/common.sh).
+# isaacsim-core 5.1.0 pins torch 2.7.0; without these, rsl-rl-lib 3.1.2's open "tensordict>=0.7.0"
+# resolves to tensordict 0.15.4, which needs torch>=2.11 and makes pip upgrade torch to 2.15.0.
+torch==2.7.0
+torchvision==0.22.0
+torchaudio==2.7.0
+tensordict==0.8.3

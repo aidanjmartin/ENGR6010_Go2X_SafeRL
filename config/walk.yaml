@@ -1,0 +1,72 @@
+# Task 1: joint-level walking policy for the Go2 in Isaac Lab (go2x/isaac/walk_env_cfg.py).
+# Base: unitree_rl_lab 4960b84, task Unitree-Go2-Velocity (tasks/locomotion/robots/go2/velocity_env_cfg.py).
+# Every number here is a simulation setting, not a measured Go2 X property.
+
+timing:
+  sim_dt: 0.005              # physics step, s (200 Hz), as in unitree_rl_lab
+  decimation: 4              # physics steps per policy step, so the policy runs at 50 Hz
+  episode_length_s: 20.0
+
+actuator:
+  kp: 25.0                   # N m / rad, unitree_rl_lab UNITREE_GO2_CFG
+  kd: 0.5                    # N m s / rad
+  action_scale: 0.25         # joint target = default pose + 0.25 * action, rad
+
+# Velocity targets, body frame. Training covers more than navigation uses (config/nav.yaml).
+commands:
+  train_range:               # final range; the unitree_rl_lab curriculum widens toward it
+    vx: [-0.5, 1.0]          # m/s
+    vy: [-0.5, 0.5]          # m/s
+    wz: [-1.0, 1.0]          # rad/s
+  curriculum_start:          # unitree_rl_lab starting ranges; lin_vel_cmd_levels adds 0.1 m/s per step
+    vx: [-0.1, 0.1]
+    vy: [-0.1, 0.1]
+    wz: [-1.0, 1.0]
+  resampling_time_s: [10.0, 10.0]
+  rel_standing_envs: 0.1     # fraction of environments commanded to stand still
+
+# Domain randomization: every range used by the walking task.
+randomization:
+  # Floor friction. Implemented as the robot body material with friction_combine_mode "multiply"
+  # against a floor of 1.0, so the effective foot-floor friction equals the sampled value.
+  static_friction: [0.3, 1.2]
+  dynamic_friction: [0.3, 1.2]
+  restitution: [0.0, 0.15]
+  friction_buckets: 64
+  base_mass_add_kg: [-1.0, 3.0]      # added to the base link
+  motor_strength_scale: [0.8, 1.2]   # multiplies every joint torque after the torque-speed limit, per episode
+  kp_scale: [0.8, 1.2]               # PD gain error, per episode, relative to kp
+  kd_scale: [0.8, 1.2]               # relative to kd
+  # Action delay: 4 to 8 physics steps = 20 to 40 ms = 1 to 2 policy steps, drawn per episode
+  # (Isaac Lab DelayedPDActuator, integer physics steps).
+  action_delay_physics_steps: [4, 8]
+  push_interval_s: [5.0, 10.0]
+  push_velocity_xy: [-0.5, 0.5]      # m/s, set directly on the base
+  # Uniform additive observation noise (policy observations only).
+  obs_noise:
+    base_ang_vel: 0.2                # rad/s
+    projected_gravity: 0.05
+    joint_pos: 0.01                  # rad
+    joint_vel: 1.5                   # rad/s
+
+training:
+  num_envs: 4096
+  seed: 42
+  num_steps_per_env: 24
+  save_interval: 100                 # iterations between checkpoints; job 020 measures the time per iteration
+  max_checkpoint_minutes: 30         # the training script also saves whenever this much time has passed
+  short_job_minutes: 15
+  full_iterations: 3000
+
+evaluation:
+  seeds: [1000]                      # one fixed seed; episodes are distinct environments
+  num_episodes: 100                  # one environment per episode
+  episode_s: 20.0
+  command_hold_s: 5.0                # a new random velocity target every 5 s, from train_range
+  settle_s: 0.5                      # tracking error ignores this long after each new target
+  joint_limit_margin_rad: 0.01       # a "hit" is a joint within this margin of its hard limit
+  contact_force_n: 1.0               # a foot is in contact when its contact force exceeds this
+  video_s: 20.0
+
+transitions:
+  horizons_s: [0.1, 0.5]             # next base state recorded at these offsets
