@@ -65,6 +65,10 @@ reachability:
 
 collision:
   contact_force_threshold: 1.0  # N, robot body to obstacle
+  # One filtered contact sensor per robot body: PhysX filtered contact reporting needs one sensor body per
+  # environment (job 025 attempt 2). Body names as Isaac Lab reads them from the unitree_ros URDF (job 020).
+  robot_bodies: [base, Head_upper, Head_lower, FL_hip, FR_hip, RL_hip, RR_hip, FL_thigh, FR_thigh, RL_thigh,
+                 RR_thigh, FL_calf, FR_calf, RL_calf, RR_calf, FL_foot, FR_foot, RL_foot, RR_foot]
   person_near_distance: 0.5     # m, footprint to person footprint, for the proximity penalty
 
 episode:

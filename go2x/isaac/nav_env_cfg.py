@@ -75,7 +75,7 @@ class AtriumRuntime:
         self.robot = env.scene["robot"]
         self.obstacles = env.scene["obstacles"]
         self.contact = env.scene["contact_forces"]
-        self.obstacle_contact = env.scene["obstacle_contact"]
+        self.obstacle_contacts = [env.scene[f"obs_contact_{b}"] for b in ATRIUM["collision"]["robot_bodies"]]
         self.base_id = self.contact.find_bodies("base")[0]
         self.person_ids = torch.tensor(self.batch.person_part_ids(), device=dev)
         self._obs_step = -1
@@ -154,8 +154,11 @@ class AtriumRuntime:
         pose = self.robot_pose()
         speed = torch.linalg.norm(self.robot.data.root_lin_vel_b[:, :2], dim=-1)
         m = self.batch.metrics(pose, speed)
-        fm = self.obstacle_contact.data.force_matrix_w            # (B, bodies, filters, 3)
-        m["collision_force"] = (torch.linalg.norm(fm, dim=-1) > ATRIUM["collision"]["contact_force_threshold"]).flatten(1).any(-1)
+        thr = ATRIUM["collision"]["contact_force_threshold"]
+        force_hit = torch.zeros(self.env.num_envs, dtype=torch.bool, device=self.env.device)
+        for sensor in self.obstacle_contacts:                      # force_matrix_w: (B, 1, parts, 3)
+            force_hit |= (torch.linalg.norm(sensor.data.force_matrix_w, dim=-1) > thr).flatten(1).any(-1)
+        m["collision_force"] = force_hit
         base_f = torch.linalg.norm(self.contact.data.net_forces_w_history[:, :, self.base_id], dim=-1).amax((1, 2))
         tilt = torch.acos((-self.robot.data.projected_gravity_b[:, 2]).clamp(-1, 1))
         m["fall"] = (base_f > NAV["termination"]["fall_contact_n"]) | (tilt > NAV["termination"]["fall_tilt_rad"])
@@ -285,8 +288,6 @@ class AtriumSceneCfg(InteractiveSceneCfg):
     )
     robot = go2_robot_cfg()
     contact_forces = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
-    obstacle_contact = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=1,
-                                        filter_prim_paths_expr=["{ENV_REGEX_NS}/Obs_" + p["name"] for p in PARTS])
     obstacles = _obstacles_cfg()
     light = AssetBaseCfg(prim_path="/World/light", spawn=sim_utils.DomeLightCfg(intensity=1500.0, color=(1.0, 1.0, 1.0)))
 
@@ -384,7 +385,10 @@ class AtriumNavEnvCfg(ManagerBasedRLEnvCfg):
         self.sim.physics_material = self.scene.terrain.physics_material
         self.sim.physx.gpu_max_rigid_patch_count = 10 * 2**15
         self.scene.contact_forces.update_period = self.sim.dt
-        self.scene.obstacle_contact.update_period = self.sim.dt
+        for b in ATRIUM["collision"]["robot_bodies"]:
+            setattr(self.scene, f"obs_contact_{b}", ContactSensorCfg(
+                prim_path="{ENV_REGEX_NS}/Robot/" + b, history_length=1, update_period=self.sim.dt,
+                filter_prim_paths_expr=["{ENV_REGEX_NS}/Obs_" + p["name"] for p in PARTS]))
         self.seed = NAV["training"]["seed"]
 
 
