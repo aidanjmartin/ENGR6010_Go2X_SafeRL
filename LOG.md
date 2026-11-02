@@ -189,3 +189,26 @@ Isaac Lab 3.0.0 (Isaac Sim 6.2, Python 3.12) was released 2026-10-20 and moved t
 
 | step | command | outcome |
 | :--- | :--- | :--- |
+| queue | `jobs/010-isaac-setup.toml` on `dell-jobs` (`1184cbf`), `bash jobs/010_setup_isaac.sh`, `gpu = true`, `ros = false` | queued 14:40 |
+| inherited ROS 2 paths | `tr '\0' '\n' < /proc/<runner pid>/environ` | the runner's login shell sources ROS 2 Jazzy, so every job inherits a Python 3.12 `PYTHONPATH`, `LD_LIBRARY_PATH` and `AMENT_PREFIX_PATH` (`runner.py` `job_env` removes only `ROS_*`, `RMW_*`, `GZ_*` and DDS variables). `jobs/common.sh` now unsets them and drops `/opt/ros` from `PATH` (`a132dbd`, pushed before the job started) |
+| attempt 1 | job 010 | **stopped by hand** (KILL file) at 14:49: `rsl-rl-lib==3.1.2` asks for `tensordict>=0.7.0`; pip picked tensordict 0.15.4 (needs `torch>=2.11.0a0`) and began downloading torch 2.15.0 over the `torch==2.7.0` that `isaacsim-core 5.1.0` pins. Fix: `jobs/constraints.txt` through `PIP_CONSTRAINT`: torch 2.7.0, torchvision 0.22.0, torchaudio 2.7.0, tensordict 0.8.3 |
+| attempt 2 | job 010 | **failed**, exit code 141 (SIGPIPE) after 3 s: `ldd --version \| head -1` under `set -o pipefail`. Attempt 1 passed the same line by timing luck. Fix: `sed -n 1p` |
+| attempt 3 | job 010 | **failed**: Isaac Sim 5.1.0, torch 2.7.0+cu128 and CUDA work, but `isaaclab` did not install: building `flatdict==4.0.1` (pinned by `isaaclab`) needs `pkg_resources`, which the newest setuptools in pip's isolated build environment no longer has. pip also reported `packaging 26.3` (Isaac Sim pins 23.0) and `psutil 7.2.2` (Isaac Sim pins 5.9.8; `ipython`, pulled in by `isaaclab_mimic`, wants 7 or later). Fix: constraints `packaging==23.0`, `psutil==5.9.8`, `setuptools<80` |
+| attempt 4 | job 010 | **failed** the same way: `PIP_CONSTRAINT` did not reach the isolated build environment. Fix: `pip install --no-build-isolation flatdict==4.0.1` against the venv's setuptools 79.0.1 before `isaaclab.sh --install rsl_rl` |
+| attempt 5 | job 010 | install and report complete (output below), then **stopped by hand** at 15:07: `SimulationApp.close()` hung for more than 8 minutes after the report was written. Fix: `go2x/isaac/shutdown.py` ends every Isaac script with `os._exit` after its outputs are flushed |
+
+Report from attempt 5 (`env_report.json`):
+
+| item | value |
+| :--- | :--- |
+| GPU | NVIDIA RTX 4000 Ada Generation, 20475 MiB, driver 595.99.02 (Vulkan, as seen by Isaac Sim) |
+| CPU, RAM (as seen by Isaac Sim) | Intel Core Ultra 9 285K, 24 cores, 63747 MB |
+| Python | 3.11.17 |
+| PyTorch | 2.7.0+cu128 (CUDA 12.8 build), `torch.cuda.is_available()` = True |
+| Isaac Sim | 5.1.0.0 (pip) |
+| Isaac Lab | `isaaclab` 0.54.2, `isaaclab_tasks` 0.11.12, `isaaclab_rl` 0.4.7 (repo v2.3.2 `37ddf62`) |
+| RSL-RL | `rsl-rl-lib` 3.1.2 |
+| unitree_rl_lab | 0.2.1 (`4960b84`) |
+| Go2 tasks registered | `Unitree-Go2-Velocity`, `Isaac-Velocity-Flat-Unitree-Go2-v0`, `Isaac-Velocity-Rough-Unitree-Go2-v0` (and Play variants) |
+| navigation tasks registered | `Isaac-Navigation-Flat-Anymal-C-v0` (and Play) |
+| headless start | Isaac Sim started headless with `OMNI_KIT_ACCEPT_EULA=YES`; it saw the RTX 4000 Ada and skipped the Intel integrated GPU |
