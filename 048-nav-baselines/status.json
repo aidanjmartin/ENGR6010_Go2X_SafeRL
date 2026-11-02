@@ -1,0 +1,14 @@
+{
+  "job": "048-nav-baselines",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Straight-to-target and A* + pure pursuit baselines on the 200 fixed navigation scenarios",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
+  "status": "running",
+  "started": "2026-11-02T16:36:02-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/048-nav-baselines/log-attempt1.txt"
+}
