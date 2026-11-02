@@ -6,4 +6,5 @@ activate_venv
 WALK_POLICY="$DATA_ROOT/030-walk-full/walk/exported/policy.pt"
 python scripts/isaac/eval_nav.py --controller policy --checkpoint "$DATA_ROOT/050-nav-train/nav/model_final.pt" \
     --walk_policy "$WALK_POLICY" --out "$RESULTS_DIR"
+cp "$RESULTS_DIR"/nav_eval_*.json "$DATA_DIR/"
 stamp "done"

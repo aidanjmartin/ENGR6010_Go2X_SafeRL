@@ -8,4 +8,5 @@ for c in straight astar; do
     stamp "baseline $c"
     python scripts/isaac/eval_nav.py --controller "$c" --walk_policy "$WALK_POLICY" --out "$RESULTS_DIR"
 done
+cp "$RESULTS_DIR"/nav_eval_*.json "$DATA_DIR/"
 stamp "done"
