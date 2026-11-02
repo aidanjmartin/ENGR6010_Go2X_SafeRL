@@ -63,6 +63,8 @@ if ! python -c "import isaaclab, rsl_rl" 2>/dev/null; then
 fi
 python -m pip install -q -e "$UNITREE_RL_LAB_PATH/source/unitree_rl_lab"
 python -m pip install -q pyyaml scipy matplotlib imageio imageio-ffmpeg pytest
+# put back the Isaac Sim pins if an earlier attempt upgraded them
+python -m pip install -q "packaging==23.0" "psutil==5.9.8"
 python -m pip check || echo "pip check reported problems (see above)"
 python -m pip freeze > "$RESULTS_DIR/pip-freeze.txt"
 

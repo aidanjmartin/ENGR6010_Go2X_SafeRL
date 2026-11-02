@@ -1,0 +1,50 @@
+{
+ "source": {
+  "repo": "aidanjmartin/tourbot",
+  "commit": "2757cf16d34648555dd6e73920f43bb122e89e13",
+  "path": "ros2_ws/src/tourbot_sim/worlds/aeb_level1.sdf",
+  "sha256": "651f19e7179653cea0821302cd0287248e1a6de19066442661cc48471b56f387"
+ },
+ "square_center": [
+  0.0,
+  0.0
+ ],
+ "square_side_m": 3.048,
+ "margin_m": 3.0,
+ "num_boxes": 4269,
+ "inside_or_touching": [],
+ "nearest": [
+  {
+   "name": "glass_3485",
+   "distance_to_center_m": 2.8098,
+   "distance_to_edge_m": 0.9941
+  },
+  {
+   "name": "rail_4163",
+   "distance_to_center_m": 2.949,
+   "distance_to_edge_m": 1.2082
+  },
+  {
+   "name": "rail_4162",
+   "distance_to_center_m": 2.9554,
+   "distance_to_edge_m": 1.2143
+  },
+  {
+   "name": "rail_4165",
+   "distance_to_center_m": 2.9671,
+   "distance_to_edge_m": 1.064
+  },
+  {
+   "name": "rail_4164",
+   "distance_to_center_m": 2.9734,
+   "distance_to_edge_m": 1.0703
+  }
+ ],
+ "num_within_margin": 97,
+ "kinds_within_margin": {
+  "glass": 9,
+  "rail": 39,
+  "stairs": 2,
+  "wall": 47
+ }
+}

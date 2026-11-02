@@ -1,0 +1,18 @@
+# Task 3: the fixed virtual camera, in the aeb_level1 world frame (meters).
+# Mounted above the lobby railing on the +x side (rail_4163 is near (2.95, 0.50)), tilted down at the square.
+
+intrinsics:
+  width: 640
+  height: 480
+  hfov_deg: 90.0              # fx = fy = (width / 2) / tan(hfov / 2); principal point at the image center
+pose:
+  position: [3.0, 0.0, 4.0]
+  look_at: [-0.25, 0.0, 0.0]  # aim point on the floor
+  up: [0.0, 0.0, 1.0]
+coverage:
+  margin: 0.3                 # the square plus this margin must be visible
+  robot_height: 0.4           # robot top at any point inside the square must be visible
+  edge_pixels: 2              # projected points must be at least this far inside the image border
+rendering:
+  num_scenes: 60              # rendered RGB check scenes (at least 50)
+  seed: 5000

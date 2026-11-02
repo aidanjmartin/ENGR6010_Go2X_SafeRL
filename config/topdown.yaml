@@ -1,0 +1,18 @@
+# Task 3: the drawn top-down image used as navigation input (go2x/atrium/topdown.py).
+
+size: 64                       # pixels per side
+half_extent: 1.824             # m: half side of the square (1.524) plus the 0.3 m margin; 5.7 cm per pixel
+channels: [static, people, robot, target]
+robot_value: 0.5               # footprint value in the robot channel
+heading_value: 1.0             # value of the heading marker (front quarter of the footprint)
+heading_fraction: 0.25
+stack: 2                       # current and previous frame
+
+# Camera realism. Ranges are drawn per episode unless marked per frame.
+realism:
+  camera_rate_hz: 15.0
+  delay_s: [0.1, 0.2]           # per episode
+  robot_pos_noise_m: 0.03       # per frame, Gaussian standard deviation
+  robot_yaw_noise_rad: 0.05     # per frame
+  obstacle_pos_noise_m: 0.04    # per frame, per object
+  miss_probability: 0.05        # per frame, per object (static obstacles and people); target mask kept

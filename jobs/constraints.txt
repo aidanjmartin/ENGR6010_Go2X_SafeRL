@@ -5,3 +5,10 @@ torch==2.7.0
 torchvision==0.22.0
 torchaudio==2.7.0
 tensordict==0.8.3
+# isaacsim-core 5.1.0 pins packaging==23.0 and isaacsim-kernel pins psutil==5.9.8; without these, later
+# installs (ipython via isaaclab_mimic) upgrade them to packaging 26.3 and psutil 7.2.2.
+packaging==23.0
+psutil==5.9.8
+# flatdict (needed by isaaclab) builds with pkg_resources, which the newest setuptools no longer ships.
+# PIP_CONSTRAINT also applies inside pip's isolated build environments.
+setuptools<80
