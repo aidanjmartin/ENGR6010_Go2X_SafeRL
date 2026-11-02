@@ -52,7 +52,7 @@ imageio==2.37.0
 imageio-ffmpeg==0.8.0
 importlib_metadata==10.1.0
 iniconfig==2.3.1
-ipython==9.18.1
+ipython==9.10.1
 ipython_pygments_lexers==1.1.1
 ipywidgets==8.1.5
 -e git+https://github.com/isaac-sim/IsaacLab.git@37ddf626871758333d6ed89cf64ad702aef127d0#egg=isaaclab_assets&subdirectory=source/isaaclab_assets
@@ -128,7 +128,7 @@ onnxscript==0.7.2
 opencv-python-headless==4.11.0.86
 orjson==3.13.0
 osqp==0.6.7.post3
-packaging==26.3
+packaging==23.0
 parso==0.8.7
 pexpect==4.9.0
 pillow==11.3.0
@@ -139,7 +139,7 @@ proglog==0.1.12
 prompt_toolkit==3.0.53
 propcache==0.2.1
 protobuf==7.36.2
-psutil==7.2.2
+psutil==5.9.8
 ptyprocess==0.7.0
 pure_eval==0.2.4
 pycares==4.8.0
@@ -151,7 +151,7 @@ PyJWT==2.15.1
 pyparsing==3.0.9
 pyperclip==1.8.0
 pypng==0.20220715.0
-pytest==9.2.0
+pytest==9.1.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.4
 python-multipart==0.0.20

@@ -1,7 +1,7 @@
-# last 951 of 951 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt3.txt
-# job 010-isaac-setup attempt 3 commit 3ba92d8ff0cf7afdd69ecfcf0e07a22c2e844e99 started 2026-11-02T14:53:39-06:00
-[2026-11-02T14:53:40-06:00] nvidia-smi
-Mon Nov  2 14:53:40 2026       
+# last 933 of 933 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt4.txt
+# job 010-isaac-setup attempt 4 commit ad3953a8b90535ade2c32bdb6411110332c0c2fb started 2026-11-02T14:56:07-06:00
+[2026-11-02T14:56:08-06:00] nvidia-smi
+Mon Nov  2 14:56:08 2026       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 595.99.02              Driver Version: 595.99.02      CUDA Version: 13.2     |
 +-----------------------------------------+------------------------+----------------------+
@@ -10,7 +10,7 @@ Mon Nov  2 14:53:40 2026
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
 |   0  NVIDIA RTX 4000 Ada Gene...    Off |   00000000:02:00.0  On |                  Off |
-| 30%   29C    P8             13W /  130W |    1126MiB /  20475MiB |      5%      Default |
+| 30%   29C    P8             13W /  130W |    1126MiB /  20475MiB |      2%      Default |
 |                                         |                        |                  N/A |
 +-----------------------------------------+------------------------+----------------------+
 
@@ -27,12 +27,12 @@ Mon Nov  2 14:53:40 2026
 |    0   N/A  N/A           20522      G   ...88185955192 --disable-logging         59MiB |
 |    0   N/A  N/A           22770      G   ...rack-uuid=3190708988185955192         98MiB |
 |    0   N/A  N/A           27736      G   /usr/bin/nautilus                        34MiB |
-|    0   N/A  N/A         1987751      G   /usr/bin/gnome-system-monitor            15MiB |
+|    0   N/A  N/A         1987751      G   /usr/bin/gnome-system-monitor            16MiB |
 +-----------------------------------------------------------------------------------------+
 ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39
 uv 0.12.24 (x86_64-unknown-linux-gnu)
 Python 3.11.17
-[2026-11-02T14:53:40-06:00] pip install isaacsim 5.1.0
+[2026-11-02T14:56:08-06:00] pip install isaacsim 5.1.0
 Looking in indexes: https://pypi.org/simple, https://pypi.nvidia.com
 Requirement already satisfied: isaacsim==5.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim[all,extscache]==5.1.0) (5.1.0.0)
 Requirement already satisfied: isaacsim-kernel==5.1.0.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim==5.1.0->isaacsim[all,extscache]==5.1.0) (5.1.0.0)
@@ -109,7 +109,8 @@ Requirement already satisfied: pyparsing==3.0.9 in /home/electronics/dell-runner
 Requirement already satisfied: cycler==0.11.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (0.11.0)
 Requirement already satisfied: kiwisolver==1.4.4 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (1.4.4)
 Requirement already satisfied: pint==0.20.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (0.20.1)
-Requirement already satisfied: packaging==23.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (23.0)
+Collecting packaging==23.0 (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0)
+  Using cached packaging-23.0-py3-none-any.whl.metadata (3.1 kB)
 Requirement already satisfied: gunicorn==23.0.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (23.0.0)
 Requirement already satisfied: osqp==0.6.7.post3 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (0.6.7.post3)
 Requirement already satisfied: qdldl==0.1.7.post5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (0.1.7.post5)
@@ -175,19 +176,26 @@ Requirement already satisfied: pydantic-core==2.33.2 in /home/electronics/dell-r
 Requirement already satisfied: typing-inspection>=0.4.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4->fastapi==0.115.7->isaacsim-kernel==5.1.0.0->isaacsim==5.1.0->isaacsim[all,extscache]==5.1.0) (0.4.2)
 Requirement already satisfied: anyio<5,>=3.6.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from starlette<0.46.0,>=0.40.0->fastapi==0.115.7->isaacsim-kernel==5.1.0.0->isaacsim==5.1.0->isaacsim[all,extscache]==5.1.0) (4.14.2)
 Requirement already satisfied: pycparser in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from cffi>=1.12->cryptography==44.0.0->isaacsim-core==5.1.0.0->isaacsim[all,extscache]==5.1.0) (3.12)
+Using cached packaging-23.0-py3-none-any.whl (42 kB)
 Using cached psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (288 kB)
-Installing collected packages: psutil
+Installing collected packages: psutil, packaging
   Attempting uninstall: psutil
     Found existing installation: psutil 7.2.2
     Uninstalling psutil-7.2.2:
       Successfully uninstalled psutil-7.2.2
+  Attempting uninstall: packaging
+    Found existing installation: packaging 26.3
+    Uninstalling packaging-26.3:
+      Successfully uninstalled packaging-26.3
+
 ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+pytest 9.2.0 requires packaging>=24, but you have packaging 23.0 which is incompatible.
 ipython 9.18.1 requires psutil>=7; sys_platform != "emscripten" and sys_platform != "cygwin" and sys_platform != "android", but you have psutil 5.9.8 which is incompatible.
-Successfully installed psutil-5.9.8
+Successfully installed packaging-23.0 psutil-5.9.8
 /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/IsaacLab at 37ddf626871758333d6ed89cf64ad702aef127d0
 /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/unitree_rl_lab at 4960b84732b0c2ec593dccbfe963fda1bcd7b1e3
 /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/unitree_ros at 3ae893d905d11795ddf1075825ee5010364a1109
-[2026-11-02T14:53:42-06:00] isaaclab.sh --install rsl_rl
+[2026-11-02T14:56:10-06:00] isaaclab.sh --install rsl_rl
 [3g
 H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H   
 [INFO] cmake is already installed.
@@ -205,7 +213,7 @@ Obtaining file:///home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/Is
 Building wheels for collected packages: isaaclab_assets
   Building editable for isaaclab_assets (pyproject.toml): started
   Building editable for isaaclab_assets (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-x867qsud/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-mx0_bqot/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -215,8 +223,8 @@ Building wheels for collected packages: isaaclab_assets
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_assets: filename=isaaclab_assets-0.2.4-0.editable-py3-none-any.whl size=3072 sha256=591508c3698906a02fde6e372aa7b93cf9ffabff0445dabb87ee984b03fa95f2
-  Stored in directory: /tmp/pip-ephem-wheel-cache-gz4x7toh/wheels/49/8e/80/8b0964e26d2902b9a4f67a657adac57f360d8537d896c4740b
+  Created wheel for isaaclab_assets: filename=isaaclab_assets-0.2.4-0.editable-py3-none-any.whl size=3072 sha256=1e7da64424bcefc28b88d321786d887444fe3a2dd6ec3446979c2aa5ec8e9f10
+  Stored in directory: /tmp/pip-ephem-wheel-cache-bhndwx7u/wheels/49/8e/80/8b0964e26d2902b9a4f67a657adac57f360d8537d896c4740b
 Successfully built isaaclab_assets
 Installing collected packages: isaaclab_assets
   Attempting uninstall: isaaclab_assets
@@ -246,9 +254,21 @@ Requirement already satisfied: jedi>=0.18.2 in /home/electronics/dell-runner/cac
 Requirement already satisfied: matplotlib-inline>=0.1.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.2)
 Requirement already satisfied: pexpect>4.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.9.0)
 Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (3.0.53)
-Collecting psutil>=7 (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16)
-  Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
-Requirement already satisfied: pygments>=2.14.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.21.0)
+Collecting ipython>=6.1.0 (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16)
+  Downloading ipython-9.18.0-py3-none-any.whl.metadata (4.6 kB)
+INFO: pip is looking at multiple versions of ipython to determine which version is compatible with other requirements. This could take a while.
+  Downloading ipython-9.17.1-py3-none-any.whl.metadata (4.6 kB)
+  Downloading ipython-9.17.0-py3-none-any.whl.metadata (4.6 kB)
+  Downloading ipython-9.16.1-py3-none-any.whl.metadata (4.6 kB)
+  Downloading ipython-9.16.0-py3-none-any.whl.metadata (4.6 kB)
+  Downloading ipython-9.15.0-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: decorator>=5.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (5.3.1)
+  Downloading ipython-9.14.1-py3-none-any.whl.metadata (4.7 kB)
+INFO: pip is still looking at multiple versions of ipython to determine which version is compatible with other requirements. This could take a while.
+  Downloading ipython-9.14.0-py3-none-any.whl.metadata (4.7 kB)
+  Downloading ipython-9.13.0-py3-none-any.whl.metadata (4.6 kB)
+  Downloading ipython-9.10.1-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: pygments>=2.11.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.21.0)
 Requirement already satisfied: stack_data>=0.6.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.6.3)
 Requirement already satisfied: typing_extensions>=4.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.12.2)
 Requirement already satisfied: wcwidth>=0.1.4 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.9.4)
@@ -257,11 +277,12 @@ Requirement already satisfied: ptyprocess>=0.5 in /home/electronics/dell-runner/
 Requirement already satisfied: executing>=1.2.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.3.0)
 Requirement already satisfied: asttokens>=2.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (3.0.2)
 Requirement already satisfied: pure-eval in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.4)
-Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Downloading ipython-9.10.1-py3-none-any.whl (622 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 622.8/622.8 kB 15.1 MB/s  0:00:00
 Building wheels for collected packages: isaaclab_mimic
   Building editable for isaaclab_mimic (pyproject.toml): started
   Building editable for isaaclab_mimic (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-_ctydjb2/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-29lf6hfr/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -271,22 +292,20 @@ Building wheels for collected packages: isaaclab_mimic
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_mimic: filename=isaaclab_mimic-1.0.16-0.editable-py3-none-any.whl size=3171 sha256=ca873879a7d551f2f729c08dc3c1274f0b99e3503b18afe98b69ab23fdf58119
-  Stored in directory: /tmp/pip-ephem-wheel-cache-rdsfbotp/wheels/e0/46/06/c2f378309d7c853ae64c3fe8b5b75b094ba7772740a6ec78d7
+  Created wheel for isaaclab_mimic: filename=isaaclab_mimic-1.0.16-0.editable-py3-none-any.whl size=3171 sha256=f3c2414db492593c00ffab14598311f5ff3210356e69a1c0e0fb77b563993e82
+  Stored in directory: /tmp/pip-ephem-wheel-cache-gquuzd6w/wheels/e0/46/06/c2f378309d7c853ae64c3fe8b5b75b094ba7772740a6ec78d7
 Successfully built isaaclab_mimic
-Installing collected packages: psutil, isaaclab_mimic
-  Attempting uninstall: psutil
-    Found existing installation: psutil 5.9.8
-    Uninstalling psutil-5.9.8:
-      Successfully uninstalled psutil-5.9.8
+Installing collected packages: ipython, isaaclab_mimic
+  Attempting uninstall: ipython
+    Found existing installation: ipython 9.18.1
+    Uninstalling ipython-9.18.1:
+      Successfully uninstalled ipython-9.18.1
   Attempting uninstall: isaaclab_mimic
     Found existing installation: isaaclab_mimic 1.0.16
     Uninstalling isaaclab_mimic-1.0.16:
       Successfully uninstalled isaaclab_mimic-1.0.16
 
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-isaacsim-kernel 5.1.0.0 requires psutil==5.9.8, but you have psutil 7.2.2 which is incompatible.
-Successfully installed isaaclab_mimic-1.0.16 psutil-7.2.2
+Successfully installed ipython-9.10.1 isaaclab_mimic-1.0.16
 	 module: /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/IsaacLab/source/isaaclab
 Obtaining file:///home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/IsaacLab/source/isaaclab
   Installing build dependencies: started
@@ -299,8 +318,7 @@ Obtaining file:///home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/Is
   Preparing editable metadata (pyproject.toml): finished with status 'done'
 Requirement already satisfied: numpy<2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (1.26.0)
 Requirement already satisfied: torch>=2.7 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (2.7.0+cu128)
-Collecting onnx>=1.18.0 (from isaaclab==0.54.2)
-  Using cached onnx-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.7 kB)
+Requirement already satisfied: onnx>=1.18.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (1.23.2)
 Collecting prettytable==3.3.0 (from isaaclab==0.54.2)
   Using cached prettytable-3.3.0-py3-none-any.whl.metadata (24 kB)
 Requirement already satisfied: toml in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (0.10.2)
@@ -320,8 +338,7 @@ Collecting warp-lang (from isaaclab==0.54.2)
 Requirement already satisfied: pillow==11.3.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (11.3.0)
 Collecting starlette==0.49.1 (from isaaclab==0.54.2)
   Using cached starlette-0.49.1-py3-none-any.whl.metadata (6.4 kB)
-Collecting pytest (from isaaclab==0.54.2)
-  Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: pytest in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab==0.54.2) (9.2.0)
 Collecting pytest-mock (from isaaclab==0.54.2)
   Using cached pytest_mock-3.17.0-py3-none-any.whl.metadata (3.9 kB)
 Collecting junitparser (from isaaclab==0.54.2)
@@ -346,14 +363,14 @@ Collecting flatdict==4.0.1 (from isaaclab==0.54.2)
         File "/home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 149, in get_requires_for_build_wheel
           return hook(config_settings)
                  ^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-6di7lxf2/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
+        File "/tmp/pip-build-env-4wimb17i/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
           return self._get_build_requires(config_settings, requirements=[])
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-6di7lxf2/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
+        File "/tmp/pip-build-env-4wimb17i/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
           self.run_setup()
-        File "/tmp/pip-build-env-6di7lxf2/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 520, in run_setup
+        File "/tmp/pip-build-env-4wimb17i/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 520, in run_setup
           super().run_setup(setup_script=setup_script)
-        File "/tmp/pip-build-env-6di7lxf2/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 317, in run_setup
+        File "/tmp/pip-build-env-4wimb17i/overlay/lib/python3.11/site-packages/setuptools/build_meta.py", line 317, in run_setup
           exec(code, locals())  # noqa: S102 # exec is intentional here
           ^^^^^^^^^^^^^^^^^^^^
         File "<string>", line 1, in <module>
@@ -375,7 +392,7 @@ Obtaining file:///home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/Is
 Building wheels for collected packages: isaaclab_contrib
   Building editable for isaaclab_contrib (pyproject.toml): started
   Building editable for isaaclab_contrib (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-_czq9lb6/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-vo74vrbb/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -385,8 +402,8 @@ Building wheels for collected packages: isaaclab_contrib
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_contrib: filename=isaaclab_contrib-0.0.2-0.editable-py3-none-any.whl size=3096 sha256=bed7470b372bffed33ec360ca26a6b8dab1888bc1871504707d13167bd793d67
-  Stored in directory: /tmp/pip-ephem-wheel-cache-06_2htvw/wheels/f1/89/a2/4156d4914fbf125abddf78f23b57526606fea036ce3762e16c
+  Created wheel for isaaclab_contrib: filename=isaaclab_contrib-0.0.2-0.editable-py3-none-any.whl size=3096 sha256=fb3d8f8574f8830af39348c1eab2e023c6c66564c5c4b8337750c48b8c44695a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-u5qbay7d/wheels/f1/89/a2/4156d4914fbf125abddf78f23b57526606fea036ce3762e16c
 Successfully built isaaclab_contrib
 Installing collected packages: isaaclab_contrib
   Attempting uninstall: isaaclab_contrib
@@ -455,7 +472,7 @@ Requirement already satisfied: werkzeug>=1.0.1 in /home/electronics/dell-runner/
 Building wheels for collected packages: isaaclab_rl
   Building editable for isaaclab_rl (pyproject.toml): started
   Building editable for isaaclab_rl (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-ed5dg053/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-v46holm3/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -465,8 +482,8 @@ Building wheels for collected packages: isaaclab_rl
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_rl: filename=isaaclab_rl-0.4.7-0.editable-py3-none-any.whl size=3593 sha256=b4a7f442e033428776a1499e24fcc278ef6bf90b013671c87f831c513b382d27
-  Stored in directory: /tmp/pip-ephem-wheel-cache-401d4zif/wheels/a0/12/0b/4c9a15f0fdddefa5a4f0ac691e90cd6c05ff708fc541675264
+  Created wheel for isaaclab_rl: filename=isaaclab_rl-0.4.7-0.editable-py3-none-any.whl size=3590 sha256=bea5d51427f2e5b9993bab012004acd553b3a3510a2a6316ea82ccd92e61810b
+  Stored in directory: /tmp/pip-ephem-wheel-cache-fxwhmc0m/wheels/a0/12/0b/4c9a15f0fdddefa5a4f0ac691e90cd6c05ff708fc541675264
 Successfully built isaaclab_rl
 Installing collected packages: isaaclab_rl
   Attempting uninstall: isaaclab_rl
@@ -525,7 +542,7 @@ Requirement already satisfied: werkzeug>=1.0.1 in /home/electronics/dell-runner/
 Building wheels for collected packages: isaaclab_tasks
   Building editable for isaaclab_tasks (pyproject.toml): started
   Building editable for isaaclab_tasks (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-z_jgi14b/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-6tn1oipz/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -535,8 +552,8 @@ Building wheels for collected packages: isaaclab_tasks
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_tasks: filename=isaaclab_tasks-0.11.12-0.editable-py3-none-any.whl size=3433 sha256=07f4c8788fd9d67e6fee6ecbbc745c232107cfc23adde774d04d1893623f43a5
-  Stored in directory: /tmp/pip-ephem-wheel-cache-7y4l9oqh/wheels/83/30/a6/eae15a7aa76d361fd540d019c401091b0616321d85001e1173
+  Created wheel for isaaclab_tasks: filename=isaaclab_tasks-0.11.12-0.editable-py3-none-any.whl size=3433 sha256=6f63e0bc5739640fbe3cd9fe7e25cdfc0c0e008b30a5d5e83270c239dc6b14f7
+  Stored in directory: /tmp/pip-ephem-wheel-cache-rmpxqaoe/wheels/83/30/a6/eae15a7aa76d361fd540d019c401091b0616321d85001e1173
 Successfully built isaaclab_tasks
 Installing collected packages: isaaclab_tasks
   Attempting uninstall: isaaclab_tasks
@@ -565,31 +582,19 @@ Requirement already satisfied: tensorboard in /home/electronics/dell-runner/cach
 Requirement already satisfied: moviepy in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_rl==0.4.7) (2.2.1)
 Requirement already satisfied: pillow==11.3.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_rl==0.4.7) (11.3.0)
 Requirement already satisfied: packaging<24 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_rl==0.4.7) (23.0)
-Collecting rsl-rl-lib==3.1.2 (from isaaclab_rl==0.4.7)
-  Using cached rsl_rl_lib-3.1.2-py3-none-any.whl.metadata (5.0 kB)
-Collecting onnxscript>=0.5 (from isaaclab_rl==0.4.7)
-  Using cached onnxscript-0.7.2-py3-none-any.whl.metadata (13 kB)
-Collecting tensordict>=0.7.0 (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Downloading tensordict-0.8.3-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.2 kB)
-Collecting GitPython (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Using cached gitpython-3.2.1-py3-none-any.whl.metadata (13 kB)
-Collecting onnx (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Using cached onnx-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.7 kB)
-Collecting ml_dtypes (from onnxscript>=0.5->isaaclab_rl==0.4.7)
-  Using cached ml_dtypes-0.6.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
-Collecting onnx_ir<2,>=0.1.16 (from onnxscript>=0.5->isaaclab_rl==0.4.7)
-  Using cached onnx_ir-1.1.0-py3-none-any.whl.metadata (3.3 kB)
+Requirement already satisfied: rsl-rl-lib==3.1.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_rl==0.4.7) (3.1.2)
+Requirement already satisfied: onnxscript>=0.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_rl==0.4.7) (0.7.2)
+Requirement already satisfied: tensordict>=0.7.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (0.8.3)
+Requirement already satisfied: GitPython in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (3.2.1)
+Requirement already satisfied: onnx in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (1.23.2)
+Requirement already satisfied: ml_dtypes in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from onnxscript>=0.5->isaaclab_rl==0.4.7) (0.5.4)
+Requirement already satisfied: onnx_ir<2,>=0.1.16 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from onnxscript>=0.5->isaaclab_rl==0.4.7) (1.1.0)
 Requirement already satisfied: typing_extensions>=4.10 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from onnxscript>=0.5->isaaclab_rl==0.4.7) (4.12.2)
 Requirement already satisfied: sympy>=1.13 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from onnx_ir<2,>=0.1.16->onnxscript>=0.5->isaaclab_rl==0.4.7) (1.13.3)
-Collecting ml_dtypes (from onnxscript>=0.5->isaaclab_rl==0.4.7)
-  Using cached ml_dtypes-0.5.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.9 kB)
 Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from sympy>=1.13->onnx_ir<2,>=0.1.16->onnxscript>=0.5->isaaclab_rl==0.4.7) (1.3.0)
-Collecting cloudpickle (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
-Collecting importlib_metadata (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Downloading importlib_metadata-10.1.0-py3-none-any.whl.metadata (4.5 kB)
-Collecting orjson (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Downloading orjson-3.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (42 kB)
+Requirement already satisfied: cloudpickle in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (3.1.2)
+Requirement already satisfied: importlib_metadata in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (10.1.0)
+Requirement already satisfied: orjson in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (3.13.0)
 Requirement already satisfied: filelock in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from torch>=2.7->isaaclab_rl==0.4.7) (3.13.1)
 Requirement already satisfied: networkx in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from torch>=2.7->isaaclab_rl==0.4.7) (3.3)
 Requirement already satisfied: jinja2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from torch>=2.7->isaaclab_rl==0.4.7) (3.1.6)
@@ -610,15 +615,12 @@ Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.61 in /home/electroni
 Requirement already satisfied: nvidia-cufile-cu12==1.13.0.11 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from torch>=2.7->isaaclab_rl==0.4.7) (1.13.0.11)
 Requirement already satisfied: triton==3.3.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from torch>=2.7->isaaclab_rl==0.4.7) (3.3.0)
 Requirement already satisfied: setuptools>=40.8.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from triton==3.3.0->torch>=2.7->isaaclab_rl==0.4.7) (79.0.1)
-Collecting gitdb<5,>=4.0.1 (from GitPython->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Using cached gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
-Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Using cached smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from GitPython->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (4.0.12)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from gitdb<5,>=4.0.1->GitPython->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (5.0.3)
 Requirement already satisfied: omegaconf<2.4,>=2.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from hydra-core->isaaclab_rl==0.4.7) (2.3.1)
 Requirement already satisfied: antlr4-python3-runtime==4.9.* in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from hydra-core->isaaclab_rl==0.4.7) (4.9.3)
 Requirement already satisfied: PyYAML>=5.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from omegaconf<2.4,>=2.2->hydra-core->isaaclab_rl==0.4.7) (6.0.2)
-Collecting zipp>=3.20 (from importlib_metadata->tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7)
-  Downloading zipp-4.1.2-py3-none-any.whl.metadata (3.6 kB)
+Requirement already satisfied: zipp>=3.20 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from importlib_metadata->tensordict>=0.7.0->rsl-rl-lib==3.1.2->isaaclab_rl==0.4.7) (4.1.2)
 Requirement already satisfied: MarkupSafe>=2.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from jinja2->torch>=2.7->isaaclab_rl==0.4.7) (2.1.3)
 Requirement already satisfied: decorator<6.0,>=4.0.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from moviepy->isaaclab_rl==0.4.7) (5.3.1)
 Requirement already satisfied: imageio<3.0,>=2.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from moviepy->isaaclab_rl==0.4.7) (2.37.0)
@@ -631,23 +633,10 @@ Requirement already satisfied: grpcio<2.0,>=1.74.0 in /home/electronics/dell-run
 Requirement already satisfied: markdown>=2.6.8 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensorboard->isaaclab_rl==0.4.7) (3.11.2)
 Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensorboard->isaaclab_rl==0.4.7) (0.7.2)
 Requirement already satisfied: werkzeug>=1.0.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from tensorboard->isaaclab_rl==0.4.7) (3.1.9)
-Using cached rsl_rl_lib-3.1.2-py3-none-any.whl (50 kB)
-Using cached onnxscript-0.7.2-py3-none-any.whl (754 kB)
-Using cached onnx_ir-1.1.0-py3-none-any.whl (192 kB)
-Using cached ml_dtypes-0.5.4-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (5.0 MB)
-Using cached onnx-1.23.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (8.9 MB)
-Downloading tensordict-0.8.3-cp311-cp311-manylinux_2_28_x86_64.whl (420 kB)
-Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
-Downloading gitpython-3.2.1-py3-none-any.whl (231 kB)
-Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
-Downloading smmap-5.0.3-py3-none-any.whl (24 kB)
-Downloading importlib_metadata-10.1.0-py3-none-any.whl (32 kB)
-Downloading zipp-4.1.2-py3-none-any.whl (10 kB)
-Downloading orjson-3.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
 Building wheels for collected packages: isaaclab_rl
   Building editable for isaaclab_rl (pyproject.toml): started
   Building editable for isaaclab_rl (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-mm472tvf/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-updg0yur/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -657,16 +646,15 @@ Building wheels for collected packages: isaaclab_rl
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_rl: filename=isaaclab_rl-0.4.7-0.editable-py3-none-any.whl size=3592 sha256=470159f05823d04e7c347f949b74d1327f9a0e8fb573cfbeb961c8ca603fd317
-  Stored in directory: /tmp/pip-ephem-wheel-cache-6fj_8age/wheels/a0/12/0b/4c9a15f0fdddefa5a4f0ac691e90cd6c05ff708fc541675264
+  Created wheel for isaaclab_rl: filename=isaaclab_rl-0.4.7-0.editable-py3-none-any.whl size=3589 sha256=79d1ea8a400d4e9135d85d0f6c4f7410f94251746b73c767d8a29a9bbddf9c59
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ljlrvmvk/wheels/a0/12/0b/4c9a15f0fdddefa5a4f0ac691e90cd6c05ff708fc541675264
 Successfully built isaaclab_rl
-Installing collected packages: zipp, smmap, orjson, ml_dtypes, cloudpickle, onnx, importlib_metadata, gitdb, onnx_ir, GitPython, tensordict, onnxscript, rsl-rl-lib, isaaclab_rl
+Installing collected packages: isaaclab_rl
   Attempting uninstall: isaaclab_rl
     Found existing installation: isaaclab_rl 0.4.7
     Uninstalling isaaclab_rl-0.4.7:
       Successfully uninstalled isaaclab_rl-0.4.7
-
-Successfully installed GitPython-3.2.1 cloudpickle-3.1.2 gitdb-4.0.12 importlib_metadata-10.1.0 isaaclab_rl-0.4.7 ml_dtypes-0.5.4 onnx-1.23.2 onnx_ir-1.1.0 onnxscript-0.7.2 orjson-3.13.0 rsl-rl-lib-3.1.2 smmap-5.0.3 tensordict-0.8.3 zipp-4.1.2
+Successfully installed isaaclab_rl-0.4.7
 Obtaining file:///home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/src/IsaacLab/source/isaaclab_mimic
   Installing build dependencies: started
   Installing build dependencies: finished with status 'done'
@@ -680,29 +668,29 @@ Requirement already satisfied: tomli in /home/electronics/dell-runner/cache/ENGR
 Requirement already satisfied: ipywidgets==8.1.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from isaaclab_mimic==1.0.16) (8.1.5)
 WARNING: isaaclab-mimic 1.0.16 does not provide the extra 'rsl-rl'
 Requirement already satisfied: comm>=0.1.3 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.3)
-Requirement already satisfied: ipython>=6.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (9.18.1)
+Requirement already satisfied: ipython>=6.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (9.10.1)
 Requirement already satisfied: traitlets>=4.3.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (5.16.1)
 Requirement already satisfied: widgetsnbextension~=4.0.12 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.0.16)
 Requirement already satisfied: jupyterlab-widgets~=3.0.12 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (3.0.17)
+Requirement already satisfied: decorator>=4.3.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (5.3.1)
 Requirement already satisfied: ipython-pygments-lexers>=1.0.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (1.1.1)
-Requirement already satisfied: jedi>=0.18.2 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.20.1)
-Requirement already satisfied: matplotlib-inline>=0.1.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.2)
-Requirement already satisfied: pexpect>4.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.9.0)
+Requirement already satisfied: jedi>=0.18.1 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.20.1)
+Requirement already satisfied: matplotlib-inline>=0.1.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.2)
+Requirement already satisfied: pexpect>4.3 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.9.0)
 Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (3.0.53)
-Requirement already satisfied: psutil>=7 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (7.2.2)
-Requirement already satisfied: pygments>=2.14.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.21.0)
+Requirement already satisfied: pygments>=2.11.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.21.0)
 Requirement already satisfied: stack_data>=0.6.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.6.3)
 Requirement already satisfied: typing_extensions>=4.6 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (4.12.2)
 Requirement already satisfied: wcwidth>=0.1.4 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.9.4)
-Requirement already satisfied: parso<0.9.0,>=0.8.7 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from jedi>=0.18.2->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.8.7)
-Requirement already satisfied: ptyprocess>=0.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from pexpect>4.6->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.7.0)
+Requirement already satisfied: parso<0.9.0,>=0.8.7 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from jedi>=0.18.1->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.8.7)
+Requirement already satisfied: ptyprocess>=0.5 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from pexpect>4.3->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.7.0)
 Requirement already satisfied: executing>=1.2.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (2.3.0)
 Requirement already satisfied: asttokens>=2.1.0 in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (3.0.2)
 Requirement already satisfied: pure-eval in /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages (from stack_data>=0.6.0->ipython>=6.1.0->ipywidgets==8.1.5->isaaclab_mimic==1.0.16) (0.2.4)
 Building wheels for collected packages: isaaclab_mimic
   Building editable for isaaclab_mimic (pyproject.toml): started
   Building editable for isaaclab_mimic (pyproject.toml): finished with status 'done'
-  /tmp/pip-build-env-v__bqweb/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-r9h14xwz/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -712,8 +700,8 @@ Building wheels for collected packages: isaaclab_mimic
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-  Created wheel for isaaclab_mimic: filename=isaaclab_mimic-1.0.16-0.editable-py3-none-any.whl size=3171 sha256=76afb07bac1f5f699d591d8ea57eee7f389874051d3bebff590da5c763eb39a3
-  Stored in directory: /tmp/pip-ephem-wheel-cache-01j8v17t/wheels/e0/46/06/c2f378309d7c853ae64c3fe8b5b75b094ba7772740a6ec78d7
+  Created wheel for isaaclab_mimic: filename=isaaclab_mimic-1.0.16-0.editable-py3-none-any.whl size=3171 sha256=ae64b8b7a361db3c300709048d0e82cf8ce9c9173c7dfccdeed0b3a46f67f25c
+  Stored in directory: /tmp/pip-ephem-wheel-cache-j7pzwiew/wheels/e0/46/06/c2f378309d7c853ae64c3fe8b5b75b094ba7772740a6ec78d7
 Successfully built isaaclab_mimic
 Installing collected packages: isaaclab_mimic
   Attempting uninstall: isaaclab_mimic
@@ -727,7 +715,7 @@ Successfully installed isaaclab_mimic-1.0.16
 	settings, which limits the functionality of the Python language server.
 	However, it does not affect the functionality of the Isaac Lab project.
 	We are working on a fix for this issue with the Isaac Sim team.
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
   !!
   
           ********************************************************************************
@@ -747,9 +735,9 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     _handle_missing_dynamic(dist, project_table)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
   !!
   
           ********************************************************************************
@@ -763,7 +751,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -776,7 +764,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     dist._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -789,7 +777,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     self._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
   !!
   
           ********************************************************************************
@@ -809,9 +797,9 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     _handle_missing_dynamic(dist, project_table)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
   !!
   
           ********************************************************************************
@@ -825,7 +813,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -838,7 +826,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     dist._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -851,7 +839,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     self._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:75: BuildBackendWarning: `keywords` defined outside of `pyproject.toml` is ignored.
   !!
   
           ********************************************************************************
@@ -871,9 +859,9 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     _handle_missing_dynamic(dist, project_table)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `install_requires` overwritten in `pyproject.toml` (dependencies)
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: BuildBackendWarning: `project.license` as a TOML table is deprecated
   !!
   
           ********************************************************************************
@@ -887,7 +875,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     corresp(dist, value, root_dir)
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/config/_apply_pyprojecttoml.py:61: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -900,7 +888,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     dist._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
   !!
   
           ********************************************************************************
@@ -913,7 +901,7 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     self._finalize_license_expression()
-  /tmp/pip-build-env-vi96rv68/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
+  /tmp/pip-build-env-tjzipfy9/overlay/lib/python3.11/site-packages/setuptools/command/editable_wheel.py:354: BuildBackendWarning: Editable installation.
   !!
   
           ********************************************************************************
@@ -923,14 +911,8 @@ Successfully installed isaaclab_mimic-1.0.16
   
   !!
     with strategy, WheelFile(wheel_path, "w") as wheel_obj:
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-isaacsim-core 5.1.0.0 requires packaging==23.0, but you have packaging 26.3 which is incompatible.
-isaaclab-rl 0.4.7 requires packaging<24, but you have packaging 26.3 which is incompatible.
-isaacsim-kernel 5.1.0.0 has requirement psutil==5.9.8, but you have psutil 7.2.2.
-isaacsim-core 5.1.0.0 has requirement packaging==23.0, but you have packaging 26.3.
-isaaclab-rl 0.4.7 has requirement packaging<24, but you have packaging 26.3.
-pip check reported problems (see above)
-[2026-11-02T14:53:56-06:00] report
+No broken requirements found.
+[2026-11-02T14:56:24-06:00] report
 {
   "python": "3.11.17",
   "platform": "Linux-6.17.0-1033-oem-x86_64-with-glibc2.39",
