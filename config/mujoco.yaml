@@ -1,0 +1,14 @@
+# Task 6: the walking policy in MuJoCo (scripts/mujoco_check.py), with the conventions of docs/LOWLEVEL_INTERFACE.md.
+
+model:
+  repo: https://github.com/unitreerobotics/unitree_mujoco.git
+  commit: 1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d     # main, 2026-09-07, BSD-3-Clause
+  scene: unitree_robots/go2/scene.xml                   # includes go2.xml: torque motors in SDK order
+mujoco_version: "3.16.0"
+timestep: 0.005                 # s; scene.xml sets none (MuJoCo default 0.002); 0.005 matches config/walk.yaml sim_dt
+pd_substeps: 4                  # physics steps per policy step (50 Hz policy)
+start_height: 0.40              # m, base height at reset, as in UNITREE_GO2_CFG
+settle_s: 0.5                   # PD hold of the default pose before the policy starts
+fall:
+  tilt_rad: 0.8                 # the walking task's bad_orientation limit
+  base_height_m: 0.15           # base below this counts as a fall (MuJoCo has no base-contact termination here)
