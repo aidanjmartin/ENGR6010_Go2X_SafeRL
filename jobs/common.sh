@@ -3,6 +3,12 @@
 JOBS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$JOBS_DIR/pins.sh"
 
+# The runner's login shell sources ROS 2 Jazzy, and jobs inherit its Python 3.12 PYTHONPATH and
+# library paths. Isaac Sim runs on Python 3.11 and must not see them.
+unset PYTHONPATH LD_LIBRARY_PATH AMENT_PREFIX_PATH CMAKE_PREFIX_PATH COLCON_PREFIX_PATH
+unset GZ_SIM_RESOURCE_PATH GZ_SIM_SYSTEM_PLUGIN_PATH GZ_CONFIG_PATH
+export PATH="$(echo "$PATH" | tr ':' '\n' | grep -v '^/opt/ros/' | paste -sd: -)"
+
 : "${JOB_CACHE:?run this through the Dell runner, or set JOB_CACHE}"
 : "${RESULTS_DIR:?}"
 : "${DATA_DIR:?}"
@@ -25,7 +31,7 @@ mkdir -p "$DATA_DIR" "$RESULTS_DIR"
 activate_venv() {
     # shellcheck disable=SC1091
     source "$VENV/bin/activate"
-    export PYTHONPATH="$JOB_CHECKOUT${PYTHONPATH:+:$PYTHONPATH}"
+    export PYTHONPATH="$JOB_CHECKOUT"
 }
 
 stamp() { echo "[$(date -Is)] $*"; }
