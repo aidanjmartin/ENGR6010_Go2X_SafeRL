@@ -1,0 +1,14 @@
+{
+  "job": "030-walk-full",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Full walking-policy PPO training from scratch (3000 iterations), training curve, exported policy",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "66580cd0cd35b5e4ea926ba161d8792959119102",
+  "status": "running",
+  "started": "2026-11-02T15:26:01-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/log-attempt1.txt"
+}
