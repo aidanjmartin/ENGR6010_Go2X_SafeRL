@@ -1,0 +1,11 @@
+id = "010-isaac-setup"
+description = "Install Isaac Sim 5.1.0, Isaac Lab v2.3.2, unitree_rl_lab into JOB_CACHE; report GPU, Python, CUDA and versions"
+ref = "phase2-rl-sim"
+command = "bash jobs/010_setup_isaac.sh"
+timeout_hours = 3
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = []
+attempt = 1
