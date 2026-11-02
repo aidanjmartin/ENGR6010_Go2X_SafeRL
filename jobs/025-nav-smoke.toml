@@ -1,0 +1,11 @@
+id = "025-nav-smoke"
+description = "Navigation environment smoke test: a few minutes of PPO over job 020's walking policy"
+ref = "phase2-rl-sim"
+command = "bash jobs/025_nav_smoke.sh"
+timeout_hours = 0.75
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["020-walk-short"]
+attempt = 1
