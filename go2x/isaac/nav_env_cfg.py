@@ -270,7 +270,7 @@ def _obstacles_cfg():
     objs = {}
     for p in PARTS:
         x, y = ab_park.park_xy[p["slot"]].tolist()
-        objs[p["name"]] = RigidObjectCfg(prim_path="{ENV_REGEX_NS}/Obstacles/" + p["name"], spawn=_part_spawn(p),
+        objs[p["name"]] = RigidObjectCfg(prim_path="{ENV_REGEX_NS}/Obs_" + p["name"], spawn=_part_spawn(p),
                                          init_state=RigidObjectCfg.InitialStateCfg(pos=(x + p["offset"][0], y + p["offset"][1], p["offset"][2])))
     return RigidObjectCollectionCfg(rigid_objects=objs)
 
@@ -286,7 +286,7 @@ class AtriumSceneCfg(InteractiveSceneCfg):
     robot = go2_robot_cfg()
     contact_forces = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True)
     obstacle_contact = ContactSensorCfg(prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=1,
-                                        filter_prim_paths_expr=["{ENV_REGEX_NS}/Obstacles/" + p["name"] for p in PARTS])
+                                        filter_prim_paths_expr=["{ENV_REGEX_NS}/Obs_" + p["name"] for p in PARTS])
     obstacles = _obstacles_cfg()
     light = AssetBaseCfg(prim_path="/World/light", spawn=sim_utils.DomeLightCfg(intensity=1500.0, color=(1.0, 1.0, 1.0)))
 
@@ -403,7 +403,7 @@ def add_render_parts(cfg: AtriumNavEnvCfg):
     for i, b in enumerate(building_boxes()):
         q = quat_from_euler_xyz(torch.zeros(1), torch.zeros(1), torch.tensor([b["yaw"]]))[0].tolist()
         setattr(cfg.scene, f"bldg_{i}", AssetBaseCfg(
-            prim_path="{ENV_REGEX_NS}/Building/" + b["name"],
+            prim_path="{ENV_REGEX_NS}/Bldg_" + b["name"],
             spawn=sim_utils.CuboidCfg(size=(b["sx"], b["sy"], b["sz"]),
                                       visual_material=sim_utils.PreviewSurfaceCfg(diffuse_color=BUILDING_COLORS.get(b["kind"], (0.7, 0.7, 0.7)))),
             init_state=AssetBaseCfg.InitialStateCfg(pos=(b["x"], b["y"], b["z"]), rot=tuple(q))))
