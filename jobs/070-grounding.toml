@@ -1,0 +1,11 @@
+id = "070-grounding"
+description = "Task 5: OWLv2 text grounding on the rendered scenes, floor projection, target and obstacle mask comparison"
+ref = "phase2-rl-sim"
+command = "bash jobs/070_grounding.sh"
+timeout_hours = 1
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["045-render-scenes"]
+attempt = 1
