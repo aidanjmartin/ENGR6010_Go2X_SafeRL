@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "4f2f6358b8b52ad2f7ce1bfd41e63913f32677b4",
-  "status": "running",
+  "status": "succeeded",
+  "reason": "",
+  "exit_code": 0,
   "started": "2026-11-02T15:09:50-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt6.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt6.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/output-attempt6",
+  "kept_on_dell": [],
+  "finished": "2026-11-02T15:10:02-06:00"
 }
