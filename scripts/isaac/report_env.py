@@ -51,4 +51,6 @@ report["navigation_tasks"] = sorted(k for k in gym.registry if "Navigation" in k
 print(json.dumps(report, indent=2), flush=True)
 with open(args.out, "w") as f:
     json.dump(report, f, indent=2)
-app.close()
+from go2x.isaac.shutdown import finish  # noqa: E402
+
+finish(0)

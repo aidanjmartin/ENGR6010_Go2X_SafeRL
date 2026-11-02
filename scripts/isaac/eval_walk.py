@@ -161,5 +161,6 @@ if args.video and frames:
 
     imageio.mimwrite(args.video, [np.asarray(fr)[..., :3] for fr in frames], fps=args.video_fps, quality=6)
     print("video", args.video, len(frames), "frames", flush=True)
-env.close()
-app.close()
+from go2x.isaac.shutdown import finish  # noqa: E402
+
+finish(0)

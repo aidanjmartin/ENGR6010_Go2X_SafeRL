@@ -106,6 +106,9 @@ try:
     print("[train_walk] exported", os.path.join(args.out, "exported", "policy.pt"), flush=True)
 except Exception as exc:  # report, keep the checkpoint
     print(f"[train_walk] export failed: {exc}", flush=True)
-    sys.exit(3)
-env.close()
-app.close()
+    from go2x.isaac.shutdown import finish
+
+    finish(3)
+from go2x.isaac.shutdown import finish  # noqa: E402
+
+finish(0)
