@@ -1,0 +1,36 @@
+{
+  "python": "3.11.17",
+  "platform": "Linux-6.17.0-1033-oem-x86_64-with-glibc2.39",
+  "torch": "2.7.0+cu128",
+  "torch_cuda_build": "12.8",
+  "torch.cuda.is_available()": true,
+  "cuda_device": "NVIDIA RTX 4000 Ada Generation",
+  "isaacsim": "5.1.0.0",
+  "isaaclab": "0.54.2",
+  "isaaclab_tasks": "0.11.12",
+  "isaaclab_rl": "0.4.7",
+  "rsl-rl-lib": "3.1.2",
+  "unitree_rl_lab": "0.2.1",
+  "isaac_sim_headless_start_s": 2.5,
+  "isaac_sim_build": [
+    "5.1.0",
+    "rc.19",
+    "5",
+    "1",
+    "0",
+    "rc",
+    "19",
+    "release.26219.9c81211b.gl"
+  ],
+  "go2_tasks": [
+    "Isaac-Velocity-Flat-Unitree-Go2-Play-v0",
+    "Isaac-Velocity-Flat-Unitree-Go2-v0",
+    "Isaac-Velocity-Rough-Unitree-Go2-Play-v0",
+    "Isaac-Velocity-Rough-Unitree-Go2-v0",
+    "Unitree-Go2-Velocity"
+  ],
+  "navigation_tasks": [
+    "Isaac-Navigation-Flat-Anymal-C-Play-v0",
+    "Isaac-Navigation-Flat-Anymal-C-v0"
+  ]
+}

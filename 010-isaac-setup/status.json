@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "b92c532de0e8231558269893d7b92411a295dfb3",
-  "status": "running",
+  "status": "killed",
+  "reason": "stopped by the KILL file on the Dell",
+  "exit_code": -15,
   "started": "2026-11-02T14:58:35-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt5.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/log-attempt5.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/010-isaac-setup/output-attempt5",
+  "kept_on_dell": [],
+  "finished": "2026-11-02T15:07:41-06:00"
 }
