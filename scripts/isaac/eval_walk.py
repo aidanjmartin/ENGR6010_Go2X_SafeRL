@@ -80,6 +80,7 @@ since_change = torch.zeros(B, device=env.device)
 prev_cmd = env.command_manager.get_command("base_velocity").clone()
 new_episode = torch.zeros(B, dtype=torch.bool)
 frames, render_every = [], max(1, int(round(1.0 / (dt * args.video_fps))))
+cmd_log = []   # (steps, B, 3): the exact velocity targets, replayed by the MuJoCo check (Task 6)
 
 with torch.inference_mode():
     for t in range(steps):
@@ -87,6 +88,7 @@ with torch.inference_mode():
         since_change = torch.where(torch.any(cmd != prev_cmd, 1), torch.zeros_like(since_change), since_change + 1)
         prev_cmd = cmd
         logger.record(base_state().cpu().numpy(), cmd.cpu().numpy(), new_episode.numpy())
+        cmd_log.append(cmd.cpu().numpy())
 
         obs, _, terminated, truncated, _ = env.step(policy(obs["policy"]))
         done = terminated | truncated
@@ -135,6 +137,8 @@ summary["settings"] = {k: ev[k] for k in ("episode_s", "command_hold_s", "settle
                                           "contact_force_n")}
 summary["command_range"] = WALK["commands"]["train_range"]
 shapes = logger.save(args.transitions, policy=args.policy, seed=cfg.seed)
+np.savez_compressed(os.path.join(os.path.dirname(args.transitions), "walk_eval_commands.npz"),
+                    commands=np.stack(cmd_log), dt=dt, alive_steps=alive_steps.cpu().numpy(), fell=fell.cpu().numpy())
 summary["transitions"] = {"path": args.transitions, "shapes": {k: list(v) for k, v in shapes.items()}}
 
 os.makedirs(args.out, exist_ok=True)
