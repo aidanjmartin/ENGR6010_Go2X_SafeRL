@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
-  "status": "running",
+  "status": "succeeded",
+  "reason": "",
+  "exit_code": 0,
   "started": "2026-11-02T22:11:19-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/log-attempt1.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/log-attempt1.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/output-attempt1",
+  "kept_on_dell": [],
+  "finished": "2026-11-02T22:12:31-06:00"
 }
