@@ -1,0 +1,10 @@
+{
+ "job": "080-mujoco-check",
+ "attempt": 2,
+ "commit": "a671952f4d7dbea44d8d69e6a2d8f93f52ff752c",
+ "status": "succeeded",
+ "started": "2026-11-03T03:47:17-06:00",
+ "finished": "2026-11-03T03:48:34-06:00",
+ "exit_code": 0,
+ "kept_on_dell": []
+}

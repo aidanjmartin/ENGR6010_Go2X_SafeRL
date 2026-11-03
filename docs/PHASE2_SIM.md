@@ -137,24 +137,58 @@ The square and building check results are above (`results/phase2/square_check.js
 
 ### Task 4: navigation (200 shared scenarios)
 
-| metric | straight to target | A* with pure pursuit | learned policy, attempt 1 |
-| :--- | ---: | ---: | ---: |
-| success rate | 0.580 ± 0.035 (n = 200) | 0.695 ± 0.033 (n = 200) | 0.125 ± 0.023 (n = 200) |
-| collision rate (either check) | 0.410 ± 0.035 (n = 200) | 0.290 ± 0.032 (n = 200) | 0.240 ± 0.030 (n = 200) |
-| collision, footprint check | 0.380 ± 0.034 (n = 200) | 0.255 ± 0.031 (n = 200) | 0.195 ± 0.028 (n = 200) |
-| collision, contact-force check | 0.065 ± 0.017 (n = 200) | 0.055 ± 0.016 (n = 200) | 0.065 ± 0.017 (n = 200) |
-| episodes where the two checks disagree | 0.375 ± 0.034 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.220 ± 0.029 (n = 200) |
-| fall rate | 0.010 ± 0.007 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) |
-| left the square | 0.000 ± 0.000 (n = 200) | 0.015 ± 0.009 (n = 200) | 0.365 ± 0.034 (n = 200) |
-| reached the 20 s limit | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.270 ± 0.031 (n = 200) |
-| minimum distance to a person (m), episodes with people | 0.443 ± 0.041 (n = 137) | 0.438 ± 0.041 (n = 137) | 0.641 ± 0.044 (n = 137) |
-| time to goal (s), successful episodes | 3.184 ± 0.074 (n = 116) | 3.959 ± 0.090 (n = 139) | 5.144 ± 0.436 (n = 25) |
+| metric | straight to target | A* with pure pursuit | learned policy, attempt 1 | learned policy, attempt 3 |
+| :--- | ---: | ---: | ---: | ---: |
+| success rate | 0.580 ± 0.035 (n = 200) | 0.695 ± 0.033 (n = 200) | 0.125 ± 0.023 (n = 200) | 0.170 ± 0.027 (n = 200) |
+| collision rate (either check) | 0.410 ± 0.035 (n = 200) | 0.290 ± 0.032 (n = 200) | 0.240 ± 0.030 (n = 200) | 0.310 ± 0.033 (n = 200) |
+| collision, footprint check | 0.380 ± 0.034 (n = 200) | 0.255 ± 0.031 (n = 200) | 0.195 ± 0.028 (n = 200) | 0.200 ± 0.028 (n = 200) |
+| collision, contact-force check | 0.065 ± 0.017 (n = 200) | 0.055 ± 0.016 (n = 200) | 0.065 ± 0.017 (n = 200) | 0.125 ± 0.023 (n = 200) |
+| episodes where the two checks disagree | 0.375 ± 0.034 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.220 ± 0.029 (n = 200) | 0.295 ± 0.032 (n = 200) |
+| fall rate | 0.010 ± 0.007 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.005 ± 0.005 (n = 200) |
+| left the square | 0.000 ± 0.000 (n = 200) | 0.015 ± 0.009 (n = 200) | 0.365 ± 0.034 (n = 200) | 0.005 ± 0.005 (n = 200) |
+| reached the 20 s limit | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.510 ± 0.035 (n = 200) |
+| minimum distance to a person (m), episodes with people | 0.443 ± 0.041 (n = 137) | 0.438 ± 0.041 (n = 137) | 0.641 ± 0.044 (n = 137) | 0.598 ± 0.044 (n = 137) |
+| time to goal (s), successful episodes | 3.184 ± 0.074 (n = 116) | 3.959 ± 0.090 (n = 139) | 5.144 ± 0.436 (n = 25) | 5.897 ± 0.693 (n = 34) |
 
 - **Attempt 1:** the learned policy (job 050 attempt 1) did worse than both baselines. Leaving the square ended an episode with no penalty, and the policy learned to walk out (`LOG.md` step 8).
-- **Attempt 2:** job 050 is retraining with a leaving-the-square penalty and critic-only target information. Plan, not yet built: its evaluation and the videos.
+- **Attempt 2:** failed at start (CUDA out of memory); `LOG.md` step 8.
+- **Attempt 3:** job 050 retrained with a -10 penalty for leaving the square, critic-only target information (front-to-target vector, distance, planar velocity, yaw rate) and entropy coefficient 0.01; the policy input is unchanged. Leaving the square fell from 0.365 to 0.005, but success rose only from 0.125 to 0.170, still below straight to target (0.580) and A* (0.695). Training success stayed at 0.15 to 0.20 from iteration 100 to 1500 (`results/phase2/nav_train_attempt3/nav_training_curve.png`), and 0.51 of evaluation episodes reach the 20 s limit. The policy keeps a larger distance from people than the baselines (0.598 m against 0.44 m). The reason it stalls short of the target is not yet checked.
 - **A* planner:** 0 of 281 A* plans failed.
-- **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 5 times as often as the contact-force check. A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
+- **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 6 times as often as the contact-force check for the baselines and attempt 1 (1.6 times for attempt 3). A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
 
-### Task 5 and Task 6
+### Task 5: language target (60 rendered scenes, 132 prompts)
 
-Plan, not yet built: jobs 070 (grounding) and 080 (MuJoCo check) run after the navigation jobs.
+Job 070: OWLv2 (`google/owlv2-base-patch16-ensemble`, revision `cfd3195`), score threshold 0.1, on the 60 MuJoCo-rendered scenes from job 045. A prompt counts as correct when the floor point projected from the best box lies within 0.3 m of the target's footprint.
+
+| metric | value |
+| :--- | ---: |
+| correct, all prompts | 0.614 ± 0.043 (n = 132) |
+| detected (any box above the threshold) | 0.674 ± 0.041 (n = 132) |
+| correct, "go to the {color} chair" | 0.851 ± 0.044 (n = 67) |
+| correct, "go to the table" | 0.960 ± 0.039 (n = 25) |
+| correct, "go to the chair" | 0.000 ± 0.000 (n = 15) |
+| correct, "go to the person" | 0.000 ± 0.000 (n = 25) |
+| floor point to target footprint (m), detected prompts | 0.194 ± 0.047 (n = 89) |
+| floor point to target center (m), detected prompts | 0.521 ± 0.047 (n = 89) |
+| target mask intersection over union (IoU), detected prompts | 0.074 ± 0.013 (n = 89) |
+| static-obstacle mask IoU against the drawn image | 0.119 ± 0.039 (n = 60) |
+| people mask IoU against the drawn image | 0.217 ± 0.054 (n = 60) |
+
+- **People:** the scene models a person as an orange cylinder (in Isaac Lab and in the MuJoCo renders alike), so OWLv2 has nothing person-shaped to find; 0 of 25 person prompts are correct. Examples: `results/phase2/grounding/grounding_examples/`.
+- **"go to the chair" without a color:** 0 of 15 correct, while colored-chair prompts reach 0.851. The reason is not yet checked.
+- **Floor point:** the box's bottom center lands near the footprint edge closest to the camera, so the distance to the footprint (0.19 m) is much smaller than to the center (0.52 m), and the disk-shaped masks overlap the true footprints little (IoU 0.07).
+
+### Task 6: MuJoCo check (same 100 episodes and velocity targets)
+
+Job 080, MuJoCo 3.16.0 with Unitree's `go2.xml` (`unitree_mujoco` `1eb6642`) on a flat floor.
+
+| metric | Isaac Lab | MuJoCo |
+| :--- | ---: | ---: |
+| velocity tracking error, vx (m/s) | 0.0600 ± 0.0085 | 0.1248 ± 0.0034 |
+| velocity tracking error, vy (m/s) | 0.0539 ± 0.0020 | 0.0883 ± 0.0026 |
+| velocity tracking error, wz (rad/s) | 0.1009 ± 0.0061 | 0.1941 ± 0.0050 |
+| mean joint torque magnitude (N m) | 3.5586 ± 0.0724 | 2.9886 ± 0.0162 |
+| falls per minute | 0.0612 ± 0.0433 | 0.0000 ± 0.0300 |
+| falls | 2 | 0 |
+
+The policy walks in MuJoCo without falls, with tracking errors about twice those in Isaac Lab. Unitree's MuJoCo model gives each joint damping 0.1, friction loss 0.2 and armature 0.01, which the Isaac Lab model does not, and the check steps physics at 0.005 s (`LOG.md`, steps 3 to 6); whether these explain the gap is not yet checked.

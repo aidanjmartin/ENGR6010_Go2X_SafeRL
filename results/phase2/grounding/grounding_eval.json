@@ -1,0 +1,2381 @@
+{
+ "summary": {
+  "model": "google/owlv2-base-patch16-ensemble",
+  "revision": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+  "scenes": 60,
+  "prompts": 132,
+  "correct_fraction": {
+   "mean": 0.6136363636363636,
+   "se": 0.04254201128435693,
+   "n": 132
+  },
+  "detected_fraction": {
+   "mean": 0.6742424242424242,
+   "se": 0.04094677028657697,
+   "n": 132
+  },
+  "floor_error_to_footprint_m": {
+   "mean": 0.19395042140758223,
+   "se": 0.046513545904844814,
+   "n": 89
+  },
+  "floor_error_to_center_m": {
+   "mean": 0.5212625663564263,
+   "se": 0.04718470129123553,
+   "n": 89
+  },
+  "target_mask_iou": {
+   "mean": 0.07353572742047844,
+   "se": 0.013296100577625777,
+   "n": 89
+  },
+  "by_class": {
+   "chair": {
+    "mean": 0.6951219512195121,
+    "se": 0.05115063980535738,
+    "n": 82
+   },
+   "table": {
+    "mean": 0.96,
+    "se": 0.04,
+    "n": 25
+   },
+   "person": {
+    "mean": 0.0,
+    "se": 0.0,
+    "n": 25
+   }
+  },
+  "static_mask_iou": {
+   "mean": 0.11915548087427497,
+   "se": 0.038591769666468136,
+   "n": 60
+  },
+  "people_mask_iou": {
+   "mean": 0.21666666666666667,
+   "se": 0.05363439040648223,
+   "n": 60
+  },
+  "settings": {
+   "score_threshold": 0.1,
+   "correct_distance_m": 0.3,
+   "mask_radius_m": {
+    "chair": 0.3,
+    "table": 0.55,
+    "person": 0.25
+   }
+  }
+ },
+ "prompts": [
+  {
+   "scene": 0,
+   "prompt": "go to the green chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.5543677806854248,
+   "floor_point": [
+    1.5101824544561544,
+    0.248060177115308
+   ],
+   "distance_to_footprint_m": 0.07436337247370789,
+   "distance_to_center_m": 0.3648832710808654,
+   "correct": true,
+   "target_mask_iou": 0.1360544217687075
+  },
+  {
+   "scene": 0,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.1188371479511261,
+   "floor_point": [
+    -0.12087092566129962,
+    -0.22442792395766498
+   ],
+   "distance_to_footprint_m": 1.0848287390084121,
+   "distance_to_center_m": 1.3489037465900229,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 0,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.35382747650146484,
+   "floor_point": [
+    0.5717778142455898,
+    0.9951467966067931
+   ],
+   "distance_to_footprint_m": 0.014059903918708039,
+   "distance_to_center_m": 0.616583090367325,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 1,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.4486168324947357,
+   "floor_point": [
+    1.360177955041328,
+    0.9032906760914023
+   ],
+   "distance_to_footprint_m": 0.119808664219901,
+   "distance_to_center_m": 0.3808300409778453,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 1,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.31553834676742554,
+   "floor_point": [
+    0.4028558345060984,
+    0.5950911302688123
+   ],
+   "distance_to_footprint_m": 0.05030254566809533,
+   "distance_to_center_m": 0.6875421860030161,
+   "correct": true,
+   "target_mask_iou": 0.18426501035196688
+  },
+  {
+   "scene": 2,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.35822898149490356,
+   "floor_point": [
+    0.17687278813018595,
+    0.19380719892060227
+   ],
+   "distance_to_footprint_m": 0.06844291266218955,
+   "distance_to_center_m": 0.44420838809596885,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 2,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 3,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2321528196334839,
+   "floor_point": [
+    1.2280873599320108,
+    0.018874457945445358
+   ],
+   "distance_to_footprint_m": 0.07659955299043275,
+   "distance_to_center_m": 0.36242101481654104,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 3,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.34065738320350647,
+   "floor_point": [
+    1.0695183742185854,
+    -1.1372920920971517
+   ],
+   "distance_to_footprint_m": 0.07839974587671217,
+   "distance_to_center_m": 0.32856630718450913,
+   "correct": true,
+   "target_mask_iou": 0.2
+  },
+  {
+   "scene": 3,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.18182815611362457,
+   "floor_point": [
+    -0.5474228367789822,
+    0.3717364050951918
+   ],
+   "distance_to_footprint_m": 0.07528578598302965,
+   "distance_to_center_m": 0.4505863707790153,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 4,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.10532224923372269,
+   "floor_point": [
+    -0.8946717554504736,
+    -0.2371715007381704
+   ],
+   "distance_to_footprint_m": 0.03961718234617684,
+   "distance_to_center_m": 0.2896221159574205,
+   "correct": true,
+   "target_mask_iou": 0.29457364341085274
+  },
+  {
+   "scene": 4,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 5,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.34396591782569885,
+   "floor_point": [
+    0.25109521422709785,
+    -0.8341405138139038
+   ],
+   "distance_to_footprint_m": 0.06635691332081617,
+   "distance_to_center_m": 0.37758849942537803,
+   "correct": true,
+   "target_mask_iou": 0.13513513513513514
+  },
+  {
+   "scene": 5,
+   "prompt": "go to the red chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3720378577709198,
+   "floor_point": [
+    1.4743272945278236,
+    0.27173234824979575
+   ],
+   "distance_to_footprint_m": 0.06896209044675361,
+   "distance_to_center_m": 0.36315476890153087,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 5,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2862803339958191,
+   "floor_point": [
+    1.4825733191578157,
+    -1.1185540792991762
+   ],
+   "distance_to_footprint_m": 0.029408408496423722,
+   "distance_to_center_m": 0.3824349129642704,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 5,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.2590368390083313,
+   "floor_point": [
+    -0.10584508791887402,
+    0.9248104235360752
+   ],
+   "distance_to_footprint_m": 0.2500257275586206,
+   "distance_to_center_m": 0.6890312022566882,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 6,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.2555795907974243,
+   "floor_point": [
+    -0.4220519501472953,
+    -0.16999395808023016
+   ],
+   "distance_to_footprint_m": 0.09829273120109083,
+   "distance_to_center_m": 0.47429514933109806,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 6,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 7,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.18081025779247284,
+   "floor_point": [
+    -0.6473947831393034,
+    -0.20919165218875435
+   ],
+   "distance_to_footprint_m": 0.08144846796249866,
+   "distance_to_center_m": 0.3435453917693839,
+   "correct": true,
+   "target_mask_iou": 0.1773049645390071
+  },
+  {
+   "scene": 8,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.23094139993190765,
+   "floor_point": [
+    1.2822411548026973,
+    -0.581415891689031
+   ],
+   "distance_to_footprint_m": 0.06650405204463034,
+   "distance_to_center_m": 0.33080449809806256,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 8,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 9,
+   "prompt": "go to the green chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.4009150564670563,
+   "floor_point": [
+    -0.24275341722270566,
+    0.46592144116708456
+   ],
+   "distance_to_footprint_m": 0.02601580915241147,
+   "distance_to_center_m": 0.378372139592726,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 9,
+   "prompt": "go to the red chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3806312382221222,
+   "floor_point": [
+    0.7295430318703039,
+    -0.11499867454017515
+   ],
+   "distance_to_footprint_m": 0.0865582543406741,
+   "distance_to_center_m": 0.3737594379596754,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 9,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.35354799032211304,
+   "floor_point": [
+    1.0054808434276308,
+    0.8353536081828966
+   ],
+   "distance_to_footprint_m": 0.049596162854966486,
+   "distance_to_center_m": 0.31642150868392077,
+   "correct": true,
+   "target_mask_iou": 0.2116788321167883
+  },
+  {
+   "scene": 10,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.17746850848197937,
+   "floor_point": [
+    0.27125738552963646,
+    -1.1772465593736376
+   ],
+   "distance_to_footprint_m": 0.07654713794582124,
+   "distance_to_center_m": 0.3296225276394419,
+   "correct": true,
+   "target_mask_iou": 0.17985611510791366
+  },
+  {
+   "scene": 10,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.214751735329628,
+   "floor_point": [
+    -0.8699259615044512,
+    0.3258548873448443
+   ],
+   "distance_to_footprint_m": 0.018874917240089106,
+   "distance_to_center_m": 0.2743060332738315,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 10,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.19267116487026215,
+   "floor_point": [
+    0.7988237039379156,
+    -0.30215667382997585
+   ],
+   "distance_to_footprint_m": 0.08328042761341825,
+   "distance_to_center_m": 0.41295601707870955,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 10,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 11,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.108754962682724,
+   "floor_point": [
+    0.4005713343537715,
+    1.032129224057099
+   ],
+   "distance_to_footprint_m": 0.09965191948722962,
+   "distance_to_center_m": 0.41678597011363216,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 11,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 12,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3369814157485962,
+   "floor_point": [
+    -1.136364279756156,
+    0.1477931062479597
+   ],
+   "distance_to_footprint_m": 0.6047171435269979,
+   "distance_to_center_m": 0.9511937006629538,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 12,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3095996081829071,
+   "floor_point": [
+    0.1807406731670721,
+    0.9665836862974624
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.20427994356988863,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 12,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.28243061900138855,
+   "floor_point": [
+    0.3364925515870895,
+    -0.9075776982986158
+   ],
+   "distance_to_footprint_m": 0.04687895735004555,
+   "distance_to_center_m": 0.6470741571137184,
+   "correct": true,
+   "target_mask_iou": 0.22894168466522677
+  },
+  {
+   "scene": 13,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 13,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.14835293591022491,
+   "floor_point": [
+    -0.5763177767410995,
+    0.7898528873385797
+   ],
+   "distance_to_footprint_m": 0.07996787051324561,
+   "distance_to_center_m": 0.34410417832031176,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 13,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 14,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.14742551743984222,
+   "floor_point": [
+    -0.3695394507950159,
+    -0.5739895049492834
+   ],
+   "distance_to_footprint_m": 0.13447625018655934,
+   "distance_to_center_m": 0.4805420441390392,
+   "correct": true,
+   "target_mask_iou": 0.057692307692307696
+  },
+  {
+   "scene": 14,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2579476833343506,
+   "floor_point": [
+    0.17339488745176737,
+    0.44719534684578255
+   ],
+   "distance_to_footprint_m": 0.08655974524532106,
+   "distance_to_center_m": 0.33700497532127327,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 15,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.27513206005096436,
+   "floor_point": [
+    1.3914920296002793,
+    0.19722929255319527
+   ],
+   "distance_to_footprint_m": 0.028736067802095644,
+   "distance_to_center_m": 0.27874425589470575,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 15,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 16,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 16,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 17,
+   "prompt": "go to the green chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 17,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 19,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.29689326882362366,
+   "floor_point": [
+    1.4495506975826014,
+    0.8980674400098064
+   ],
+   "distance_to_footprint_m": 0.10502655826385887,
+   "distance_to_center_m": 0.3842199679984242,
+   "correct": true,
+   "target_mask_iou": 0.1360544217687075
+  },
+  {
+   "scene": 19,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.2743455767631531,
+   "floor_point": [
+    0.17553837686946663,
+    -0.46213230936000343
+   ],
+   "distance_to_footprint_m": 0.01564474981729036,
+   "distance_to_center_m": 0.6178107726353442,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 20,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 20,
+   "prompt": "go to the red chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.16983374953269958,
+   "floor_point": [
+    -0.7847175569461207,
+    -1.0006013935013085
+   ],
+   "distance_to_footprint_m": 0.05487334943410699,
+   "distance_to_center_m": 0.3904817999806315,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 20,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 21,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2181749790906906,
+   "floor_point": [
+    1.2656864555283485,
+    0.8549458070805134
+   ],
+   "distance_to_footprint_m": 0.043442190127569225,
+   "distance_to_center_m": 0.2952739851674909,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 21,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2011290341615677,
+   "floor_point": [
+    0.5760968454642,
+    0.0605586473167703
+   ],
+   "distance_to_footprint_m": 0.028484535898318675,
+   "distance_to_center_m": 0.2788991328504858,
+   "correct": true,
+   "target_mask_iou": 0.3125
+  },
+  {
+   "scene": 22,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 23,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2062348574399948,
+   "floor_point": [
+    0.369808049080317,
+    -0.3252054088850127
+   ],
+   "distance_to_footprint_m": 0.027579026926615846,
+   "distance_to_center_m": 0.2779609663616795,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 23,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": true,
+   "score": 0.1000920832157135,
+   "floor_point": [
+    1.2150655570940605,
+    -0.09048049068503763
+   ],
+   "distance_to_footprint_m": 1.9049384114547978,
+   "distance_to_center_m": 2.154938411454798,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 24,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 25,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.42288264632225037,
+   "floor_point": [
+    1.418161573925343,
+    -0.21543051331987148
+   ],
+   "distance_to_footprint_m": 0.06038827615538489,
+   "distance_to_center_m": 0.3832155590904249,
+   "correct": true,
+   "target_mask_iou": 0.11805555555555555
+  },
+  {
+   "scene": 25,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3937073051929474,
+   "floor_point": [
+    0.9902114739627202,
+    0.5777727341055866
+   ],
+   "distance_to_footprint_m": 0.05140266849794156,
+   "distance_to_center_m": 0.30260107509852663,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 25,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.28731080889701843,
+   "floor_point": [
+    0.1291323974707019,
+    0.13459458621687526
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.21543850562030273,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 26,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 27,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.16518835723400116,
+   "floor_point": [
+    -0.2761425020183593,
+    0.46763244081985367
+   ],
+   "distance_to_footprint_m": 0.03269771874787758,
+   "distance_to_center_m": 0.3838745205766386,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 27,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.14627990126609802,
+   "floor_point": [
+    0.7712638834346901,
+    -0.47389035362382514
+   ],
+   "distance_to_footprint_m": 0.027432298238958597,
+   "distance_to_center_m": 0.37072701251603146,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 28,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 28,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 29,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 29,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 29,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 30,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3377588391304016,
+   "floor_point": [
+    0.9390905633162172,
+    0.2689716113169229
+   ],
+   "distance_to_footprint_m": 0.07889120942027833,
+   "distance_to_center_m": 0.3504354503533464,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 30,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2887653410434723,
+   "floor_point": [
+    1.6318318116892454,
+    -0.338856660878105
+   ],
+   "distance_to_footprint_m": 0.20612196529150756,
+   "distance_to_center_m": 0.47373802518340574,
+   "correct": true,
+   "target_mask_iou": 0.05555555555555555
+  },
+  {
+   "scene": 30,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 31,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.4255222976207733,
+   "floor_point": [
+    0.36453437525916677,
+    -0.33549464626906084
+   ],
+   "distance_to_footprint_m": 0.16119212711919817,
+   "distance_to_center_m": 0.6354193594515093,
+   "correct": true,
+   "target_mask_iou": 0.002702702702702703
+  },
+  {
+   "scene": 31,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 32,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2652090787887573,
+   "floor_point": [
+    -0.6116247855574293,
+    -0.2970382845304124
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.21281965260701705,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 32,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3267664611339569,
+   "floor_point": [
+    0.2077396681790341,
+    -1.2355050204899285
+   ],
+   "distance_to_footprint_m": 1.058365689270685,
+   "distance_to_center_m": 1.3283400764963682,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 32,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.16490302979946136,
+   "floor_point": [
+    0.29185150810961147,
+    0.8449408180157139
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.22320610186271622,
+   "correct": true,
+   "target_mask_iou": 0.5573770491803278
+  },
+  {
+   "scene": 33,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.24165977537631989,
+   "floor_point": [
+    -0.5257318348542345,
+    -0.31267837885253297
+   ],
+   "distance_to_footprint_m": 0.05675391815454023,
+   "distance_to_center_m": 0.3149117299804314,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 35,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.17719869315624237,
+   "floor_point": [
+    -0.629136138566187,
+    -0.3791012755221778
+   ],
+   "distance_to_footprint_m": 0.08734706923079405,
+   "distance_to_center_m": 0.3471725689703591,
+   "correct": true,
+   "target_mask_iou": 0.16312056737588654
+  },
+  {
+   "scene": 35,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 35,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 36,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.30867183208465576,
+   "floor_point": [
+    0.8147775107716979,
+    -0.905011387390368
+   ],
+   "distance_to_footprint_m": 0.1295509075234099,
+   "distance_to_center_m": 0.4698049528229419,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 36,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 36,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.28444209694862366,
+   "floor_point": [
+    -0.4327228910542962,
+    0.7333752300528158
+   ],
+   "distance_to_footprint_m": 0.013105622769179981,
+   "distance_to_center_m": 0.3963021786536088,
+   "correct": true,
+   "target_mask_iou": 0.3231850117096019
+  },
+  {
+   "scene": 38,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.23908694088459015,
+   "floor_point": [
+    1.0733945966790992,
+    -0.6030344774116131
+   ],
+   "distance_to_footprint_m": 0.06975920599410929,
+   "distance_to_center_m": 0.333208800840837,
+   "correct": true,
+   "target_mask_iou": 0.18248175182481752
+  },
+  {
+   "scene": 38,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.24932044744491577,
+   "floor_point": [
+    -1.3133161882987843,
+    0.5966522828255051
+   ],
+   "distance_to_footprint_m": 2.086969969594714,
+   "distance_to_center_m": 2.371147543689177,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 38,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.30694663524627686,
+   "floor_point": [
+    0.3103064515646794,
+    0.6280394912444907
+   ],
+   "distance_to_footprint_m": 0.06298493879519651,
+   "distance_to_center_m": 0.4448007125856024,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 38,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 39,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.29820623993873596,
+   "floor_point": [
+    0.7189390818599194,
+    -0.052788986130152975
+   ],
+   "distance_to_footprint_m": 0.02209376667108104,
+   "distance_to_center_m": 0.2721013299321148,
+   "correct": true,
+   "target_mask_iou": 0.265625
+  },
+  {
+   "scene": 39,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.13980448246002197,
+   "floor_point": [
+    0.5126583697354282,
+    -0.9436984813934793
+   ],
+   "distance_to_footprint_m": 0.07863859449613497,
+   "distance_to_center_m": 0.3290967374739543,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 39,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2873803377151489,
+   "floor_point": [
+    0.52981791716293,
+    0.8654472918228523
+   ],
+   "distance_to_footprint_m": 0.055546805651493336,
+   "distance_to_center_m": 0.34174940000323556,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 40,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.28063708543777466,
+   "floor_point": [
+    1.374000503531593,
+    0.2910406152714728
+   ],
+   "distance_to_footprint_m": 0.035723540356376926,
+   "distance_to_center_m": 0.2857254400672945,
+   "correct": true,
+   "target_mask_iou": 0.2578125
+  },
+  {
+   "scene": 40,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.10783101618289948,
+   "floor_point": [
+    0.08893113779317033,
+    -0.27192696618121004
+   ],
+   "distance_to_footprint_m": 0.09603233501851671,
+   "distance_to_center_m": 0.36667976480748843,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 42,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.31172555685043335,
+   "floor_point": [
+    1.2667006968032242,
+    -1.0856804882477047
+   ],
+   "distance_to_footprint_m": 0.05679012761541169,
+   "distance_to_center_m": 0.6650791917169535,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 43,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.16248682141304016,
+   "floor_point": [
+    -0.007596307745151644,
+    -0.7369607524058083
+   ],
+   "distance_to_footprint_m": 0.04939767460882144,
+   "distance_to_center_m": 0.38139016404033876,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 43,
+   "prompt": "go to the red chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.1303357481956482,
+   "floor_point": [
+    0.7251640465792631,
+    0.9631969022399061
+   ],
+   "distance_to_footprint_m": 0.02660956924950053,
+   "distance_to_center_m": 0.29283250898333174,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 43,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.1517331749200821,
+   "floor_point": [
+    1.0519374585924497,
+    -0.4393349791662515
+   ],
+   "distance_to_footprint_m": 0.051238067564238376,
+   "distance_to_center_m": 0.3606346642442338,
+   "correct": true,
+   "target_mask_iou": 0.14482758620689656
+  },
+  {
+   "scene": 44,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.260996550321579,
+   "floor_point": [
+    0.8827470070768871,
+    0.5780269058973732
+   ],
+   "distance_to_footprint_m": 0.17161617810674867,
+   "distance_to_center_m": 0.629787095715326,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 44,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 45,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.4275118410587311,
+   "floor_point": [
+    -0.8557309497240972,
+    -1.008111824063533
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.20057153198422054,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 45,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.6146590709686279,
+   "floor_point": [
+    1.1006618750392259,
+    0.3592200152811334
+   ],
+   "distance_to_footprint_m": 0.06530907519596246,
+   "distance_to_center_m": 0.31574238268711774,
+   "correct": true,
+   "target_mask_iou": 0.22556390977443608
+  },
+  {
+   "scene": 45,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.3921569883823395,
+   "floor_point": [
+    0.5225450513583921,
+    -0.26317462890099047
+   ],
+   "distance_to_footprint_m": 0.15882645782330018,
+   "distance_to_center_m": 0.583702132789498,
+   "correct": true,
+   "target_mask_iou": 0.05157593123209169
+  },
+  {
+   "scene": 45,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 46,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.1777302324771881,
+   "floor_point": [
+    -0.8119379636342641,
+    -1.2146609096693881
+   ],
+   "distance_to_footprint_m": 0.06443987193819989,
+   "distance_to_center_m": 0.3242482316312752,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 46,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.20331212878227234,
+   "floor_point": [
+    1.1968026937603171,
+    0.060573479206519086
+   ],
+   "distance_to_footprint_m": 2.2354457021975254,
+   "distance_to_center_m": 2.581934669848889,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 46,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.3907252550125122,
+   "floor_point": [
+    1.125268681036076,
+    0.47721780145937476
+   ],
+   "distance_to_footprint_m": 0.04867634709477442,
+   "distance_to_center_m": 0.7203294448035833,
+   "correct": true,
+   "target_mask_iou": 0.15415821501014199
+  },
+  {
+   "scene": 47,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.1936800181865692,
+   "floor_point": [
+    -0.1136984393409892,
+    0.8190515364757279
+   ],
+   "distance_to_footprint_m": 0.08560699083137241,
+   "distance_to_center_m": 0.33976082489626636,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 47,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 48,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2742376923561096,
+   "floor_point": [
+    1.4378840896354284,
+    0.7867051289974875
+   ],
+   "distance_to_footprint_m": 0.04996261987524564,
+   "distance_to_center_m": 0.30012454927663235,
+   "correct": true,
+   "target_mask_iou": 0.2558139534883721
+  },
+  {
+   "scene": 48,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 48,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.3126213550567627,
+   "floor_point": [
+    0.21454854798496728,
+    0.8966110457618132
+   ],
+   "distance_to_footprint_m": 0.07142409904800961,
+   "distance_to_center_m": 0.4468360384497765,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 48,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 49,
+   "prompt": "go to the blue chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3262164294719696,
+   "floor_point": [
+    1.1940327497804275,
+    -0.7660189833321085
+   ],
+   "distance_to_footprint_m": 0.04057092929601003,
+   "distance_to_center_m": 0.37860529490990047,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 49,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2857925295829773,
+   "floor_point": [
+    1.0398607378104658,
+    0.1860945236703031
+   ],
+   "distance_to_footprint_m": 0.06287931184423123,
+   "distance_to_center_m": 0.36106059154483183,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 49,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.28109654784202576,
+   "floor_point": [
+    -0.2747865988307704,
+    -0.41195625116586465
+   ],
+   "distance_to_footprint_m": 0.1071799562850565,
+   "distance_to_center_m": 0.4878853111904148,
+   "correct": true,
+   "target_mask_iou": 0.23695652173913043
+  },
+  {
+   "scene": 49,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 50,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_2",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 51,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.1525164097547531,
+   "floor_point": [
+    -0.6930568315089537,
+    0.8530730781052132
+   ],
+   "distance_to_footprint_m": 0.0,
+   "distance_to_center_m": 0.10340779590301499,
+   "correct": true,
+   "target_mask_iou": 0.6559766763848397
+  },
+  {
+   "scene": 51,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": true,
+   "score": 0.20058517158031464,
+   "floor_point": [
+    -0.09222004441880877,
+    -0.6040831302270371
+   ],
+   "distance_to_footprint_m": 1.7048391689627098,
+   "distance_to_center_m": 1.9548391689627098,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 52,
+   "prompt": "go to the green chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.33408328890800476,
+   "floor_point": [
+    1.4905290004811544,
+    -0.19616632615410048
+   ],
+   "distance_to_footprint_m": 0.12378491650510359,
+   "distance_to_center_m": 0.39989313871453647,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 52,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 52,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 54,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.36823731660842896,
+   "floor_point": [
+    0.9850475957343887,
+    -0.13190110189536233
+   ],
+   "distance_to_footprint_m": 0.04136960403983958,
+   "distance_to_center_m": 0.7220249659327685,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 55,
+   "prompt": "go to the red chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.47191381454467773,
+   "floor_point": [
+    0.8446156788521622,
+    1.138674778529089
+   ],
+   "distance_to_footprint_m": 0.03959739008429475,
+   "distance_to_center_m": 0.2922273486504715,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 55,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.3267326354980469,
+   "floor_point": [
+    -0.7525512440128155,
+    0.6116750438924
+   ],
+   "distance_to_footprint_m": 1.084658728772674,
+   "distance_to_center_m": 1.3953673381491325,
+   "correct": false,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 55,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.3649282455444336,
+   "floor_point": [
+    0.6245652859523264,
+    -0.2931532939426859
+   ],
+   "distance_to_footprint_m": 0.18166987260871026,
+   "distance_to_center_m": 0.6558764291031562,
+   "correct": true,
+   "target_mask_iou": 0.14056224899598393
+  },
+  {
+   "scene": 56,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.33965131640434265,
+   "floor_point": [
+    1.201742401765138,
+    -0.05379242085770959
+   ],
+   "distance_to_footprint_m": 0.18509034354103304,
+   "distance_to_center_m": 0.6705984605115217,
+   "correct": true,
+   "target_mask_iou": 0.13465346534653466
+  },
+  {
+   "scene": 56,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 57,
+   "prompt": "go to the green chair",
+   "target_id": "chair_1",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.31521397829055786,
+   "floor_point": [
+    0.42436295385215533,
+    1.0414715442299403
+   ],
+   "distance_to_footprint_m": 0.03422878051238193,
+   "distance_to_center_m": 0.2976899240246592,
+   "correct": true,
+   "target_mask_iou": 0.0
+  },
+  {
+   "scene": 57,
+   "prompt": "go to the yellow chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": true,
+   "score": 0.2861382067203522,
+   "floor_point": [
+    0.45780020932986887,
+    -1.2728048622544827
+   ],
+   "distance_to_footprint_m": 0.03731941358466867,
+   "distance_to_center_m": 0.2881407276117328,
+   "correct": true,
+   "target_mask_iou": 0.2283464566929134
+  },
+  {
+   "scene": 57,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 58,
+   "prompt": "go to the green chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 58,
+   "prompt": "go to the chair",
+   "target_id": "chair_0",
+   "target_class": "chair",
+   "detected": false,
+   "correct": false
+  },
+  {
+   "scene": 59,
+   "prompt": "go to the table",
+   "target_id": "table_0",
+   "target_class": "table",
+   "detected": true,
+   "score": 0.1092178076505661,
+   "floor_point": [
+    0.3092501818755048,
+    -0.09441129540477548
+   ],
+   "distance_to_footprint_m": 0.06750139973198466,
+   "distance_to_center_m": 0.7095091003506848,
+   "correct": true,
+   "target_mask_iou": 0.13627254509018036
+  },
+  {
+   "scene": 59,
+   "prompt": "go to the person",
+   "target_id": "person_0",
+   "target_class": "person",
+   "detected": false,
+   "correct": false
+  }
+ ],
+ "masks": [
+  {
+   "scene": 0,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 0
+  },
+  {
+   "scene": 1,
+   "static_iou": 0.09988518943742825,
+   "people_iou": 0.0,
+   "detections_static": 6,
+   "detections_people": 0,
+   "true_static": 4,
+   "true_people": 2
+  },
+  {
+   "scene": 2,
+   "static_iou": 0.09561752988047809,
+   "people_iou": 0.0,
+   "detections_static": 7,
+   "detections_people": 0,
+   "true_static": 4,
+   "true_people": 1
+  },
+  {
+   "scene": 3,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 2
+  },
+  {
+   "scene": 4,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 0
+  },
+  {
+   "scene": 5,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 4,
+   "true_people": 2
+  },
+  {
+   "scene": 6,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 7,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 8,
+   "static_iou": 0.12362637362637363,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 9,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 10,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 11,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 1,
+   "true_people": 2
+  },
+  {
+   "scene": 12,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 3,
+   "detections_people": 1,
+   "true_static": 3,
+   "true_people": 2
+  },
+  {
+   "scene": 13,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 14,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 0
+  },
+  {
+   "scene": 15,
+   "static_iou": 0.15819209039548024,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 16,
+   "static_iou": 0.08630952380952381,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 17,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 2
+  },
+  {
+   "scene": 18,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 2
+  },
+  {
+   "scene": 19,
+   "static_iou": 0.11658653846153846,
+   "people_iou": 1.0,
+   "detections_static": 5,
+   "detections_people": 0,
+   "true_static": 4,
+   "true_people": 0
+  },
+  {
+   "scene": 20,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 1
+  },
+  {
+   "scene": 21,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 22,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 1
+  },
+  {
+   "scene": 23,
+   "static_iou": 0.14366197183098592,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 24,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 1
+  },
+  {
+   "scene": 25,
+   "static_iou": 0.007751937984496124,
+   "people_iou": 1.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 26,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 1
+  },
+  {
+   "scene": 27,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 28,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 0
+  },
+  {
+   "scene": 29,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 30,
+   "static_iou": 0.004347826086956522,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 1
+  },
+  {
+   "scene": 31,
+   "static_iou": 0.0937062937062937,
+   "people_iou": 0.0,
+   "detections_static": 4,
+   "detections_people": 0,
+   "true_static": 4,
+   "true_people": 1
+  },
+  {
+   "scene": 32,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 33,
+   "static_iou": 0.07046979865771812,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 2
+  },
+  {
+   "scene": 34,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 2
+  },
+  {
+   "scene": 35,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 36,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 2,
+   "true_people": 0
+  },
+  {
+   "scene": 37,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 0,
+   "true_people": 2
+  },
+  {
+   "scene": 38,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 1
+  },
+  {
+   "scene": 39,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 40,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 41,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 42,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 2
+  },
+  {
+   "scene": 43,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 3,
+   "true_people": 2
+  },
+  {
+   "scene": 44,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 45,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 46,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 2,
+   "true_people": 2
+  },
+  {
+   "scene": 47,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 0
+  },
+  {
+   "scene": 48,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 1
+  },
+  {
+   "scene": 49,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  },
+  {
+   "scene": 50,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 3,
+   "true_people": 0
+  },
+  {
+   "scene": 51,
+   "static_iou": 0.08353808353808354,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 52,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 53,
+   "static_iou": 1.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 1,
+   "true_static": 0,
+   "true_people": 2
+  },
+  {
+   "scene": 54,
+   "static_iou": 0.029345372460496615,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 2
+  },
+  {
+   "scene": 55,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 0
+  },
+  {
+   "scene": 56,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 2,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 1
+  },
+  {
+   "scene": 57,
+   "static_iou": 0.0,
+   "people_iou": 0.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 2,
+   "true_people": 1
+  },
+  {
+   "scene": 58,
+   "static_iou": 0.0,
+   "people_iou": 1.0,
+   "detections_static": 0,
+   "detections_people": 0,
+   "true_static": 1,
+   "true_people": 0
+  },
+  {
+   "scene": 59,
+   "static_iou": 0.036290322580645164,
+   "people_iou": 0.0,
+   "detections_static": 1,
+   "detections_people": 0,
+   "true_static": 3,
+   "true_people": 1
+  }
+ ]
+}

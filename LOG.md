@@ -257,6 +257,8 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | scene renders (Task 3) | `scripts/render_scenes_mujoco.py` | the same sampler seed, part geometry (`object_parts`, `part_poses`), building boxes, camera model and output files as `scripts/isaac/render_scenes.py`; the robot stands at the start pose after a 1 s PD hold in MuJoCo. Local check of 2 scenes: chairs, table, people and the robot appear where the ground truth puts them |
 | navigation videos | `record_nav_videos.py` (Isaac, no camera) saves poses; `scripts/render_nav_videos.py` draws them | each frame: the fixed camera view with people moving, and the controller's drawn input turned 90 degrees to match the camera view |
 | finding: `scene.xml` has steps | `unitree_mujoco/unitree_robots/go2/scene.xml` | Unitree's scene places a row of steps and boxes from x = 1.2 m. The Task 6 check loaded it, so a robot walking forward for 20 s would have hit them. All MuJoCo use now builds a flat scene from `go2.xml` |
+| walking evaluation, job 040 attempt 3 | `bash jobs/040_walk_eval.sh` | **succeeded** at 22:29 (commit `8cf707b`): 100 episodes in Isaac Lab, then the 20 s video drawn with MuJoCo (`results/phase2/walk_eval/walk_20s.mp4`, checked by eye) |
+| scene renders, job 045 attempt 3 | `bash jobs/045_render_scenes.sh` | **succeeded** in 17 s (commit `8cf707b`): 60 scenes with ground truth (`results/phase2/scenes/`) |
 
 ## Step 8: navigation training (2026-11-02)
 
@@ -268,3 +270,32 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | finding: leaving the square was free | reward terms in `config/nav.yaml` | leaving the square ended the episode with no penalty, while a collision cost -10 and every step cost -0.02. The policy learned to end episodes by walking out. Changes for attempt 2 (`b448af5`): an `out_of_square` reward term of -10 (logged separately); the critic also reads 6 critic-only values (front-to-target vector in the robot frame, distance to the target, planar velocity, yaw rate), while the policy input stays the image plus the previous action; entropy coefficient 0.005 to 0.01 |
 | training attempt 2, job 050 | same | **failed** after 35 s: CUDA out of memory. The critic group repeated the image, so the rollout buffer held a second 4.3 GB copy (1024 environments, 32 steps, 32,768 values). Fix (`229521c`): the critic group holds only the 6 values and the critic reads the policy group followed by it |
 | training attempt 3, job 050, check at iteration 300 | `bash jobs/050_nav_train.sh` (started 22:29:47, 12.6 s per iteration) | running. Leaving the square fell from 0.58 of episodes (iteration 25) to 0.005 to 0.01 (iterations 175 to 303); attempt 1 had about 0.61 at iteration 300. Training success rose to 0.15 to 0.18 by iteration 75 and stayed there to iteration 303; reaching the 20 s limit rose to 0.62; footprint collisions 0.17 to 0.29. The progress term averages 1.04 per episode (Isaac Lab logs per second of the 20 s limit; 0.052 x 20), or 0.26 m of net approach, while 512 sampled starts are 1.55 m from the target on average (median 1.48 m, 10th to 90th percentile 1.08 to 2.09 m). Training success uses sampled actions (noise standard deviation 0.24 of the action range); job 060 measures the noise-free policy. Left running |
+| training attempt 3, job 050 | same (commit `8cf707b`) | **succeeded**, 22:29 to 03:44 (5.25 h). Training success stayed at 0.15 to 0.20 from iteration 100 to 1500; the 20 s limit ended 0.50 to 0.62 of episodes; leaving the square stayed at 0.005 to 0.015. Curve: `results/phase2/nav_train_attempt3/nav_training_curve.png` |
+| evaluation attempt 3, job 060 | `bash jobs/060_nav_eval.sh` (commit `a671952`) | **succeeded** in 97 s: success 0.170 ± 0.027, collision 0.310 ± 0.033, out of the square 0.005, 20 s limit 0.510 ± 0.035 (n = 200). Below both baselines (0.580 and 0.695). Table in `docs/PHASE2_SIM.md` |
+| videos attempt 2, job 065 | `bash jobs/065_nav_videos.sh` | **failed** after 18 s: `RuntimeError: Inplace update to inference tensor outside InferenceMode` in `env.reset()` between rollouts. The first rollout ran inside `torch.inference_mode()`, so the state tensors it made could not be written outside it. Fix (`09edccd`): the reset loop runs inside inference mode too. Re-queued as attempt 3 |
+
+## Step 9: language target and MuJoCo check (2026-11-03)
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| grounding, job 070 attempt 2 | `bash jobs/070_grounding.sh` (commit `a671952`) | **succeeded** in 32 s: OWLv2 on job 045's 60 MuJoCo scenes, 132 prompts, 0.614 ± 0.043 correct. Colored chairs 0.851, table 0.960, "go to the chair" 0 of 15, "go to the person" 0 of 25 (`results/phase2/grounding/`) |
+| finding: people are cylinders | `results/phase2/grounding/grounding_examples/` | the scene models a person as an orange cylinder, in Isaac Lab and in the renders, so an open-vocabulary detector has no person to find. The person result measures the scene model, not OWLv2 |
+| MuJoCo check, job 080 attempt 2 | `bash jobs/080_mujoco_check.sh` (commit `a671952`) | **succeeded** in 77 s: 100 episodes, 0 falls; tracking errors vx 0.125, vy 0.088 m/s, wz 0.194 rad/s, about twice Isaac Lab's (`results/phase2/mujoco_check/`) |
+
+## Problems found (Phase 2)
+
+**Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
+
+**The navigation policy is below both baselines.** Attempt 3 reaches the target in 0.170 ± 0.027 of 200 scenarios, against 0.580 for straight to target and 0.695 for A*. The leaving-the-square exploit of attempt 1 is gone (0.005), but 0.51 of episodes reach the 20 s limit, and training success stayed at 0.15 to 0.20 for 1400 iterations. The policy gains about 0.26 m on the target per episode from starts about 1.5 m away. Why it stalls is not yet checked.
+
+**People are cylinders, so person prompts cannot succeed.** OWLv2 grounds 0 of 25 "go to the person" prompts. The scene models a person as an orange cylinder; the result measures the scene model, not the detector.
+
+**"go to the chair" fails where colored-chair prompts work.** 0 of 15 against 0.851 of 67 for "go to the {color} chair". Not yet checked.
+
+**The two collision checks disagree in 0.22 to 0.38 of episodes.** The footprint check fires more often than the contact-force check for every controller. A likely reason, not yet checked: the footprint rectangle (0.70 by 0.31 m) is larger than what the robot puts near the floor.
+
+**The walking policy tracks about twice as badly in MuJoCo.** Tracking errors vx 0.125 against 0.060 m/s and wz 0.194 against 0.101 rad/s, with no falls in 100 episodes. Unitree's MuJoCo model adds joint damping, friction loss and armature that the Isaac model lacks; their effect is not yet checked.
+
+**Fewer people walk than configured.** 50 of 207 people in the evaluation scenarios walk, against a 0.5 setting, because a walking path that crosses furniture is redrawn and the redraw may come out standing.
+
+**A pip conflict remains in the Isaac environment.** `fastapi 0.115.7` (Isaac Sim) wants `starlette<0.46`; Isaac Lab's dependencies install 0.49.1. No job has failed from it. Isaac Sim also warns that the CPU power profile is "powersave" (a system setting, not changed).
