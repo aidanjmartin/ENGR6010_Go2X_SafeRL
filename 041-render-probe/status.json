@@ -1,0 +1,14 @@
+{
+  "job": "041-render-probe",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Find a renderer launch setting that does not crash (040, 045, 065 segfaulted at start)",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "3af6a89178c3c95b347f2feb055b6456d04c7496",
+  "status": "running",
+  "started": "2026-11-02T22:17:02-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/log-attempt1.txt"
+}
