@@ -1,7 +1,14 @@
 {
   "job": "080-mujoco-check",
-  "attempt": 1,
-  "status": "skipped",
-  "reason": "dependency did not succeed: 040-walk-eval",
-  "finished": "2026-11-02T22:12:53-06:00"
+  "attempt": 2,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Task 6: walking policy in MuJoCo (unitree_mujoco Go2) on the Isaac evaluation's velocity targets (CPU)",
+  "gpu": false,
+  "ros": false,
+  "robot": false,
+  "commit": "a671952f4d7dbea44d8d69e6a2d8f93f52ff752c",
+  "status": "running",
+  "started": "2026-11-03T03:47:17-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/080-mujoco-check/log-attempt2.txt"
 }
