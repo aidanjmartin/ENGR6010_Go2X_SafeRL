@@ -1,0 +1,14 @@
+{
+  "job": "060-nav-eval",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation policy evaluation on the 200 fixed scenarios",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
+  "status": "running",
+  "started": "2026-11-02T22:11:19-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/log-attempt1.txt"
+}
