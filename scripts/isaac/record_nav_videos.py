@@ -75,9 +75,11 @@ for n, (ctl, label, sid) in enumerate(jobs):
         continue
     rt = get_runtime(env)
     # an episode end auto-resets into the next scenario; reset further only until scenario n is loaded
-    while int(rt.batch.scenario_id[0]) < n:
-        env.reset()
-        obs = wrapped.get_observations()
+    # inside inference mode: the rollout below creates the state tensors there, and reset writes to them
+    with torch.inference_mode():
+        while int(rt.batch.scenario_id[0]) < n:
+            env.reset()
+            obs = wrapped.get_observations()
     assert int(rt.batch.scenario_id[0]) == n, "scenario order"
     c = {"straight": StraightController, "astar": AStarController}.get(ctl)
     c = c() if c else None
