@@ -1,0 +1,143 @@
+{
+ "scene": 1,
+ "scenario_id": 1,
+ "objects": [
+  {
+   "id": "chair_0",
+   "class": "chair",
+   "color": "green",
+   "footprint_rect": [
+    -0.832222713693904,
+    -0.5476103694624825,
+    -0.07723196360023943,
+    0.25,
+    0.25
+   ]
+  },
+  {
+   "id": "chair_1",
+   "class": "chair",
+   "color": "blue",
+   "footprint_rect": [
+    0.9856931236086717,
+    0.8340618443950469,
+    -1.1468275377591346,
+    0.25,
+    0.25
+   ]
+  },
+  {
+   "id": "chair_2",
+   "class": "chair",
+   "color": "green",
+   "footprint_rect": [
+    0.0035229969887595747,
+    -0.8968924964942611,
+    1.8066637116164923,
+    0.25,
+    0.25
+   ]
+  },
+  {
+   "id": "table_0",
+   "class": "table",
+   "color": null,
+   "footprint_rect": [
+    -0.2827096683938839,
+    0.5429931574934694,
+    -2.7351113137532885,
+    0.6,
+    0.375
+   ]
+  },
+  {
+   "id": "person_0",
+   "class": "person",
+   "color": null,
+   "footprint_circle": [
+    -0.9565550684928894,
+    -1.1911126375198364,
+    0.25
+   ],
+   "walking": false
+  },
+  {
+   "id": "person_1",
+   "class": "person",
+   "color": null,
+   "footprint_circle": [
+    1.0614861249923706,
+    -0.11047551035881042,
+    0.25
+   ],
+   "walking": false
+  }
+ ],
+ "target": "table_0",
+ "robot_pose_xy_yaw": [
+  0.8104251027107239,
+  -1.0719473361968994,
+  1.7867988348007202
+ ],
+ "robot_fell_or_ended": false,
+ "renderer": "MuJoCo 3.16.0 (Isaac Sim RTX unavailable on the Dell driver)",
+ "camera": {
+  "K": [
+   [
+    554.2562584220408,
+    0.0,
+    320.0
+   ],
+   [
+    0.0,
+    554.2562584220408,
+    240.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "R_wc": [
+   [
+    0.0,
+    0.8,
+    -0.6
+   ],
+   [
+    1.0,
+    -0.0,
+    0.0
+   ],
+   [
+    -0.0,
+    -0.6,
+    -0.8
+   ]
+  ],
+  "C": [
+   3.0,
+   0.0,
+   4.0
+  ],
+  "H_floor_to_image": [
+   [
+    -38.4,
+    110.85125168440815,
+    320.0
+   ],
+   [
+    59.881001347526535,
+    0.0,
+    239.99999999999994
+   ],
+   [
+    -0.12,
+    0.0,
+    1.0
+   ]
+  ]
+ },
+ "frame": "square frame = aeb_level1 world frame (origin at the square center)"
+}

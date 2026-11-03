@@ -104,4 +104,57 @@ pytest -q tests/
 
 ## Results
 
-Plan, not yet built: this section is filled from the job outputs as they arrive.
+Values are mean ± standard error. Rates over scenarios use the binomial standard error; `n` is the number of episodes behind each number.
+
+### Task 1: walking policy
+
+- **Training (job 030):** 3000 PPO iterations from a random initialization, 4096 environments, 53 minutes on the RTX 4000 Ada. Over the last 50 iterations, 0.996 of training episodes reached the 20 s limit. Curve: `results/phase2/walk_train/training_curve.png`.
+- **Evaluation (job 040):** 100 episodes of 20 s, seed 1000, a new random velocity target every 5 s from the training ranges, no pushes. Table: `results/phase2/walk_eval/walk_eval.md`.
+
+| metric | value |
+| :--- | ---: |
+| tracking error, vx (m/s) | 0.060 ± 0.009 |
+| tracking error, vy (m/s) | 0.054 ± 0.002 |
+| tracking error, wz (rad/s) | 0.101 ± 0.006 |
+| mean joint torque magnitude (N m) | 3.56 ± 0.07 |
+| fraction of steps with a joint within 0.01 rad of a hard limit | 0.0094 ± 0.0060 |
+| foot contact fraction, FL / FR / RL / RR | 0.77 / 0.79 / 0.70 / 0.71 (standard errors 0.006 to 0.009) |
+| falls per minute | 0.061 ± 0.043 (2 falls in 32.7 robot-minutes; Poisson standard error) |
+
+- **Transitions:** 97,451 windows of (state, target, state 0.1 s later, state 0.5 s later), 12 state values each, in `transitions_walk_eval.npz` (13 MB, compressed) in job 040's `$DATA_DIR` on the Dell (`~/dell-runner/data/ENGR6010_Go2X_SafeRL/040-walk-eval/`).
+- **Video:** `results/phase2/walk_eval/walk_20s.mp4`, environment 0 for 20 s. Isaac Lab simulated the motion; MuJoCo drew it (next item).
+- **Rendering:** Isaac Sim 5.1's RTX renderer crashes at start on the Dell's driver 595.99.02. NVIDIA's maintainers say 5.1.0 is validated on driver 580.65.06 (`LOG.md` step 7). Physics and training are not affected. Every image and video in this phase is drawn with MuJoCo 3.16.0 using Unitree's Go2 model, posed at states recorded in Isaac Lab.
+
+### Task 2: atrium scene
+
+The square and building check results are above (`results/phase2/square_check.json`). The 200 evaluation scenarios have chair targets 110, table 24 and person 66. They contain 340 chairs, 94 tables and 207 people, of whom 50 walk. Both collision checks are logged for every episode; their disagreement rate is in the Task 4 table.
+
+### Task 3: camera and drawn image
+
+- **Coverage:** `results/phase2/camera_coverage.json`.
+- **Rendered scenes (job 045):** 60 scenes (seed 5000), each with the camera image, ground truth (classes, colors, footprints, robot pose, K, R, C, floor homography) and the drawn top-down image of the true state. All 60 are in job 045's `$DATA_DIR`. Four examples and a contact sheet are in `results/phase2/scenes/`.
+- **Renderer:** the images come from MuJoCo, not Isaac Sim (Task 1, "Rendering"). The MuJoCo camera reproduces the configured pinhole model: `tests/test_mj_scene.py` checks that it projects world and floor points to the same pixels as `Camera.project` and the homography, within 1e-6 pixel.
+
+### Task 4: navigation (200 shared scenarios)
+
+| metric | straight to target | A* with pure pursuit | learned policy, attempt 1 |
+| :--- | ---: | ---: | ---: |
+| success rate | 0.580 ± 0.035 (n = 200) | 0.695 ± 0.033 (n = 200) | 0.125 ± 0.023 (n = 200) |
+| collision rate (either check) | 0.410 ± 0.035 (n = 200) | 0.290 ± 0.032 (n = 200) | 0.240 ± 0.030 (n = 200) |
+| collision, footprint check | 0.380 ± 0.034 (n = 200) | 0.255 ± 0.031 (n = 200) | 0.195 ± 0.028 (n = 200) |
+| collision, contact-force check | 0.065 ± 0.017 (n = 200) | 0.055 ± 0.016 (n = 200) | 0.065 ± 0.017 (n = 200) |
+| episodes where the two checks disagree | 0.375 ± 0.034 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.220 ± 0.029 (n = 200) |
+| fall rate | 0.010 ± 0.007 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) |
+| left the square | 0.000 ± 0.000 (n = 200) | 0.015 ± 0.009 (n = 200) | 0.365 ± 0.034 (n = 200) |
+| reached the 20 s limit | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.270 ± 0.031 (n = 200) |
+| minimum distance to a person (m), episodes with people | 0.443 ± 0.041 (n = 137) | 0.438 ± 0.041 (n = 137) | 0.641 ± 0.044 (n = 137) |
+| time to goal (s), successful episodes | 3.184 ± 0.074 (n = 116) | 3.959 ± 0.090 (n = 139) | 5.144 ± 0.436 (n = 25) |
+
+- **Attempt 1:** the learned policy (job 050 attempt 1) did worse than both baselines. Leaving the square ended an episode with no penalty, and the policy learned to walk out (`LOG.md` step 8).
+- **Attempt 2:** job 050 is retraining with a leaving-the-square penalty and critic-only target information. Plan, not yet built: its evaluation and the videos.
+- **A* planner:** 0 of 281 A* plans failed.
+- **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 5 times as often as the contact-force check. A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
+
+### Task 5 and Task 6
+
+Plan, not yet built: jobs 070 (grounding) and 080 (MuJoCo check) run after the navigation jobs.
