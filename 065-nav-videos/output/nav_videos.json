@@ -1,0 +1,62 @@
+[
+ {
+  "controller": "policy",
+  "label": "success",
+  "scenario": 1,
+  "frames": 61,
+  "ended_by": [
+   "success"
+  ],
+  "file": "nav_policy_success_scenario001.npz"
+ },
+ {
+  "controller": "policy",
+  "label": "failure",
+  "scenario": 0,
+  "frames": 200,
+  "ended_by": [
+   "time_out"
+  ],
+  "file": "nav_policy_failure_scenario000.npz"
+ },
+ {
+  "controller": "straight",
+  "label": "success",
+  "scenario": 0,
+  "frames": 32,
+  "ended_by": [
+   "success"
+  ],
+  "file": "nav_straight_success_scenario000.npz"
+ },
+ {
+  "controller": "straight",
+  "label": "failure",
+  "scenario": 4,
+  "frames": 10,
+  "ended_by": [
+   "collision_force"
+  ],
+  "file": "nav_straight_failure_scenario004.npz"
+ },
+ {
+  "controller": "astar",
+  "label": "success",
+  "scenario": 0,
+  "frames": 43,
+  "ended_by": [
+   "success"
+  ],
+  "file": "nav_astar_success_scenario000.npz"
+ },
+ {
+  "controller": "astar",
+  "label": "failure",
+  "scenario": 4,
+  "frames": 13,
+  "ended_by": [
+   "collision_force"
+  ],
+  "file": "nav_astar_failure_scenario004.npz"
+ }
+]
