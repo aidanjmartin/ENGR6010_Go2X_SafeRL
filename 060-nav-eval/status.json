@@ -1,19 +1,7 @@
 {
   "job": "060-nav-eval",
-  "attempt": 1,
-  "repo": "ENGR6010_Go2X_SafeRL",
-  "ref": "phase2-rl-sim",
-  "description": "Navigation policy evaluation on the 200 fixed scenarios",
-  "gpu": true,
-  "ros": false,
-  "robot": false,
-  "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
-  "status": "succeeded",
-  "reason": "",
-  "exit_code": 0,
-  "started": "2026-11-02T22:11:19-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/log-attempt1.txt",
-  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/060-nav-eval/output-attempt1",
-  "kept_on_dell": [],
-  "finished": "2026-11-02T22:12:31-06:00"
+  "attempt": 2,
+  "status": "skipped",
+  "reason": "dependency did not succeed: 050-nav-train",
+  "finished": "2026-11-02T22:20:37-06:00"
 }
