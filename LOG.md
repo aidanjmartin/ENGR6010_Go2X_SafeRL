@@ -273,6 +273,7 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | training attempt 3, job 050 | same (commit `8cf707b`) | **succeeded**, 22:29 to 03:44 (5.25 h). Training success stayed at 0.15 to 0.20 from iteration 100 to 1500; the 20 s limit ended 0.50 to 0.62 of episodes; leaving the square stayed at 0.005 to 0.015. Curve: `results/phase2/nav_train_attempt3/nav_training_curve.png` |
 | evaluation attempt 3, job 060 | `bash jobs/060_nav_eval.sh` (commit `a671952`) | **succeeded** in 97 s: success 0.170 ± 0.027, collision 0.310 ± 0.033, out of the square 0.005, 20 s limit 0.510 ± 0.035 (n = 200). Below both baselines (0.580 and 0.695). Table in `docs/PHASE2_SIM.md` |
 | videos attempt 2, job 065 | `bash jobs/065_nav_videos.sh` | **failed** after 18 s: `RuntimeError: Inplace update to inference tensor outside InferenceMode` in `env.reset()` between rollouts. The first rollout ran inside `torch.inference_mode()`, so the state tensors it made could not be written outside it. Fix (`09edccd`): the reset loop runs inside inference mode too. Re-queued as attempt 3 |
+| videos attempt 3, job 065 | same (commit `09edccd`) | **succeeded** in 66 s: six videos, one success and one failure per controller (`results/phase2/nav_videos/`, 1.1 MB). Checked by eye: in the policy failure (scenario 0) the robot turns in place near its start for 20 s |
 
 ## Step 9: language target and MuJoCo check (2026-11-03)
 
