@@ -1,0 +1,114 @@
+# last 113 of 113 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/080-mujoco-check/log-attempt2.txt
+# job 080-mujoco-check attempt 2 commit a671952f4d7dbea44d8d69e6a2d8f93f52ff752c started 2026-11-03T03:47:17-06:00
+unitree_mujoco at 1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d, mujoco 3.16.0
+[mujoco] episode 0: ok after 20.0 s, err vx 0.108 vy 0.096 wz 0.157
+[mujoco] episode 1: ok after 20.0 s, err vx 0.150 vy 0.121 wz 0.128
+[mujoco] episode 2: ok after 20.0 s, err vx 0.143 vy 0.075 wz 0.179
+[mujoco] episode 3: ok after 20.0 s, err vx 0.084 vy 0.095 wz 0.181
+[mujoco] episode 4: ok after 20.0 s, err vx 0.144 vy 0.071 wz 0.145
+[mujoco] episode 5: ok after 20.0 s, err vx 0.116 vy 0.076 wz 0.271
+[mujoco] episode 6: ok after 20.0 s, err vx 0.103 vy 0.141 wz 0.242
+[mujoco] episode 7: ok after 20.0 s, err vx 0.065 vy 0.084 wz 0.238
+[mujoco] episode 8: ok after 20.0 s, err vx 0.115 vy 0.110 wz 0.242
+[mujoco] episode 9: ok after 20.0 s, err vx 0.115 vy 0.138 wz 0.145
+[mujoco] episode 10: ok after 20.0 s, err vx 0.062 vy 0.111 wz 0.210
+[mujoco] episode 11: ok after 20.0 s, err vx 0.194 vy 0.104 wz 0.276
+[mujoco] episode 12: ok after 20.0 s, err vx 0.087 vy 0.108 wz 0.193
+[mujoco] episode 13: ok after 20.0 s, err vx 0.155 vy 0.087 wz 0.180
+[mujoco] episode 14: ok after 20.0 s, err vx 0.104 vy 0.063 wz 0.174
+[mujoco] episode 15: ok after 20.0 s, err vx 0.134 vy 0.110 wz 0.184
+[mujoco] episode 16: ok after 20.0 s, err vx 0.130 vy 0.066 wz 0.199
+[mujoco] episode 17: ok after 20.0 s, err vx 0.101 vy 0.049 wz 0.284
+[mujoco] episode 18: ok after 20.0 s, err vx 0.099 vy 0.094 wz 0.198
+[mujoco] episode 19: ok after 20.0 s, err vx 0.108 vy 0.096 wz 0.208
+[mujoco] episode 20: ok after 20.0 s, err vx 0.182 vy 0.066 wz 0.127
+[mujoco] episode 21: ok after 20.0 s, err vx 0.134 vy 0.094 wz 0.202
+[mujoco] episode 22: ok after 20.0 s, err vx 0.128 vy 0.110 wz 0.109
+[mujoco] episode 23: ok after 20.0 s, err vx 0.143 vy 0.049 wz 0.171
+[mujoco] episode 24: ok after 20.0 s, err vx 0.124 vy 0.084 wz 0.195
+[mujoco] episode 25: ok after 20.0 s, err vx 0.082 vy 0.121 wz 0.140
+[mujoco] episode 26: ok after 20.0 s, err vx 0.116 vy 0.074 wz 0.163
+[mujoco] episode 27: ok after 20.0 s, err vx 0.146 vy 0.079 wz 0.123
+[mujoco] episode 28: ok after 20.0 s, err vx 0.104 vy 0.136 wz 0.181
+[mujoco] episode 29: ok after 20.0 s, err vx 0.175 vy 0.078 wz 0.195
+[mujoco] episode 30: ok after 20.0 s, err vx 0.170 vy 0.142 wz 0.129
+[mujoco] episode 31: ok after 20.0 s, err vx 0.116 vy 0.060 wz 0.197
+[mujoco] episode 32: ok after 20.0 s, err vx 0.143 vy 0.072 wz 0.141
+[mujoco] episode 33: ok after 20.0 s, err vx 0.150 vy 0.045 wz 0.258
+[mujoco] episode 34: ok after 20.0 s, err vx 0.139 vy 0.119 wz 0.170
+[mujoco] episode 35: ok after 20.0 s, err vx 0.136 vy 0.062 wz 0.238
+[mujoco] episode 36: ok after 20.0 s, err vx 0.126 vy 0.092 wz 0.209
+[mujoco] episode 37: ok after 20.0 s, err vx 0.129 vy 0.097 wz 0.238
+[mujoco] episode 38: ok after 20.0 s, err vx 0.133 vy 0.055 wz 0.229
+[mujoco] episode 39: ok after 20.0 s, err vx 0.100 vy 0.078 wz 0.279
+[mujoco] episode 40: ok after 20.0 s, err vx 0.132 vy 0.081 wz 0.205
+[mujoco] episode 41: ok after 20.0 s, err vx 0.079 vy 0.079 wz 0.152
+[mujoco] episode 42: ok after 20.0 s, err vx 0.132 vy 0.086 wz 0.180
+[mujoco] episode 43: ok after 20.0 s, err vx 0.107 vy 0.083 wz 0.242
+[mujoco] episode 44: ok after 20.0 s, err vx 0.169 vy 0.080 wz 0.134
+[mujoco] episode 45: ok after 20.0 s, err vx 0.108 vy 0.080 wz 0.168
+[mujoco] episode 46: ok after 20.0 s, err vx 0.087 vy 0.040 wz 0.336
+[mujoco] episode 47: ok after 20.0 s, err vx 0.155 vy 0.087 wz 0.154
+[mujoco] episode 48: ok after 20.0 s, err vx 0.114 vy 0.082 wz 0.181
+[mujoco] episode 49: ok after 20.0 s, err vx 0.121 vy 0.092 wz 0.089
+[mujoco] episode 50: ok after 20.0 s, err vx 0.159 vy 0.119 wz 0.115
+[mujoco] episode 51: ok after 20.0 s, err vx 0.090 vy 0.113 wz 0.246
+[mujoco] episode 52: ok after 20.0 s, err vx 0.239 vy 0.096 wz 0.255
+[mujoco] episode 53: ok after 20.0 s, err vx 0.133 vy 0.041 wz 0.166
+[mujoco] episode 54: ok after 20.0 s, err vx 0.144 vy 0.116 wz 0.169
+[mujoco] episode 55: ok after 20.0 s, err vx 0.128 vy 0.065 wz 0.180
+[mujoco] episode 56: ok after 20.0 s, err vx 0.071 vy 0.109 wz 0.198
+[mujoco] episode 57: ok after 20.0 s, err vx 0.097 vy 0.078 wz 0.252
+[mujoco] episode 58: ok after 20.0 s, err vx 0.096 vy 0.125 wz 0.191
+[mujoco] episode 59: ok after 20.0 s, err vx 0.057 vy 0.045 wz 0.302
+[mujoco] episode 60: ok after 20.0 s, err vx 0.069 vy 0.101 wz 0.279
+[mujoco] episode 61: ok after 20.0 s, err vx 0.215 vy 0.120 wz 0.144
+[mujoco] episode 62: ok after 20.0 s, err vx 0.090 vy 0.105 wz 0.148
+[mujoco] episode 63: ok after 20.0 s, err vx 0.151 vy 0.074 wz 0.266
+[mujoco] episode 64: ok after 20.0 s, err vx 0.118 vy 0.098 wz 0.221
+[mujoco] episode 65: ok after 20.0 s, err vx 0.077 vy 0.134 wz 0.219
+[mujoco] episode 66: ok after 20.0 s, err vx 0.165 vy 0.052 wz 0.169
+[mujoco] episode 67: ok after 20.0 s, err vx 0.161 vy 0.067 wz 0.169
+[mujoco] episode 68: ok after 20.0 s, err vx 0.130 vy 0.076 wz 0.233
+[mujoco] episode 69: ok after 20.0 s, err vx 0.111 vy 0.096 wz 0.193
+[mujoco] episode 70: ok after 20.0 s, err vx 0.112 vy 0.112 wz 0.138
+[mujoco] episode 71: ok after 20.0 s, err vx 0.090 vy 0.093 wz 0.216
+[mujoco] episode 72: ok after 20.0 s, err vx 0.065 vy 0.067 wz 0.266
+[mujoco] episode 73: ok after 20.0 s, err vx 0.135 vy 0.095 wz 0.177
+[mujoco] episode 74: ok after 20.0 s, err vx 0.099 vy 0.089 wz 0.221
+[mujoco] episode 75: ok after 20.0 s, err vx 0.136 vy 0.057 wz 0.212
+[mujoco] episode 76: ok after 20.0 s, err vx 0.150 vy 0.076 wz 0.150
+[mujoco] episode 77: ok after 20.0 s, err vx 0.070 vy 0.107 wz 0.180
+[mujoco] episode 78: ok after 20.0 s, err vx 0.107 vy 0.141 wz 0.171
+[mujoco] episode 79: ok after 20.0 s, err vx 0.157 vy 0.073 wz 0.144
+[mujoco] episode 80: ok after 20.0 s, err vx 0.160 vy 0.104 wz 0.082
+[mujoco] episode 81: ok after 20.0 s, err vx 0.184 vy 0.021 wz 0.221
+[mujoco] episode 82: ok after 20.0 s, err vx 0.112 vy 0.078 wz 0.238
+[mujoco] episode 83: ok after 20.0 s, err vx 0.133 vy 0.088 wz 0.219
+[mujoco] episode 84: ok after 20.0 s, err vx 0.148 vy 0.095 wz 0.176
+[mujoco] episode 85: ok after 20.0 s, err vx 0.111 vy 0.120 wz 0.273
+[mujoco] episode 86: ok after 20.0 s, err vx 0.122 vy 0.108 wz 0.179
+[mujoco] episode 87: ok after 20.0 s, err vx 0.095 vy 0.071 wz 0.205
+[mujoco] episode 88: ok after 20.0 s, err vx 0.187 vy 0.056 wz 0.198
+[mujoco] episode 89: ok after 20.0 s, err vx 0.136 vy 0.085 wz 0.106
+[mujoco] episode 90: ok after 20.0 s, err vx 0.087 vy 0.084 wz 0.222
+[mujoco] episode 91: ok after 20.0 s, err vx 0.130 vy 0.098 wz 0.149
+[mujoco] episode 92: ok after 20.0 s, err vx 0.171 vy 0.058 wz 0.136
+[mujoco] episode 93: ok after 20.0 s, err vx 0.105 vy 0.126 wz 0.179
+[mujoco] episode 94: ok after 20.0 s, err vx 0.084 vy 0.072 wz 0.243
+[mujoco] episode 95: ok after 20.0 s, err vx 0.161 vy 0.031 wz 0.165
+[mujoco] episode 96: ok after 20.0 s, err vx 0.120 vy 0.122 wz 0.177
+[mujoco] episode 97: ok after 20.0 s, err vx 0.117 vy 0.078 wz 0.238
+[mujoco] episode 98: ok after 20.0 s, err vx 0.121 vy 0.085 wz 0.281
+[mujoco] episode 99: ok after 20.0 s, err vx 0.178 vy 0.112 wz 0.168
+Walking policy, Isaac Lab vs. MuJoCo 3.16.0 (unitree_mujoco Go2), same 100 episodes and velocity targets. Mean and standard error over episodes; falls per minute with a Poisson standard error.
+
+| metric | Isaac Lab | MuJoCo |
+| :--- | ---: | ---: |
+| velocity tracking error, vx (m/s) | 0.0600 ± 0.0085 | 0.1248 ± 0.0034 |
+| velocity tracking error, vy (m/s) | 0.0539 ± 0.0020 | 0.0883 ± 0.0026 |
+| velocity tracking error, wz (rad/s) | 0.1009 ± 0.0061 | 0.1941 ± 0.0050 |
+| mean joint torque magnitude (N m) | 3.5586 ± 0.0724 | 2.9886 ± 0.0162 |
+| falls per minute | 0.0612 ± 0.0433 | 0.0000 ± 0.0300 |
+| falls | 2 | 0 |
+[2026-11-03T03:48:34-06:00] done
