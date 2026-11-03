@@ -8,4 +8,4 @@ ros = false
 robot = false
 code_paths = []
 depends_on = ["060-nav-eval", "048-nav-baselines"]
-attempt = 2
+attempt = 3
