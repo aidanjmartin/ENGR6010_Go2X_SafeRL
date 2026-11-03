@@ -8,4 +8,4 @@ ros = false
 robot = false
 code_paths = []
 depends_on = ["030-walk-full", "025-nav-smoke"]
-attempt = 1
+attempt = 2

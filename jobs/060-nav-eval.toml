@@ -8,4 +8,4 @@ ros = false
 robot = false
 code_paths = []
 depends_on = ["050-nav-train"]
-attempt = 1
+attempt = 2
