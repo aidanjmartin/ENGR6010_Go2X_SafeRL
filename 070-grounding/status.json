@@ -1,7 +1,14 @@
 {
   "job": "070-grounding",
-  "attempt": 1,
-  "status": "skipped",
-  "reason": "dependency did not succeed: 045-render-scenes",
-  "finished": "2026-11-02T22:12:52-06:00"
+  "attempt": 2,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Task 5: OWLv2 text grounding on the rendered scenes, floor projection, target and obstacle mask comparison",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "a671952f4d7dbea44d8d69e6a2d8f93f52ff752c",
+  "status": "running",
+  "started": "2026-11-03T03:46:42-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/070-grounding/log-attempt2.txt"
 }
