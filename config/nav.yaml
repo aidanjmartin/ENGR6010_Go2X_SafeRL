@@ -25,6 +25,7 @@ reward:                       # per navigation step; every term is logged separa
   collision: -10.0
   person_near: -0.2           # each step the robot footprint is within person_near_distance of a person
   fall: -10.0
+  out_of_square: -10.0         # added for job 050 attempt 2: without it, leaving the square was the cheapest episode end
   time: -0.02
   smoothness: -0.05           # times the squared change of the normalized action
 
@@ -42,7 +43,7 @@ training:
   max_checkpoint_minutes: 30
   short_job_minutes: 15
   learning_rate: 3.0e-4
-  entropy_coef: 0.005
+  entropy_coef: 0.01          # attempt 1 used 0.005; action noise fell to 0.07 by iteration 600
   num_learning_epochs: 5
   num_mini_batches: 4
   gamma: 0.99

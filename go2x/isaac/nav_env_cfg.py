@@ -37,7 +37,7 @@ from isaaclab_tasks.manager_based.navigation.mdp import PreTrainedPolicyAction, 
 from unitree_rl_lab.tasks.locomotion import mdp as ul_mdp
 
 from go2x.atrium.camera import Camera
-from go2x.atrium.rewards import TERMS, reward_terms, scale_action
+from go2x.atrium.rewards import TERMS, front_point, reward_terms, scale_action
 from go2x.atrium.state import AtriumBatch, object_parts
 from go2x.atrium.topdown import CameraFeed
 from go2x.config import CONFIG_DIR, load_config
@@ -166,7 +166,7 @@ class AtriumRuntime:
         m["collision"] = m["collision_footprint"] | m["collision_force"]
         m["success"] = m["at_target"] & ~m["collision"]
         self.terms = reward_terms(self.prev_dist, m["target_distance"], m["success"], m["collision"], m["person_gap"],
-                                  m["fall"], self.action_n, self.prev_action_n, NAV["reward"],
+                                  m["fall"], m["out_of_square"], self.action_n, self.prev_action_n, NAV["reward"],
                                   ATRIUM["collision"]["person_near_distance"])
         self.prev_dist = m["target_distance"].clone()
         self.ep_min_person_gap = torch.minimum(self.ep_min_person_gap, m["person_gap"])
@@ -196,6 +196,22 @@ def obs_image(env):
 
 def obs_prev_action(env):
     return get_runtime(env).action_n
+
+
+def obs_critic_state(env):
+    """Critic-only training aid (the policy never sees it): front-to-target vector in the robot frame, distance
+    to the target footprint, planar base velocity and yaw rate in the robot frame."""
+    rt = get_runtime(env)
+    pose = rt.robot_pose()
+    b = rt.batch
+    center = torch.where(b.target_is_circle[:, None], b.target_circle[:, :2], b.target_rect[:, :2])
+    front = front_point(pose, ATRIUM["robot"]["front_offset"])
+    d = center - front
+    c, s = torch.cos(pose[:, 2]), torch.sin(pose[:, 2])
+    rel = torch.stack([c * d[:, 0] + s * d[:, 1], -s * d[:, 0] + c * d[:, 1]], -1)
+    v = rt.robot.data.root_lin_vel_b[:, :2]
+    w = rt.robot.data.root_ang_vel_b[:, 2:3]
+    return torch.cat([rel, b.target_distance(pose)[:, None], v, w], -1)
 
 
 def _done(name):
@@ -316,7 +332,19 @@ class ObservationsCfg:
             self.enable_corruption = False
             self.concatenate_terms = True
 
+    @configclass
+    class CriticCfg(ObsGroup):
+        """Policy input first (the CNN reads the image at the front), then the critic-only state."""
+        image = ObsTerm(func=obs_image)
+        prev_action = ObsTerm(func=obs_prev_action)
+        state = ObsTerm(func=obs_critic_state)
+
+        def __post_init__(self):
+            self.enable_corruption = False
+            self.concatenate_terms = True
+
     policy: PolicyCfg = PolicyCfg()
+    critic: CriticCfg = CriticCfg()
 
 
 @configclass
@@ -348,6 +376,7 @@ class RewardsCfg:
     collision = RewTerm(func=_reward("collision"), weight=1.0 / NAV_STEP_DT)
     person_near = RewTerm(func=_reward("person_near"), weight=1.0 / NAV_STEP_DT)
     fall = RewTerm(func=_reward("fall"), weight=1.0 / NAV_STEP_DT)
+    out_of_square = RewTerm(func=_reward("out_of_square"), weight=1.0 / NAV_STEP_DT)
     time = RewTerm(func=_reward("time"), weight=1.0 / NAV_STEP_DT)
     smoothness = RewTerm(func=_reward("smoothness"), weight=1.0 / NAV_STEP_DT)
 
@@ -427,7 +456,7 @@ def nav_agent_dict(agent_cfg_dict):
     p = NAV["policy"]
     agent_cfg_dict["policy"].update(class_name="CNNActorCritic", image_shape=[2 * 4, TD["size"], TD["size"]],
                                     cnn_channels=p["cnn_channels"], cnn_out=p["cnn_out"], mlp=p["mlp"])
-    agent_cfg_dict["obs_groups"] = {"policy": ["policy"], "critic": ["policy"]}
+    agent_cfg_dict["obs_groups"] = {"policy": ["policy"], "critic": ["critic"]}
     return agent_cfg_dict
 
 

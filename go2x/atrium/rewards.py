@@ -6,15 +6,18 @@ Each term is returned separately so the environment can log it; the reward is th
 - collision: weight on a collision step (footprint overlap or contact force)
 - person_near: weight on each step the footprint is within `person_near_distance` of a person
 - fall: weight on a fall step
+- out_of_square: weight on the step the robot center leaves the square (attempt 1 had no penalty, and the
+  policy learned to end episodes by leaving)
 - time: weight every step
 - smoothness: weight x squared change of the normalized action
 """
 import torch
 
-TERMS = ("progress", "success", "collision", "person_near", "fall", "time", "smoothness")
+TERMS = ("progress", "success", "collision", "person_near", "fall", "out_of_square", "time", "smoothness")
 
 
-def reward_terms(prev_dist, dist, success, collision, person_gap, fall, action, prev_action, w, person_near_distance):
+def reward_terms(prev_dist, dist, success, collision, person_gap, fall, out_of_square, action, prev_action, w,
+                 person_near_distance):
     f = lambda b: b.float()  # noqa: E731
     return {
         "progress": w["progress"] * (prev_dist - dist),
@@ -22,6 +25,7 @@ def reward_terms(prev_dist, dist, success, collision, person_gap, fall, action, 
         "collision": w["collision"] * f(collision),
         "person_near": w["person_near"] * f(person_gap < person_near_distance),
         "fall": w["fall"] * f(fall),
+        "out_of_square": w["out_of_square"] * f(out_of_square),
         "time": torch.full_like(dist, w["time"]),
         "smoothness": w["smoothness"] * ((action - prev_action) ** 2).sum(-1),
     }

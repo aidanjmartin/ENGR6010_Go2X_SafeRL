@@ -1,0 +1,10 @@
+{
+ "job": "048-nav-baselines",
+ "attempt": 1,
+ "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
+ "status": "succeeded",
+ "started": "2026-11-02T16:36:02-06:00",
+ "finished": "2026-11-02T16:37:07-06:00",
+ "exit_code": 0,
+ "kept_on_dell": []
+}

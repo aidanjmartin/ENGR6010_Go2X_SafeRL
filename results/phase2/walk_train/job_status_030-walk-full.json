@@ -1,0 +1,10 @@
+{
+ "job": "030-walk-full",
+ "attempt": 2,
+ "commit": "2ebef54ae059059a2e45233534b6d28d4952fae4",
+ "status": "succeeded",
+ "started": "2026-11-02T15:42:33-06:00",
+ "finished": "2026-11-02T16:35:32-06:00",
+ "exit_code": 0,
+ "kept_on_dell": []
+}

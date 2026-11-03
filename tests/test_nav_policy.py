@@ -33,3 +33,17 @@ def test_actor_critic_interface():
     ac2 = CNNActorCritic(obs, {"policy": ["policy"], "critic": ["policy"]}, 3)
     ac2.load_state_dict(sd)
     assert torch.allclose(ac2.act_inference(obs), ac.act_inference(obs))
+
+
+def test_critic_reads_its_own_group():
+    """Job 050 attempt 2: the critic gets the policy input plus 6 critic-only values; the actor ignores them."""
+    B = 4
+    pol = torch.rand(B, 8 * 64 * 64 + 3)
+    crit = torch.cat([pol, torch.rand(B, 6)], -1)
+    obs = TensorDict({"policy": pol, "critic": crit}, batch_size=[B])
+    ac = CNNActorCritic(obs, {"policy": ["policy"], "critic": ["critic"]}, 3)
+    assert ac.evaluate(obs).shape == (B, 1)
+    obs2 = obs.clone()
+    obs2["critic"][:, -1] += 1.0
+    assert torch.allclose(ac.act_inference(obs2), ac.act_inference(obs))
+    assert not torch.allclose(ac.evaluate(obs2), ac.evaluate(obs))

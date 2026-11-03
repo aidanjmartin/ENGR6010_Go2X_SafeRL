@@ -17,6 +17,7 @@ def _terms(**kw):
     base = dict(prev_dist=torch.tensor([1.0, 1.0, 1.0]), dist=torch.tensor([0.9, 1.0, 1.1]),
                 success=torch.tensor([False, True, False]), collision=torch.tensor([False, False, True]),
                 person_gap=torch.tensor([1.0, 0.3, 0.6]), fall=torch.tensor([False, False, True]),
+                out_of_square=torch.tensor([True, False, False]),
                 action=torch.zeros(B, 3), prev_action=torch.tensor([[0.0, 0, 0], [1.0, 0, 0], [1.0, 1.0, 0]]))
     base.update(kw)
     return reward_terms(**base, w=W, person_near_distance=0.5)
@@ -30,6 +31,7 @@ def test_each_term():
     assert t["collision"].tolist() == [0.0, 0.0, W["collision"]]
     assert torch.allclose(t["person_near"], torch.tensor([0.0, W["person_near"], 0.0]))
     assert t["fall"].tolist() == [0.0, 0.0, W["fall"]]
+    assert t["out_of_square"].tolist() == [W["out_of_square"], 0.0, 0.0]
     assert torch.allclose(t["time"], torch.full((3,), W["time"]))
     assert torch.allclose(t["smoothness"], W["smoothness"] * torch.tensor([0.0, 1.0, 2.0]))
     assert torch.allclose(total(t), sum(t[k] for k in TERMS))
@@ -37,7 +39,7 @@ def test_each_term():
 
 def test_signs():
     assert W["progress"] > 0 and W["success"] > 0
-    for k in ("collision", "person_near", "fall", "time", "smoothness"):
+    for k in ("collision", "person_near", "fall", "out_of_square", "time", "smoothness"):
         assert W[k] < 0, k
 
 
