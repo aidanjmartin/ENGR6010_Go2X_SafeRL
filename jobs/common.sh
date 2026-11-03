@@ -36,3 +36,21 @@ activate_venv() {
 }
 
 stamp() { echo "[$(date -Is)] $*"; }
+
+# MuJoCo and Unitree's Go2 model (config/mujoco.yaml). Used by job 080 (Task 6) and, because Isaac Sim 5.1's RTX
+# renderer crashes on the Dell's 595 driver (LOG.md, job 041), for every rendered image and video (MuJoCo draws
+# through the X display the runner passes in DISPLAY).
+setup_mujoco() {
+    python -m pip install -q "mujoco==$(python -c "from go2x.config import load_config; print(load_config('mujoco')['mujoco_version'])")"
+    export MJ_DIR="$SRC_DIR/unitree_mujoco"
+    local commit
+    commit=$(python -c "from go2x.config import load_config; print(load_config('mujoco')['model']['commit'])")
+    if [ ! -d "$MJ_DIR/.git" ]; then
+        git clone -q --filter=blob:none --no-checkout https://github.com/unitreerobotics/unitree_mujoco.git "$MJ_DIR"
+        git -C "$MJ_DIR" sparse-checkout set unitree_robots/go2
+    fi
+    git -C "$MJ_DIR" checkout -q --detach "$commit"
+    echo "unitree_mujoco at $(git -C "$MJ_DIR" rev-parse HEAD), mujoco $(python -c 'import mujoco; print(mujoco.__version__)')"
+    export MUJOCO_GL=glfw
+    : "${DISPLAY:?MuJoCo rendering needs the X display}"
+}

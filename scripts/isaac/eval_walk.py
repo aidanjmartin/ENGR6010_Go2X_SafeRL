@@ -20,6 +20,9 @@ parser.add_argument("--out", required=True)
 parser.add_argument("--transitions", required=True)
 parser.add_argument("--video", default=None, help="mp4 path; records environment 0")
 parser.add_argument("--video_fps", type=int, default=25)
+parser.add_argument("--trajectory", default=None,
+                    help="npz path: environment 0 base pose and joint angles every step, for a renderer-free video "
+                         "(scripts/render_walk_video.py); Isaac RTX rendering crashes on the Dell (LOG.md)")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 args.headless = True
@@ -81,6 +84,7 @@ prev_cmd = env.command_manager.get_command("base_velocity").clone()
 new_episode = torch.zeros(B, dtype=torch.bool)
 frames, render_every = [], max(1, int(round(1.0 / (dt * args.video_fps))))
 cmd_log = []   # (steps, B, 3): the exact velocity targets, replayed by the MuJoCo check (Task 6)
+traj = {"root_pos": [], "root_quat_wxyz": [], "joint_pos": [], "command": [], "done": []}  # environment 0
 
 with torch.inference_mode():
     for t in range(steps):
@@ -109,6 +113,12 @@ with torch.inference_mode():
         alive_steps += a.float()
         fell |= alive & terminated & ~truncated
         alive &= ~done
+        if args.trajectory:
+            traj["root_pos"].append((robot.data.root_pos_w[0] - env.scene.env_origins[0]).cpu().numpy())
+            traj["root_quat_wxyz"].append(robot.data.root_quat_w[0].cpu().numpy())
+            traj["joint_pos"].append(robot.data.joint_pos[0].cpu().numpy())
+            traj["command"].append(cmd[0].cpu().numpy())
+            traj["done"].append(bool(done[0]))
         if args.video and t % render_every == 0:
             frames.append(env.render())
 
@@ -160,6 +170,10 @@ with open(os.path.join(args.out, "walk_eval.md"), "w") as f:
     f.write("\n".join(lines) + "\n")
 print("\n".join(lines), flush=True)
 
+if args.trajectory:
+    np.savez_compressed(args.trajectory, **{k: np.stack(v) for k, v in traj.items()}, dt=dt,
+                        joint_names=np.array(robot.data.joint_names), first_episode_fell=bool(fell[0]))
+    print("trajectory", args.trajectory, len(traj["done"]), "steps", flush=True)
 if args.video and frames:
     import imageio
 

@@ -1,6 +1,7 @@
 """Task 6: run the walking policy in MuJoCo on the same velocity targets as the Isaac evaluation (job 040).
 
-Model: unitree_mujoco Go2 (config/mujoco.yaml), torque motors in SDK order. Conventions: docs/LOWLEVEL_INTERFACE.md
+Model: unitree_mujoco go2.xml on a flat floor (go2x/mj_scene.py; Unitree's scene.xml has steps from x = 1.2 m),
+torque motors in SDK order. Conventions: docs/LOWLEVEL_INTERFACE.md
 via go2x/sim2sim.py. PD at every physics step (kp 25, kd 0.5, torque clipped to the model's ctrlrange).
 
     python scripts/mujoco_check.py --model_dir <unitree_mujoco> --policy policy.pt \
@@ -16,6 +17,7 @@ import numpy as np
 import torch
 
 from go2x.config import load_config
+from go2x.mj_scene import go2_spec
 from go2x.sim2sim import JOINT_IDS_MAP, POLICY_JOINTS, SDK_JOINTS, joint_targets, observation, pd_torque, quat_rotate_inverse, tilt
 
 parser = argparse.ArgumentParser()
@@ -27,7 +29,7 @@ parser.add_argument("--out", required=True)
 args = parser.parse_args()
 
 MJ, WALK = load_config("mujoco"), load_config("walk")
-model = mujoco.MjModel.from_xml_path(os.path.join(args.model_dir, MJ["model"]["scene"]))
+model = go2_spec(args.model_dir).compile()
 model.opt.timestep = MJ["timestep"]
 data = mujoco.MjData(model)
 policy = torch.jit.load(args.policy, map_location="cpu").eval()

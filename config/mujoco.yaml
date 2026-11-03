@@ -3,7 +3,8 @@
 model:
   repo: https://github.com/unitreerobotics/unitree_mujoco.git
   commit: 1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d     # main, 2026-09-07, BSD-3-Clause
-  scene: unitree_robots/go2/scene.xml                   # includes go2.xml: torque motors in SDK order
+  robot: unitree_robots/go2/go2.xml                     # torque motors in SDK order; go2x/mj_scene.py adds a flat floor
+                                                        # (scene.xml is not used: it has steps and boxes from x = 1.2 m)
 mujoco_version: "3.16.0"
 timestep: 0.005                 # s; scene.xml sets none (MuJoCo default 0.002); 0.005 matches config/walk.yaml sim_dt
 pd_substeps: 4                  # physics steps per policy step (50 Hz policy)

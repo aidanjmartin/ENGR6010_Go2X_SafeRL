@@ -1,11 +1,12 @@
-"""Rollout videos from the rendered camera: one success and one failure per controller (Task 4).
+"""Rollouts for the navigation videos: one success and one failure per controller (Task 4).
 
-Reads the evaluation results (nav_eval_<controller>.json), replays the chosen scenarios in the rendered
-variant of the environment (building boxes and the fixed camera), and writes mp4 files at the navigation rate.
-Each frame shows the camera image with the drawn top-down input (current frame, enlarged) beside it.
+Reads the evaluation results (nav_eval_<controller>.json) and replays the chosen scenarios. Isaac Sim 5.1's RTX
+renderer crashes on the Dell's driver (LOG.md, job 041), so this script runs without a camera and saves, for
+every navigation step, the robot base pose and joint angles, every obstacle part pose, and the drawn top-down
+input. scripts/render_nav_videos.py draws the frames from the fixed camera with MuJoCo.
 
     python scripts/isaac/record_nav_videos.py --walk_policy policy.pt --checkpoint model_final.pt \
-        --evals DIR_WITH_JSONS --out DIR
+        --evals nav_eval_*.json --out DIR
 """
 import argparse
 import json
@@ -21,11 +22,9 @@ parser.add_argument("--out", required=True)
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 args.headless = True
-args.enable_cameras = True
 os.environ["GO2X_WALK_POLICY"] = os.path.abspath(args.walk_policy)
 app = AppLauncher(args).app
 
-import imageio  # noqa: E402
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from isaaclab.envs import ManagerBasedRLEnv  # noqa: E402
@@ -34,7 +33,7 @@ from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper  # noqa: E402
 from go2x.atrium.baselines import AStarController, StraightController  # noqa: E402
 from go2x.atrium.rewards import normalize_action  # noqa: E402
 from go2x.config import CONFIG_DIR  # noqa: E402
-from go2x.isaac.nav_env_cfg import NAV, TD, AtriumNavEnvCfg, add_render_parts, get_runtime, nav_agent_dict  # noqa: E402
+from go2x.isaac.nav_env_cfg import NAV, TD, AtriumNavEnvCfg, get_runtime, nav_agent_dict  # noqa: E402
 from go2x.isaac.shutdown import finish  # noqa: E402
 
 scenarios = json.load(open(CONFIG_DIR / "nav_eval_scenarios.json"))["scenarios"]
@@ -50,12 +49,11 @@ for path in args.evals:
             jobs.append((ctl, label, sid))
 print("[videos]", jobs, flush=True)
 
-cfg = add_render_parts(AtriumNavEnvCfg())
+cfg = AtriumNavEnvCfg()
 cfg.scene.num_envs = 1
 cfg.go2x_scenarios = [scenarios[s] for _, _, s in jobs]
 env = ManagerBasedRLEnv(cfg=cfg)
 wrapped = RslRlVecEnvWrapper(env, clip_actions=None)
-cam = env.scene["top_camera"]
 S = TD["size"]
 policy = None
 if args.checkpoint:
@@ -83,7 +81,7 @@ for n, (ctl, label, sid) in enumerate(jobs):
     assert int(rt.batch.scenario_id[0]) == n, "scenario order"
     c = {"straight": StraightController, "astar": AStarController}.get(ctl)
     c = c() if c else None
-    frames = []
+    rec = {k: [] for k in ("root_pos", "root_quat_wxyz", "joint_pos", "part_poses", "topdown")}
     with torch.inference_mode():
         for t in range(int(env.max_episode_length)):
             img = obs["policy"][:, : 4 * S * S].reshape(1, 4, S, S)
@@ -94,27 +92,27 @@ for n, (ctl, label, sid) in enumerate(jobs):
             else:
                 act = normalize_action(torch.tensor(c.act(img[0].cpu().numpy()), dtype=torch.float32,
                                                     device=env.device)[None], NAV["action"])
-            rgb = cam.data.output["rgb"][0, ..., :3].cpu().numpy().astype(np.uint8)
-            top = img[0, [0, 1, 2]].clamp(0, 1).permute(1, 2, 0).cpu().numpy()
-            top = top + img[0, 3, :, :, None].cpu().numpy() * np.array([0.0, 0.0, 0.0])
-            top[..., 1] = np.maximum(top[..., 1], img[0, 3].cpu().numpy() * 0.8)   # target in green
-            panel = np.kron((top * 255).astype(np.uint8), np.ones((7, 7, 1), np.uint8))
-            pad = np.full((rgb.shape[0], panel.shape[1], 3), 255, np.uint8)
-            pad[: panel.shape[0]] = panel[: rgb.shape[0]]
-            frames.append(np.concatenate([rgb, pad], 1))
+            robot = rt.robot
+            rec["root_pos"].append((robot.data.root_pos_w[0] - env.scene.env_origins[0]).cpu().numpy())
+            rec["root_quat_wxyz"].append(robot.data.root_quat_w[0].cpu().numpy())
+            rec["joint_pos"].append(robot.data.joint_pos[0].cpu().numpy())
+            rec["part_poses"].append(rt.batch.part_poses()[0].cpu().numpy())
+            rec["topdown"].append(img[0].cpu().numpy().astype(np.float16))
             obs, _, dones, _ = wrapped.step(act)
             if bool(dones[0]):
                 break
     outcome = "success" if bool(env.termination_manager.get_term("success")[0]) else "failure"
     reasons = [k for k in ("success", "collision_footprint", "collision_force", "fall", "out_of_square", "time_out")
                if bool(env.termination_manager.get_term(k)[0])]
-    if outcome != label or not frames:
+    if outcome != label or not rec["topdown"]:
         print(f"[videos] {ctl} scenario {sid}: replay ended in {reasons}, wanted {label}; trying the next", flush=True)
         continue
-    path = os.path.join(args.out, f"nav_{ctl}_{label}_scenario{sid:03d}.mp4")
-    imageio.mimwrite(path, frames, fps=int(NAV["timing"]["nav_hz"]), quality=6)
+    path = os.path.join(args.out, f"nav_{ctl}_{label}_scenario{sid:03d}.npz")
+    np.savez_compressed(path, **{k: np.stack(v) for k, v in rec.items()}, joint_names=np.array(rt.robot.data.joint_names),
+                        controller=ctl, label=label, scenario=sid, ended_by=np.array(reasons),
+                        dt=float(env.step_dt))
     done_labels.add((ctl, label))
-    summary.append({"controller": ctl, "label": label, "scenario": sid, "frames": len(frames), "ended_by": reasons,
+    summary.append({"controller": ctl, "label": label, "scenario": sid, "frames": len(rec["topdown"]), "ended_by": reasons,
                     "file": os.path.basename(path)})
     print("[videos]", summary[-1], flush=True)
 json.dump(summary, open(os.path.join(args.out, "nav_videos.json"), "w"), indent=1)
