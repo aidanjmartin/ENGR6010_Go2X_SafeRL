@@ -1,0 +1,102 @@
+{
+ "abs_err_vx": {
+  "mean": 0.0600249320268631,
+  "se": 0.008543921262025833
+ },
+ "abs_err_vy": {
+  "mean": 0.05389752984046936,
+  "se": 0.0020464923232793807
+ },
+ "abs_err_wz": {
+  "mean": 0.10086056590080261,
+  "se": 0.006124689429998398
+ },
+ "mean_abs_torque_Nm": {
+  "mean": 3.5585665702819824,
+  "se": 0.07238194942474366
+ },
+ "joint_limit_step_fraction": {
+  "mean": 0.009433473460376263,
+  "se": 0.005963354185223579
+ },
+ "contact_fraction_FL_foot": {
+  "mean": 0.7691660523414612,
+  "se": 0.007875855267047881
+ },
+ "contact_fraction_FR_foot": {
+  "mean": 0.7891475558280945,
+  "se": 0.006188102066516876
+ },
+ "contact_fraction_RL_foot": {
+  "mean": 0.697847843170166,
+  "se": 0.008783260732889176
+ },
+ "contact_fraction_RR_foot": {
+  "mean": 0.7139493823051453,
+  "se": 0.007080502808094025
+ },
+ "falls": 2,
+ "episodes": 100,
+ "robot_minutes": 32.660000000000004,
+ "falls_per_minute": {
+  "mean": 0.06123698714023269,
+  "se": 0.04330108886629195,
+  "se_note": "Poisson, sqrt(max(falls, 1)) / minutes"
+ },
+ "policy": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/walk/exported/policy.pt",
+ "seed": 1000,
+ "settings": {
+  "episode_s": 20.0,
+  "command_hold_s": 5.0,
+  "settle_s": 0.5,
+  "joint_limit_margin_rad": 0.01,
+  "contact_force_n": 1.0
+ },
+ "command_range": {
+  "vx": [
+   -0.5,
+   1.0
+  ],
+  "vy": [
+   -0.5,
+   0.5
+  ],
+  "wz": [
+   -1.0,
+   1.0
+  ]
+ },
+ "transitions": {
+  "path": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/040-walk-eval/transitions_walk_eval.npz",
+  "shapes": {
+   "state": [
+    97451,
+    12
+   ],
+   "target": [
+    97451,
+    3
+   ],
+   "target_constant": [
+    97451
+   ],
+   "env": [
+    97451
+   ],
+   "episode": [
+    97451
+   ],
+   "t_s": [
+    97451
+   ],
+   "state_next_0.1s": [
+    97451,
+    12
+   ],
+   "state_next_0.5s": [
+    97451,
+    12
+   ]
+  }
+ }
+}
