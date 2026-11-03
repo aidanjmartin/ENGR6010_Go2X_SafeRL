@@ -9,7 +9,7 @@
    "policy"
   ],
   "critic": [
-   "policy"
+   "critic"
   ]
  },
  "clip_actions": null,
@@ -61,7 +61,7 @@
   "schedule": "adaptive",
   "gamma": 0.99,
   "lam": 0.95,
-  "entropy_coef": 0.005,
+  "entropy_coef": 0.01,
   "desired_kl": 0.01,
   "max_grad_norm": 1.0,
   "value_loss_coef": 1.0,
