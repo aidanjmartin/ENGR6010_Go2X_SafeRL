@@ -334,9 +334,8 @@ class ObservationsCfg:
 
     @configclass
     class CriticCfg(ObsGroup):
-        """Policy input first (the CNN reads the image at the front), then the critic-only state."""
-        image = ObsTerm(func=obs_image)
-        prev_action = ObsTerm(func=obs_prev_action)
+        """Critic-only state. The critic reads the policy group followed by this one (obs_groups in
+        nav_agent_dict), so the image is stored once in the rollout buffer (a copy here ran out of GPU memory)."""
         state = ObsTerm(func=obs_critic_state)
 
         def __post_init__(self):
@@ -456,7 +455,7 @@ def nav_agent_dict(agent_cfg_dict):
     p = NAV["policy"]
     agent_cfg_dict["policy"].update(class_name="CNNActorCritic", image_shape=[2 * 4, TD["size"], TD["size"]],
                                     cnn_channels=p["cnn_channels"], cnn_out=p["cnn_out"], mlp=p["mlp"])
-    agent_cfg_dict["obs_groups"] = {"policy": ["policy"], "critic": ["critic"]}
+    agent_cfg_dict["obs_groups"] = {"policy": ["policy"], "critic": ["policy", "critic"]}
     return agent_cfg_dict
 
 
