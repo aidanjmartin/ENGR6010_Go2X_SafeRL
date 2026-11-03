@@ -1,0 +1,11 @@
+id = "041-render-probe"
+description = "Find a renderer launch setting that does not crash (040, 045, 065 segfaulted at start)"
+ref = "phase2-rl-sim"
+command = "bash jobs/041_render_probe.sh"
+timeout_hours = 1
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["010-isaac-setup"]
+attempt = 1
