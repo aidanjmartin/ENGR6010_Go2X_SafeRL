@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
-  "status": "running",
+  "status": "failed",
+  "reason": "exit code 139",
+  "exit_code": 139,
   "started": "2026-11-02T22:12:37-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/log-attempt1.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/log-attempt1.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/output-attempt1",
+  "kept_on_dell": [],
+  "finished": "2026-11-02T22:12:46-06:00"
 }
