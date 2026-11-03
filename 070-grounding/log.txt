@@ -1,0 +1,137 @@
+# last 136 of 136 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/070-grounding/log-attempt2.txt
+# job 070-grounding attempt 2 commit a671952f4d7dbea44d8d69e6a2d8f93f52ff752c started 2026-11-03T03:46:42-06:00
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+isaaclab 0.54.2 requires starlette==0.49.1, but you have starlette 0.45.3 which is incompatible.
+isaaclab 0.54.2 requires transformers==4.57.6, but you have transformers 4.57.1 which is incompatible.
+transformers 4.57.1 hub 0.36.2
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+/home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-isaac/lib/python3.11/site-packages/transformers/models/owlv2/processing_owlv2.py:201: FutureWarning: `post_process_object_detection` method is deprecated for OwlVitProcessor and will be removed in v5. Use `post_process_grounded_object_detection` instead.
+  warnings.warn(
+[ground] scene 0: 3 prompts, 1 skipped
+[ground] scene 1: 2 prompts, 3 skipped
+[ground] scene 2: 2 prompts, 2 skipped
+[ground] scene 3: 3 prompts, 2 skipped
+[ground] scene 4: 2 prompts, 2 skipped
+[ground] scene 5: 4 prompts, 2 skipped
+[ground] scene 6: 2 prompts, 1 skipped
+[ground] scene 7: 1 prompts, 4 skipped
+[ground] scene 8: 2 prompts, 3 skipped
+[ground] scene 9: 3 prompts, 3 skipped
+[ground] scene 10: 4 prompts, 2 skipped
+[ground] scene 11: 2 prompts, 2 skipped
+[ground] scene 12: 3 prompts, 2 skipped
+[ground] scene 13: 3 prompts, 3 skipped
+[ground] scene 14: 2 prompts, 3 skipped
+[ground] scene 15: 2 prompts, 3 skipped
+[ground] scene 16: 2 prompts, 1 skipped
+[ground] scene 17: 2 prompts, 2 skipped
+[ground] scene 18: 0 prompts, 3 skipped
+[ground] scene 19: 2 prompts, 3 skipped
+[ground] scene 20: 3 prompts, 2 skipped
+[ground] scene 21: 2 prompts, 3 skipped
+[ground] scene 22: 1 prompts, 2 skipped
+[ground] scene 23: 2 prompts, 3 skipped
+[ground] scene 24: 1 prompts, 2 skipped
+[ground] scene 25: 3 prompts, 2 skipped
+[ground] scene 26: 1 prompts, 2 skipped
+[ground] scene 27: 2 prompts, 3 skipped
+[ground] scene 28: 2 prompts, 2 skipped
+[ground] scene 29: 3 prompts, 1 skipped
+[ground] scene 30: 3 prompts, 2 skipped
+[ground] scene 31: 2 prompts, 2 skipped
+[ground] scene 32: 3 prompts, 1 skipped
+[ground] scene 33: 1 prompts, 4 skipped
+[ground] scene 34: 0 prompts, 3 skipped
+[ground] scene 35: 3 prompts, 1 skipped
+[ground] scene 36: 3 prompts, 1 skipped
+[ground] scene 37: 0 prompts, 3 skipped
+[ground] scene 38: 4 prompts, 0 skipped
+[ground] scene 39: 3 prompts, 3 skipped
+[ground] scene 40: 2 prompts, 3 skipped
+[ground] scene 41: 0 prompts, 4 skipped
+[ground] scene 42: 1 prompts, 2 skipped
+[ground] scene 43: 3 prompts, 3 skipped
+[ground] scene 44: 2 prompts, 1 skipped
+[ground] scene 45: 4 prompts, 1 skipped
+[ground] scene 46: 3 prompts, 1 skipped
+[ground] scene 47: 2 prompts, 3 skipped
+[ground] scene 48: 4 prompts, 0 skipped
+[ground] scene 49: 4 prompts, 1 skipped
+[ground] scene 50: 1 prompts, 4 skipped
+[ground] scene 51: 2 prompts, 1 skipped
+[ground] scene 52: 3 prompts, 1 skipped
+[ground] scene 53: 0 prompts, 3 skipped
+[ground] scene 54: 1 prompts, 2 skipped
+[ground] scene 55: 3 prompts, 1 skipped
+[ground] scene 56: 2 prompts, 1 skipped
+[ground] scene 57: 3 prompts, 2 skipped
+[ground] scene 58: 2 prompts, 2 skipped
+[ground] scene 59: 2 prompts, 2 skipped
+{
+ "model": "google/owlv2-base-patch16-ensemble",
+ "revision": "cfd3195ba4ea9592eec887ded089f4c08eff231d",
+ "scenes": 60,
+ "prompts": 132,
+ "correct_fraction": {
+  "mean": 0.6136363636363636,
+  "se": 0.04254201128435693,
+  "n": 132
+ },
+ "detected_fraction": {
+  "mean": 0.6742424242424242,
+  "se": 0.04094677028657697,
+  "n": 132
+ },
+ "floor_error_to_footprint_m": {
+  "mean": 0.19395042140758223,
+  "se": 0.046513545904844814,
+  "n": 89
+ },
+ "floor_error_to_center_m": {
+  "mean": 0.5212625663564263,
+  "se": 0.04718470129123553,
+  "n": 89
+ },
+ "target_mask_iou": {
+  "mean": 0.07353572742047844,
+  "se": 0.013296100577625777,
+  "n": 89
+ },
+ "by_class": {
+  "chair": {
+   "mean": 0.6951219512195121,
+   "se": 0.05115063980535738,
+   "n": 82
+  },
+  "table": {
+   "mean": 0.96,
+   "se": 0.04,
+   "n": 25
+  },
+  "person": {
+   "mean": 0.0,
+   "se": 0.0,
+   "n": 25
+  }
+ },
+ "static_mask_iou": {
+  "mean": 0.11915548087427497,
+  "se": 0.038591769666468136,
+  "n": 60
+ },
+ "people_mask_iou": {
+  "mean": 0.21666666666666667,
+  "se": 0.05363439040648223,
+  "n": 60
+ },
+ "settings": {
+  "score_threshold": 0.1,
+  "correct_distance_m": 0.3,
+  "mask_radius_m": {
+   "chair": 0.3,
+   "table": 0.55,
+   "person": 0.25
+  }
+ }
+}
+[2026-11-03T03:47:12-06:00] done
