@@ -1,0 +1,28 @@
+# last 27 of 27 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/log-attempt1.txt
+# job 041-render-probe attempt 1 commit 3af6a89178c3c95b347f2feb055b6456d04c7496 started 2026-11-02T22:17:02-06:00
+[2026-11-02T22:17:04-06:00] variant a_default
+jobs/041_render_probe.sh: line 8: 2253616 Segmentation fault      env "$@" timeout 600 python scripts/isaac/render_probe.py --out "$RESULTS_DIR/$name" ${kit:+--kit_args "$kit"} > "$DATA_DIR/$name.log" 2>&1
+2026-11-03T04:17:08Z [59ms] [Warning] [carb.crashreporter-breakpad.plugin] [crash]  commandLine = 'python scripts/isaac/render_probe.py --out /home/<username>/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/output-attempt1/a_default'
+variant a_default exit 139
+[2026-11-02T22:17:10-06:00] variant b_nvidia_icd
+jobs/041_render_probe.sh: line 8: 2254048 Segmentation fault      env "$@" timeout 600 python scripts/isaac/render_probe.py --out "$RESULTS_DIR/$name" ${kit:+--kit_args "$kit"} > "$DATA_DIR/$name.log" 2>&1
+2026-11-03T04:17:14Z [59ms] [Warning] [carb.crashreporter-breakpad.plugin] [crash]  commandLine = 'python scripts/isaac/render_probe.py --out /home/<username>/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/output-attempt1/b_nvidia_icd'
+variant b_nvidia_icd exit 139
+[2026-11-02T22:17:15-06:00] variant c_no_display
+jobs/041_render_probe.sh: line 8: 2254465 Segmentation fault      env "$@" timeout 600 python scripts/isaac/render_probe.py --out "$RESULTS_DIR/$name" ${kit:+--kit_args "$kit"} > "$DATA_DIR/$name.log" 2>&1
+2026-11-03T04:17:19Z [59ms] [Warning] [carb.crashreporter-breakpad.plugin] [crash]  commandLine = 'python scripts/isaac/render_probe.py --out /home/<username>/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/output-attempt1/c_no_display'
+variant c_no_display exit 139
+[2026-11-02T22:17:21-06:00] variant d_icd_no_display
+jobs/041_render_probe.sh: line 8: 2254912 Segmentation fault      env "$@" timeout 600 python scripts/isaac/render_probe.py --out "$RESULTS_DIR/$name" ${kit:+--kit_args "$kit"} > "$DATA_DIR/$name.log" 2>&1
+2026-11-03T04:17:24Z [58ms] [Warning] [carb.crashreporter-breakpad.plugin] [crash]  commandLine = 'python scripts/isaac/render_probe.py --out /home/<username>/dell-runner/data/ENGR6010_Go2X_SafeRL/041-render-probe/output-attempt1/d_icd_no_display'
+variant d_icd_no_display exit 139
+[2026-11-02T22:17:26-06:00] variant e_icd_no_display_single_gpu
+usage: render_probe.py [-h] --out OUT [--headless] [--livestream {0,1,2}]
+render_probe.py: error: argument --kit_args: expected one argument
+variant e_icd_no_display_single_gpu exit 2
+variant a_default exit 139
+variant b_nvidia_icd exit 139
+variant c_no_display exit 139
+variant d_icd_no_display exit 139
+variant e_icd_no_display_single_gpu exit 2
+[2026-11-02T22:17:26-06:00] done

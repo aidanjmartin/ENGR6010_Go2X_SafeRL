@@ -1,0 +1,5 @@
+variant a_default exit 139
+variant b_nvidia_icd exit 139
+variant c_no_display exit 139
+variant d_icd_no_display exit 139
+variant e_icd_no_display_single_gpu exit 2
