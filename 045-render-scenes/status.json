@@ -1,19 +1,14 @@
 {
   "job": "045-render-scenes",
-  "attempt": 2,
+  "attempt": 3,
   "repo": "ENGR6010_Go2X_SafeRL",
   "ref": "phase2-rl-sim",
   "description": "Rendered camera check: 60 random atrium scenes with ground truth and drawn top-down images",
   "gpu": true,
   "ros": false,
   "robot": false,
-  "commit": "4022406bfc7e2b032a34b4ab85063b2b8ea0eafb",
-  "status": "failed",
-  "reason": "exit code 139",
-  "exit_code": 139,
-  "started": "2026-11-02T16:35:51-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/045-render-scenes/log-attempt2.txt",
-  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/045-render-scenes/output-attempt2",
-  "kept_on_dell": [],
-  "finished": "2026-11-02T16:35:58-06:00"
+  "commit": "8cf707b8903714f26c4c29983033285de986814e",
+  "status": "running",
+  "started": "2026-11-02T22:29:25-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/045-render-scenes/log-attempt3.txt"
 }
