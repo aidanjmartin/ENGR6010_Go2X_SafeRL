@@ -283,6 +283,16 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | finding: people are cylinders | `results/phase2/grounding/grounding_examples/` | the scene models a person as an orange cylinder, in Isaac Lab and in the renders, so an open-vocabulary detector has no person to find. The person result measures the scene model, not OWLv2 |
 | MuJoCo check, job 080 attempt 2 | `bash jobs/080_mujoco_check.sh` (commit `a671952`) | **succeeded** in 77 s: 100 episodes, 0 falls; tracking errors vx 0.125, vy 0.088 m/s, wz 0.194 rad/s, about twice Isaac Lab's (`results/phase2/mujoco_check/`) |
 
+## Step 10: why the navigation policy stalls, and attempt 4 (2026-11-04)
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| probe the trained actors | `python scripts/probe_nav_policy.py <model_final.pt> world` (CPU; 512 sampled starts, robot turned so the target sits at each bearing from -180 to 180 degrees, noise-free image) | neither policy steers by the image. Attempt 3: vx 0.02 to 0.03 m/s and wz +0.62 to +0.64 rad/s at every bearing (it turns left in place); attempt 1: vx about 0.35 m/s and wz about -0.26 rad/s at every bearing (it drives a right-hand arc, which explains its exits from the square). Standard deviation over starts about 0.1 m/s and 0.27 rad/s |
+| can the network read the bearing at all? | `python scripts/bearing_supervised_check.py 3000 world` (CPU, the same `ImageMLP` trained by regression on noise-free drawn images, 128 per step) | slowly and poorly in the world view: held-out median bearing error 77 degrees after 250 steps, 30 after 1500, 23 after 2750. The world view puts the robot anywhere in the image at any heading, so the network has to locate a 12 by 5 pixel robot, read its heading marker and relate it to the target |
+| robot view | `go2x/atrium/topdown.py` robot view (`config/topdown.yaml` `robot_view`): the same four channels on a grid centered on the robot's estimated pose, robot facing the top of the image, 3.0 m each way (9.4 cm per pixel), ground outside the square drawn as static | `python scripts/bearing_supervised_check.py 1000 robot`: median error 1.6 degrees after 250 steps, 0.8 after 1000. 4 new CPU tests (placement, independence of heading and position, outside-square marking, unchanged noise draws); 66 pass |
+| change for attempt 4 (`a75cd1d`) | `config/nav.yaml` `policy.image_view: robot` | the policy reads the robot view; rewards, network, PPO settings and camera realism are as in attempt 3, so the image view is the only change. The baselines keep the world view (`eval_nav.py` sets it for them); their results (job 048) stand, because the camera noise draws are the same in both views. Job 065 records the policy and the baselines in separate runs |
+| re-queue | `dell-jobs` `62b0f55`: 050, 060, 065 at attempt 4 | 050 started 13:38 |
+
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
