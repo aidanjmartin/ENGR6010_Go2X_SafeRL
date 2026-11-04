@@ -1,8 +1,10 @@
 {
-  "time": "2026-11-04T13:07:03-06:00",
-  "current_job": "",
-  "pending_jobs": [],
-  "gpu": "NVIDIA RTX 4000 Ada Generation, 0 %, 1223 MiB, 20475 MiB, 30",
-  "disk_free_gb": 857.5,
+  "time": "2026-11-04T13:38:53-06:00",
+  "current_job": "ENGR6010_Go2X_SafeRL/050-nav-train",
+  "pending_jobs": [
+    "050-nav-train"
+  ],
+  "gpu": "NVIDIA RTX 4000 Ada Generation, 2 %, 4297 MiB, 20475 MiB, 33",
+  "disk_free_gb": 857.4,
   "robot_enabled": true
 }
