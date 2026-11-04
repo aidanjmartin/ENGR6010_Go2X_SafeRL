@@ -62,7 +62,9 @@ for path in sorted(glob.glob(os.path.join(args.rollouts, "nav_*.npz"))):
         top = np.ones((*img.shape[1:], 3))
         for c in range(4):
             top = top * (1 - img[c, :, :, None]) + img[c, :, :, None] * COLORS[c]
-        top = np.rot90(top, k=-1)   # +y right, -x up: the same orientation as the camera view (camera at +x)
+        robot_view = str(r["view"]) == "robot" if "view" in r else False
+        if not robot_view:
+            top = np.rot90(top, k=-1)   # +y right, -x up: the same orientation as the camera view (camera at +x)
         panel = np.kron((top * 255).astype(np.uint8), np.ones((7, 7, 1), np.uint8))
         pad = np.full((rgb.shape[0], panel.shape[1], 3), 255, np.uint8)
         pad[: panel.shape[0]] = panel[: rgb.shape[0]]
@@ -70,7 +72,8 @@ for path in sorted(glob.glob(os.path.join(args.rollouts, "nav_*.npz"))):
         d = ImageDraw.Draw(frame)
         d.rectangle((0, 0, 330, 24), fill=(255, 255, 255))
         d.text((8, 7), f"{r['controller']}  scenario {int(r['scenario'])}  t {t * float(r['dt']):4.1f} s", fill=(0, 0, 0))
-        d.text((cam.width + 8, panel.shape[0] + 8), "controller input (current frame), turned to match the camera view", fill=(0, 0, 0))
+        d.text((cam.width + 8, panel.shape[0] + 8), "controller input (current frame), robot view: robot at the center, facing up"
+               if robot_view else "controller input (current frame), turned to match the camera view", fill=(0, 0, 0))
         if t == len(r["topdown"]) - 1:
             d.rectangle((0, 24, 330, 46), fill=(255, 255, 255))
             d.text((8, 30), "ended by: " + ", ".join(map(str, r["ended_by"])), fill=(0, 0, 0))

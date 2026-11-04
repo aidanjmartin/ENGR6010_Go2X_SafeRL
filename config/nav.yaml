@@ -33,6 +33,7 @@ policy:
   cnn_channels: [16, 32, 32]  # stride-2 3x3 convolutions on the stacked image (8 x 64 x 64)
   cnn_out: 128
   mlp: [128, 64]
+  image_view: robot           # attempt 4 on: drawn around the robot (config/topdown.yaml robot_view); attempts 1 to 3 used the world view
 
 training:
   num_envs: 1024              # job 025 ran 256 at 5.5 s per iteration; more envs per physics call should raise throughput (job 050 measures it)

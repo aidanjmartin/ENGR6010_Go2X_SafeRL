@@ -19,6 +19,7 @@ parser.add_argument("--walk_policy", required=True)
 parser.add_argument("--checkpoint", default=None)
 parser.add_argument("--evals", nargs="+", required=True, help="nav_eval_<controller>.json files")
 parser.add_argument("--out", required=True)
+parser.add_argument("--controllers", nargs="+", default=None, help="only these controllers (one image view per run)")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 args.headless = True
@@ -41,6 +42,8 @@ jobs = []
 for path in args.evals:
     d = json.load(open(path))
     ctl = d["summary"]["controller"]
+    if args.controllers and ctl not in args.controllers:
+        continue
     eps = d["episodes"]
     ok = [e["scenario"] for e in eps if e["success"]]
     bad = [e["scenario"] for e in eps if not e["success"]]
@@ -52,6 +55,10 @@ print("[videos]", jobs, flush=True)
 cfg = AtriumNavEnvCfg()
 cfg.scene.num_envs = 1
 cfg.go2x_scenarios = [scenarios[s] for _, _, s in jobs]
+kinds = {ctl == "policy" for ctl, _, _ in jobs}
+assert len(kinds) == 1, "run the policy and the baselines separately: they use different image views"
+if not kinds.pop():
+    cfg.go2x_image_view = "world"
 env = ManagerBasedRLEnv(cfg=cfg)
 wrapped = RslRlVecEnvWrapper(env, clip_actions=None)
 S = TD["size"]
@@ -111,11 +118,12 @@ for n, (ctl, label, sid) in enumerate(jobs):
         continue
     path = os.path.join(args.out, f"nav_{ctl}_{label}_scenario{sid:03d}.npz")
     np.savez_compressed(path, **{k: np.stack(v) for k, v in rec.items()}, joint_names=np.array(rt.robot.data.joint_names),
-                        controller=ctl, label=label, scenario=sid, ended_by=np.array(reasons),
+                        controller=ctl, label=label, scenario=sid, ended_by=np.array(reasons), view=cfg.go2x_image_view,
                         dt=float(env.step_dt))
     done_labels.add((ctl, label))
     summary.append({"controller": ctl, "label": label, "scenario": sid, "frames": len(rec["topdown"]), "ended_by": reasons,
                     "file": os.path.basename(path)})
     print("[videos]", summary[-1], flush=True)
-json.dump(summary, open(os.path.join(args.out, "nav_videos.json"), "w"), indent=1)
+tag = "_".join(sorted({c for c, _, _ in jobs}))
+json.dump(summary, open(os.path.join(args.out, f"nav_videos_{tag}.json"), "w"), indent=1)
 finish(0)

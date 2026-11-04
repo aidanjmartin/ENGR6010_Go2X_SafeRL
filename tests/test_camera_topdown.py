@@ -5,7 +5,7 @@ import numpy as np
 import torch
 
 from go2x.atrium.camera import Camera, coverage_check, rot_to_quat
-from go2x.atrium.topdown import CameraFeed, draw, pixel_centers, world_to_pixel
+from go2x.atrium.topdown import CameraFeed, draw, pixel_centers, view_config, world_to_pixel
 from go2x.config import load_config
 
 TD = load_config("topdown")
@@ -141,3 +141,59 @@ def test_camera_feed_misses():
     img = feed.observe(torch.zeros(4), _state(4))
     assert img[:, 0].sum() == 0 and img[:, 1].sum() == 0
     assert img[:, 3].sum() > 0                          # the target mask is kept
+
+
+def _robot_view_scene(pose):
+    """A target circle 1.5 m ahead of the robot and a person 1 m to its left, in the square frame."""
+    yaw = pose[:, 2]
+    fwd = torch.stack([torch.cos(yaw), torch.sin(yaw)], -1)
+    left = torch.stack([-torch.sin(yaw), torch.cos(yaw)], -1)
+    B = pose.shape[0]
+    target = torch.cat([pose[:, :2] + 1.5 * fwd, torch.full((B, 1), 0.3)], -1)
+    person = torch.cat([pose[:, :2] + 1.0 * left, torch.full((B, 1), 0.25)], -1)[:, None]
+    cfg = view_config(TD, "robot")
+    return draw(pose, (0.70, 0.31), torch.zeros(B, 0, 5), torch.zeros(B, 0, dtype=torch.bool), person,
+                torch.ones(B, 1, dtype=torch.bool), torch.zeros(B, 5), target, torch.ones(B, dtype=torch.bool), cfg)
+
+
+def _center(img):
+    return torch.nonzero(img > 0).float().mean(0)
+
+
+def test_robot_view_puts_ahead_up_and_left_left():
+    img = _robot_view_scene(torch.tensor([[0.0, 0.0, 0.0]]))[0]
+    S = TD["size"]
+    res = 2 * TD["robot_view"]["half_extent"] / S
+    robot, target, person = _center(img[2]), _center(img[3]), _center(img[1])
+    assert abs(robot[0] - (S - 1) / 2) < 0.6 and abs(robot[1] - (S - 1) / 2) < 0.6
+    assert abs((robot[0] - target[0]) * res - 1.5) < 0.1 and abs(target[1] - robot[1]) < 0.6     # ahead = up
+    assert abs((robot[1] - person[1]) * res - 1.0) < 0.1 and abs(person[0] - robot[0]) < 0.6     # left = left
+
+
+def test_robot_view_does_not_depend_on_heading_or_position():
+    poses = torch.tensor([[0.0, 0.0, 0.0], [0.2, -0.3, 1.1], [-0.4, 0.1, -2.5]])
+    img = _robot_view_scene(poses)
+    for i in (1, 2):   # channels 1 to 3; the static channel holds the square's outside, which does move
+        assert (img[i, 1:] != img[0, 1:]).float().mean() < 0.01
+
+
+def test_robot_view_marks_outside_square_as_static():
+    img = _robot_view_scene(torch.tensor([[0.0, 0.0, 0.0]]))[0, 0]
+    inside = (2 * TD["robot_view"]["square_half"]) ** 2 / (2 * TD["robot_view"]["half_extent"]) ** 2
+    assert abs(img.mean().item() - (1 - inside)) < 0.03
+
+
+def test_camera_feed_robot_view_keeps_world_noise_draws():
+    """Same generator seed gives the same noise draws in both views, so the baselines (world view) are unchanged."""
+    from go2x.atrium.state import AtriumBatch
+    b = AtriumBatch(4, "cpu", seed=2)
+    pose = b.reset(list(range(4)))
+    out = {}
+    for view in ("world", "robot"):
+        g = torch.Generator().manual_seed(5)
+        f = CameraFeed(4, view_config(TD, view), generator=g)
+        f.reset(torch.arange(4))
+        out[view] = f.observe(torch.zeros(4), b.perception_state(pose))
+        out[view + "_next"] = torch.rand(1, generator=g)
+    assert out["world_next"] == out["robot_next"]
+    assert out["robot"].shape == out["world"].shape

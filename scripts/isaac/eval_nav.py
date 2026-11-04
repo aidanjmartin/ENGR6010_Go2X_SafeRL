@@ -1,7 +1,8 @@
 """Evaluate a navigation controller on the fixed scenarios (config/nav_eval_scenarios.json).
 
 Controllers: `policy` (RSL-RL checkpoint), `straight` and `astar` (go2x/atrium/baselines.py). All three send
-velocity targets to the same frozen walking policy and see the same drawn image (with camera realism).
+velocity targets to the same frozen walking policy and see the same drawn camera frames (with camera realism):
+the baselines in the world view, the policy in the view set by config/nav.yaml policy.image_view.
 
     python scripts/isaac/eval_nav.py --controller policy --checkpoint model_final.pt --walk_policy policy.pt --out DIR
 """
@@ -46,6 +47,8 @@ cfg = AtriumNavEnvCfg()
 cfg.scene.num_envs = min(ev["num_envs"], N)
 cfg.seed = ev["seed"]
 cfg.go2x_scenarios = scenarios
+if args.controller != "policy":
+    cfg.go2x_image_view = "world"   # the baselines read the world view (go2x/atrium/baselines.py)
 env = ManagerBasedRLEnv(cfg=cfg)
 wrapped = RslRlVecEnvWrapper(env, clip_actions=None)
 B, S = env.num_envs, TD["size"]
@@ -126,7 +129,7 @@ def stat(vals):
 
 
 summary = {
-    "controller": args.controller, "checkpoint": args.checkpoint, "walk_policy": args.walk_policy,
+    "controller": args.controller, "image_view": cfg.go2x_image_view, "checkpoint": args.checkpoint, "walk_policy": args.walk_policy,
     "scenarios_evaluated": len(rows), "scenarios_total": N,
     "success_rate": stat([r["success"] for r in rows]),
     "collision_rate": stat([r["collision"] for r in rows]),

@@ -7,6 +7,12 @@ center, x right, y up in the image), where E is `half_extent`. Channels:
   1 people
   2 robot: footprint at `robot_value`, front `heading_fraction` of it at `heading_value`
   3 target: the target object's footprint
+
+Robot view (`robot_view` in config/topdown.yaml, the navigation policy's input from job 050 attempt 4): the
+same four channels drawn on a grid that moves with the robot. The robot sits at the image center facing the
+top of the image (its left on the image's left); pixels cover `half_extent` meters around it. Ground outside
+the square is drawn in the static channel, because the square's edge is no longer at a fixed place in the
+image. The pose used is the camera's noisy estimate, so the grid carries the same pose noise as the world view.
 """
 import math
 
@@ -25,6 +31,25 @@ def pixel_centers(cfg, device="cpu"):
     return torch.stack([xs, ys], -1)  # (S, S, 2)
 
 
+def robot_pixel_centers(robot_pose, cfg):
+    """(B, S, S, 2) square-frame coordinates of the pixel centers of the robot view."""
+    S, E = cfg["size"], cfg["half_extent"]
+    res = 2 * E / S
+    c = -E + (torch.arange(S, device=robot_pose.device, dtype=torch.float32) + 0.5) * res
+    fwd = c.flip(0)[:, None].expand(S, S)       # row 0 is farthest ahead
+    left = c.flip(0)[None, :].expand(S, S)      # column 0 is farthest to the left
+    x, y, yaw = (v[:, None, None] for v in robot_pose.unbind(-1))
+    cs, sn = torch.cos(yaw), torch.sin(yaw)
+    return torch.stack([x + cs * fwd - sn * left, y + sn * fwd + cs * left], -1)
+
+
+def view_config(cfg, view):
+    """The drawing settings for `view` ("world" or "robot")."""
+    if view == "world":
+        return cfg
+    return {**cfg, **cfg["robot_view"], "view": "robot"}
+
+
 def world_to_pixel(xy, cfg):
     """Square-frame (x, y) -> continuous (row, col)."""
     S, E = cfg["size"], cfg["half_extent"]
@@ -32,18 +57,24 @@ def world_to_pixel(xy, cfg):
     return (E - xy[..., 1]) / res, (xy[..., 0] + E) / res
 
 
+def _grid(pix):
+    """(S, S, 2) shared or (B, S, S, 2) per-environment pixel grid -> (P, 1, S, S, 2) with P = 1 or B."""
+    return (pix[None] if pix.dim() == 3 else pix)[:, None]
+
+
 def _rect_mask(pix, rects, mask):
-    """pix (S, S, 2); rects (B, N, 5); mask (B, N) -> (B, S, S) float."""
+    """pix (S, S, 2) or (B, S, S, 2); rects (B, N, 5); mask (B, N) -> (B, S, S) float."""
     if rects.shape[1] == 0:
-        return torch.zeros(rects.shape[0], *pix.shape[:2], device=pix.device)
-    d = Bt.point_rect_distance(pix[None, None], rects[:, :, None, None, :])
+        return torch.zeros(rects.shape[0], *pix.shape[-3:-1], device=pix.device)
+    d = Bt.point_rect_distance(_grid(pix), rects[:, :, None, None, :])
     return ((d <= 0) & mask[:, :, None, None]).any(1).float()
 
 
 def _circle_mask(pix, circles, mask):
     if circles.shape[1] == 0:
-        return torch.zeros(circles.shape[0], *pix.shape[:2], device=pix.device)
-    d = torch.hypot(pix[None, None, ..., 0] - circles[:, :, None, None, 0], pix[None, None, ..., 1] - circles[:, :, None, None, 1])
+        return torch.zeros(circles.shape[0], *pix.shape[-3:-1], device=pix.device)
+    g = _grid(pix)
+    d = torch.hypot(g[..., 0] - circles[:, :, None, None, 0], g[..., 1] - circles[:, :, None, None, 1])
     return ((d <= circles[:, :, None, None, 2]) & mask[:, :, None, None]).any(1).float()
 
 
@@ -55,10 +86,18 @@ def draw(robot_pose, footprint, rects, rect_mask, circles, circle_mask, target_r
     target_rect (B, 5) and target_circle (B, 3), one of which is used per env according to target_is_circle (B,).
     """
     cfg = cfg or load_config("topdown")
-    pix = pixel_centers(cfg, robot_pose.device) if pix is None else pix
+    robot_view = cfg.get("view") == "robot"
+    if robot_view:
+        pix = robot_pixel_centers(robot_pose, cfg)
+    elif pix is None:
+        pix = pixel_centers(cfg, robot_pose.device)
     B = robot_pose.shape[0]
     L, W = footprint
     static = _rect_mask(pix, rects, rect_mask)
+    if robot_view and cfg.get("mark_outside_square", False):
+        h = cfg["square_half"]
+        outside = (pix[..., 0].abs() > h) | (pix[..., 1].abs() > h)
+        static = torch.maximum(static, outside.float().expand_as(static))
     people = _circle_mask(pix, circles, circle_mask)
     x, y, yaw = robot_pose.unbind(-1)
     half_l = torch.full_like(x, L / 2)

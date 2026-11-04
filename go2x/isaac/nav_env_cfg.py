@@ -39,7 +39,7 @@ from unitree_rl_lab.tasks.locomotion import mdp as ul_mdp
 from go2x.atrium.camera import Camera
 from go2x.atrium.rewards import TERMS, front_point, reward_terms, scale_action
 from go2x.atrium.state import AtriumBatch, object_parts
-from go2x.atrium.topdown import CameraFeed
+from go2x.atrium.topdown import CameraFeed, view_config
 from go2x.config import CONFIG_DIR, load_config
 from go2x.isaac.actuators import randomize_motor_strength
 from go2x.isaac.walk_env_cfg import WALK, WalkEnvCfg, go2_robot_cfg
@@ -64,7 +64,8 @@ class AtriumRuntime:
         self.batch = AtriumBatch(B, dev, seed=seed, dt=WALK_DT, scenarios=scen)
         g = torch.Generator(device=dev)
         g.manual_seed(seed + 1)
-        self.feed = CameraFeed(B, TD, tuple(ATRIUM["robot"]["footprint"]), dev, g)
+        self.view = getattr(env.cfg, "go2x_image_view", "world")
+        self.feed = CameraFeed(B, view_config(TD, self.view), tuple(ATRIUM["robot"]["footprint"]), dev, g)
         S = TD["size"]
         self.cur = torch.zeros(B, 4, S, S, device=dev)
         self.prev = torch.zeros_like(self.cur)
@@ -405,6 +406,7 @@ class AtriumNavEnvCfg(ManagerBasedRLEnvCfg):
     terminations: TerminationsCfg = TerminationsCfg()
     commands: CommandsCfg = CommandsCfg()
     go2x_scenarios: list | None = None
+    go2x_image_view: str = NAV["policy"]["image_view"]   # the baselines run with "world"
 
     def __post_init__(self):
         self.sim.dt = SIM_DT

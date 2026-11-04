@@ -8,6 +8,13 @@ heading_value: 1.0             # value of the heading marker (front quarter of t
 heading_fraction: 0.25
 stack: 2                       # current and previous frame
 
+# The navigation policy's image from job 050 attempt 4 (go2x/atrium/topdown.py, robot view). The baselines keep
+# the world view above. Attempt 3's policy turned in place whatever the target's bearing (LOG.md step 10).
+robot_view:
+  half_extent: 3.0               # m around the robot; 9.4 cm per pixel. Covers the whole square from most starts
+  mark_outside_square: true      # ground outside the square drawn as static
+  square_half: 1.524
+
 # Camera realism. Ranges are drawn per episode unless marked per frame.
 realism:
   camera_rate_hz: 15.0
