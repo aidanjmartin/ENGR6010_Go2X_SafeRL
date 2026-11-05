@@ -292,12 +292,19 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | robot view | `go2x/atrium/topdown.py` robot view (`config/topdown.yaml` `robot_view`): the same four channels on a grid centered on the robot's estimated pose, robot facing the top of the image, 3.0 m each way (9.4 cm per pixel), ground outside the square drawn as static | `python scripts/bearing_supervised_check.py 1000 robot`: median error 1.6 degrees after 250 steps, 0.8 after 1000. 4 new CPU tests (placement, independence of heading and position, outside-square marking, unchanged noise draws); 66 pass |
 | change for attempt 4 (`a75cd1d`) | `config/nav.yaml` `policy.image_view: robot` | the policy reads the robot view; rewards, network, PPO settings and camera realism are as in attempt 3, so the image view is the only change. The baselines keep the world view (`eval_nav.py` sets it for them); their results (job 048) stand, because the camera noise draws are the same in both views. Job 065 records the policy and the baselines in separate runs |
 | re-queue | `dell-jobs` `62b0f55`: 050, 060, 065 at attempt 4 | 050 started 13:38 |
+| check at iteration 100 | training log | training success 0.60 (attempt 3: 0.15 at the same iteration); the 20 s limit fell to 0.001 |
+| training attempt 4, job 050 | `bash jobs/050_nav_train.sh` (commit `a75cd1d`) | **succeeded**, 13:38 to 19:43 (6.1 h). Last 50 iterations: success 0.771, footprint collision 0.166, force collision 0.058, 20 s limit 0.001. Action noise standard deviation grew from 0.5 to 3.27 (actions are clipped, so the entropy bonus raises it at no cost); training success flat at 0.73 to 0.77 from iteration 300 |
+| evaluation attempt 4, job 060 | `bash jobs/060_nav_eval.sh` | **succeeded** in 55 s: success 0.780 ± 0.029, collision 0.200 ± 0.028, fall 0.010, out of the square 0.005, 20 s limit 0.005 (n = 200). Above A* (0.695 ± 0.033) and straight to target (0.580 ± 0.035) |
+| probe of attempt 4 | `python scripts/probe_nav_policy.py <model_final.pt> robot` | steers by the image: wz has the bearing's sign (-0.84 rad/s at -90 degrees, +1.00 at +90), vx about 0.55 m/s within 30 degrees of ahead, under 0.02 m/s beyond 120 degrees |
+| videos attempt 4, job 065 | `bash jobs/065_nav_videos.sh` (two recording runs) | **succeeded** in 40 s: six videos (`results/phase2/nav_videos/`). Policy success, scenario 0, checked by eye: the robot turns to the yellow target chair and stops at it. These replace attempt 3's videos, which stay in commit `a92dcc8` |
 
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
 
-**The navigation policy is below both baselines.** Attempt 3 reaches the target in 0.170 ± 0.027 of 200 scenarios, against 0.580 for straight to target and 0.695 for A*. The leaving-the-square exploit of attempt 1 is gone (0.005), but 0.51 of episodes reach the 20 s limit, and training success stayed at 0.15 to 0.20 for 1400 iterations. The policy gains about 0.26 m on the target per episode from starts about 1.5 m away. Why it stalls is not yet checked.
+**The navigation policy was below both baselines until attempt 4. Resolved on 2026-11-04.** Attempts 1 and 3 did not steer by the world-view image (step 10). With the robot view, attempt 4 reaches 0.780 ± 0.029 against 0.695 for A*.
+
+**Action noise grows without limit in attempt 4.** The noise standard deviation rose from 0.5 to 3.27: actions are clipped, so the entropy bonus raises the noise at no cost. The evaluation uses the noise-free action. A smaller entropy coefficient or a squashed action distribution would stop it; not changed.
 
 **People are cylinders, so person prompts cannot succeed.** OWLv2 grounds 0 of 25 "go to the person" prompts. The scene models a person as an orange cylinder; the result measures the scene model, not the detector.
 

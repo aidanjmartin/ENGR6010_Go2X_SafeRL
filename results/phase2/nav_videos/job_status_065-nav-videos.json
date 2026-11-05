@@ -1,10 +1,10 @@
 {
  "job": "065-nav-videos",
- "attempt": 3,
- "commit": "09edccd74e1cfea0c52587261de33f5f7a93abeb",
+ "attempt": 4,
+ "commit": "9d5e9f8ecd808ae76660eeda6f100090f77847a6",
  "status": "succeeded",
- "started": "2026-11-03T03:50:40-06:00",
- "finished": "2026-11-03T03:51:46-06:00",
+ "started": "2026-11-04T19:44:34-06:00",
+ "finished": "2026-11-04T19:45:14-06:00",
  "exit_code": 0,
  "kept_on_dell": []
 }

@@ -1,0 +1,10 @@
+{
+ "job": "050-nav-train",
+ "attempt": 4,
+ "commit": "a75cd1dcb69be6ffede564517a18589c3a9e22c5",
+ "status": "succeeded",
+ "started": "2026-11-04T13:38:37-06:00",
+ "finished": "2026-11-04T19:43:31-06:00",
+ "exit_code": 0,
+ "kept_on_dell": []
+}

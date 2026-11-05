@@ -1,0 +1,22 @@
+[
+ {
+  "controller": "policy",
+  "label": "success",
+  "scenario": 0,
+  "frames": 50,
+  "ended_by": [
+   "success"
+  ],
+  "file": "nav_policy_success_scenario000.npz"
+ },
+ {
+  "controller": "policy",
+  "label": "failure",
+  "scenario": 4,
+  "frames": 10,
+  "ended_by": [
+   "collision_force"
+  ],
+  "file": "nav_policy_failure_scenario004.npz"
+ }
+]

@@ -1,0 +1,10 @@
+{
+ "job": "060-nav-eval",
+ "attempt": 4,
+ "commit": "9d5e9f8ecd808ae76660eeda6f100090f77847a6",
+ "status": "succeeded",
+ "started": "2026-11-04T19:43:35-06:00",
+ "finished": "2026-11-04T19:44:31-06:00",
+ "exit_code": 0,
+ "kept_on_dell": []
+}

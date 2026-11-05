@@ -59,7 +59,7 @@ The same pass logs (base state, velocity target, base state at +0.1 s and +0.5 s
 
 - **Structure:** follows Isaac Lab's `Isaac-Navigation-Flat-Anymal-C-v0`. A `ManagerBasedRLEnv` whose action term (a subclass of `PreTrainedPolicyAction`) runs the frozen TorchScript walking policy at 50 Hz under 200 Hz physics. The navigation policy acts at 10 Hz.
 - **Action:** a velocity target scaled to vx 0 to 0.8 m/s, vy -0.3 to 0.3 m/s, wz -1.0 to 1.0 rad/s.
-- **Observation:** the stacked image plus the previous action, read by a small convolutional encoder (`go2x/nav_policy.py`, because RSL-RL 3.1.2 has only MLP policies).
+- **Observation:** the stacked image plus the previous action, read by a small convolutional encoder (`go2x/nav_policy.py`, because RSL-RL 3.1.2 has only MLP policies). From attempt 4 the policy's image is the robot view of the same drawn camera frames (robot at the center facing up); attempts 1 to 3 and the baselines use the world view.
 - **Rewards:** seven terms, each logged separately.
 - **Episode ends:** success, footprint collision, force collision, fall, leaving the square, or 20 s.
 - **Baselines:** both read only the drawn image the policy sees and send velocity targets to the same walking policy.
@@ -137,25 +137,28 @@ The square and building check results are above (`results/phase2/square_check.js
 
 ### Task 4: navigation (200 shared scenarios)
 
-| metric | straight to target | A* with pure pursuit | learned policy, attempt 1 | learned policy, attempt 3 |
-| :--- | ---: | ---: | ---: | ---: |
-| success rate | 0.580 ± 0.035 (n = 200) | 0.695 ± 0.033 (n = 200) | 0.125 ± 0.023 (n = 200) | 0.170 ± 0.027 (n = 200) |
-| collision rate (either check) | 0.410 ± 0.035 (n = 200) | 0.290 ± 0.032 (n = 200) | 0.240 ± 0.030 (n = 200) | 0.310 ± 0.033 (n = 200) |
-| collision, footprint check | 0.380 ± 0.034 (n = 200) | 0.255 ± 0.031 (n = 200) | 0.195 ± 0.028 (n = 200) | 0.200 ± 0.028 (n = 200) |
-| collision, contact-force check | 0.065 ± 0.017 (n = 200) | 0.055 ± 0.016 (n = 200) | 0.065 ± 0.017 (n = 200) | 0.125 ± 0.023 (n = 200) |
-| episodes where the two checks disagree | 0.375 ± 0.034 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.220 ± 0.029 (n = 200) | 0.295 ± 0.032 (n = 200) |
-| fall rate | 0.010 ± 0.007 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.005 ± 0.005 (n = 200) |
-| left the square | 0.000 ± 0.000 (n = 200) | 0.015 ± 0.009 (n = 200) | 0.365 ± 0.034 (n = 200) | 0.005 ± 0.005 (n = 200) |
-| reached the 20 s limit | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.510 ± 0.035 (n = 200) |
-| minimum distance to a person (m), episodes with people | 0.443 ± 0.041 (n = 137) | 0.438 ± 0.041 (n = 137) | 0.641 ± 0.044 (n = 137) | 0.598 ± 0.044 (n = 137) |
-| time to goal (s), successful episodes | 3.184 ± 0.074 (n = 116) | 3.959 ± 0.090 (n = 139) | 5.144 ± 0.436 (n = 25) | 5.897 ± 0.693 (n = 34) |
+| metric | straight to target | A* with pure pursuit | learned policy, attempt 1 | learned policy, attempt 3 | learned policy, attempt 4 (robot view) |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| success rate | 0.580 ± 0.035 (n = 200) | 0.695 ± 0.033 (n = 200) | 0.125 ± 0.023 (n = 200) | 0.170 ± 0.027 (n = 200) | 0.780 ± 0.029 (n = 200) |
+| collision rate (either check) | 0.410 ± 0.035 (n = 200) | 0.290 ± 0.032 (n = 200) | 0.240 ± 0.030 (n = 200) | 0.310 ± 0.033 (n = 200) | 0.200 ± 0.028 (n = 200) |
+| collision, footprint check | 0.380 ± 0.034 (n = 200) | 0.255 ± 0.031 (n = 200) | 0.195 ± 0.028 (n = 200) | 0.200 ± 0.028 (n = 200) | 0.150 ± 0.025 (n = 200) |
+| collision, contact-force check | 0.065 ± 0.017 (n = 200) | 0.055 ± 0.016 (n = 200) | 0.065 ± 0.017 (n = 200) | 0.125 ± 0.023 (n = 200) | 0.055 ± 0.016 (n = 200) |
+| episodes where the two checks disagree | 0.375 ± 0.034 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.220 ± 0.029 (n = 200) | 0.295 ± 0.032 (n = 200) | 0.195 ± 0.028 (n = 200) |
+| fall rate | 0.010 ± 0.007 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.005 ± 0.005 (n = 200) | 0.010 ± 0.007 (n = 200) |
+| left the square | 0.000 ± 0.000 (n = 200) | 0.015 ± 0.009 (n = 200) | 0.365 ± 0.034 (n = 200) | 0.005 ± 0.005 (n = 200) | 0.005 ± 0.005 (n = 200) |
+| reached the 20 s limit | 0.000 ± 0.000 (n = 200) | 0.000 ± 0.000 (n = 200) | 0.270 ± 0.031 (n = 200) | 0.510 ± 0.035 (n = 200) | 0.005 ± 0.005 (n = 200) |
+| minimum distance to a person (m), episodes with people | 0.443 ± 0.041 (n = 137) | 0.438 ± 0.041 (n = 137) | 0.641 ± 0.044 (n = 137) | 0.598 ± 0.044 (n = 137) | 0.441 ± 0.035 (n = 137) |
+| time to goal (s), successful episodes | 3.184 ± 0.074 (n = 116) | 3.959 ± 0.090 (n = 139) | 5.144 ± 0.436 (n = 25) | 5.897 ± 0.693 (n = 34) | 3.280 ± 0.128 (n = 156) |
 
 - **Attempt 1:** the learned policy (job 050 attempt 1) did worse than both baselines. Leaving the square ended an episode with no penalty, and the policy learned to walk out (`LOG.md` step 8).
 - **Attempt 2:** failed at start (CUDA out of memory); `LOG.md` step 8.
-- **Attempt 3:** job 050 retrained with a -10 penalty for leaving the square, critic-only target information (front-to-target vector, distance, planar velocity, yaw rate) and entropy coefficient 0.01; the policy input is unchanged. Leaving the square fell from 0.365 to 0.005, but success rose only from 0.125 to 0.170, still below straight to target (0.580) and A* (0.695). Training success stayed at 0.15 to 0.20 from iteration 100 to 1500 (`results/phase2/nav_train_attempt3/nav_training_curve.png`), and 0.51 of evaluation episodes reach the 20 s limit. The policy keeps a larger distance from people than the baselines (0.598 m against 0.44 m). The reason it stalls short of the target is not yet checked.
-- **Videos (job 065):** one success and one failure per controller, in `results/phase2/nav_videos/` (10 Hz, MuJoCo drawing of the Isaac states, with the controller's drawn input beside the camera view). Policy success: scenario 1, 6.1 s. Policy failure: scenario 0, 20 s limit; the robot turns in place near its start for the whole episode and never closes on the target chair, one case of the stalling above. Straight-to-target and A* failures: scenario 4, contact-force collision after 1.0 s and 1.3 s.
+- **Attempt 3:** job 050 retrained with a -10 penalty for leaving the square, critic-only target information (front-to-target vector, distance, planar velocity, yaw rate) and entropy coefficient 0.01; the policy input is unchanged. Leaving the square fell from 0.365 to 0.005, but success rose only from 0.125 to 0.170, still below straight to target (0.580) and A* (0.695). Training success stayed at 0.15 to 0.20 from iteration 100 to 1500 (`results/phase2/nav_train_attempt3/nav_training_curve.png`), and 0.51 of evaluation episodes reach the 20 s limit. The policy keeps a larger distance from people than the baselines (0.598 m against 0.44 m). Why it stalls is below.
+- **Why attempts 1 and 3 failed:** neither policy steered by the image. With the target placed at each bearing around the robot, attempt 3 turned left in place and attempt 1 drove a fixed right-hand arc, whatever the bearing (`scripts/probe_nav_policy.py`, `LOG.md` step 10). In the world view the robot can be anywhere in the image at any heading, and the same network trained directly to predict the target's bearing from that view still had a 23 degree median error after 2750 steps; from the robot view it had 1.6 degrees after 250 (`scripts/bearing_supervised_check.py`).
+- **Attempt 4:** the policy reads the robot view (`config/topdown.yaml` `robot_view`): the same four channels drawn around the robot's estimated pose, robot at the center facing up, 3.0 m each way, ground outside the square drawn as static. Everything else is as in attempt 3; the baselines keep the world view. Success 0.780 ± 0.029, against 0.695 ± 0.033 for A* and 0.580 ± 0.035 for straight to target, with fewer collisions than either (0.200 against 0.290 and 0.410). By target: chair 0.836 (n = 110), table 0.875 (n = 24), person 0.652 (n = 66). The probe now shows steering: wz has the sign of the bearing, and the policy walks forward (vx about 0.5 m/s) only when the target is within about 60 degrees of straight ahead.
+- **Action noise in attempt 4:** the noise standard deviation grew from 0.5 to 3.27 over training (from about iteration 200) while training success stayed at 0.73 to 0.77. Actions are clipped to the range, so the entropy bonus (0.01) raises the noise at no cost; the evaluation uses the noise-free action. Not changed.
+- **Videos (job 065):** one success and one failure per controller, in `results/phase2/nav_videos/` (10 Hz, MuJoCo drawing of the Isaac states, with the controller's input beside the camera view: the world view for the baselines, the robot view for the policy). Policy (attempt 4) success: scenario 0, 5.0 s, checked by eye. All three failures are scenario 4, a contact-force collision after 1.0 to 1.1 s.
 - **A* planner:** 0 of 281 A* plans failed.
-- **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 6 times as often as the contact-force check for the baselines and attempt 1 (1.6 times for attempt 3). A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
+- **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 6 times as often as the contact-force check for the baselines and attempt 1 (1.6 times for attempt 3, 2.7 for attempt 4). A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
 
 ### Task 5: language target (60 rendered scenes, 132 prompts)
 
