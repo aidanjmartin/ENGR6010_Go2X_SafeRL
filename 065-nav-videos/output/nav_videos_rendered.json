@@ -1,28 +1,28 @@
 [
  {
   "file": "nav_astar_failure_scenario004.mp4",
-  "frames": 23,
+  "frames": 21,
   "ended_by": [
    "collision_force"
   ]
  },
  {
   "file": "nav_astar_success_scenario000.mp4",
-  "frames": 53,
+  "frames": 52,
   "ended_by": [
    "success"
   ]
  },
  {
-  "file": "nav_policy_failure_scenario000.mp4",
-  "frames": 210,
+  "file": "nav_policy_failure_scenario004.mp4",
+  "frames": 20,
   "ended_by": [
-   "time_out"
+   "collision_force"
   ]
  },
  {
-  "file": "nav_policy_success_scenario001.mp4",
-  "frames": 71,
+  "file": "nav_policy_success_scenario000.mp4",
+  "frames": 60,
   "ended_by": [
    "success"
   ]
@@ -36,7 +36,7 @@
  },
  {
   "file": "nav_straight_success_scenario000.mp4",
-  "frames": 42,
+  "frames": 43,
   "ended_by": [
    "success"
   ]
