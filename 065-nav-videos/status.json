@@ -1,19 +1,14 @@
 {
   "job": "065-nav-videos",
-  "attempt": 3,
+  "attempt": 4,
   "repo": "ENGR6010_Go2X_SafeRL",
   "ref": "phase2-rl-sim",
   "description": "Rendered-camera rollout videos: one success and one failure per controller",
   "gpu": true,
   "ros": false,
   "robot": false,
-  "commit": "09edccd74e1cfea0c52587261de33f5f7a93abeb",
-  "status": "succeeded",
-  "reason": "",
-  "exit_code": 0,
-  "started": "2026-11-03T03:50:40-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/log-attempt3.txt",
-  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/output-attempt3",
-  "kept_on_dell": [],
-  "finished": "2026-11-03T03:51:46-06:00"
+  "commit": "9d5e9f8ecd808ae76660eeda6f100090f77847a6",
+  "status": "running",
+  "started": "2026-11-04T19:44:34-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/065-nav-videos/log-attempt4.txt"
 }
