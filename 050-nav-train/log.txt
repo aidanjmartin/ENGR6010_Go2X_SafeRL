@@ -1,2001 +1,2001 @@
-# last 2000 of 49524 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/050-nav-train/log-attempt3.txt
-        Episode_Reward/person_near: -0.1716
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0035
-               Episode_Reward/time: -0.1379
-         Episode_Reward/smoothness: -0.0516
-      Episode_Termination/time_out: 0.5372
-       Episode_Termination/success: 0.1588
-Episode_Termination/collision_footprint: 0.2433
-Episode_Termination/collision_force: 0.0638
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0112
+# last 2000 of 49524 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/050-nav-train/log-attempt4.txt
+        Episode_Reward/person_near: -0.0835
+               Episode_Reward/fall: -0.0058
+      Episode_Reward/out_of_square: -0.0064
+               Episode_Reward/time: -0.0326
+         Episode_Reward/smoothness: -0.1041
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7886
+Episode_Termination/collision_footprint: 0.1476
+Episode_Termination/collision_force: 0.0525
+          Episode_Termination/fall: 0.0156
+ Episode_Termination/out_of_square: 0.0140
 --------------------------------------------------------------------------------
                    Total timesteps: 46989312
-                    Iteration time: 12.50s
-                      Time elapsed: 05:00:28
-                               ETA: 00:14:02
+                    Iteration time: 14.58s
+                      Time elapsed: 05:48:12
+                               ETA: 00:16:16
 
 ################################################################################
                      [1m Learning iteration 1434/1500 [0m                     
 
-                       Computation: 2604 steps/s (collection: 9.081s, learning 3.500s)
-             Mean action noise std: 0.25
-          Mean value_function loss: 4.8002
-               Mean surrogate loss: -0.0012
-                 Mean entropy loss: -5.2335
-                       Mean reward: -6.14
-               Mean episode length: 133.79
-           Episode_Reward/progress: 0.0466
-            Episode_Reward/success: 0.1979
-          Episode_Reward/collision: -0.1287
-        Episode_Reward/person_near: -0.2409
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0026
-               Episode_Reward/time: -0.1327
-         Episode_Reward/smoothness: -0.0523
-      Episode_Termination/time_out: 0.5371
-       Episode_Termination/success: 0.1669
-Episode_Termination/collision_footprint: 0.2448
-Episode_Termination/collision_force: 0.0543
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0095
+                       Computation: 2258 steps/s (collection: 11.045s, learning 3.461s)
+             Mean action noise std: 3.07
+          Mean value_function loss: 19.6531
+               Mean surrogate loss: -0.0106
+                 Mean entropy loss: 7.5968
+                       Mean reward: 15.02
+               Mean episode length: 33.32
+           Episode_Reward/progress: 0.2213
+            Episode_Reward/success: 0.7959
+          Episode_Reward/collision: -0.0878
+        Episode_Reward/person_near: -0.0847
+               Episode_Reward/fall: -0.0085
+      Episode_Reward/out_of_square: -0.0057
+               Episode_Reward/time: -0.0328
+         Episode_Reward/smoothness: -0.1033
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7903
+Episode_Termination/collision_footprint: 0.1464
+Episode_Termination/collision_force: 0.0463
+          Episode_Termination/fall: 0.0187
+ Episode_Termination/out_of_square: 0.0127
 --------------------------------------------------------------------------------
                    Total timesteps: 47022080
-                    Iteration time: 12.58s
-                      Time elapsed: 05:00:41
-                               ETA: 00:13:49
+                    Iteration time: 14.51s
+                      Time elapsed: 05:48:27
+                               ETA: 00:16:01
 
 ################################################################################
                      [1m Learning iteration 1435/1500 [0m                     
 
-                       Computation: 2601 steps/s (collection: 9.096s, learning 3.498s)
-             Mean action noise std: 0.25
-          Mean value_function loss: 4.3043
-               Mean surrogate loss: -0.0020
-                 Mean entropy loss: -5.2226
-                       Mean reward: -5.71
-               Mean episode length: 125.20
-           Episode_Reward/progress: 0.0423
-            Episode_Reward/success: 0.2166
-          Episode_Reward/collision: -0.1423
-        Episode_Reward/person_near: -0.1939
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0033
-               Episode_Reward/time: -0.1210
-         Episode_Reward/smoothness: -0.0475
-      Episode_Termination/time_out: 0.5406
-       Episode_Termination/success: 0.1774
-Episode_Termination/collision_footprint: 0.2307
-Episode_Termination/collision_force: 0.0515
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0085
+                       Computation: 2233 steps/s (collection: 11.216s, learning 3.458s)
+             Mean action noise std: 3.08
+          Mean value_function loss: 18.6290
+               Mean surrogate loss: -0.0095
+                 Mean entropy loss: 7.5982
+                       Mean reward: 14.34
+               Mean episode length: 34.02
+           Episode_Reward/progress: 0.2196
+            Episode_Reward/success: 0.7562
+          Episode_Reward/collision: -0.1107
+        Episode_Reward/person_near: -0.0831
+               Episode_Reward/fall: -0.0048
+      Episode_Reward/out_of_square: -0.0064
+               Episode_Reward/time: -0.0335
+         Episode_Reward/smoothness: -0.1075
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7881
+Episode_Termination/collision_footprint: 0.1572
+Episode_Termination/collision_force: 0.0443
+          Episode_Termination/fall: 0.0124
+ Episode_Termination/out_of_square: 0.0101
 --------------------------------------------------------------------------------
                    Total timesteps: 47054848
-                    Iteration time: 12.59s
-                      Time elapsed: 05:00:53
-                               ETA: 00:13:37
+                    Iteration time: 14.67s
+                      Time elapsed: 05:48:41
+                               ETA: 00:15:47
 
 ################################################################################
                      [1m Learning iteration 1436/1500 [0m                     
 
-                       Computation: 2597 steps/s (collection: 9.116s, learning 3.500s)
-             Mean action noise std: 0.25
-          Mean value_function loss: 4.0638
-               Mean surrogate loss: -0.0103
-                 Mean entropy loss: -5.2170
-                       Mean reward: -6.31
-               Mean episode length: 137.37
-           Episode_Reward/progress: 0.0399
-            Episode_Reward/success: 0.1760
-          Episode_Reward/collision: -0.1352
-        Episode_Reward/person_near: -0.1680
-               Episode_Reward/fall: -0.0049
-      Episode_Reward/out_of_square: -0.0049
-               Episode_Reward/time: -0.1337
-         Episode_Reward/smoothness: -0.0523
-      Episode_Termination/time_out: 0.5502
-       Episode_Termination/success: 0.1764
-Episode_Termination/collision_footprint: 0.2254
-Episode_Termination/collision_force: 0.0523
-          Episode_Termination/fall: 0.0017
- Episode_Termination/out_of_square: 0.0077
+                       Computation: 2234 steps/s (collection: 11.202s, learning 3.461s)
+             Mean action noise std: 3.08
+          Mean value_function loss: 20.6242
+               Mean surrogate loss: 0.0022
+                 Mean entropy loss: 7.6011
+                       Mean reward: 11.79
+               Mean episode length: 32.10
+           Episode_Reward/progress: 0.2199
+            Episode_Reward/success: 0.7630
+          Episode_Reward/collision: -0.1112
+        Episode_Reward/person_near: -0.0844
+               Episode_Reward/fall: -0.0041
+      Episode_Reward/out_of_square: -0.0032
+               Episode_Reward/time: -0.0327
+         Episode_Reward/smoothness: -0.1025
+      Episode_Termination/time_out: 0.0004
+       Episode_Termination/success: 0.7619
+Episode_Termination/collision_footprint: 0.1760
+Episode_Termination/collision_force: 0.0596
+          Episode_Termination/fall: 0.0094
+ Episode_Termination/out_of_square: 0.0117
 --------------------------------------------------------------------------------
                    Total timesteps: 47087616
-                    Iteration time: 12.62s
-                      Time elapsed: 05:01:06
-                               ETA: 00:13:24
+                    Iteration time: 14.66s
+                      Time elapsed: 05:48:56
+                               ETA: 00:15:32
 
 ################################################################################
                      [1m Learning iteration 1437/1500 [0m                     
 
-                       Computation: 2608 steps/s (collection: 9.064s, learning 3.500s)
-             Mean action noise std: 0.25
-          Mean value_function loss: 4.2311
-               Mean surrogate loss: -0.0048
-                 Mean entropy loss: -5.2208
-                       Mean reward: -6.01
-               Mean episode length: 116.83
-           Episode_Reward/progress: 0.0396
-            Episode_Reward/success: 0.1760
-          Episode_Reward/collision: -0.1607
-        Episode_Reward/person_near: -0.2101
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0043
-               Episode_Reward/time: -0.1258
-         Episode_Reward/smoothness: -0.0495
-      Episode_Termination/time_out: 0.5466
-       Episode_Termination/success: 0.1795
-Episode_Termination/collision_footprint: 0.2277
-Episode_Termination/collision_force: 0.0536
-          Episode_Termination/fall: 0.0029
- Episode_Termination/out_of_square: 0.0082
+                       Computation: 2240 steps/s (collection: 11.163s, learning 3.461s)
+             Mean action noise std: 3.08
+          Mean value_function loss: 18.7158
+               Mean surrogate loss: 0.0017
+                 Mean entropy loss: 7.6017
+                       Mean reward: 12.52
+               Mean episode length: 29.76
+           Episode_Reward/progress: 0.2228
+            Episode_Reward/success: 0.7728
+          Episode_Reward/collision: -0.0966
+        Episode_Reward/person_near: -0.0814
+               Episode_Reward/fall: -0.0078
+      Episode_Reward/out_of_square: -0.0096
+               Episode_Reward/time: -0.0326
+         Episode_Reward/smoothness: -0.1066
+      Episode_Termination/time_out: 0.0002
+       Episode_Termination/success: 0.7650
+Episode_Termination/collision_footprint: 0.1674
+Episode_Termination/collision_force: 0.0645
+          Episode_Termination/fall: 0.0116
+ Episode_Termination/out_of_square: 0.0150
 --------------------------------------------------------------------------------
                    Total timesteps: 47120384
-                    Iteration time: 12.56s
-                      Time elapsed: 05:01:19
-                               ETA: 00:13:12
+                    Iteration time: 14.62s
+                      Time elapsed: 05:49:11
+                               ETA: 00:15:17
 
 ################################################################################
                      [1m Learning iteration 1438/1500 [0m                     
 
-                       Computation: 2595 steps/s (collection: 9.130s, learning 3.497s)
-             Mean action noise std: 0.25
-          Mean value_function loss: 5.4436
-               Mean surrogate loss: -0.0074
-                 Mean entropy loss: -5.2024
-                       Mean reward: -4.04
-               Mean episode length: 139.52
-           Episode_Reward/progress: 0.0584
-            Episode_Reward/success: 0.2053
-          Episode_Reward/collision: -0.1159
-        Episode_Reward/person_near: -0.1391
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0056
-               Episode_Reward/time: -0.1343
-         Episode_Reward/smoothness: -0.0515
-      Episode_Termination/time_out: 0.5323
-       Episode_Termination/success: 0.1795
-Episode_Termination/collision_footprint: 0.2423
-Episode_Termination/collision_force: 0.0549
-          Episode_Termination/fall: 0.0024
- Episode_Termination/out_of_square: 0.0080
+                       Computation: 2235 steps/s (collection: 11.196s, learning 3.464s)
+             Mean action noise std: 3.08
+          Mean value_function loss: 19.5471
+               Mean surrogate loss: -0.0007
+                 Mean entropy loss: 7.6024
+                       Mean reward: 13.76
+               Mean episode length: 31.12
+           Episode_Reward/progress: 0.2148
+            Episode_Reward/success: 0.7675
+          Episode_Reward/collision: -0.1056
+        Episode_Reward/person_near: -0.0876
+               Episode_Reward/fall: -0.0066
+      Episode_Reward/out_of_square: -0.0046
+               Episode_Reward/time: -0.0320
+         Episode_Reward/smoothness: -0.1063
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7715
+Episode_Termination/collision_footprint: 0.1660
+Episode_Termination/collision_force: 0.0603
+          Episode_Termination/fall: 0.0139
+ Episode_Termination/out_of_square: 0.0113
 --------------------------------------------------------------------------------
                    Total timesteps: 47153152
-                    Iteration time: 12.63s
-                      Time elapsed: 05:01:31
-                               ETA: 00:12:59
+                    Iteration time: 14.66s
+                      Time elapsed: 05:49:25
+                               ETA: 00:15:03
 
 ################################################################################
                      [1m Learning iteration 1439/1500 [0m                     
 
-                       Computation: 2632 steps/s (collection: 8.952s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3213
-               Mean surrogate loss: -0.0064
-                 Mean entropy loss: -5.2242
-                       Mean reward: -8.21
-               Mean episode length: 133.74
-           Episode_Reward/progress: 0.0473
-            Episode_Reward/success: 0.1418
-          Episode_Reward/collision: -0.1552
-        Episode_Reward/person_near: -0.2264
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0096
-               Episode_Reward/time: -0.1306
-         Episode_Reward/smoothness: -0.0500
-      Episode_Termination/time_out: 0.5268
-       Episode_Termination/success: 0.1812
-Episode_Termination/collision_footprint: 0.2397
-Episode_Termination/collision_force: 0.0598
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0094
+                       Computation: 2263 steps/s (collection: 11.013s, learning 3.462s)
+             Mean action noise std: 3.08
+          Mean value_function loss: 17.1155
+               Mean surrogate loss: -0.0127
+                 Mean entropy loss: 7.6060
+                       Mean reward: 14.63
+               Mean episode length: 31.61
+           Episode_Reward/progress: 0.2183
+            Episode_Reward/success: 0.7738
+          Episode_Reward/collision: -0.1008
+        Episode_Reward/person_near: -0.0866
+               Episode_Reward/fall: -0.0061
+      Episode_Reward/out_of_square: -0.0049
+               Episode_Reward/time: -0.0334
+         Episode_Reward/smoothness: -0.1052
+      Episode_Termination/time_out: 0.0016
+       Episode_Termination/success: 0.7661
+Episode_Termination/collision_footprint: 0.1684
+Episode_Termination/collision_force: 0.0637
+          Episode_Termination/fall: 0.0127
+ Episode_Termination/out_of_square: 0.0113
 --------------------------------------------------------------------------------
                    Total timesteps: 47185920
-                    Iteration time: 12.45s
-                      Time elapsed: 05:01:44
-                               ETA: 00:12:46
+                    Iteration time: 14.47s
+                      Time elapsed: 05:49:40
+                               ETA: 00:14:48
 
 ################################################################################
                      [1m Learning iteration 1440/1500 [0m                     
 
-                       Computation: 2588 steps/s (collection: 9.168s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.6574
-               Mean surrogate loss: -0.0100
-                 Mean entropy loss: -5.2167
-                       Mean reward: -6.34
-               Mean episode length: 128.17
-           Episode_Reward/progress: 0.0481
-            Episode_Reward/success: 0.1680
-          Episode_Reward/collision: -0.1535
-        Episode_Reward/person_near: -0.1796
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0037
-               Episode_Reward/time: -0.1303
-         Episode_Reward/smoothness: -0.0512
-      Episode_Termination/time_out: 0.5142
-       Episode_Termination/success: 0.1725
-Episode_Termination/collision_footprint: 0.2494
-Episode_Termination/collision_force: 0.0738
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0094
+                       Computation: 2230 steps/s (collection: 11.228s, learning 3.462s)
+             Mean action noise std: 3.09
+          Mean value_function loss: 18.6207
+               Mean surrogate loss: -0.0078
+                 Mean entropy loss: 7.6082
+                       Mean reward: 11.83
+               Mean episode length: 32.26
+           Episode_Reward/progress: 0.2132
+            Episode_Reward/success: 0.7661
+          Episode_Reward/collision: -0.1031
+        Episode_Reward/person_near: -0.0914
+               Episode_Reward/fall: -0.0064
+      Episode_Reward/out_of_square: -0.0082
+               Episode_Reward/time: -0.0330
+         Episode_Reward/smoothness: -0.1071
+      Episode_Termination/time_out: 0.0021
+       Episode_Termination/success: 0.7738
+Episode_Termination/collision_footprint: 0.1574
+Episode_Termination/collision_force: 0.0609
+          Episode_Termination/fall: 0.0104
+ Episode_Termination/out_of_square: 0.0098
 --------------------------------------------------------------------------------
                    Total timesteps: 47218688
-                    Iteration time: 12.66s
-                      Time elapsed: 05:01:56
-                               ETA: 00:12:34
+                    Iteration time: 14.69s
+                      Time elapsed: 05:49:54
+                               ETA: 00:14:34
 
 ################################################################################
                      [1m Learning iteration 1441/1500 [0m                     
 
-                       Computation: 2608 steps/s (collection: 9.066s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.8702
-               Mean surrogate loss: -0.0056
-                 Mean entropy loss: -5.2454
-                       Mean reward: -2.87
-               Mean episode length: 115.16
-           Episode_Reward/progress: 0.0421
-            Episode_Reward/success: 0.2044
-          Episode_Reward/collision: -0.1296
-        Episode_Reward/person_near: -0.1555
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0135
-               Episode_Reward/time: -0.1257
-         Episode_Reward/smoothness: -0.0495
-      Episode_Termination/time_out: 0.5162
-       Episode_Termination/success: 0.1694
-Episode_Termination/collision_footprint: 0.2419
-Episode_Termination/collision_force: 0.0846
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0087
+                       Computation: 2256 steps/s (collection: 11.061s, learning 3.461s)
+             Mean action noise std: 3.09
+          Mean value_function loss: 17.5688
+               Mean surrogate loss: -0.0148
+                 Mean entropy loss: 7.6121
+                       Mean reward: 16.18
+               Mean episode length: 33.82
+           Episode_Reward/progress: 0.2253
+            Episode_Reward/success: 0.8092
+          Episode_Reward/collision: -0.0880
+        Episode_Reward/person_near: -0.0874
+               Episode_Reward/fall: -0.0023
+      Episode_Reward/out_of_square: -0.0046
+               Episode_Reward/time: -0.0339
+         Episode_Reward/smoothness: -0.1083
+      Episode_Termination/time_out: 0.0003
+       Episode_Termination/success: 0.7725
+Episode_Termination/collision_footprint: 0.1634
+Episode_Termination/collision_force: 0.0605
+          Episode_Termination/fall: 0.0113
+ Episode_Termination/out_of_square: 0.0137
 --------------------------------------------------------------------------------
                    Total timesteps: 47251456
-                    Iteration time: 12.56s
-                      Time elapsed: 05:02:09
-                               ETA: 00:12:21
+                    Iteration time: 14.52s
+                      Time elapsed: 05:50:09
+                               ETA: 00:14:19
 
 ################################################################################
                      [1m Learning iteration 1442/1500 [0m                     
 
-                       Computation: 2604 steps/s (collection: 9.085s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.6144
-               Mean surrogate loss: -0.0006
-                 Mean entropy loss: -5.2522
-                       Mean reward: -5.52
-               Mean episode length: 121.11
-           Episode_Reward/progress: 0.0509
-            Episode_Reward/success: 0.2279
-          Episode_Reward/collision: -0.1391
-        Episode_Reward/person_near: -0.1769
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0029
-               Episode_Reward/time: -0.1229
-         Episode_Reward/smoothness: -0.0485
-      Episode_Termination/time_out: 0.5191
-       Episode_Termination/success: 0.1711
-Episode_Termination/collision_footprint: 0.2412
-Episode_Termination/collision_force: 0.0783
-          Episode_Termination/fall: 0.0009
- Episode_Termination/out_of_square: 0.0125
+                       Computation: 2279 steps/s (collection: 10.917s, learning 3.458s)
+             Mean action noise std: 3.10
+          Mean value_function loss: 17.6046
+               Mean surrogate loss: -0.0137
+                 Mean entropy loss: 7.6173
+                       Mean reward: 13.44
+               Mean episode length: 30.94
+           Episode_Reward/progress: 0.2201
+            Episode_Reward/success: 0.8072
+          Episode_Reward/collision: -0.0846
+        Episode_Reward/person_near: -0.0780
+               Episode_Reward/fall: -0.0050
+      Episode_Reward/out_of_square: -0.0057
+               Episode_Reward/time: -0.0330
+         Episode_Reward/smoothness: -0.1045
+      Episode_Termination/time_out: 0.0017
+       Episode_Termination/success: 0.7988
+Episode_Termination/collision_footprint: 0.1490
+Episode_Termination/collision_force: 0.0540
+          Episode_Termination/fall: 0.0090
+ Episode_Termination/out_of_square: 0.0127
 --------------------------------------------------------------------------------
                    Total timesteps: 47284224
-                    Iteration time: 12.58s
-                      Time elapsed: 05:02:21
-                               ETA: 00:12:09
+                    Iteration time: 14.38s
+                      Time elapsed: 05:50:23
+                               ETA: 00:14:05
 
 ################################################################################
                      [1m Learning iteration 1443/1500 [0m                     
 
-                       Computation: 2618 steps/s (collection: 9.017s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.2850
-               Mean surrogate loss: -0.0047
-                 Mean entropy loss: -5.2320
-                       Mean reward: -6.22
-               Mean episode length: 147.38
-           Episode_Reward/progress: 0.0371
-            Episode_Reward/success: 0.1425
-          Episode_Reward/collision: -0.1416
-        Episode_Reward/person_near: -0.1640
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0062
-               Episode_Reward/time: -0.1386
-         Episode_Reward/smoothness: -0.0531
-      Episode_Termination/time_out: 0.5183
-       Episode_Termination/success: 0.1663
-Episode_Termination/collision_footprint: 0.2461
-Episode_Termination/collision_force: 0.0793
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0123
+                       Computation: 2260 steps/s (collection: 11.035s, learning 3.460s)
+             Mean action noise std: 3.10
+          Mean value_function loss: 19.9345
+               Mean surrogate loss: -0.0024
+                 Mean entropy loss: 7.6236
+                       Mean reward: 12.30
+               Mean episode length: 34.37
+           Episode_Reward/progress: 0.2161
+            Episode_Reward/success: 0.7603
+          Episode_Reward/collision: -0.1091
+        Episode_Reward/person_near: -0.0823
+               Episode_Reward/fall: -0.0066
+      Episode_Reward/out_of_square: -0.0034
+               Episode_Reward/time: -0.0331
+         Episode_Reward/smoothness: -0.1043
+      Episode_Termination/time_out: 0.0005
+       Episode_Termination/success: 0.7900
+Episode_Termination/collision_footprint: 0.1566
+Episode_Termination/collision_force: 0.0579
+          Episode_Termination/fall: 0.0089
+ Episode_Termination/out_of_square: 0.0086
 --------------------------------------------------------------------------------
                    Total timesteps: 47316992
-                    Iteration time: 12.51s
-                      Time elapsed: 05:02:34
-                               ETA: 00:11:56
+                    Iteration time: 14.50s
+                      Time elapsed: 05:50:38
+                               ETA: 00:13:50
 
 ################################################################################
                      [1m Learning iteration 1444/1500 [0m                     
 
-                       Computation: 2593 steps/s (collection: 9.135s, learning 3.500s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.5021
-               Mean surrogate loss: -0.0075
-                 Mean entropy loss: -5.2415
-                       Mean reward: -6.89
-               Mean episode length: 128.76
-           Episode_Reward/progress: 0.0443
-            Episode_Reward/success: 0.1716
-          Episode_Reward/collision: -0.1305
-        Episode_Reward/person_near: -0.2110
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0032
-               Episode_Reward/time: -0.1384
-         Episode_Reward/smoothness: -0.0544
-      Episode_Termination/time_out: 0.5390
-       Episode_Termination/success: 0.1634
-Episode_Termination/collision_footprint: 0.2277
-Episode_Termination/collision_force: 0.0810
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0121
+                       Computation: 2259 steps/s (collection: 11.040s, learning 3.462s)
+             Mean action noise std: 3.10
+          Mean value_function loss: 18.6396
+               Mean surrogate loss: -0.0105
+                 Mean entropy loss: 7.6249
+                       Mean reward: 13.93
+               Mean episode length: 34.42
+           Episode_Reward/progress: 0.2180
+            Episode_Reward/success: 0.7745
+          Episode_Reward/collision: -0.1034
+        Episode_Reward/person_near: -0.0870
+               Episode_Reward/fall: -0.0053
+      Episode_Reward/out_of_square: -0.0036
+               Episode_Reward/time: -0.0334
+         Episode_Reward/smoothness: -0.1055
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7631
+Episode_Termination/collision_footprint: 0.1675
+Episode_Termination/collision_force: 0.0720
+          Episode_Termination/fall: 0.0126
+ Episode_Termination/out_of_square: 0.0088
 --------------------------------------------------------------------------------
                    Total timesteps: 47349760
-                    Iteration time: 12.63s
-                      Time elapsed: 05:02:47
-                               ETA: 00:11:44
+                    Iteration time: 14.50s
+                      Time elapsed: 05:50:52
+                               ETA: 00:13:35
 
 ################################################################################
                      [1m Learning iteration 1445/1500 [0m                     
 
-                       Computation: 2593 steps/s (collection: 9.141s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1820
-               Mean surrogate loss: -0.0099
-                 Mean entropy loss: -5.2653
-                       Mean reward: -7.03
-               Mean episode length: 133.27
-           Episode_Reward/progress: 0.0330
-            Episode_Reward/success: 0.1658
-          Episode_Reward/collision: -0.1473
-        Episode_Reward/person_near: -0.2318
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0055
-               Episode_Reward/time: -0.1312
-         Episode_Reward/smoothness: -0.0523
-      Episode_Termination/time_out: 0.5291
-       Episode_Termination/success: 0.1701
-Episode_Termination/collision_footprint: 0.2270
-Episode_Termination/collision_force: 0.0850
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0117
+                       Computation: 2249 steps/s (collection: 11.110s, learning 3.459s)
+             Mean action noise std: 3.10
+          Mean value_function loss: 17.6003
+               Mean surrogate loss: -0.0172
+                 Mean entropy loss: 7.6268
+                       Mean reward: 16.35
+               Mean episode length: 33.28
+           Episode_Reward/progress: 0.2166
+            Episode_Reward/success: 0.8020
+          Episode_Reward/collision: -0.0877
+        Episode_Reward/person_near: -0.0800
+               Episode_Reward/fall: -0.0050
+      Episode_Reward/out_of_square: -0.0063
+               Episode_Reward/time: -0.0329
+         Episode_Reward/smoothness: -0.1000
+      Episode_Termination/time_out: 0.0010
+       Episode_Termination/success: 0.7889
+Episode_Termination/collision_footprint: 0.1552
+Episode_Termination/collision_force: 0.0565
+          Episode_Termination/fall: 0.0111
+ Episode_Termination/out_of_square: 0.0115
 --------------------------------------------------------------------------------
                    Total timesteps: 47382528
-                    Iteration time: 12.64s
-                      Time elapsed: 05:02:59
-                               ETA: 00:11:31
+                    Iteration time: 14.57s
+                      Time elapsed: 05:51:07
+                               ETA: 00:13:21
 
 ################################################################################
                      [1m Learning iteration 1446/1500 [0m                     
 
-                       Computation: 2602 steps/s (collection: 9.099s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.6111
-               Mean surrogate loss: -0.0032
-                 Mean entropy loss: -5.2699
-                       Mean reward: -5.82
-               Mean episode length: 133.20
-           Episode_Reward/progress: 0.0508
-            Episode_Reward/success: 0.2017
-          Episode_Reward/collision: -0.1485
-        Episode_Reward/person_near: -0.1957
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0040
-               Episode_Reward/time: -0.1257
-         Episode_Reward/smoothness: -0.0504
-      Episode_Termination/time_out: 0.5236
-       Episode_Termination/success: 0.1860
-Episode_Termination/collision_footprint: 0.2198
-Episode_Termination/collision_force: 0.0794
-          Episode_Termination/fall: 0.0000
+                       Computation: 2237 steps/s (collection: 11.189s, learning 3.459s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 20.2015
+               Mean surrogate loss: -0.0049
+                 Mean entropy loss: 7.6290
+                       Mean reward: 13.33
+               Mean episode length: 32.17
+           Episode_Reward/progress: 0.2119
+            Episode_Reward/success: 0.7597
+          Episode_Reward/collision: -0.1083
+        Episode_Reward/person_near: -0.0827
+               Episode_Reward/fall: -0.0063
+      Episode_Reward/out_of_square: -0.0061
+               Episode_Reward/time: -0.0321
+         Episode_Reward/smoothness: -0.1039
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7818
+Episode_Termination/collision_footprint: 0.1551
+Episode_Termination/collision_force: 0.0604
+          Episode_Termination/fall: 0.0123
  Episode_Termination/out_of_square: 0.0121
 --------------------------------------------------------------------------------
                    Total timesteps: 47415296
-                    Iteration time: 12.59s
-                      Time elapsed: 05:03:12
-                               ETA: 00:11:18
+                    Iteration time: 14.65s
+                      Time elapsed: 05:51:21
+                               ETA: 00:13:06
 
 ################################################################################
                      [1m Learning iteration 1447/1500 [0m                     
 
-                       Computation: 2614 steps/s (collection: 9.041s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.9734
-               Mean surrogate loss: -0.0089
-                 Mean entropy loss: -5.2585
-                       Mean reward: -3.58
-               Mean episode length: 119.64
-           Episode_Reward/progress: 0.0458
-            Episode_Reward/success: 0.1757
-          Episode_Reward/collision: -0.1533
-        Episode_Reward/person_near: -0.1307
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0042
-               Episode_Reward/time: -0.1263
-         Episode_Reward/smoothness: -0.0485
-      Episode_Termination/time_out: 0.5256
-       Episode_Termination/success: 0.1886
-Episode_Termination/collision_footprint: 0.2256
-Episode_Termination/collision_force: 0.0677
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0114
+                       Computation: 2259 steps/s (collection: 11.037s, learning 3.462s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 18.4898
+               Mean surrogate loss: -0.0013
+                 Mean entropy loss: 7.6314
+                       Mean reward: 14.05
+               Mean episode length: 36.36
+           Episode_Reward/progress: 0.2180
+            Episode_Reward/success: 0.7828
+          Episode_Reward/collision: -0.0979
+        Episode_Reward/person_near: -0.0854
+               Episode_Reward/fall: -0.0056
+      Episode_Reward/out_of_square: -0.0041
+               Episode_Reward/time: -0.0338
+         Episode_Reward/smoothness: -0.1074
+      Episode_Termination/time_out: 0.0012
+       Episode_Termination/success: 0.7662
+Episode_Termination/collision_footprint: 0.1685
+Episode_Termination/collision_force: 0.0629
+          Episode_Termination/fall: 0.0156
+ Episode_Termination/out_of_square: 0.0084
 --------------------------------------------------------------------------------
                    Total timesteps: 47448064
-                    Iteration time: 12.53s
-                      Time elapsed: 05:03:24
-                               ETA: 00:11:06
+                    Iteration time: 14.50s
+                      Time elapsed: 05:51:36
+                               ETA: 00:12:52
 
 ################################################################################
                      [1m Learning iteration 1448/1500 [0m                     
 
-                       Computation: 2593 steps/s (collection: 9.137s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.4417
-               Mean surrogate loss: -0.0068
-                 Mean entropy loss: -5.2597
-                       Mean reward: -7.56
-               Mean episode length: 121.25
-           Episode_Reward/progress: 0.0435
-            Episode_Reward/success: 0.1971
-          Episode_Reward/collision: -0.1355
-        Episode_Reward/person_near: -0.1854
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0121
-               Episode_Reward/time: -0.1288
-         Episode_Reward/smoothness: -0.0493
-      Episode_Termination/time_out: 0.5299
-       Episode_Termination/success: 0.1827
-Episode_Termination/collision_footprint: 0.2283
-Episode_Termination/collision_force: 0.0661
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0107
+                       Computation: 2232 steps/s (collection: 11.216s, learning 3.465s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 17.9481
+               Mean surrogate loss: -0.0029
+                 Mean entropy loss: 7.6326
+                       Mean reward: 13.43
+               Mean episode length: 35.30
+           Episode_Reward/progress: 0.2099
+            Episode_Reward/success: 0.7757
+          Episode_Reward/collision: -0.1028
+        Episode_Reward/person_near: -0.0855
+               Episode_Reward/fall: -0.0057
+      Episode_Reward/out_of_square: -0.0036
+               Episode_Reward/time: -0.0329
+         Episode_Reward/smoothness: -0.1051
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7776
+Episode_Termination/collision_footprint: 0.1543
+Episode_Termination/collision_force: 0.0631
+          Episode_Termination/fall: 0.0131
+ Episode_Termination/out_of_square: 0.0095
 --------------------------------------------------------------------------------
                    Total timesteps: 47480832
-                    Iteration time: 12.63s
-                      Time elapsed: 05:03:37
-                               ETA: 00:10:53
+                    Iteration time: 14.68s
+                      Time elapsed: 05:51:51
+                               ETA: 00:12:37
 
 ################################################################################
                      [1m Learning iteration 1449/1500 [0m                     
 
-                       Computation: 2607 steps/s (collection: 9.071s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.0734
-               Mean surrogate loss: 0.0030
-                 Mean entropy loss: -5.2752
-                       Mean reward: -5.04
-               Mean episode length: 123.66
-           Episode_Reward/progress: 0.0512
-            Episode_Reward/success: 0.2028
-          Episode_Reward/collision: -0.1497
-        Episode_Reward/person_near: -0.1711
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0070
-               Episode_Reward/time: -0.1231
-         Episode_Reward/smoothness: -0.0477
-      Episode_Termination/time_out: 0.5232
-       Episode_Termination/success: 0.1836
-Episode_Termination/collision_footprint: 0.2326
-Episode_Termination/collision_force: 0.0687
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0109
+                       Computation: 2222 steps/s (collection: 11.285s, learning 3.461s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 20.4657
+               Mean surrogate loss: 0.0005
+                 Mean entropy loss: 7.6331
+                       Mean reward: 12.49
+               Mean episode length: 31.53
+           Episode_Reward/progress: 0.2159
+            Episode_Reward/success: 0.7622
+          Episode_Reward/collision: -0.1051
+        Episode_Reward/person_near: -0.0846
+               Episode_Reward/fall: -0.0091
+      Episode_Reward/out_of_square: -0.0044
+               Episode_Reward/time: -0.0328
+         Episode_Reward/smoothness: -0.1066
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7507
+Episode_Termination/collision_footprint: 0.1736
+Episode_Termination/collision_force: 0.0697
+          Episode_Termination/fall: 0.0216
+ Episode_Termination/out_of_square: 0.0077
 --------------------------------------------------------------------------------
                    Total timesteps: 47513600
-                    Iteration time: 12.57s
-                      Time elapsed: 05:03:50
-                               ETA: 00:10:41
+                    Iteration time: 14.75s
+                      Time elapsed: 05:52:05
+                               ETA: 00:12:23
 
 ################################################################################
                      [1m Learning iteration 1450/1500 [0m                     
 
-                       Computation: 2602 steps/s (collection: 9.094s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.8032
-               Mean surrogate loss: -0.0072
-                 Mean entropy loss: -5.2685
-                       Mean reward: -5.19
-               Mean episode length: 120.54
-           Episode_Reward/progress: 0.0497
-            Episode_Reward/success: 0.1731
-          Episode_Reward/collision: -0.1444
-        Episode_Reward/person_near: -0.1822
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0045
-               Episode_Reward/time: -0.1304
-         Episode_Reward/smoothness: -0.0498
-      Episode_Termination/time_out: 0.5124
-       Episode_Termination/success: 0.1849
-Episode_Termination/collision_footprint: 0.2404
-Episode_Termination/collision_force: 0.0696
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0105
+                       Computation: 2247 steps/s (collection: 11.121s, learning 3.462s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 17.9649
+               Mean surrogate loss: 0.0014
+                 Mean entropy loss: 7.6335
+                       Mean reward: 11.44
+               Mean episode length: 34.17
+           Episode_Reward/progress: 0.2115
+            Episode_Reward/success: 0.7667
+          Episode_Reward/collision: -0.1080
+        Episode_Reward/person_near: -0.0813
+               Episode_Reward/fall: -0.0049
+      Episode_Reward/out_of_square: -0.0027
+               Episode_Reward/time: -0.0319
+         Episode_Reward/smoothness: -0.0984
+      Episode_Termination/time_out: 0.0007
+       Episode_Termination/success: 0.7661
+Episode_Termination/collision_footprint: 0.1767
+Episode_Termination/collision_force: 0.0593
+          Episode_Termination/fall: 0.0136
+ Episode_Termination/out_of_square: 0.0067
 --------------------------------------------------------------------------------
                    Total timesteps: 47546368
-                    Iteration time: 12.59s
-                      Time elapsed: 05:04:02
-                               ETA: 00:10:28
+                    Iteration time: 14.58s
+                      Time elapsed: 05:52:20
+                               ETA: 00:12:08
 
 ################################################################################
                      [1m Learning iteration 1451/1500 [0m                     
 
-                       Computation: 2601 steps/s (collection: 9.101s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.5366
-               Mean surrogate loss: -0.0023
-                 Mean entropy loss: -5.2864
-                       Mean reward: -4.94
-               Mean episode length: 128.64
-           Episode_Reward/progress: 0.0430
-            Episode_Reward/success: 0.1456
-          Episode_Reward/collision: -0.1611
-        Episode_Reward/person_near: -0.2016
-               Episode_Reward/fall: -0.0052
-      Episode_Reward/out_of_square: -0.0071
-               Episode_Reward/time: -0.1300
-         Episode_Reward/smoothness: -0.0519
-      Episode_Termination/time_out: 0.5175
-       Episode_Termination/success: 0.1770
-Episode_Termination/collision_footprint: 0.2403
-Episode_Termination/collision_force: 0.0687
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0114
+                       Computation: 2251 steps/s (collection: 11.099s, learning 3.458s)
+             Mean action noise std: 3.11
+          Mean value_function loss: 18.4393
+               Mean surrogate loss: -0.0070
+                 Mean entropy loss: 7.6342
+                       Mean reward: 12.79
+               Mean episode length: 33.91
+           Episode_Reward/progress: 0.2190
+            Episode_Reward/success: 0.7823
+          Episode_Reward/collision: -0.0967
+        Episode_Reward/person_near: -0.0818
+               Episode_Reward/fall: -0.0088
+      Episode_Reward/out_of_square: -0.0040
+               Episode_Reward/time: -0.0334
+         Episode_Reward/smoothness: -0.1082
+      Episode_Termination/time_out: 0.0012
+       Episode_Termination/success: 0.7820
+Episode_Termination/collision_footprint: 0.1621
+Episode_Termination/collision_force: 0.0532
+          Episode_Termination/fall: 0.0109
+ Episode_Termination/out_of_square: 0.0072
 --------------------------------------------------------------------------------
                    Total timesteps: 47579136
-                    Iteration time: 12.59s
-                      Time elapsed: 05:04:15
-                               ETA: 00:10:16
+                    Iteration time: 14.56s
+                      Time elapsed: 05:52:35
+                               ETA: 00:11:53
 
 ################################################################################
                      [1m Learning iteration 1452/1500 [0m                     
 
-                       Computation: 2601 steps/s (collection: 9.099s, learning 3.499s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.0260
-               Mean surrogate loss: -0.0110
-                 Mean entropy loss: -5.2927
-                       Mean reward: -7.40
-               Mean episode length: 122.14
-           Episode_Reward/progress: 0.0572
-            Episode_Reward/success: 0.1941
-          Episode_Reward/collision: -0.1491
-        Episode_Reward/person_near: -0.2065
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: 0.0000
-               Episode_Reward/time: -0.1240
-         Episode_Reward/smoothness: -0.0485
-      Episode_Termination/time_out: 0.5226
-       Episode_Termination/success: 0.1797
-Episode_Termination/collision_footprint: 0.2342
-Episode_Termination/collision_force: 0.0656
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0117
+                       Computation: 2239 steps/s (collection: 11.171s, learning 3.460s)
+             Mean action noise std: 3.12
+          Mean value_function loss: 18.6007
+               Mean surrogate loss: -0.0149
+                 Mean entropy loss: 7.6376
+                       Mean reward: 12.74
+               Mean episode length: 29.40
+           Episode_Reward/progress: 0.2191
+            Episode_Reward/success: 0.7689
+          Episode_Reward/collision: -0.1054
+        Episode_Reward/person_near: -0.0849
+               Episode_Reward/fall: -0.0071
+      Episode_Reward/out_of_square: -0.0040
+               Episode_Reward/time: -0.0323
+         Episode_Reward/smoothness: -0.1033
+      Episode_Termination/time_out: 0.0002
+       Episode_Termination/success: 0.7832
+Episode_Termination/collision_footprint: 0.1557
+Episode_Termination/collision_force: 0.0552
+          Episode_Termination/fall: 0.0134
+ Episode_Termination/out_of_square: 0.0095
 --------------------------------------------------------------------------------
                    Total timesteps: 47611904
-                    Iteration time: 12.60s
-                      Time elapsed: 05:04:27
-                               ETA: 00:10:03
+                    Iteration time: 14.63s
+                      Time elapsed: 05:52:49
+                               ETA: 00:11:39
 
 ################################################################################
                      [1m Learning iteration 1453/1500 [0m                     
 
-                       Computation: 2593 steps/s (collection: 9.141s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3342
-               Mean surrogate loss: -0.0094
-                 Mean entropy loss: -5.3206
-                       Mean reward: -7.16
-               Mean episode length: 122.81
-           Episode_Reward/progress: 0.0540
-            Episode_Reward/success: 0.1931
-          Episode_Reward/collision: -0.1619
-        Episode_Reward/person_near: -0.2035
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: 0.0000
-               Episode_Reward/time: -0.1218
-         Episode_Reward/smoothness: -0.0480
-      Episode_Termination/time_out: 0.5108
-       Episode_Termination/success: 0.1855
-Episode_Termination/collision_footprint: 0.2369
-Episode_Termination/collision_force: 0.0734
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0106
+                       Computation: 2229 steps/s (collection: 11.235s, learning 3.462s)
+             Mean action noise std: 3.12
+          Mean value_function loss: 19.1313
+               Mean surrogate loss: -0.0143
+                 Mean entropy loss: 7.6434
+                       Mean reward: 13.10
+               Mean episode length: 33.89
+           Episode_Reward/progress: 0.2208
+            Episode_Reward/success: 0.7529
+          Episode_Reward/collision: -0.1123
+        Episode_Reward/person_near: -0.0828
+               Episode_Reward/fall: -0.0062
+      Episode_Reward/out_of_square: -0.0053
+               Episode_Reward/time: -0.0346
+         Episode_Reward/smoothness: -0.1069
+      Episode_Termination/time_out: 0.0004
+       Episode_Termination/success: 0.7509
+Episode_Termination/collision_footprint: 0.1879
+Episode_Termination/collision_force: 0.0631
+          Episode_Termination/fall: 0.0110
+ Episode_Termination/out_of_square: 0.0117
 --------------------------------------------------------------------------------
                    Total timesteps: 47644672
-                    Iteration time: 12.64s
-                      Time elapsed: 05:04:40
-                               ETA: 00:09:50
+                    Iteration time: 14.70s
+                      Time elapsed: 05:53:04
+                               ETA: 00:11:24
 
 ################################################################################
                      [1m Learning iteration 1454/1500 [0m                     
 
-                       Computation: 2618 steps/s (collection: 9.019s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.4998
-               Mean surrogate loss: -0.0060
-                 Mean entropy loss: -5.3315
-                       Mean reward: -4.01
-               Mean episode length: 123.01
-           Episode_Reward/progress: 0.0535
-            Episode_Reward/success: 0.2105
-          Episode_Reward/collision: -0.1302
-        Episode_Reward/person_near: -0.2057
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0031
-               Episode_Reward/time: -0.1288
-         Episode_Reward/smoothness: -0.0503
-      Episode_Termination/time_out: 0.5071
-       Episode_Termination/success: 0.1904
-Episode_Termination/collision_footprint: 0.2341
-Episode_Termination/collision_force: 0.0753
-          Episode_Termination/fall: 0.0005
- Episode_Termination/out_of_square: 0.0095
+                       Computation: 2228 steps/s (collection: 11.243s, learning 3.462s)
+             Mean action noise std: 3.12
+          Mean value_function loss: 19.3280
+               Mean surrogate loss: -0.0011
+                 Mean entropy loss: 7.6475
+                       Mean reward: 10.70
+               Mean episode length: 29.72
+           Episode_Reward/progress: 0.2164
+            Episode_Reward/success: 0.7602
+          Episode_Reward/collision: -0.1084
+        Episode_Reward/person_near: -0.0826
+               Episode_Reward/fall: -0.0049
+      Episode_Reward/out_of_square: -0.0071
+               Episode_Reward/time: -0.0317
+         Episode_Reward/smoothness: -0.0973
+      Episode_Termination/time_out: 0.0020
+       Episode_Termination/success: 0.7683
+Episode_Termination/collision_footprint: 0.1694
+Episode_Termination/collision_force: 0.0559
+          Episode_Termination/fall: 0.0125
+ Episode_Termination/out_of_square: 0.0153
 --------------------------------------------------------------------------------
                    Total timesteps: 47677440
-                    Iteration time: 12.51s
-                      Time elapsed: 05:04:53
-                               ETA: 00:09:38
+                    Iteration time: 14.70s
+                      Time elapsed: 05:53:19
+                               ETA: 00:11:10
 
 ################################################################################
                      [1m Learning iteration 1455/1500 [0m                     
 
-                       Computation: 2607 steps/s (collection: 9.070s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.9381
-               Mean surrogate loss: -0.0061
-                 Mean entropy loss: -5.3198
-                       Mean reward: -9.58
-               Mean episode length: 143.63
-           Episode_Reward/progress: 0.0373
-            Episode_Reward/success: 0.1333
-          Episode_Reward/collision: -0.1554
-        Episode_Reward/person_near: -0.2035
-               Episode_Reward/fall: -0.0022
-      Episode_Reward/out_of_square: -0.0108
-               Episode_Reward/time: -0.1283
-         Episode_Reward/smoothness: -0.0505
-      Episode_Termination/time_out: 0.5125
-       Episode_Termination/success: 0.1919
-Episode_Termination/collision_footprint: 0.2265
-Episode_Termination/collision_force: 0.0720
-          Episode_Termination/fall: 0.0004
- Episode_Termination/out_of_square: 0.0108
+                       Computation: 2264 steps/s (collection: 11.003s, learning 3.464s)
+             Mean action noise std: 3.12
+          Mean value_function loss: 19.9681
+               Mean surrogate loss: -0.0109
+                 Mean entropy loss: 7.6489
+                       Mean reward: 10.33
+               Mean episode length: 34.58
+           Episode_Reward/progress: 0.2170
+            Episode_Reward/success: 0.7739
+          Episode_Reward/collision: -0.0983
+        Episode_Reward/person_near: -0.0832
+               Episode_Reward/fall: -0.0109
+      Episode_Reward/out_of_square: -0.0045
+               Episode_Reward/time: -0.0332
+         Episode_Reward/smoothness: -0.1036
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7593
+Episode_Termination/collision_footprint: 0.1764
+Episode_Termination/collision_force: 0.0577
+          Episode_Termination/fall: 0.0131
+ Episode_Termination/out_of_square: 0.0128
 --------------------------------------------------------------------------------
                    Total timesteps: 47710208
-                    Iteration time: 12.57s
-                      Time elapsed: 05:05:05
-                               ETA: 00:09:25
+                    Iteration time: 14.47s
+                      Time elapsed: 05:53:33
+                               ETA: 00:10:55
 
 ################################################################################
                      [1m Learning iteration 1456/1500 [0m                     
 
-                       Computation: 2603 steps/s (collection: 9.088s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.7753
-               Mean surrogate loss: -0.0003
-                 Mean entropy loss: -5.3273
-                       Mean reward: -8.72
-               Mean episode length: 133.88
-           Episode_Reward/progress: 0.0428
-            Episode_Reward/success: 0.1709
-          Episode_Reward/collision: -0.1454
-        Episode_Reward/person_near: -0.2702
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0039
-               Episode_Reward/time: -0.1327
-         Episode_Reward/smoothness: -0.0530
-      Episode_Termination/time_out: 0.5219
-       Episode_Termination/success: 0.1821
-Episode_Termination/collision_footprint: 0.2278
-Episode_Termination/collision_force: 0.0715
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0096
+                       Computation: 2237 steps/s (collection: 11.186s, learning 3.461s)
+             Mean action noise std: 3.13
+          Mean value_function loss: 19.5427
+               Mean surrogate loss: -0.0093
+                 Mean entropy loss: 7.6520
+                       Mean reward: 13.53
+               Mean episode length: 33.96
+           Episode_Reward/progress: 0.2214
+            Episode_Reward/success: 0.7750
+          Episode_Reward/collision: -0.0993
+        Episode_Reward/person_near: -0.0840
+               Episode_Reward/fall: -0.0072
+      Episode_Reward/out_of_square: -0.0056
+               Episode_Reward/time: -0.0321
+         Episode_Reward/smoothness: -0.1001
+      Episode_Termination/time_out: 0.0008
+       Episode_Termination/success: 0.7666
+Episode_Termination/collision_footprint: 0.1647
+Episode_Termination/collision_force: 0.0529
+          Episode_Termination/fall: 0.0161
+ Episode_Termination/out_of_square: 0.0101
 --------------------------------------------------------------------------------
                    Total timesteps: 47742976
-                    Iteration time: 12.59s
-                      Time elapsed: 05:05:18
-                               ETA: 00:09:13
+                    Iteration time: 14.65s
+                      Time elapsed: 05:53:48
+                               ETA: 00:10:41
 
 ################################################################################
                      [1m Learning iteration 1457/1500 [0m                     
 
-                       Computation: 2611 steps/s (collection: 9.051s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.8925
-               Mean surrogate loss: -0.0055
-                 Mean entropy loss: -5.3082
-                       Mean reward: -4.47
-               Mean episode length: 131.95
-           Episode_Reward/progress: 0.0410
-            Episode_Reward/success: 0.1793
-          Episode_Reward/collision: -0.1623
-        Episode_Reward/person_near: -0.1649
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0095
-               Episode_Reward/time: -0.1263
-         Episode_Reward/smoothness: -0.0493
-      Episode_Termination/time_out: 0.5100
-       Episode_Termination/success: 0.1837
-Episode_Termination/collision_footprint: 0.2397
-Episode_Termination/collision_force: 0.0711
-          Episode_Termination/fall: 0.0001
- Episode_Termination/out_of_square: 0.0084
+                       Computation: 2231 steps/s (collection: 11.224s, learning 3.460s)
+             Mean action noise std: 3.13
+          Mean value_function loss: 19.4734
+               Mean surrogate loss: -0.0187
+                 Mean entropy loss: 7.6536
+                       Mean reward: 13.50
+               Mean episode length: 32.14
+           Episode_Reward/progress: 0.2180
+            Episode_Reward/success: 0.7677
+          Episode_Reward/collision: -0.1045
+        Episode_Reward/person_near: -0.0817
+               Episode_Reward/fall: -0.0057
+      Episode_Reward/out_of_square: -0.0055
+               Episode_Reward/time: -0.0316
+         Episode_Reward/smoothness: -0.0962
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7705
+Episode_Termination/collision_footprint: 0.1673
+Episode_Termination/collision_force: 0.0524
+          Episode_Termination/fall: 0.0099
+ Episode_Termination/out_of_square: 0.0127
 --------------------------------------------------------------------------------
                    Total timesteps: 47775744
-                    Iteration time: 12.55s
-                      Time elapsed: 05:05:30
-                               ETA: 00:09:00
+                    Iteration time: 14.68s
+                      Time elapsed: 05:54:02
+                               ETA: 00:10:26
 
 ################################################################################
                      [1m Learning iteration 1458/1500 [0m                     
 
-                       Computation: 2616 steps/s (collection: 9.028s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.9015
-               Mean surrogate loss: -0.0065
-                 Mean entropy loss: -5.3032
-                       Mean reward: -7.74
-               Mean episode length: 130.40
-           Episode_Reward/progress: 0.0400
-            Episode_Reward/success: 0.1650
-          Episode_Reward/collision: -0.1412
-        Episode_Reward/person_near: -0.1724
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0056
-               Episode_Reward/time: -0.1339
-         Episode_Reward/smoothness: -0.0532
-      Episode_Termination/time_out: 0.5117
-       Episode_Termination/success: 0.1832
-Episode_Termination/collision_footprint: 0.2422
-Episode_Termination/collision_force: 0.0685
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0084
+                       Computation: 2221 steps/s (collection: 11.289s, learning 3.461s)
+             Mean action noise std: 3.14
+          Mean value_function loss: 17.6035
+               Mean surrogate loss: -0.0181
+                 Mean entropy loss: 7.6578
+                       Mean reward: 15.18
+               Mean episode length: 29.94
+           Episode_Reward/progress: 0.2207
+            Episode_Reward/success: 0.7968
+          Episode_Reward/collision: -0.0943
+        Episode_Reward/person_near: -0.0811
+               Episode_Reward/fall: -0.0048
+      Episode_Reward/out_of_square: -0.0024
+               Episode_Reward/time: -0.0331
+         Episode_Reward/smoothness: -0.1035
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7812
+Episode_Termination/collision_footprint: 0.1624
+Episode_Termination/collision_force: 0.0550
+          Episode_Termination/fall: 0.0108
+ Episode_Termination/out_of_square: 0.0102
 --------------------------------------------------------------------------------
                    Total timesteps: 47808512
-                    Iteration time: 12.52s
-                      Time elapsed: 05:05:43
-                               ETA: 00:08:48
+                    Iteration time: 14.75s
+                      Time elapsed: 05:54:17
+                               ETA: 00:10:11
 
 ################################################################################
                      [1m Learning iteration 1459/1500 [0m                     
 
-                       Computation: 2609 steps/s (collection: 9.060s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.7710
-               Mean surrogate loss: -0.0059
-                 Mean entropy loss: -5.3274
-                       Mean reward: -5.14
-               Mean episode length: 131.76
-           Episode_Reward/progress: 0.0402
-            Episode_Reward/success: 0.1587
-          Episode_Reward/collision: -0.1489
-        Episode_Reward/person_near: -0.2197
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0016
-               Episode_Reward/time: -0.1327
-         Episode_Reward/smoothness: -0.0511
-      Episode_Termination/time_out: 0.5191
-       Episode_Termination/success: 0.1710
-Episode_Termination/collision_footprint: 0.2483
-Episode_Termination/collision_force: 0.0638
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0107
+                       Computation: 2239 steps/s (collection: 11.168s, learning 3.463s)
+             Mean action noise std: 3.14
+          Mean value_function loss: 18.9509
+               Mean surrogate loss: -0.0077
+                 Mean entropy loss: 7.6654
+                       Mean reward: 15.23
+               Mean episode length: 31.58
+           Episode_Reward/progress: 0.2178
+            Episode_Reward/success: 0.7800
+          Episode_Reward/collision: -0.0936
+        Episode_Reward/person_near: -0.0816
+               Episode_Reward/fall: -0.0111
+      Episode_Reward/out_of_square: -0.0053
+               Episode_Reward/time: -0.0320
+         Episode_Reward/smoothness: -0.0992
+      Episode_Termination/time_out: 0.0005
+       Episode_Termination/success: 0.7791
+Episode_Termination/collision_footprint: 0.1551
+Episode_Termination/collision_force: 0.0589
+          Episode_Termination/fall: 0.0164
+ Episode_Termination/out_of_square: 0.0102
 --------------------------------------------------------------------------------
                    Total timesteps: 47841280
-                    Iteration time: 12.56s
-                      Time elapsed: 05:05:55
-                               ETA: 00:08:35
+                    Iteration time: 14.63s
+                      Time elapsed: 05:54:32
+                               ETA: 00:09:57
 
 ################################################################################
                      [1m Learning iteration 1460/1500 [0m                     
 
-                       Computation: 2618 steps/s (collection: 9.016s, learning 3.498s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.0918
-               Mean surrogate loss: -0.0031
-                 Mean entropy loss: -5.3115
-                       Mean reward: -3.74
-               Mean episode length: 128.38
-           Episode_Reward/progress: 0.0576
-            Episode_Reward/success: 0.2611
-          Episode_Reward/collision: -0.1117
-        Episode_Reward/person_near: -0.1828
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0071
-               Episode_Reward/time: -0.1245
-         Episode_Reward/smoothness: -0.0484
-      Episode_Termination/time_out: 0.5112
-       Episode_Termination/success: 0.1811
-Episode_Termination/collision_footprint: 0.2480
-Episode_Termination/collision_force: 0.0615
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0112
+                       Computation: 2237 steps/s (collection: 11.184s, learning 3.461s)
+             Mean action noise std: 3.14
+          Mean value_function loss: 19.0365
+               Mean surrogate loss: -0.0161
+                 Mean entropy loss: 7.6677
+                       Mean reward: 15.08
+               Mean episode length: 33.58
+           Episode_Reward/progress: 0.2208
+            Episode_Reward/success: 0.7806
+          Episode_Reward/collision: -0.0996
+        Episode_Reward/person_near: -0.0763
+               Episode_Reward/fall: -0.0068
+      Episode_Reward/out_of_square: -0.0033
+               Episode_Reward/time: -0.0326
+         Episode_Reward/smoothness: -0.1034
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7805
+Episode_Termination/collision_footprint: 0.1554
+Episode_Termination/collision_force: 0.0580
+          Episode_Termination/fall: 0.0153
+ Episode_Termination/out_of_square: 0.0083
 --------------------------------------------------------------------------------
                    Total timesteps: 47874048
-                    Iteration time: 12.51s
-                      Time elapsed: 05:06:08
-                               ETA: 00:08:22
+                    Iteration time: 14.65s
+                      Time elapsed: 05:54:46
+                               ETA: 00:09:42
 
 ################################################################################
                      [1m Learning iteration 1461/1500 [0m                     
 
-                       Computation: 2621 steps/s (collection: 9.001s, learning 3.498s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3439
-               Mean surrogate loss: -0.0036
-                 Mean entropy loss: -5.2964
-                       Mean reward: -4.53
-               Mean episode length: 134.23
-           Episode_Reward/progress: 0.0431
-            Episode_Reward/success: 0.2183
-          Episode_Reward/collision: -0.1226
-        Episode_Reward/person_near: -0.1702
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0058
-               Episode_Reward/time: -0.1288
-         Episode_Reward/smoothness: -0.0510
-      Episode_Termination/time_out: 0.5242
-       Episode_Termination/success: 0.1880
-Episode_Termination/collision_footprint: 0.2317
-Episode_Termination/collision_force: 0.0541
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0126
+                       Computation: 2249 steps/s (collection: 11.107s, learning 3.462s)
+             Mean action noise std: 3.14
+          Mean value_function loss: 17.7539
+               Mean surrogate loss: -0.0117
+                 Mean entropy loss: 7.6689
+                       Mean reward: 16.06
+               Mean episode length: 32.38
+           Episode_Reward/progress: 0.2134
+            Episode_Reward/success: 0.7873
+          Episode_Reward/collision: -0.0937
+        Episode_Reward/person_near: -0.0806
+               Episode_Reward/fall: -0.0081
+      Episode_Reward/out_of_square: -0.0041
+               Episode_Reward/time: -0.0323
+         Episode_Reward/smoothness: -0.1006
+      Episode_Termination/time_out: 0.0007
+       Episode_Termination/success: 0.7710
+Episode_Termination/collision_footprint: 0.1628
+Episode_Termination/collision_force: 0.0532
+          Episode_Termination/fall: 0.0173
+ Episode_Termination/out_of_square: 0.0088
 --------------------------------------------------------------------------------
                    Total timesteps: 47906816
-                    Iteration time: 12.50s
-                      Time elapsed: 05:06:20
-                               ETA: 00:08:10
+                    Iteration time: 14.57s
+                      Time elapsed: 05:55:01
+                               ETA: 00:09:28
 
 ################################################################################
                      [1m Learning iteration 1462/1500 [0m                     
 
-                       Computation: 2608 steps/s (collection: 9.066s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.8686
-               Mean surrogate loss: -0.0071
-                 Mean entropy loss: -5.2935
-                       Mean reward: -6.35
-               Mean episode length: 129.92
-           Episode_Reward/progress: 0.0392
-            Episode_Reward/success: 0.1586
-          Episode_Reward/collision: -0.1537
-        Episode_Reward/person_near: -0.2042
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0030
-               Episode_Reward/time: -0.1354
-         Episode_Reward/smoothness: -0.0533
-      Episode_Termination/time_out: 0.5350
-       Episode_Termination/success: 0.1841
-Episode_Termination/collision_footprint: 0.2263
-Episode_Termination/collision_force: 0.0542
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0111
+                       Computation: 2251 steps/s (collection: 11.095s, learning 3.461s)
+             Mean action noise std: 3.15
+          Mean value_function loss: 19.1438
+               Mean surrogate loss: -0.0129
+                 Mean entropy loss: 7.6726
+                       Mean reward: 12.62
+               Mean episode length: 29.69
+           Episode_Reward/progress: 0.2212
+            Episode_Reward/success: 0.7820
+          Episode_Reward/collision: -0.0995
+        Episode_Reward/person_near: -0.0804
+               Episode_Reward/fall: -0.0056
+      Episode_Reward/out_of_square: -0.0040
+               Episode_Reward/time: -0.0316
+         Episode_Reward/smoothness: -0.0986
+      Episode_Termination/time_out: 0.0003
+       Episode_Termination/success: 0.7932
+Episode_Termination/collision_footprint: 0.1547
+Episode_Termination/collision_force: 0.0488
+          Episode_Termination/fall: 0.0104
+ Episode_Termination/out_of_square: 0.0063
 --------------------------------------------------------------------------------
                    Total timesteps: 47939584
-                    Iteration time: 12.56s
-                      Time elapsed: 05:06:33
-                               ETA: 00:07:57
+                    Iteration time: 14.56s
+                      Time elapsed: 05:55:15
+                               ETA: 00:09:13
 
 ################################################################################
                      [1m Learning iteration 1463/1500 [0m                     
 
-                       Computation: 2622 steps/s (collection: 8.998s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.7328
-               Mean surrogate loss: -0.0113
-                 Mean entropy loss: -5.2896
-                       Mean reward: -6.83
-               Mean episode length: 137.62
-           Episode_Reward/progress: 0.0277
-            Episode_Reward/success: 0.1292
-          Episode_Reward/collision: -0.1198
-        Episode_Reward/person_near: -0.2533
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0059
-               Episode_Reward/time: -0.1450
-         Episode_Reward/smoothness: -0.0548
-      Episode_Termination/time_out: 0.5359
-       Episode_Termination/success: 0.1868
-Episode_Termination/collision_footprint: 0.2271
-Episode_Termination/collision_force: 0.0497
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0116
+                       Computation: 2244 steps/s (collection: 11.139s, learning 3.459s)
+             Mean action noise std: 3.15
+          Mean value_function loss: 17.4446
+               Mean surrogate loss: -0.0164
+                 Mean entropy loss: 7.6768
+                       Mean reward: 14.30
+               Mean episode length: 32.54
+           Episode_Reward/progress: 0.2151
+            Episode_Reward/success: 0.7972
+          Episode_Reward/collision: -0.0920
+        Episode_Reward/person_near: -0.0878
+               Episode_Reward/fall: -0.0041
+      Episode_Reward/out_of_square: -0.0053
+               Episode_Reward/time: -0.0319
+         Episode_Reward/smoothness: -0.0992
+      Episode_Termination/time_out: 0.0000
+       Episode_Termination/success: 0.7803
+Episode_Termination/collision_footprint: 0.1613
+Episode_Termination/collision_force: 0.0591
+          Episode_Termination/fall: 0.0113
+ Episode_Termination/out_of_square: 0.0074
 --------------------------------------------------------------------------------
                    Total timesteps: 47972352
-                    Iteration time: 12.49s
-                      Time elapsed: 05:06:45
-                               ETA: 00:07:45
+                    Iteration time: 14.60s
+                      Time elapsed: 05:55:30
+                               ETA: 00:08:59
 
 ################################################################################
                      [1m Learning iteration 1464/1500 [0m                     
 
-                       Computation: 2613 steps/s (collection: 9.043s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3572
-               Mean surrogate loss: -0.0075
-                 Mean entropy loss: -5.3117
-                       Mean reward: -5.14
-               Mean episode length: 127.76
-           Episode_Reward/progress: 0.0455
-            Episode_Reward/success: 0.1700
-          Episode_Reward/collision: -0.1584
-        Episode_Reward/person_near: -0.1027
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0014
-               Episode_Reward/time: -0.1263
-         Episode_Reward/smoothness: -0.0482
-      Episode_Termination/time_out: 0.5461
-       Episode_Termination/success: 0.1847
-Episode_Termination/collision_footprint: 0.2207
-Episode_Termination/collision_force: 0.0530
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0081
+                       Computation: 2252 steps/s (collection: 11.084s, learning 3.461s)
+             Mean action noise std: 3.16
+          Mean value_function loss: 19.4832
+               Mean surrogate loss: -0.0109
+                 Mean entropy loss: 7.6820
+                       Mean reward: 13.58
+               Mean episode length: 30.17
+           Episode_Reward/progress: 0.2204
+            Episode_Reward/success: 0.7822
+          Episode_Reward/collision: -0.0957
+        Episode_Reward/person_near: -0.0788
+               Episode_Reward/fall: -0.0075
+      Episode_Reward/out_of_square: -0.0054
+               Episode_Reward/time: -0.0318
+         Episode_Reward/smoothness: -0.1005
+      Episode_Termination/time_out: 0.0008
+       Episode_Termination/success: 0.7900
+Episode_Termination/collision_footprint: 0.1505
+Episode_Termination/collision_force: 0.0545
+          Episode_Termination/fall: 0.0110
+ Episode_Termination/out_of_square: 0.0111
 --------------------------------------------------------------------------------
                    Total timesteps: 48005120
-                    Iteration time: 12.54s
-                      Time elapsed: 05:06:58
-                               ETA: 00:07:32
+                    Iteration time: 14.55s
+                      Time elapsed: 05:55:45
+                               ETA: 00:08:44
 
 ################################################################################
                      [1m Learning iteration 1465/1500 [0m                     
 
-                       Computation: 2606 steps/s (collection: 9.072s, learning 3.498s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.6287
-               Mean surrogate loss: -0.0048
-                 Mean entropy loss: -5.3066
-                       Mean reward: -5.70
-               Mean episode length: 135.32
-           Episode_Reward/progress: 0.0419
-            Episode_Reward/success: 0.1731
-          Episode_Reward/collision: -0.1182
-        Episode_Reward/person_near: -0.1481
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0022
-               Episode_Reward/time: -0.1368
-         Episode_Reward/smoothness: -0.0531
-      Episode_Termination/time_out: 0.5384
-       Episode_Termination/success: 0.1862
-Episode_Termination/collision_footprint: 0.2249
-Episode_Termination/collision_force: 0.0554
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0086
+                       Computation: 2215 steps/s (collection: 11.336s, learning 3.458s)
+             Mean action noise std: 3.17
+          Mean value_function loss: 20.4390
+               Mean surrogate loss: -0.0177
+                 Mean entropy loss: 7.6888
+                       Mean reward: 14.08
+               Mean episode length: 31.60
+           Episode_Reward/progress: 0.2133
+            Episode_Reward/success: 0.7484
+          Episode_Reward/collision: -0.1089
+        Episode_Reward/person_near: -0.0742
+               Episode_Reward/fall: -0.0104
+      Episode_Reward/out_of_square: -0.0070
+               Episode_Reward/time: -0.0323
+         Episode_Reward/smoothness: -0.1018
+      Episode_Termination/time_out: 0.0003
+       Episode_Termination/success: 0.7678
+Episode_Termination/collision_footprint: 0.1656
+Episode_Termination/collision_force: 0.0568
+          Episode_Termination/fall: 0.0175
+ Episode_Termination/out_of_square: 0.0118
 --------------------------------------------------------------------------------
                    Total timesteps: 48037888
-                    Iteration time: 12.57s
-                      Time elapsed: 05:07:10
-                               ETA: 00:07:20
+                    Iteration time: 14.79s
+                      Time elapsed: 05:55:59
+                               ETA: 00:08:29
 
 ################################################################################
                      [1m Learning iteration 1466/1500 [0m                     
 
-                       Computation: 2604 steps/s (collection: 9.089s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.5100
-               Mean surrogate loss: -0.0047
-                 Mean entropy loss: -5.3326
-                       Mean reward: -4.37
-               Mean episode length: 126.88
-           Episode_Reward/progress: 0.0544
-            Episode_Reward/success: 0.2110
-          Episode_Reward/collision: -0.1527
-        Episode_Reward/person_near: -0.1630
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: 0.0000
-               Episode_Reward/time: -0.1241
-         Episode_Reward/smoothness: -0.0481
-      Episode_Termination/time_out: 0.5399
-       Episode_Termination/success: 0.1906
-Episode_Termination/collision_footprint: 0.2237
-Episode_Termination/collision_force: 0.0524
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0074
+                       Computation: 2215 steps/s (collection: 11.329s, learning 3.459s)
+             Mean action noise std: 3.17
+          Mean value_function loss: 20.2383
+               Mean surrogate loss: -0.0125
+                 Mean entropy loss: 7.6926
+                       Mean reward: 12.80
+               Mean episode length: 30.28
+           Episode_Reward/progress: 0.2169
+            Episode_Reward/success: 0.7704
+          Episode_Reward/collision: -0.1024
+        Episode_Reward/person_near: -0.0803
+               Episode_Reward/fall: -0.0065
+      Episode_Reward/out_of_square: -0.0055
+               Episode_Reward/time: -0.0312
+         Episode_Reward/smoothness: -0.0992
+      Episode_Termination/time_out: 0.0003
+       Episode_Termination/success: 0.7816
+Episode_Termination/collision_footprint: 0.1555
+Episode_Termination/collision_force: 0.0485
+          Episode_Termination/fall: 0.0130
+ Episode_Termination/out_of_square: 0.0123
 --------------------------------------------------------------------------------
                    Total timesteps: 48070656
-                    Iteration time: 12.58s
-                      Time elapsed: 05:07:23
-                               ETA: 00:07:07
+                    Iteration time: 14.79s
+                      Time elapsed: 05:56:14
+                               ETA: 00:08:15
 
 ################################################################################
                      [1m Learning iteration 1467/1500 [0m                     
 
-                       Computation: 2624 steps/s (collection: 8.996s, learning 3.490s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.4861
-               Mean surrogate loss: -0.0017
-                 Mean entropy loss: -5.3371
-                       Mean reward: -4.81
-               Mean episode length: 126.56
-           Episode_Reward/progress: 0.0516
-            Episode_Reward/success: 0.1996
-          Episode_Reward/collision: -0.1575
-        Episode_Reward/person_near: -0.1728
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: 0.0000
-               Episode_Reward/time: -0.1264
-         Episode_Reward/smoothness: -0.0491
-      Episode_Termination/time_out: 0.5308
-       Episode_Termination/success: 0.1904
-Episode_Termination/collision_footprint: 0.2329
-Episode_Termination/collision_force: 0.0566
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0047
+                       Computation: 2253 steps/s (collection: 11.081s, learning 3.460s)
+             Mean action noise std: 3.17
+          Mean value_function loss: 17.9993
+               Mean surrogate loss: -0.0083
+                 Mean entropy loss: 7.6967
+                       Mean reward: 11.17
+               Mean episode length: 33.44
+           Episode_Reward/progress: 0.2142
+            Episode_Reward/success: 0.7614
+          Episode_Reward/collision: -0.1027
+        Episode_Reward/person_near: -0.0840
+               Episode_Reward/fall: -0.0080
+      Episode_Reward/out_of_square: -0.0071
+               Episode_Reward/time: -0.0320
+         Episode_Reward/smoothness: -0.1018
+      Episode_Termination/time_out: 0.0013
+       Episode_Termination/success: 0.7639
+Episode_Termination/collision_footprint: 0.1708
+Episode_Termination/collision_force: 0.0565
+          Episode_Termination/fall: 0.0172
+ Episode_Termination/out_of_square: 0.0118
 --------------------------------------------------------------------------------
                    Total timesteps: 48103424
-                    Iteration time: 12.49s
-                      Time elapsed: 05:07:36
-                               ETA: 00:06:54
+                    Iteration time: 14.54s
+                      Time elapsed: 05:56:29
+                               ETA: 00:08:00
 
 ################################################################################
                      [1m Learning iteration 1468/1500 [0m                     
 
-                       Computation: 2613 steps/s (collection: 9.045s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.6010
-               Mean surrogate loss: -0.0046
-                 Mean entropy loss: -5.3422
-                       Mean reward: -3.84
-               Mean episode length: 133.58
-           Episode_Reward/progress: 0.0489
-            Episode_Reward/success: 0.2034
-          Episode_Reward/collision: -0.1120
-        Episode_Reward/person_near: -0.1761
-               Episode_Reward/fall: -0.0020
-      Episode_Reward/out_of_square: -0.0110
-               Episode_Reward/time: -0.1348
-         Episode_Reward/smoothness: -0.0533
-      Episode_Termination/time_out: 0.5336
-       Episode_Termination/success: 0.1914
-Episode_Termination/collision_footprint: 0.2242
-Episode_Termination/collision_force: 0.0640
-          Episode_Termination/fall: 0.0004
- Episode_Termination/out_of_square: 0.0037
+                       Computation: 2208 steps/s (collection: 11.376s, learning 3.460s)
+             Mean action noise std: 3.18
+          Mean value_function loss: 20.7655
+               Mean surrogate loss: -0.0162
+                 Mean entropy loss: 7.6988
+                       Mean reward: 14.10
+               Mean episode length: 31.37
+           Episode_Reward/progress: 0.2216
+            Episode_Reward/success: 0.7805
+          Episode_Reward/collision: -0.0972
+        Episode_Reward/person_near: -0.0825
+               Episode_Reward/fall: -0.0061
+      Episode_Reward/out_of_square: -0.0064
+               Episode_Reward/time: -0.0315
+         Episode_Reward/smoothness: -0.1012
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7675
+Episode_Termination/collision_footprint: 0.1649
+Episode_Termination/collision_force: 0.0626
+          Episode_Termination/fall: 0.0132
+ Episode_Termination/out_of_square: 0.0168
 --------------------------------------------------------------------------------
                    Total timesteps: 48136192
-                    Iteration time: 12.54s
-                      Time elapsed: 05:07:48
-                               ETA: 00:06:42
+                    Iteration time: 14.84s
+                      Time elapsed: 05:56:44
+                               ETA: 00:07:46
 
 ################################################################################
                      [1m Learning iteration 1469/1500 [0m                     
 
-                       Computation: 2629 steps/s (collection: 8.968s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.8523
-               Mean surrogate loss: 0.0008
-                 Mean entropy loss: -5.3370
-                       Mean reward: -5.92
-               Mean episode length: 140.11
-           Episode_Reward/progress: 0.0443
-            Episode_Reward/success: 0.1567
-          Episode_Reward/collision: -0.1706
-        Episode_Reward/person_near: -0.1443
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: 0.0000
-               Episode_Reward/time: -0.1245
-         Episode_Reward/smoothness: -0.0496
-      Episode_Termination/time_out: 0.5225
-       Episode_Termination/success: 0.1923
-Episode_Termination/collision_footprint: 0.2292
-Episode_Termination/collision_force: 0.0679
-          Episode_Termination/fall: 0.0003
- Episode_Termination/out_of_square: 0.0059
+                       Computation: 2242 steps/s (collection: 11.152s, learning 3.459s)
+             Mean action noise std: 3.18
+          Mean value_function loss: 19.2210
+               Mean surrogate loss: -0.0135
+                 Mean entropy loss: 7.7028
+                       Mean reward: 14.69
+               Mean episode length: 27.97
+           Episode_Reward/progress: 0.2188
+            Episode_Reward/success: 0.7836
+          Episode_Reward/collision: -0.0964
+        Episode_Reward/person_near: -0.0816
+               Episode_Reward/fall: -0.0076
+      Episode_Reward/out_of_square: -0.0041
+               Episode_Reward/time: -0.0314
+         Episode_Reward/smoothness: -0.0982
+      Episode_Termination/time_out: 0.0006
+       Episode_Termination/success: 0.7740
+Episode_Termination/collision_footprint: 0.1683
+Episode_Termination/collision_force: 0.0501
+          Episode_Termination/fall: 0.0143
+ Episode_Termination/out_of_square: 0.0107
 --------------------------------------------------------------------------------
                    Total timesteps: 48168960
-                    Iteration time: 12.46s
-                      Time elapsed: 05:08:01
-                               ETA: 00:06:29
+                    Iteration time: 14.61s
+                      Time elapsed: 05:56:58
+                               ETA: 00:07:31
 
 ################################################################################
                      [1m Learning iteration 1470/1500 [0m                     
 
-                       Computation: 2610 steps/s (collection: 9.052s, learning 3.500s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1189
-               Mean surrogate loss: -0.0060
-                 Mean entropy loss: -5.3372
-                       Mean reward: -6.38
-               Mean episode length: 132.00
-           Episode_Reward/progress: 0.0383
-            Episode_Reward/success: 0.1913
-          Episode_Reward/collision: -0.1341
-        Episode_Reward/person_near: -0.2020
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0098
-               Episode_Reward/time: -0.1299
-         Episode_Reward/smoothness: -0.0524
-      Episode_Termination/time_out: 0.5149
-       Episode_Termination/success: 0.1927
-Episode_Termination/collision_footprint: 0.2353
-Episode_Termination/collision_force: 0.0662
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0069
+                       Computation: 2220 steps/s (collection: 11.292s, learning 3.462s)
+             Mean action noise std: 3.19
+          Mean value_function loss: 21.3647
+               Mean surrogate loss: -0.0170
+                 Mean entropy loss: 7.7069
+                       Mean reward: 12.83
+               Mean episode length: 30.37
+           Episode_Reward/progress: 0.2205
+            Episode_Reward/success: 0.7503
+          Episode_Reward/collision: -0.1101
+        Episode_Reward/person_near: -0.0738
+               Episode_Reward/fall: -0.0079
+      Episode_Reward/out_of_square: -0.0059
+               Episode_Reward/time: -0.0320
+         Episode_Reward/smoothness: -0.1015
+      Episode_Termination/time_out: 0.0013
+       Episode_Termination/success: 0.7774
+Episode_Termination/collision_footprint: 0.1653
+Episode_Termination/collision_force: 0.0488
+          Episode_Termination/fall: 0.0138
+ Episode_Termination/out_of_square: 0.0089
 --------------------------------------------------------------------------------
                    Total timesteps: 48201728
-                    Iteration time: 12.55s
-                      Time elapsed: 05:08:13
-                               ETA: 00:06:17
+                    Iteration time: 14.75s
+                      Time elapsed: 05:57:13
+                               ETA: 00:07:17
 
 ################################################################################
                      [1m Learning iteration 1471/1500 [0m                     
 
-                       Computation: 2635 steps/s (collection: 8.940s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.0272
-               Mean surrogate loss: -0.0059
-                 Mean entropy loss: -5.3185
-                       Mean reward: -2.27
-               Mean episode length: 118.04
-           Episode_Reward/progress: 0.0610
-            Episode_Reward/success: 0.2400
-          Episode_Reward/collision: -0.1323
-        Episode_Reward/person_near: -0.1259
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0052
-               Episode_Reward/time: -0.1213
-         Episode_Reward/smoothness: -0.0477
-      Episode_Termination/time_out: 0.5121
-       Episode_Termination/success: 0.1984
-Episode_Termination/collision_footprint: 0.2284
-Episode_Termination/collision_force: 0.0684
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0097
+                       Computation: 2216 steps/s (collection: 11.330s, learning 3.457s)
+             Mean action noise std: 3.19
+          Mean value_function loss: 20.0792
+               Mean surrogate loss: -0.0060
+                 Mean entropy loss: 7.7111
+                       Mean reward: 13.67
+               Mean episode length: 31.77
+           Episode_Reward/progress: 0.2180
+            Episode_Reward/success: 0.7820
+          Episode_Reward/collision: -0.0968
+        Episode_Reward/person_near: -0.0837
+               Episode_Reward/fall: -0.0066
+      Episode_Reward/out_of_square: -0.0061
+               Episode_Reward/time: -0.0326
+         Episode_Reward/smoothness: -0.1044
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7643
+Episode_Termination/collision_footprint: 0.1663
+Episode_Termination/collision_force: 0.0530
+          Episode_Termination/fall: 0.0170
+ Episode_Termination/out_of_square: 0.0115
 --------------------------------------------------------------------------------
                    Total timesteps: 48234496
-                    Iteration time: 12.43s
-                      Time elapsed: 05:08:26
-                               ETA: 00:06:04
+                    Iteration time: 14.79s
+                      Time elapsed: 05:57:28
+                               ETA: 00:07:02
 
 ################################################################################
                      [1m Learning iteration 1472/1500 [0m                     
 
-                       Computation: 2604 steps/s (collection: 9.083s, learning 3.499s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3712
-               Mean surrogate loss: 0.0037
-                 Mean entropy loss: -5.3135
-                       Mean reward: -7.69
-               Mean episode length: 133.57
-           Episode_Reward/progress: 0.0416
-            Episode_Reward/success: 0.1636
-          Episode_Reward/collision: -0.1454
-        Episode_Reward/person_near: -0.2092
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0074
-               Episode_Reward/time: -0.1312
-         Episode_Reward/smoothness: -0.0521
-      Episode_Termination/time_out: 0.5024
-       Episode_Termination/success: 0.2095
-Episode_Termination/collision_footprint: 0.2252
-Episode_Termination/collision_force: 0.0672
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0135
+                       Computation: 2250 steps/s (collection: 11.097s, learning 3.463s)
+             Mean action noise std: 3.19
+          Mean value_function loss: 19.4152
+               Mean surrogate loss: -0.0116
+                 Mean entropy loss: 7.7120
+                       Mean reward: 13.60
+               Mean episode length: 28.86
+           Episode_Reward/progress: 0.2181
+            Episode_Reward/success: 0.7767
+          Episode_Reward/collision: -0.1017
+        Episode_Reward/person_near: -0.0767
+               Episode_Reward/fall: -0.0057
+      Episode_Reward/out_of_square: -0.0041
+               Episode_Reward/time: -0.0316
+         Episode_Reward/smoothness: -0.1003
+      Episode_Termination/time_out: 0.0004
+       Episode_Termination/success: 0.7749
+Episode_Termination/collision_footprint: 0.1653
+Episode_Termination/collision_force: 0.0555
+          Episode_Termination/fall: 0.0114
+ Episode_Termination/out_of_square: 0.0087
 --------------------------------------------------------------------------------
                    Total timesteps: 48267264
-                    Iteration time: 12.58s
-                      Time elapsed: 05:08:38
-                               ETA: 00:05:52
+                    Iteration time: 14.56s
+                      Time elapsed: 05:57:42
+                               ETA: 00:06:47
 
 ################################################################################
                      [1m Learning iteration 1473/1500 [0m                     
 
-                       Computation: 2608 steps/s (collection: 9.070s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1362
-               Mean surrogate loss: -0.0073
-                 Mean entropy loss: -5.2609
-                       Mean reward: -5.42
-               Mean episode length: 138.53
-           Episode_Reward/progress: 0.0352
-            Episode_Reward/success: 0.1436
-          Episode_Reward/collision: -0.1454
-        Episode_Reward/person_near: -0.1756
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0054
-               Episode_Reward/time: -0.1352
-         Episode_Reward/smoothness: -0.0538
-      Episode_Termination/time_out: 0.5184
-       Episode_Termination/success: 0.1903
-Episode_Termination/collision_footprint: 0.2286
-Episode_Termination/collision_force: 0.0672
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0133
+                       Computation: 2222 steps/s (collection: 11.282s, learning 3.461s)
+             Mean action noise std: 3.19
+          Mean value_function loss: 20.0001
+               Mean surrogate loss: -0.0092
+                 Mean entropy loss: 7.7152
+                       Mean reward: 11.64
+               Mean episode length: 28.77
+           Episode_Reward/progress: 0.2161
+            Episode_Reward/success: 0.7616
+          Episode_Reward/collision: -0.1066
+        Episode_Reward/person_near: -0.0862
+               Episode_Reward/fall: -0.0079
+      Episode_Reward/out_of_square: -0.0048
+               Episode_Reward/time: -0.0319
+         Episode_Reward/smoothness: -0.0980
+      Episode_Termination/time_out: 0.0001
+       Episode_Termination/success: 0.7678
+Episode_Termination/collision_footprint: 0.1684
+Episode_Termination/collision_force: 0.0544
+          Episode_Termination/fall: 0.0159
+ Episode_Termination/out_of_square: 0.0079
 --------------------------------------------------------------------------------
                    Total timesteps: 48300032
-                    Iteration time: 12.56s
-                      Time elapsed: 05:08:51
-                               ETA: 00:05:39
+                    Iteration time: 14.74s
+                      Time elapsed: 05:57:57
+                               ETA: 00:06:33
 
 ################################################################################
                      [1m Learning iteration 1474/1500 [0m                     
 
-                       Computation: 2607 steps/s (collection: 9.073s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.2347
-               Mean surrogate loss: -0.0076
-                 Mean entropy loss: -5.2921
-                       Mean reward: -5.77
-               Mean episode length: 113.97
-           Episode_Reward/progress: 0.0476
-            Episode_Reward/success: 0.1821
-          Episode_Reward/collision: -0.1596
-        Episode_Reward/person_near: -0.1860
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0116
-               Episode_Reward/time: -0.1222
-         Episode_Reward/smoothness: -0.0490
-      Episode_Termination/time_out: 0.5333
-       Episode_Termination/success: 0.1743
-Episode_Termination/collision_footprint: 0.2274
-Episode_Termination/collision_force: 0.0648
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0158
+                       Computation: 2256 steps/s (collection: 11.059s, learning 3.461s)
+             Mean action noise std: 3.20
+          Mean value_function loss: 22.4744
+               Mean surrogate loss: -0.0102
+                 Mean entropy loss: 7.7180
+                       Mean reward: 11.33
+               Mean episode length: 30.51
+           Episode_Reward/progress: 0.2189
+            Episode_Reward/success: 0.7486
+          Episode_Reward/collision: -0.1141
+        Episode_Reward/person_near: -0.0898
+               Episode_Reward/fall: -0.0057
+      Episode_Reward/out_of_square: -0.0063
+               Episode_Reward/time: -0.0337
+         Episode_Reward/smoothness: -0.1068
+      Episode_Termination/time_out: 0.0004
+       Episode_Termination/success: 0.7581
+Episode_Termination/collision_footprint: 0.1750
+Episode_Termination/collision_force: 0.0572
+          Episode_Termination/fall: 0.0141
+ Episode_Termination/out_of_square: 0.0106
 --------------------------------------------------------------------------------
                    Total timesteps: 48332800
-                    Iteration time: 12.57s
-                      Time elapsed: 05:09:03
-                               ETA: 00:05:26
+                    Iteration time: 14.52s
+                      Time elapsed: 05:58:12
+                               ETA: 00:06:18
 
 ################################################################################
                      [1m Learning iteration 1475/1500 [0m                     
 
-                       Computation: 2620 steps/s (collection: 9.010s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.1900
-               Mean surrogate loss: 0.0030
-                 Mean entropy loss: -5.2801
-                       Mean reward: -4.45
-               Mean episode length: 130.41
-           Episode_Reward/progress: 0.0550
-            Episode_Reward/success: 0.2064
-          Episode_Reward/collision: -0.1095
-        Episode_Reward/person_near: -0.1621
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0085
-               Episode_Reward/time: -0.1347
-         Episode_Reward/smoothness: -0.0542
-      Episode_Termination/time_out: 0.5369
-       Episode_Termination/success: 0.1711
-Episode_Termination/collision_footprint: 0.2327
-Episode_Termination/collision_force: 0.0600
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0158
+                       Computation: 2243 steps/s (collection: 11.146s, learning 3.461s)
+             Mean action noise std: 3.20
+          Mean value_function loss: 17.4386
+               Mean surrogate loss: -0.0220
+                 Mean entropy loss: 7.7230
+                       Mean reward: 13.08
+               Mean episode length: 31.25
+           Episode_Reward/progress: 0.2136
+            Episode_Reward/success: 0.7976
+          Episode_Reward/collision: -0.0923
+        Episode_Reward/person_near: -0.0846
+               Episode_Reward/fall: -0.0059
+      Episode_Reward/out_of_square: -0.0027
+               Episode_Reward/time: -0.0323
+         Episode_Reward/smoothness: -0.1019
+      Episode_Termination/time_out: 0.0020
+       Episode_Termination/success: 0.7707
+Episode_Termination/collision_footprint: 0.1698
+Episode_Termination/collision_force: 0.0539
+          Episode_Termination/fall: 0.0120
+ Episode_Termination/out_of_square: 0.0083
 --------------------------------------------------------------------------------
                    Total timesteps: 48365568
-                    Iteration time: 12.50s
-                      Time elapsed: 05:09:16
-                               ETA: 00:05:14
+                    Iteration time: 14.61s
+                      Time elapsed: 05:58:26
+                               ETA: 00:06:04
 
 ################################################################################
                      [1m Learning iteration 1476/1500 [0m                     
 
-                       Computation: 2596 steps/s (collection: 9.122s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 5.0277
-               Mean surrogate loss: -0.0058
-                 Mean entropy loss: -5.2829
-                       Mean reward: -5.23
-               Mean episode length: 119.10
-           Episode_Reward/progress: 0.0468
-            Episode_Reward/success: 0.1942
-          Episode_Reward/collision: -0.1811
-        Episode_Reward/person_near: -0.1486
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0053
-               Episode_Reward/time: -0.1211
-         Episode_Reward/smoothness: -0.0483
-      Episode_Termination/time_out: 0.5277
-       Episode_Termination/success: 0.1747
-Episode_Termination/collision_footprint: 0.2398
-Episode_Termination/collision_force: 0.0589
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0176
+                       Computation: 2241 steps/s (collection: 11.156s, learning 3.462s)
+             Mean action noise std: 3.20
+          Mean value_function loss: 20.5005
+               Mean surrogate loss: -0.0109
+                 Mean entropy loss: 7.7263
+                       Mean reward: 12.15
+               Mean episode length: 35.25
+           Episode_Reward/progress: 0.2154
+            Episode_Reward/success: 0.7577
+          Episode_Reward/collision: -0.1099
+        Episode_Reward/person_near: -0.0799
+               Episode_Reward/fall: -0.0069
+      Episode_Reward/out_of_square: -0.0039
+               Episode_Reward/time: -0.0325
+         Episode_Reward/smoothness: -0.1015
+      Episode_Termination/time_out: 0.0004
+       Episode_Termination/success: 0.7732
+Episode_Termination/collision_footprint: 0.1675
+Episode_Termination/collision_force: 0.0663
+          Episode_Termination/fall: 0.0121
+ Episode_Termination/out_of_square: 0.0062
 --------------------------------------------------------------------------------
                    Total timesteps: 48398336
-                    Iteration time: 12.62s
-                      Time elapsed: 05:09:28
-                               ETA: 00:05:01
+                    Iteration time: 14.62s
+                      Time elapsed: 05:58:41
+                               ETA: 00:05:49
 
 ################################################################################
                      [1m Learning iteration 1477/1500 [0m                     
 
-                       Computation: 2610 steps/s (collection: 9.057s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.2682
-               Mean surrogate loss: -0.0070
-                 Mean entropy loss: -5.2887
-                       Mean reward: -6.50
-               Mean episode length: 136.83
-           Episode_Reward/progress: 0.0454
-            Episode_Reward/success: 0.1951
-          Episode_Reward/collision: -0.1545
-        Episode_Reward/person_near: -0.1817
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0047
-               Episode_Reward/time: -0.1259
-         Episode_Reward/smoothness: -0.0495
-      Episode_Termination/time_out: 0.5216
-       Episode_Termination/success: 0.1710
-Episode_Termination/collision_footprint: 0.2497
+                       Computation: 2243 steps/s (collection: 11.146s, learning 3.462s)
+             Mean action noise std: 3.21
+          Mean value_function loss: 18.8148
+               Mean surrogate loss: -0.0138
+                 Mean entropy loss: 7.7271
+                       Mean reward: 12.08
+               Mean episode length: 31.99
+           Episode_Reward/progress: 0.2173
+            Episode_Reward/success: 0.7773
+          Episode_Reward/collision: -0.1038
+        Episode_Reward/person_near: -0.0779
+               Episode_Reward/fall: -0.0054
+      Episode_Reward/out_of_square: -0.0021
+               Episode_Reward/time: -0.0328
+         Episode_Reward/smoothness: -0.1048
+      Episode_Termination/time_out: 0.0010
+       Episode_Termination/success: 0.7659
+Episode_Termination/collision_footprint: 0.1791
 Episode_Termination/collision_force: 0.0610
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0141
+          Episode_Termination/fall: 0.0109
+ Episode_Termination/out_of_square: 0.0074
 --------------------------------------------------------------------------------
                    Total timesteps: 48431104
-                    Iteration time: 12.55s
-                      Time elapsed: 05:09:41
-                               ETA: 00:04:49
+                    Iteration time: 14.61s
+                      Time elapsed: 05:58:55
+                               ETA: 00:05:35
 
 ################################################################################
                      [1m Learning iteration 1478/1500 [0m                     
 
-                       Computation: 2604 steps/s (collection: 9.092s, learning 3.489s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.0336
-               Mean surrogate loss: 0.0004
-                 Mean entropy loss: -5.2677
-                       Mean reward: -5.98
-               Mean episode length: 119.25
-           Episode_Reward/progress: 0.0373
-            Episode_Reward/success: 0.1762
-          Episode_Reward/collision: -0.1610
-        Episode_Reward/person_near: -0.1937
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0137
-               Episode_Reward/time: -0.1223
-         Episode_Reward/smoothness: -0.0493
-      Episode_Termination/time_out: 0.5229
-       Episode_Termination/success: 0.1659
-Episode_Termination/collision_footprint: 0.2523
-Episode_Termination/collision_force: 0.0571
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0170
+                       Computation: 2242 steps/s (collection: 11.152s, learning 3.458s)
+             Mean action noise std: 3.21
+          Mean value_function loss: 18.9882
+               Mean surrogate loss: -0.0213
+                 Mean entropy loss: 7.7304
+                       Mean reward: 10.77
+               Mean episode length: 38.38
+           Episode_Reward/progress: 0.2092
+            Episode_Reward/success: 0.7492
+          Episode_Reward/collision: -0.1065
+        Episode_Reward/person_near: -0.0827
+               Episode_Reward/fall: -0.0096
+      Episode_Reward/out_of_square: -0.0076
+               Episode_Reward/time: -0.0331
+         Episode_Reward/smoothness: -0.1089
+      Episode_Termination/time_out: 0.0012
+       Episode_Termination/success: 0.7661
+Episode_Termination/collision_footprint: 0.1697
+Episode_Termination/collision_force: 0.0590
+          Episode_Termination/fall: 0.0168
+ Episode_Termination/out_of_square: 0.0098
 --------------------------------------------------------------------------------
                    Total timesteps: 48463872
-                    Iteration time: 12.58s
-                      Time elapsed: 05:09:53
-                               ETA: 00:04:36
+                    Iteration time: 14.61s
+                      Time elapsed: 05:59:10
+                               ETA: 00:05:20
 
 ################################################################################
                      [1m Learning iteration 1479/1500 [0m                     
 
-                       Computation: 2620 steps/s (collection: 9.015s, learning 3.492s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.0792
-               Mean surrogate loss: 0.0029
-                 Mean entropy loss: -5.2461
-                       Mean reward: -8.36
-               Mean episode length: 133.97
-           Episode_Reward/progress: 0.0448
-            Episode_Reward/success: 0.1326
-          Episode_Reward/collision: -0.1498
-        Episode_Reward/person_near: -0.2642
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0076
-               Episode_Reward/time: -0.1377
-         Episode_Reward/smoothness: -0.0543
-      Episode_Termination/time_out: 0.5172
-       Episode_Termination/success: 0.1710
-Episode_Termination/collision_footprint: 0.2526
-Episode_Termination/collision_force: 0.0554
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0187
+                       Computation: 2226 steps/s (collection: 11.254s, learning 3.460s)
+             Mean action noise std: 3.21
+          Mean value_function loss: 18.5717
+               Mean surrogate loss: -0.0178
+                 Mean entropy loss: 7.7336
+                       Mean reward: 15.24
+               Mean episode length: 32.22
+           Episode_Reward/progress: 0.2178
+            Episode_Reward/success: 0.7724
+          Episode_Reward/collision: -0.0966
+        Episode_Reward/person_near: -0.0854
+               Episode_Reward/fall: -0.0082
+      Episode_Reward/out_of_square: -0.0086
+               Episode_Reward/time: -0.0319
+         Episode_Reward/smoothness: -0.1025
+      Episode_Termination/time_out: 0.0028
+       Episode_Termination/success: 0.7635
+Episode_Termination/collision_footprint: 0.1638
+Episode_Termination/collision_force: 0.0588
+          Episode_Termination/fall: 0.0160
+ Episode_Termination/out_of_square: 0.0151
 --------------------------------------------------------------------------------
                    Total timesteps: 48496640
-                    Iteration time: 12.51s
-                      Time elapsed: 05:10:06
-                               ETA: 00:04:24
+                    Iteration time: 14.71s
+                      Time elapsed: 05:59:25
+                               ETA: 00:05:05
 
 ################################################################################
                      [1m Learning iteration 1480/1500 [0m                     
 
-                       Computation: 2621 steps/s (collection: 9.004s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.5583
-               Mean surrogate loss: -0.0026
-                 Mean entropy loss: -5.2135
-                       Mean reward: -5.83
-               Mean episode length: 129.66
-           Episode_Reward/progress: 0.0596
-            Episode_Reward/success: 0.1953
-          Episode_Reward/collision: -0.1495
-        Episode_Reward/person_near: -0.1435
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0026
-               Episode_Reward/time: -0.1292
-         Episode_Reward/smoothness: -0.0509
-      Episode_Termination/time_out: 0.5125
-       Episode_Termination/success: 0.1794
-Episode_Termination/collision_footprint: 0.2545
-Episode_Termination/collision_force: 0.0545
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0158
+                       Computation: 2240 steps/s (collection: 11.165s, learning 3.461s)
+             Mean action noise std: 3.21
+          Mean value_function loss: 18.3872
+               Mean surrogate loss: -0.0090
+                 Mean entropy loss: 7.7347
+                       Mean reward: 13.11
+               Mean episode length: 33.22
+           Episode_Reward/progress: 0.2122
+            Episode_Reward/success: 0.7588
+          Episode_Reward/collision: -0.1057
+        Episode_Reward/person_near: -0.0823
+               Episode_Reward/fall: -0.0042
+      Episode_Reward/out_of_square: -0.0096
+               Episode_Reward/time: -0.0333
+         Episode_Reward/smoothness: -0.1045
+      Episode_Termination/time_out: 0.0028
+       Episode_Termination/success: 0.7636
+Episode_Termination/collision_footprint: 0.1668
+Episode_Termination/collision_force: 0.0566
+          Episode_Termination/fall: 0.0139
+ Episode_Termination/out_of_square: 0.0178
 --------------------------------------------------------------------------------
                    Total timesteps: 48529408
-                    Iteration time: 12.50s
-                      Time elapsed: 05:10:18
-                               ETA: 00:04:11
+                    Iteration time: 14.63s
+                      Time elapsed: 05:59:39
+                               ETA: 00:04:51
 
 ################################################################################
                      [1m Learning iteration 1481/1500 [0m                     
 
-                       Computation: 2601 steps/s (collection: 9.098s, learning 3.499s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.3719
-               Mean surrogate loss: -0.0038
-                 Mean entropy loss: -5.2092
-                       Mean reward: -4.78
-               Mean episode length: 133.78
-           Episode_Reward/progress: 0.0485
-            Episode_Reward/success: 0.1852
-          Episode_Reward/collision: -0.1251
-        Episode_Reward/person_near: -0.1885
-               Episode_Reward/fall: -0.0014
+                       Computation: 2250 steps/s (collection: 11.100s, learning 3.459s)
+             Mean action noise std: 3.22
+          Mean value_function loss: 19.4760
+               Mean surrogate loss: -0.0110
+                 Mean entropy loss: 7.7368
+                       Mean reward: 11.22
+               Mean episode length: 32.14
+           Episode_Reward/progress: 0.2176
+            Episode_Reward/success: 0.7635
+          Episode_Reward/collision: -0.1090
+        Episode_Reward/person_near: -0.0810
+               Episode_Reward/fall: -0.0049
       Episode_Reward/out_of_square: -0.0052
-               Episode_Reward/time: -0.1382
-         Episode_Reward/smoothness: -0.0536
-      Episode_Termination/time_out: 0.5075
-       Episode_Termination/success: 0.1885
-Episode_Termination/collision_footprint: 0.2565
-Episode_Termination/collision_force: 0.0522
-          Episode_Termination/fall: 0.0004
- Episode_Termination/out_of_square: 0.0128
+               Episode_Reward/time: -0.0320
+         Episode_Reward/smoothness: -0.1014
+      Episode_Termination/time_out: 0.0017
+       Episode_Termination/success: 0.7750
+Episode_Termination/collision_footprint: 0.1610
+Episode_Termination/collision_force: 0.0676
+          Episode_Termination/fall: 0.0099
+ Episode_Termination/out_of_square: 0.0106
 --------------------------------------------------------------------------------
                    Total timesteps: 48562176
-                    Iteration time: 12.60s
-                      Time elapsed: 05:10:31
-                               ETA: 00:03:58
+                    Iteration time: 14.56s
+                      Time elapsed: 05:59:54
+                               ETA: 00:04:36
 
 ################################################################################
                      [1m Learning iteration 1482/1500 [0m                     
 
-                       Computation: 2629 steps/s (collection: 8.964s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.7200
-               Mean surrogate loss: -0.0024
-                 Mean entropy loss: -5.1841
-                       Mean reward: -5.14
-               Mean episode length: 138.23
-           Episode_Reward/progress: 0.0404
-            Episode_Reward/success: 0.1845
-          Episode_Reward/collision: -0.1271
-        Episode_Reward/person_near: -0.1721
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0085
-               Episode_Reward/time: -0.1346
-         Episode_Reward/smoothness: -0.0532
-      Episode_Termination/time_out: 0.5093
-       Episode_Termination/success: 0.1842
-Episode_Termination/collision_footprint: 0.2548
-Episode_Termination/collision_force: 0.0517
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0163
+                       Computation: 2225 steps/s (collection: 11.264s, learning 3.460s)
+             Mean action noise std: 3.22
+          Mean value_function loss: 19.3640
+               Mean surrogate loss: -0.0166
+                 Mean entropy loss: 7.7398
+                       Mean reward: 13.04
+               Mean episode length: 31.56
+           Episode_Reward/progress: 0.2164
+            Episode_Reward/success: 0.7782
+          Episode_Reward/collision: -0.1009
+        Episode_Reward/person_near: -0.0841
+               Episode_Reward/fall: -0.0054
+      Episode_Reward/out_of_square: -0.0040
+               Episode_Reward/time: -0.0330
+         Episode_Reward/smoothness: -0.1049
+      Episode_Termination/time_out: 0.0011
+       Episode_Termination/success: 0.7670
+Episode_Termination/collision_footprint: 0.1702
+Episode_Termination/collision_force: 0.0626
+          Episode_Termination/fall: 0.0119
+ Episode_Termination/out_of_square: 0.0122
 --------------------------------------------------------------------------------
                    Total timesteps: 48594944
-                    Iteration time: 12.46s
-                      Time elapsed: 05:10:44
-                               ETA: 00:03:46
+                    Iteration time: 14.72s
+                      Time elapsed: 06:00:09
+                               ETA: 00:04:22
 
 ################################################################################
                      [1m Learning iteration 1483/1500 [0m                     
 
-                       Computation: 2591 steps/s (collection: 9.149s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1872
-               Mean surrogate loss: -0.0063
-                 Mean entropy loss: -5.1866
-                       Mean reward: -5.98
-               Mean episode length: 116.88
-           Episode_Reward/progress: 0.0496
-            Episode_Reward/success: 0.1737
-          Episode_Reward/collision: -0.1408
-        Episode_Reward/person_near: -0.1893
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0033
-               Episode_Reward/time: -0.1321
-         Episode_Reward/smoothness: -0.0515
-      Episode_Termination/time_out: 0.5231
-       Episode_Termination/success: 0.1800
-Episode_Termination/collision_footprint: 0.2495
-Episode_Termination/collision_force: 0.0484
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0145
+                       Computation: 2235 steps/s (collection: 11.195s, learning 3.460s)
+             Mean action noise std: 3.22
+          Mean value_function loss: 18.7971
+               Mean surrogate loss: -0.0162
+                 Mean entropy loss: 7.7425
+                       Mean reward: 14.58
+               Mean episode length: 30.54
+           Episode_Reward/progress: 0.2186
+            Episode_Reward/success: 0.7530
+          Episode_Reward/collision: -0.1131
+        Episode_Reward/person_near: -0.0832
+               Episode_Reward/fall: -0.0073
+      Episode_Reward/out_of_square: -0.0036
+               Episode_Reward/time: -0.0324
+         Episode_Reward/smoothness: -0.1022
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7610
+Episode_Termination/collision_footprint: 0.1870
+Episode_Termination/collision_force: 0.0523
+          Episode_Termination/fall: 0.0106
+ Episode_Termination/out_of_square: 0.0092
 --------------------------------------------------------------------------------
                    Total timesteps: 48627712
-                    Iteration time: 12.64s
-                      Time elapsed: 05:10:56
-                               ETA: 00:03:33
+                    Iteration time: 14.66s
+                      Time elapsed: 06:00:23
+                               ETA: 00:04:07
 
 ################################################################################
                      [1m Learning iteration 1484/1500 [0m                     
 
-                       Computation: 2618 steps/s (collection: 9.022s, learning 3.493s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1418
-               Mean surrogate loss: -0.0080
-                 Mean entropy loss: -5.1957
-                       Mean reward: -8.37
-               Mean episode length: 139.35
-           Episode_Reward/progress: 0.0304
-            Episode_Reward/success: 0.1571
-          Episode_Reward/collision: -0.1574
-        Episode_Reward/person_near: -0.1932
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0026
-               Episode_Reward/time: -0.1301
-         Episode_Reward/smoothness: -0.0514
-      Episode_Termination/time_out: 0.5164
-       Episode_Termination/success: 0.1805
-Episode_Termination/collision_footprint: 0.2526
-Episode_Termination/collision_force: 0.0557
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0125
+                       Computation: 2234 steps/s (collection: 11.204s, learning 3.460s)
+             Mean action noise std: 3.22
+          Mean value_function loss: 19.2192
+               Mean surrogate loss: -0.0082
+                 Mean entropy loss: 7.7450
+                       Mean reward: 15.50
+               Mean episode length: 30.55
+           Episode_Reward/progress: 0.2199
+            Episode_Reward/success: 0.7705
+          Episode_Reward/collision: -0.0985
+        Episode_Reward/person_near: -0.0744
+               Episode_Reward/fall: -0.0078
+      Episode_Reward/out_of_square: -0.0065
+               Episode_Reward/time: -0.0330
+         Episode_Reward/smoothness: -0.1007
+      Episode_Termination/time_out: 0.0028
+       Episode_Termination/success: 0.7664
+Episode_Termination/collision_footprint: 0.1779
+Episode_Termination/collision_force: 0.0567
+          Episode_Termination/fall: 0.0123
+ Episode_Termination/out_of_square: 0.0104
 --------------------------------------------------------------------------------
                    Total timesteps: 48660480
-                    Iteration time: 12.52s
-                      Time elapsed: 05:11:09
-                               ETA: 00:03:21
+                    Iteration time: 14.66s
+                      Time elapsed: 06:00:38
+                               ETA: 00:03:53
 
 ################################################################################
                      [1m Learning iteration 1485/1500 [0m                     
 
-                       Computation: 2607 steps/s (collection: 9.071s, learning 3.498s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.4222
-               Mean surrogate loss: -0.0082
-                 Mean entropy loss: -5.1812
-                       Mean reward: -6.15
-               Mean episode length: 136.10
-           Episode_Reward/progress: 0.0362
-            Episode_Reward/success: 0.1660
-          Episode_Reward/collision: -0.1622
-        Episode_Reward/person_near: -0.1587
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0055
-               Episode_Reward/time: -0.1273
-         Episode_Reward/smoothness: -0.0503
-      Episode_Termination/time_out: 0.5233
-       Episode_Termination/success: 0.1801
-Episode_Termination/collision_footprint: 0.2437
-Episode_Termination/collision_force: 0.0587
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0085
+                       Computation: 2222 steps/s (collection: 11.278s, learning 3.463s)
+             Mean action noise std: 3.23
+          Mean value_function loss: 20.2155
+               Mean surrogate loss: -0.0044
+                 Mean entropy loss: 7.7467
+                       Mean reward: 12.60
+               Mean episode length: 33.54
+           Episode_Reward/progress: 0.2173
+            Episode_Reward/success: 0.7619
+          Episode_Reward/collision: -0.1045
+        Episode_Reward/person_near: -0.0810
+               Episode_Reward/fall: -0.0090
+      Episode_Reward/out_of_square: -0.0052
+               Episode_Reward/time: -0.0326
+         Episode_Reward/smoothness: -0.1053
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7814
+Episode_Termination/collision_footprint: 0.1589
+Episode_Termination/collision_force: 0.0542
+          Episode_Termination/fall: 0.0157
+ Episode_Termination/out_of_square: 0.0114
 --------------------------------------------------------------------------------
                    Total timesteps: 48693248
-                    Iteration time: 12.57s
-                      Time elapsed: 05:11:21
-                               ETA: 00:03:08
+                    Iteration time: 14.74s
+                      Time elapsed: 06:00:53
+                               ETA: 00:03:38
 
 ################################################################################
                      [1m Learning iteration 1486/1500 [0m                     
 
-                       Computation: 2608 steps/s (collection: 9.062s, learning 3.500s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.8828
-               Mean surrogate loss: -0.0061
-                 Mean entropy loss: -5.2045
-                       Mean reward: -5.57
-               Mean episode length: 131.63
-           Episode_Reward/progress: 0.0445
-            Episode_Reward/success: 0.1948
-          Episode_Reward/collision: -0.1249
-        Episode_Reward/person_near: -0.1735
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0095
-               Episode_Reward/time: -0.1304
-         Episode_Reward/smoothness: -0.0515
-      Episode_Termination/time_out: 0.5197
-       Episode_Termination/success: 0.1857
-Episode_Termination/collision_footprint: 0.2451
-Episode_Termination/collision_force: 0.0604
-          Episode_Termination/fall: 0.0010
- Episode_Termination/out_of_square: 0.0067
+                       Computation: 2232 steps/s (collection: 11.215s, learning 3.462s)
+             Mean action noise std: 3.23
+          Mean value_function loss: 20.2126
+               Mean surrogate loss: 0.0007
+                 Mean entropy loss: 7.7485
+                       Mean reward: 14.73
+               Mean episode length: 33.10
+           Episode_Reward/progress: 0.2230
+            Episode_Reward/success: 0.7641
+          Episode_Reward/collision: -0.1075
+        Episode_Reward/person_near: -0.0811
+               Episode_Reward/fall: -0.0038
+      Episode_Reward/out_of_square: -0.0057
+               Episode_Reward/time: -0.0331
+         Episode_Reward/smoothness: -0.1007
+      Episode_Termination/time_out: 0.0020
+       Episode_Termination/success: 0.7652
+Episode_Termination/collision_footprint: 0.1641
+Episode_Termination/collision_force: 0.0623
+          Episode_Termination/fall: 0.0158
+ Episode_Termination/out_of_square: 0.0105
 --------------------------------------------------------------------------------
                    Total timesteps: 48726016
-                    Iteration time: 12.56s
-                      Time elapsed: 05:11:34
-                               ETA: 00:02:56
+                    Iteration time: 14.68s
+                      Time elapsed: 06:01:07
+                               ETA: 00:03:24
 
 ################################################################################
                      [1m Learning iteration 1487/1500 [0m                     
 
-                       Computation: 2596 steps/s (collection: 9.120s, learning 3.498s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.4662
-               Mean surrogate loss: -0.0116
-                 Mean entropy loss: -5.1885
-                       Mean reward: -5.86
-               Mean episode length: 125.14
-           Episode_Reward/progress: 0.0510
-            Episode_Reward/success: 0.2479
-          Episode_Reward/collision: -0.1284
-        Episode_Reward/person_near: -0.1833
-               Episode_Reward/fall: -0.0016
-      Episode_Reward/out_of_square: -0.0032
-               Episode_Reward/time: -0.1203
-         Episode_Reward/smoothness: -0.0482
-      Episode_Termination/time_out: 0.5108
-       Episode_Termination/success: 0.1942
-Episode_Termination/collision_footprint: 0.2384
-Episode_Termination/collision_force: 0.0636
-          Episode_Termination/fall: 0.0014
- Episode_Termination/out_of_square: 0.0107
+                       Computation: 2235 steps/s (collection: 11.195s, learning 3.465s)
+             Mean action noise std: 3.23
+          Mean value_function loss: 18.9597
+               Mean surrogate loss: -0.0090
+                 Mean entropy loss: 7.7494
+                       Mean reward: 12.63
+               Mean episode length: 31.94
+           Episode_Reward/progress: 0.2198
+            Episode_Reward/success: 0.7806
+          Episode_Reward/collision: -0.0979
+        Episode_Reward/person_near: -0.0822
+               Episode_Reward/fall: -0.0053
+      Episode_Reward/out_of_square: -0.0054
+               Episode_Reward/time: -0.0327
+         Episode_Reward/smoothness: -0.1010
+      Episode_Termination/time_out: 0.0019
+       Episode_Termination/success: 0.7623
+Episode_Termination/collision_footprint: 0.1751
+Episode_Termination/collision_force: 0.0611
+          Episode_Termination/fall: 0.0107
+ Episode_Termination/out_of_square: 0.0129
 --------------------------------------------------------------------------------
                    Total timesteps: 48758784
-                    Iteration time: 12.62s
-                      Time elapsed: 05:11:46
-                               ETA: 00:02:43
+                    Iteration time: 14.66s
+                      Time elapsed: 06:01:22
+                               ETA: 00:03:09
 
 ################################################################################
                      [1m Learning iteration 1488/1500 [0m                     
 
-                       Computation: 2611 steps/s (collection: 9.051s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.5629
-               Mean surrogate loss: -0.0045
-                 Mean entropy loss: -5.2020
-                       Mean reward: -3.74
-               Mean episode length: 120.81
-           Episode_Reward/progress: 0.0398
-            Episode_Reward/success: 0.1982
-          Episode_Reward/collision: -0.1276
-        Episode_Reward/person_near: -0.1915
-               Episode_Reward/fall: -0.0011
-      Episode_Reward/out_of_square: -0.0111
-               Episode_Reward/time: -0.1291
-         Episode_Reward/smoothness: -0.0502
-      Episode_Termination/time_out: 0.5244
-       Episode_Termination/success: 0.1922
-Episode_Termination/collision_footprint: 0.2300
-Episode_Termination/collision_force: 0.0599
-          Episode_Termination/fall: 0.0011
- Episode_Termination/out_of_square: 0.0095
+                       Computation: 2224 steps/s (collection: 11.271s, learning 3.459s)
+             Mean action noise std: 3.23
+          Mean value_function loss: 19.5767
+               Mean surrogate loss: -0.0132
+                 Mean entropy loss: 7.7509
+                       Mean reward: 13.07
+               Mean episode length: 30.16
+           Episode_Reward/progress: 0.2155
+            Episode_Reward/success: 0.7792
+          Episode_Reward/collision: -0.0997
+        Episode_Reward/person_near: -0.0807
+               Episode_Reward/fall: -0.0053
+      Episode_Reward/out_of_square: -0.0055
+               Episode_Reward/time: -0.0316
+         Episode_Reward/smoothness: -0.0971
+      Episode_Termination/time_out: 0.0023
+       Episode_Termination/success: 0.7721
+Episode_Termination/collision_footprint: 0.1618
+Episode_Termination/collision_force: 0.0672
+          Episode_Termination/fall: 0.0114
+ Episode_Termination/out_of_square: 0.0109
 --------------------------------------------------------------------------------
                    Total timesteps: 48791552
-                    Iteration time: 12.55s
-                      Time elapsed: 05:11:59
-                               ETA: 00:02:30
+                    Iteration time: 14.73s
+                      Time elapsed: 06:01:37
+                               ETA: 00:02:54
 
 ################################################################################
                      [1m Learning iteration 1489/1500 [0m                     
 
-                       Computation: 2602 steps/s (collection: 9.097s, learning 3.492s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.7531
-               Mean surrogate loss: -0.0002
-                 Mean entropy loss: -5.1910
-                       Mean reward: -5.59
-               Mean episode length: 134.29
-           Episode_Reward/progress: 0.0450
-            Episode_Reward/success: 0.1897
-          Episode_Reward/collision: -0.1580
-        Episode_Reward/person_near: -0.1905
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0022
-               Episode_Reward/time: -0.1233
-         Episode_Reward/smoothness: -0.0483
-      Episode_Termination/time_out: 0.5107
-       Episode_Termination/success: 0.2021
-Episode_Termination/collision_footprint: 0.2306
-Episode_Termination/collision_force: 0.0629
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0101
+                       Computation: 2242 steps/s (collection: 11.154s, learning 3.461s)
+             Mean action noise std: 3.24
+          Mean value_function loss: 19.6238
+               Mean surrogate loss: -0.0144
+                 Mean entropy loss: 7.7564
+                       Mean reward: 12.73
+               Mean episode length: 34.68
+           Episode_Reward/progress: 0.2112
+            Episode_Reward/success: 0.7438
+          Episode_Reward/collision: -0.1182
+        Episode_Reward/person_near: -0.0793
+               Episode_Reward/fall: -0.0062
+      Episode_Reward/out_of_square: -0.0039
+               Episode_Reward/time: -0.0322
+         Episode_Reward/smoothness: -0.1000
+      Episode_Termination/time_out: 0.0016
+       Episode_Termination/success: 0.7758
+Episode_Termination/collision_footprint: 0.1607
+Episode_Termination/collision_force: 0.0699
+          Episode_Termination/fall: 0.0110
+ Episode_Termination/out_of_square: 0.0074
 --------------------------------------------------------------------------------
                    Total timesteps: 48824320
-                    Iteration time: 12.59s
-                      Time elapsed: 05:12:12
-                               ETA: 00:02:18
+                    Iteration time: 14.61s
+                      Time elapsed: 06:01:51
+                               ETA: 00:02:40
 
 ################################################################################
                      [1m Learning iteration 1490/1500 [0m                     
 
-                       Computation: 2601 steps/s (collection: 9.103s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.2363
-               Mean surrogate loss: -0.0098
-                 Mean entropy loss: -5.1975
-                       Mean reward: -3.11
-               Mean episode length: 123.44
-           Episode_Reward/progress: 0.0425
-            Episode_Reward/success: 0.1739
-          Episode_Reward/collision: -0.1442
-        Episode_Reward/person_near: -0.1458
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0043
-               Episode_Reward/time: -0.1286
-         Episode_Reward/smoothness: -0.0516
-      Episode_Termination/time_out: 0.5142
-       Episode_Termination/success: 0.1924
-Episode_Termination/collision_footprint: 0.2355
-Episode_Termination/collision_force: 0.0637
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0103
+                       Computation: 2224 steps/s (collection: 11.274s, learning 3.459s)
+             Mean action noise std: 3.24
+          Mean value_function loss: 21.2701
+               Mean surrogate loss: -0.0087
+                 Mean entropy loss: 7.7624
+                       Mean reward: 13.27
+               Mean episode length: 36.96
+           Episode_Reward/progress: 0.2181
+            Episode_Reward/success: 0.7643
+          Episode_Reward/collision: -0.1047
+        Episode_Reward/person_near: -0.0825
+               Episode_Reward/fall: -0.0080
+      Episode_Reward/out_of_square: -0.0044
+               Episode_Reward/time: -0.0328
+         Episode_Reward/smoothness: -0.1037
+      Episode_Termination/time_out: 0.0009
+       Episode_Termination/success: 0.7629
+Episode_Termination/collision_footprint: 0.1607
+Episode_Termination/collision_force: 0.0728
+          Episode_Termination/fall: 0.0162
+ Episode_Termination/out_of_square: 0.0067
 --------------------------------------------------------------------------------
                    Total timesteps: 48857088
-                    Iteration time: 12.60s
-                      Time elapsed: 05:12:24
-                               ETA: 00:02:05
+                    Iteration time: 14.73s
+                      Time elapsed: 06:02:06
+                               ETA: 00:02:25
 
 ################################################################################
                      [1m Learning iteration 1491/1500 [0m                     
 
-                       Computation: 2594 steps/s (collection: 9.136s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.6933
-               Mean surrogate loss: -0.0062
-                 Mean entropy loss: -5.1962
-                       Mean reward: -5.15
-               Mean episode length: 127.44
-           Episode_Reward/progress: 0.0496
-            Episode_Reward/success: 0.1666
-          Episode_Reward/collision: -0.1380
-        Episode_Reward/person_near: -0.1295
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0020
-               Episode_Reward/time: -0.1318
-         Episode_Reward/smoothness: -0.0520
-      Episode_Termination/time_out: 0.5200
-       Episode_Termination/success: 0.1980
-Episode_Termination/collision_footprint: 0.2296
-Episode_Termination/collision_force: 0.0594
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0089
+                       Computation: 2241 steps/s (collection: 11.158s, learning 3.461s)
+             Mean action noise std: 3.25
+          Mean value_function loss: 17.2595
+               Mean surrogate loss: -0.0123
+                 Mean entropy loss: 7.7647
+                       Mean reward: 12.80
+               Mean episode length: 31.87
+           Episode_Reward/progress: 0.2165
+            Episode_Reward/success: 0.7894
+          Episode_Reward/collision: -0.0948
+        Episode_Reward/person_near: -0.0788
+               Episode_Reward/fall: -0.0063
+      Episode_Reward/out_of_square: -0.0043
+               Episode_Reward/time: -0.0316
+         Episode_Reward/smoothness: -0.0967
+      Episode_Termination/time_out: 0.0007
+       Episode_Termination/success: 0.7764
+Episode_Termination/collision_footprint: 0.1603
+Episode_Termination/collision_force: 0.0592
+          Episode_Termination/fall: 0.0148
+ Episode_Termination/out_of_square: 0.0066
 --------------------------------------------------------------------------------
                    Total timesteps: 48889856
-                    Iteration time: 12.63s
-                      Time elapsed: 05:12:37
-                               ETA: 00:01:53
+                    Iteration time: 14.62s
+                      Time elapsed: 06:02:21
+                               ETA: 00:02:11
 
 ################################################################################
                      [1m Learning iteration 1492/1500 [0m                     
 
-                       Computation: 2630 steps/s (collection: 8.962s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.7973
-               Mean surrogate loss: -0.0087
-                 Mean entropy loss: -5.1932
-                       Mean reward: -6.81
-               Mean episode length: 138.49
-           Episode_Reward/progress: 0.0420
-            Episode_Reward/success: 0.1850
-          Episode_Reward/collision: -0.1348
-        Episode_Reward/person_near: -0.2057
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0037
-               Episode_Reward/time: -0.1300
-         Episode_Reward/smoothness: -0.0512
-      Episode_Termination/time_out: 0.5184
-       Episode_Termination/success: 0.1992
-Episode_Termination/collision_footprint: 0.2341
-Episode_Termination/collision_force: 0.0590
-          Episode_Termination/fall: 0.0020
- Episode_Termination/out_of_square: 0.0063
+                       Computation: 2231 steps/s (collection: 11.222s, learning 3.462s)
+             Mean action noise std: 3.25
+          Mean value_function loss: 19.0320
+               Mean surrogate loss: -0.0178
+                 Mean entropy loss: 7.7708
+                       Mean reward: 12.03
+               Mean episode length: 30.79
+           Episode_Reward/progress: 0.2188
+            Episode_Reward/success: 0.7686
+          Episode_Reward/collision: -0.1053
+        Episode_Reward/person_near: -0.0854
+               Episode_Reward/fall: -0.0067
+      Episode_Reward/out_of_square: -0.0045
+               Episode_Reward/time: -0.0332
+         Episode_Reward/smoothness: -0.1064
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7725
+Episode_Termination/collision_footprint: 0.1646
+Episode_Termination/collision_force: 0.0599
+          Episode_Termination/fall: 0.0124
+ Episode_Termination/out_of_square: 0.0081
 --------------------------------------------------------------------------------
                    Total timesteps: 48922624
-                    Iteration time: 12.46s
-                      Time elapsed: 05:12:49
-                               ETA: 00:01:40
+                    Iteration time: 14.68s
+                      Time elapsed: 06:02:35
+                               ETA: 00:01:56
 
 ################################################################################
                      [1m Learning iteration 1493/1500 [0m                     
 
-                       Computation: 2613 steps/s (collection: 9.045s, learning 3.492s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.8841
-               Mean surrogate loss: -0.0044
-                 Mean entropy loss: -5.1823
-                       Mean reward: -7.32
-               Mean episode length: 133.94
-           Episode_Reward/progress: 0.0371
-            Episode_Reward/success: 0.1712
-          Episode_Reward/collision: -0.1348
-        Episode_Reward/person_near: -0.1571
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0070
-               Episode_Reward/time: -0.1335
-         Episode_Reward/smoothness: -0.0525
-      Episode_Termination/time_out: 0.5238
-       Episode_Termination/success: 0.1901
-Episode_Termination/collision_footprint: 0.2386
-Episode_Termination/collision_force: 0.0538
-          Episode_Termination/fall: 0.0016
- Episode_Termination/out_of_square: 0.0064
+                       Computation: 2252 steps/s (collection: 11.086s, learning 3.464s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 19.3038
+               Mean surrogate loss: -0.0134
+                 Mean entropy loss: 7.7780
+                       Mean reward: 14.74
+               Mean episode length: 33.10
+           Episode_Reward/progress: 0.2204
+            Episode_Reward/success: 0.7700
+          Episode_Reward/collision: -0.1048
+        Episode_Reward/person_near: -0.0821
+               Episode_Reward/fall: -0.0069
+      Episode_Reward/out_of_square: -0.0033
+               Episode_Reward/time: -0.0319
+         Episode_Reward/smoothness: -0.1017
+      Episode_Termination/time_out: 0.0014
+       Episode_Termination/success: 0.7673
+Episode_Termination/collision_footprint: 0.1741
+Episode_Termination/collision_force: 0.0529
+          Episode_Termination/fall: 0.0127
+ Episode_Termination/out_of_square: 0.0086
 --------------------------------------------------------------------------------
                    Total timesteps: 48955392
-                    Iteration time: 12.54s
-                      Time elapsed: 05:13:02
-                               ETA: 00:01:28
+                    Iteration time: 14.55s
+                      Time elapsed: 06:02:50
+                               ETA: 00:01:42
 
 ################################################################################
                      [1m Learning iteration 1494/1500 [0m                     
 
-                       Computation: 2600 steps/s (collection: 9.103s, learning 3.499s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.8209
-               Mean surrogate loss: -0.0008
-                 Mean entropy loss: -5.2134
-                       Mean reward: -3.76
-               Mean episode length: 126.41
-           Episode_Reward/progress: 0.0472
-            Episode_Reward/success: 0.1914
-          Episode_Reward/collision: -0.1466
-        Episode_Reward/person_near: -0.1922
-               Episode_Reward/fall: -0.0013
-      Episode_Reward/out_of_square: -0.0020
-               Episode_Reward/time: -0.1266
-         Episode_Reward/smoothness: -0.0501
-      Episode_Termination/time_out: 0.5107
-       Episode_Termination/success: 0.1869
-Episode_Termination/collision_footprint: 0.2502
-Episode_Termination/collision_force: 0.0596
-          Episode_Termination/fall: 0.0016
- Episode_Termination/out_of_square: 0.0050
+                       Computation: 2250 steps/s (collection: 11.100s, learning 3.462s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 20.4358
+               Mean surrogate loss: -0.0042
+                 Mean entropy loss: 7.7806
+                       Mean reward: 15.79
+               Mean episode length: 33.74
+           Episode_Reward/progress: 0.2256
+            Episode_Reward/success: 0.7783
+          Episode_Reward/collision: -0.1004
+        Episode_Reward/person_near: -0.0820
+               Episode_Reward/fall: -0.0063
+      Episode_Reward/out_of_square: -0.0037
+               Episode_Reward/time: -0.0332
+         Episode_Reward/smoothness: -0.1043
+      Episode_Termination/time_out: 0.0007
+       Episode_Termination/success: 0.7687
+Episode_Termination/collision_footprint: 0.1653
+Episode_Termination/collision_force: 0.0626
+          Episode_Termination/fall: 0.0174
+ Episode_Termination/out_of_square: 0.0074
 --------------------------------------------------------------------------------
                    Total timesteps: 48988160
-                    Iteration time: 12.60s
-                      Time elapsed: 05:13:14
-                               ETA: 00:01:15
+                    Iteration time: 14.56s
+                      Time elapsed: 06:03:05
+                               ETA: 00:01:27
 
 ################################################################################
                      [1m Learning iteration 1495/1500 [0m                     
 
-                       Computation: 2618 steps/s (collection: 9.019s, learning 3.494s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 3.5480
-               Mean surrogate loss: -0.0100
-                 Mean entropy loss: -5.2040
-                       Mean reward: -8.83
-               Mean episode length: 143.22
-           Episode_Reward/progress: 0.0310
-            Episode_Reward/success: 0.1223
-          Episode_Reward/collision: -0.1459
-        Episode_Reward/person_near: -0.2696
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0067
-               Episode_Reward/time: -0.1388
-         Episode_Reward/smoothness: -0.0539
-      Episode_Termination/time_out: 0.5125
-       Episode_Termination/success: 0.1815
-Episode_Termination/collision_footprint: 0.2510
-Episode_Termination/collision_force: 0.0674
-          Episode_Termination/fall: 0.0002
- Episode_Termination/out_of_square: 0.0056
+                       Computation: 2238 steps/s (collection: 11.180s, learning 3.458s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 20.0865
+               Mean surrogate loss: 0.0041
+                 Mean entropy loss: 7.7815
+                       Mean reward: 12.64
+               Mean episode length: 29.72
+           Episode_Reward/progress: 0.2202
+            Episode_Reward/success: 0.7742
+          Episode_Reward/collision: -0.1008
+        Episode_Reward/person_near: -0.0914
+               Episode_Reward/fall: -0.0069
+      Episode_Reward/out_of_square: -0.0052
+               Episode_Reward/time: -0.0318
+         Episode_Reward/smoothness: -0.1002
+      Episode_Termination/time_out: 0.0007
+       Episode_Termination/success: 0.7744
+Episode_Termination/collision_footprint: 0.1625
+Episode_Termination/collision_force: 0.0620
+          Episode_Termination/fall: 0.0112
+ Episode_Termination/out_of_square: 0.0092
 --------------------------------------------------------------------------------
                    Total timesteps: 49020928
-                    Iteration time: 12.51s
-                      Time elapsed: 05:13:27
-                               ETA: 00:01:02
+                    Iteration time: 14.64s
+                      Time elapsed: 06:03:19
+                               ETA: 00:01:12
 
 ################################################################################
                      [1m Learning iteration 1496/1500 [0m                     
 
-                       Computation: 2593 steps/s (collection: 9.137s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.5979
-               Mean surrogate loss: -0.0054
-                 Mean entropy loss: -5.1738
-                       Mean reward: -5.29
-               Mean episode length: 126.59
-           Episode_Reward/progress: 0.0341
-            Episode_Reward/success: 0.1429
-          Episode_Reward/collision: -0.1392
-        Episode_Reward/person_near: -0.1812
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0065
-               Episode_Reward/time: -0.1366
-         Episode_Reward/smoothness: -0.0545
-      Episode_Termination/time_out: 0.5170
-       Episode_Termination/success: 0.1763
-Episode_Termination/collision_footprint: 0.2495
-Episode_Termination/collision_force: 0.0708
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0085
+                       Computation: 2238 steps/s (collection: 11.187s, learning 3.454s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 19.7877
+               Mean surrogate loss: -0.0033
+                 Mean entropy loss: 7.7820
+                       Mean reward: 13.63
+               Mean episode length: 34.17
+           Episode_Reward/progress: 0.2186
+            Episode_Reward/success: 0.7780
+          Episode_Reward/collision: -0.0959
+        Episode_Reward/person_near: -0.0827
+               Episode_Reward/fall: -0.0063
+      Episode_Reward/out_of_square: -0.0077
+               Episode_Reward/time: -0.0331
+         Episode_Reward/smoothness: -0.1044
+      Episode_Termination/time_out: 0.0016
+       Episode_Termination/success: 0.7774
+Episode_Termination/collision_footprint: 0.1618
+Episode_Termination/collision_force: 0.0575
+          Episode_Termination/fall: 0.0122
+ Episode_Termination/out_of_square: 0.0102
 --------------------------------------------------------------------------------
                    Total timesteps: 49053696
-                    Iteration time: 12.63s
-                      Time elapsed: 05:13:40
-                               ETA: 00:00:50
+                    Iteration time: 14.64s
+                      Time elapsed: 06:03:34
+                               ETA: 00:00:58
 
 ################################################################################
                      [1m Learning iteration 1497/1500 [0m                     
 
-                       Computation: 2598 steps/s (collection: 9.115s, learning 3.496s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.2059
-               Mean surrogate loss: -0.0052
-                 Mean entropy loss: -5.1769
-                       Mean reward: -4.49
-               Mean episode length: 137.60
-           Episode_Reward/progress: 0.0407
-            Episode_Reward/success: 0.1482
-          Episode_Reward/collision: -0.1593
-        Episode_Reward/person_near: -0.1760
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0074
-               Episode_Reward/time: -0.1290
-         Episode_Reward/smoothness: -0.0518
-      Episode_Termination/time_out: 0.5156
-       Episode_Termination/success: 0.1750
-Episode_Termination/collision_footprint: 0.2563
-Episode_Termination/collision_force: 0.0696
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0097
+                       Computation: 2251 steps/s (collection: 11.091s, learning 3.463s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 21.1101
+               Mean surrogate loss: 0.0082
+                 Mean entropy loss: 7.7826
+                       Mean reward: 12.01
+               Mean episode length: 32.34
+           Episode_Reward/progress: 0.2179
+            Episode_Reward/success: 0.7481
+          Episode_Reward/collision: -0.1156
+        Episode_Reward/person_near: -0.0764
+               Episode_Reward/fall: -0.0065
+      Episode_Reward/out_of_square: -0.0045
+               Episode_Reward/time: -0.0306
+         Episode_Reward/smoothness: -0.0940
+      Episode_Termination/time_out: 0.0011
+       Episode_Termination/success: 0.7690
+Episode_Termination/collision_footprint: 0.1640
+Episode_Termination/collision_force: 0.0667
+          Episode_Termination/fall: 0.0133
+ Episode_Termination/out_of_square: 0.0107
 --------------------------------------------------------------------------------
                    Total timesteps: 49086464
-                    Iteration time: 12.61s
-                      Time elapsed: 05:13:52
-                               ETA: 00:00:37
+                    Iteration time: 14.55s
+                      Time elapsed: 06:03:48
+                               ETA: 00:00:43
 
 ################################################################################
                      [1m Learning iteration 1498/1500 [0m                     
 
-                       Computation: 2599 steps/s (collection: 9.113s, learning 3.495s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.1201
-               Mean surrogate loss: -0.0031
-                 Mean entropy loss: -5.1688
-                       Mean reward: -6.00
-               Mean episode length: 116.89
-           Episode_Reward/progress: 0.0390
-            Episode_Reward/success: 0.1669
-          Episode_Reward/collision: -0.1651
-        Episode_Reward/person_near: -0.1852
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0090
-               Episode_Reward/time: -0.1219
-         Episode_Reward/smoothness: -0.0498
-      Episode_Termination/time_out: 0.5127
-       Episode_Termination/success: 0.1762
-Episode_Termination/collision_footprint: 0.2487
-Episode_Termination/collision_force: 0.0737
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0116
+                       Computation: 2257 steps/s (collection: 11.051s, learning 3.463s)
+             Mean action noise std: 3.26
+          Mean value_function loss: 20.4219
+               Mean surrogate loss: 0.0004
+                 Mean entropy loss: 7.7831
+                       Mean reward: 12.96
+               Mean episode length: 31.26
+           Episode_Reward/progress: 0.2211
+            Episode_Reward/success: 0.7822
+          Episode_Reward/collision: -0.0935
+        Episode_Reward/person_near: -0.0852
+               Episode_Reward/fall: -0.0054
+      Episode_Reward/out_of_square: -0.0096
+               Episode_Reward/time: -0.0321
+         Episode_Reward/smoothness: -0.0999
+      Episode_Termination/time_out: 0.0003
+       Episode_Termination/success: 0.7769
+Episode_Termination/collision_footprint: 0.1638
+Episode_Termination/collision_force: 0.0535
+          Episode_Termination/fall: 0.0119
+ Episode_Termination/out_of_square: 0.0147
 --------------------------------------------------------------------------------
                    Total timesteps: 49119232
-                    Iteration time: 12.61s
-                      Time elapsed: 05:14:05
-                               ETA: 00:00:25
+                    Iteration time: 14.51s
+                      Time elapsed: 06:04:03
+                               ETA: 00:00:29
 
 ################################################################################
                      [1m Learning iteration 1499/1500 [0m                     
 
-                       Computation: 2605 steps/s (collection: 9.079s, learning 3.497s)
-             Mean action noise std: 0.26
-          Mean value_function loss: 4.9228
-               Mean surrogate loss: -0.0110
-                 Mean entropy loss: -5.1422
-                       Mean reward: -6.76
-               Mean episode length: 136.37
-           Episode_Reward/progress: 0.0468
-            Episode_Reward/success: 0.1880
-          Episode_Reward/collision: -0.1403
-        Episode_Reward/person_near: -0.1881
-               Episode_Reward/fall: 0.0000
-      Episode_Reward/out_of_square: -0.0086
-               Episode_Reward/time: -0.1300
-         Episode_Reward/smoothness: -0.0511
-      Episode_Termination/time_out: 0.4991
-       Episode_Termination/success: 0.1754
-Episode_Termination/collision_footprint: 0.2549
-Episode_Termination/collision_force: 0.0822
-          Episode_Termination/fall: 0.0000
- Episode_Termination/out_of_square: 0.0147
+                       Computation: 2232 steps/s (collection: 11.215s, learning 3.462s)
+             Mean action noise std: 3.27
+          Mean value_function loss: 21.8000
+               Mean surrogate loss: -0.0059
+                 Mean entropy loss: 7.7837
+                       Mean reward: 10.88
+               Mean episode length: 32.73
+           Episode_Reward/progress: 0.2152
+            Episode_Reward/success: 0.7366
+          Episode_Reward/collision: -0.1167
+        Episode_Reward/person_near: -0.0762
+               Episode_Reward/fall: -0.0085
+      Episode_Reward/out_of_square: -0.0065
+               Episode_Reward/time: -0.0314
+         Episode_Reward/smoothness: -0.0971
+      Episode_Termination/time_out: 0.0015
+       Episode_Termination/success: 0.7655
+Episode_Termination/collision_footprint: 0.1715
+Episode_Termination/collision_force: 0.0563
+          Episode_Termination/fall: 0.0140
+ Episode_Termination/out_of_square: 0.0125
 --------------------------------------------------------------------------------
                    Total timesteps: 49152000
-                    Iteration time: 12.58s
-                      Time elapsed: 05:14:17
-                               ETA: 00:00:12
+                    Iteration time: 14.68s
+                      Time elapsed: 06:04:18
+                               ETA: 00:00:14
 
-[train_nav] 1500/1500 iterations, 18869 s, 12.58 s/iteration, GPU memory 14.2 GiB
-wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/050-nav-train/output-attempt3/nav_training_curve.png tags: 26
-[2026-11-03T03:44:35-06:00] done
+[train_nav] 1500/1500 iterations, 21870 s, 14.58 s/iteration, GPU memory 14.2 GiB
+wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/050-nav-train/output-attempt4/nav_training_curve.png tags: 26
+[2026-11-04T19:43:31-06:00] done
