@@ -6,6 +6,10 @@ scipy==1.17.1
 mujoco==3.16.0
 pillow==11.3.0
 imageio-ffmpeg==0.6.0
+# overhead camera (go2x/vision): ArUco is in the main OpenCV package; OWLv2 as in Task 5 (config/grounding.yaml).
+# Do not add torchvision unless it matches the installed torch exactly: a mismatched one breaks the OWLv2 import.
+opencv-python==4.11.0.86
+transformers==4.57.1
 # Already in the Phase 1 .venv; listed so a fresh environment gets it (macOS needs `brew install portaudio` first,
 # and CFLAGS=-I/opt/homebrew/include LDFLAGS=-L/opt/homebrew/lib, as in LOG.md, Mac robot session).
 unitree_webrtc_connect @ git+https://github.com/legion1581/unitree_webrtc_connect.git@e0abc57

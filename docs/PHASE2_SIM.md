@@ -176,6 +176,26 @@ The three success rates are within one standard error of each other; 30 scenario
 
 Live recordings with the viewer open, robot limits: `results/phase2/live_sim/live_sim_scenario002.mp4` (one chair), `..._scenario023.mp4` (a walking person, table target), `..._scenario101.mp4` (person target), all successes, checked by eye. Each frame shows the fixed camera, a chase camera and the policy's input. `twin_scenario023.mp4` is the same run rebuilt from its log alone by `scripts/robot/render_twin.py`; it matches the simulation.
 
+### Overhead camera in MuJoCo
+
+The camera path (`go2x/vision`, `docs/ROBOT_RUN.md` "Overhead camera") with a simulated webcam:
+- **Frames:** MuJoCo renders the overhead camera of `config/camera.yaml` at 1280 by 960 pixels, 15 frames per second. The printed tags are drawn in at their projected corners (`go2x/vision/synth.py`), and nothing hides them.
+- **Robot tag:** 18 cm, fixed 6 cm above the robot's base, so it tilts and bobs with the body.
+- **Corner tags:** at the square's corners.
+
+| check | result |
+| :--- | :--- |
+| camera pose from the four corner tags (`calibrate_extrinsics.py`, `tests/test_camera_calibration.py`) | within 5 cm and 1 degree of the truth |
+| lens calibration from 15 synthetic board views (`calibrate_intrinsics.py`) | focal length within 2 %, principal point within 10 px |
+| robot pose from its tag during a run (scenario 2, obstacle tags, 45 policy steps) | position error mean 0.006 m, max 0.016 m; heading error mean 1.1 degrees, max 3.5 degrees; every step had a fresh camera fix |
+| OWLv2 obstacles, 4 runs (scenarios 3, 9, 14, 47; targets "table", "red chair", "green chair", "blue chair") | 4 successes, each with the right target chosen. Detected positions were 0.1 to 0.35 m from the truth, all nearer the camera (`half_depth_m` is the setting that corrects this) |
+
+OWLv2 took about 2.9 s per pass on the Dell's CPU. Two problems found and fixed:
+- **Flicker:** chair scores sat near the 0.20 threshold, so chairs dropped out of some passes. Detections now persist for 6 s, and a run waits for 3 passes before starting.
+- **Missed chairs:** chairs that "a chair" missed were found by "a red chair" (score 0.34). Every pass now asks for each color.
+
+People are cylinders in these scenes, which OWLv2 does not detect (Task 5), so people-free scenarios were used. Example run (scenario 14, green chair): `results/phase2/camera_sim/`. It holds the camera recording with the pipeline's view drawn, the simulation video, the twin, and the detection and layout logs.
+
 ### Task 5: language target (60 rendered scenes, 132 prompts)
 
 Job 070: OWLv2 (`google/owlv2-base-patch16-ensemble`, revision `cfd3195`), score threshold 0.1, on the 60 MuJoCo-rendered scenes from job 045. A prompt counts as correct when the floor point projected from the best box lies within 0.3 m of the target's footprint.

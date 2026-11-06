@@ -6,6 +6,8 @@ roll and pitch from the IMU, height from body_height; the 12 leg joints come fro
 (the default standing pose if there is none). Obstacles and people are the scenario's, people moved along their
 scripts by the time since the policy started. Panels: the fixed camera (config/camera.yaml), a chase camera, and
 the policy's input at that time; the header shows time, odometry speed, the command sent and the outcome.
+For a camera run (run.json pose_source "camera") the base position and yaw are the poses the policy used (camera
+tag, odometry between fixes), interpolated between policy steps, and the obstacles are the last perceived layout.
 
     python scripts/robot/render_twin.py data/<run folder> --model_dir <unitree_mujoco>
 """
@@ -66,6 +68,11 @@ def main():
     low_t = np.array([m["t_mono_ns"] for m in lows]) if lows else None
     cmd_t = np.array([c["t_mono_ns"] for c in cmds]) if cmds else None
 
+    cam_poses = None
+    if run.get("pose_source") == "camera" and pol is not None and len(pol["t"]):
+        cam_poses = np.array(pol["pose"], float)
+        cam_poses[:, 2] = np.unwrap(cam_poses[:, 2])
+        t_start = run["t0_mono_ns"]
     W, H = args.size
     cam = Camera.from_config(load_config("camera"))
     spec = go2_spec(args.model_dir, offscreen=(W, H), checker=True)
@@ -95,8 +102,11 @@ def main():
         d = s["data"]
         rpy = (d.get("imu_state") or {}).get("rpy") or [0.0, 0.0, 0.0]
         pos = d.get("position") or [0.0, 0.0, 0.0]
-        x, y, yaw = mapper(np.array([pos[0], pos[1], rpy[2]]))
         t_rel = (s["t_mono_ns"] - t_start) / 1e9
+        if cam_poses is not None:      # camera run: the pose the policy used (camera, odometry between fixes)
+            x, y, yaw = (np.interp(t_rel, pol["t"], cam_poses[:, i]) for i in range(3))
+        else:
+            x, y, yaw = mapper(np.array([pos[0], pos[1], rpy[2]]))
         scene.set_time(max(t_rel, 0.0))
         poses = scene.part_poses()
         for j, mid in enumerate(mocap):

@@ -1,0 +1,50 @@
+# Overhead camera on the real floor: printed ArUco tags and obstacle detection (go2x/vision, scripts/camera).
+# Print scripts/camera/make_tags.py's PDF at 100 % ("actual size"), then MEASURE the black square of a printed tag
+# and put it in tag_size_m. Heights are from the floor to the printed tag, in meters.
+
+dictionary: DICT_4X4_50
+tag_size_m: 0.18                 # black square edge of every printed tag (measure after printing)
+
+corners:                         # tags flat on the floor, tag CENTER exactly on each corner of the 3.048 m square
+  ids: [0, 1, 2, 3]
+  xy:                            # square frame: origin at the square center, x and y along its edges
+    - [-1.524, -1.524]
+    - [1.524, -1.524]
+    - [1.524, 1.524]
+    - [-1.524, 1.524]
+
+robot:
+  id: 10
+  height_m: 0.36                 # MEASURE: floor to the tag on the robot's back with the robot standing
+  forward_offset_m: 0.0          # MEASURE: tag center ahead (+) or behind (-) the middle of the robot's body
+  # mount the tag flat, centered left-right, with the printed "FRONT" arrow toward the robot's head
+
+obstacles:                       # optional tags on obstacles, flat on the top, centered, arrow along the object's +x
+  20: {kind: chair, color: red, height_m: 0.45}
+  21: {kind: chair, color: blue, height_m: 0.45}
+  22: {kind: chair, color: green, height_m: 0.45}
+  23: {kind: chair, color: yellow, height_m: 0.45}
+  24: {kind: table, height_m: 0.75}
+
+charuco:                         # lens calibration board (scripts/camera/calibrate_intrinsics.py), one letter page
+  dictionary: DICT_5X5_100
+  squares_x: 5
+  squares_y: 7
+  square_m: 0.035                # MEASURE a printed square
+  marker_m: 0.026
+
+owl:                             # obstacle detection with OWLv2 (model and revision from config/grounding.yaml)
+  rate_hz: 1.0                   # detection runs on the newest frame at most this often
+  score_threshold: {chair: 0.20, table: 0.20, person: 0.20}   # tune on the real camera with scripts/camera/preview.py
+  nms_iou: 0.3
+  half_depth_m: {chair: 0.25, table: 0.45, person: 0.20}  # box bottom = near edge; center is this far beyond it
+  keep_margin_m: 0.30            # keep detections whose center is inside the square or this close to it
+  robot_exclusion_m: 0.45        # drop detections whose center is this close to the robot's (the robot itself; half-length 0.35 m)
+  tag_override_m: 0.40           # an obstacle tag replaces detections this close to it
+  forget_s: 6.0                  # a detected obstacle stays this long after its last detection (detections flicker)
+  match_m: 0.50                  # a new detection this close to a kept one of the same kind updates it
+  min_passes: 3                  # detector passes before a run may start
+
+tracking:
+  pose_max_age_s: 0.5            # older camera pose: odometry carries the pose from the last camera fix
+  camera_loss_stop_s: 2.0        # no camera fix for this long: stop the robot

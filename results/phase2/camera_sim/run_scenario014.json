@@ -1,0 +1,73 @@
+{
+ "source": "camera (sim), target 'green chair', obstacles from owl",
+ "scenario": {
+  "robot_start": [
+   -0.6785091414915767,
+   1.1618497693567151,
+   0.5504734450882536
+  ],
+  "chairs": [
+   [
+    -0.2639342466318718,
+    0.700723372851816,
+    0.0,
+    3.0
+   ],
+   [
+    0.3961723369956698,
+    1.3224293264028932,
+    0.0,
+    2.0
+   ],
+   [
+    -0.6663642196627375,
+    -1.273831460644728,
+    0.0,
+    0.0
+   ]
+  ],
+  "table": [
+   [
+    0.5527406976321219,
+    -0.3049249367543858,
+    0.0
+   ]
+  ],
+  "people": [],
+  "target": [
+   "chair",
+   1
+  ]
+ },
+ "backend": "mujoco",
+ "pose_source": "camera",
+ "t0_mono_ns": 1227619518466621,
+ "mapping": {
+  "start_pose_square": [
+   -1.0199885368347168,
+   -0.08625517040491104,
+   1.9666839838027954
+  ],
+  "first_odom": [
+   1.1360233997008593,
+   -1.4533374813214686,
+   2.868950821509509
+  ]
+ },
+ "outcome": "success: front 0.49 m from the target, speed 0.06 m/s",
+ "limits": {
+  "max_vx": 0.5,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 1.0,
+  "max_yaw_accel": 2.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/ENGR6010_Go2X_SafeRL/results/phase2/nav_policy/nav_actor.pt",
+ "policy_steps": 107,
+ "final": "success: front 0.49 m from the target, speed 0.06 m/s"
+}

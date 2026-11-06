@@ -66,6 +66,12 @@ class MujocoRobot(RobotInterface):
         self._thread = None
         self._ready = threading.Event()
         self._error = None
+        self.sim_camera, self.cam_scale, self.cam_hz = None, 2.0, 15.0
+
+    def attach_camera(self, sim_camera, scale=2.0, hz=15.0):
+        """Render the overhead camera at `scale` times config/camera.yaml's resolution, `hz` frames per second,
+        and hand each frame and the true poses to sim_camera.push (go2x.vision.sources.SimCamera)."""
+        self.sim_camera, self.cam_scale, self.cam_hz = sim_camera, scale, hz
 
     # -- interface -------------------------------------------------------------------
     def add_low_state_listener(self, fn):
@@ -117,7 +123,8 @@ class MujocoRobot(RobotInterface):
     def _build(self):
         cam = Camera.from_config(load_config("camera"))
         self.cam = cam
-        spec = go2_spec(self.model_dir, offscreen=self.size, checker=True)
+        off = (max(self.size[0], int(cam.width * self.cam_scale)), max(self.size[1], int(cam.height * self.cam_scale)))
+        spec = go2_spec(self.model_dir, offscreen=off, checker=True)
         import json
         with open(CONFIG_DIR / "building_level1_near_square.json") as f:
             add_building(spec, json.load(f)["boxes"], BUILDING_COLORS)
@@ -177,6 +184,15 @@ class MujocoRobot(RobotInterface):
             d.ctrl[self.act] = pd_torque(target, d.qpos[self.qadr], d.qvel[self.vadr], self.kp, self.kd, self.limit)
             mujoco.mj_step(self.model, d)
         self.sim_time += self.MJ["timestep"] * self.MJ["pd_substeps"]
+
+    def _true_obstacles(self):
+        if self.scene is None:
+            return []
+        L = self.scene.batch.layouts[0]
+        colors = list(self.scene.cfg["obstacles"]["chair"]["colors"])
+        out = [{"kind": "chair", "color": colors[int(c)], "x": x, "y": y, "yaw": yaw} for x, y, yaw, c in L.chairs]
+        out += [{"kind": "table", "color": None, "x": x, "y": y, "yaw": yaw} for x, y, yaw in L.table]
+        return out
 
     def _rpy(self):
         w, x, y, z = self.data.qpos[3:7]
@@ -250,7 +266,10 @@ class MujocoRobot(RobotInterface):
                 print(f"[mujoco] viewer not available ({e}); on macOS start the script with mjpython. Continuing without it.", flush=True)
         renderer = chase = None
         dt = self.MJ["timestep"] * self.MJ["pd_substeps"]
-        next_pub, next_rec = 0.0, 0.0
+        next_pub, next_rec, next_cam = 0.0, 0.0, 0.0
+        cam_renderer = None
+        if self.sim_camera is not None:
+            cam_renderer = mujoco.Renderer(self.model, int(self.cam.height * self.cam_scale), int(self.cam.width * self.cam_scale))
         sync_every = 2
         t_wall0 = time.monotonic()
         k = 0
@@ -267,6 +286,13 @@ class MujocoRobot(RobotInterface):
                     self._policy_step()
                 if np.abs(self._rpy()[:2]).max() > self.MJ["fall"]["tilt_rad"] or self.data.qpos[2] < self.MJ["fall"]["base_height_m"]:
                     self.fell = True
+                if cam_renderer is not None and self.sim_time >= next_cam - 1e-9:
+                    cam_renderer.update_scene(self.data, camera="top")
+                    R = np.empty(9)
+                    mujoco.mju_quat2Mat(R, self.data.qpos[3:7])
+                    self.sim_camera.push(cam_renderer.render().copy(), time.monotonic(), self.data.qpos[0:3].copy(),
+                                         R.reshape(3, 3), self._true_obstacles())
+                    next_cam += 1 / self.cam_hz
                 if self.sim_time >= next_pub - 1e-9:
                     self._publish()
                     next_pub += 1 / 20
@@ -293,6 +319,8 @@ class MujocoRobot(RobotInterface):
         finally:
             if viewer is not None:
                 viewer.close()
+            if cam_renderer is not None:
+                cam_renderer.close()
             if renderer is not None:
                 renderer.close()
                 self.writer.close()

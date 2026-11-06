@@ -2,13 +2,15 @@
 
 This is the procedure for the first real-robot runs of the Task 4 navigation policy (job 050 attempt 4). The laptop runs the policy and talks to the robot over Wi-Fi (WebRTC). Everything is recorded, and each run can be replayed as a digital twin in MuJoCo.
 
-**Status: Plan, not yet run on the robot.** The software path is tested in MuJoCo and against the mock robot (`tests/test_deploy.py`). The Wi-Fi link (`go2x/deploy/wireless.py`) differs from the tested Ethernet backend only in its connection method and one extra subscription, and it has not been tried yet.
+**Status: Plan, not yet run on the robot.** The software path is tested in MuJoCo and against the mock robot (`tests/test_deploy.py`). The camera path is tested in MuJoCo with a simulated webcam: tags drawn into rendered frames, OWLv2 on the renders (`tests/test_vision.py`, `tests/test_camera_calibration.py`, `docs/PHASE2_SIM.md`). The Wi-Fi link (`go2x/deploy/wireless.py`) differs from the tested Ethernet backend only in its connection method and one extra subscription, and it has not been tried yet.
 
 ## What runs, and what does not
 
 - **The navigation policy runs; the walking policy does not.** The navigation policy sends velocity targets (vx, vy, wz) at 10 Hz. On the robot, Unitree's own walking controller follows them (sport mode `Move`), as in the Phase 1 robot session. The Task 1 walking policy needs low-level joint commands, which go over the wired DDS (Data Distribution Service) network only. It is not part of a wireless run.
-- **No camera.** The policy's input is drawn from the scenario file (where the chairs, table and people are) and the robot's odometry. The floor must match the scenario's setup sheet. The policy cannot see anything that is not in the file.
-- **No walking people.** People in the scenario are standing (or there are none). The runner refuses scenarios with walking people on the robot.
+- **Two ways to know where things are.**
+  - **With the overhead camera (`--camera usb`, the main mode):** a USB webcam on the second floor watches the square. A printed ArUco tag on the robot's back gives its position and heading every frame; odometry fills gaps of up to 2 s, and the robot stops if the tag stays hidden longer. OWLv2 finds the chairs, table and people about once a second; optional tags on obstacles give exact positions. The target is a phrase (`--target "red chair"`). See "Overhead camera" below.
+  - **Without a camera (`--camera none`):** the obstacles come from a scenario file and the robot's pose from odometry alone. The floor must match the scenario's setup sheet, and walking people are refused.
+- **Anything the camera does not detect is invisible to the policy and to the virtual bumper.** Keep the square clear of everything except the obstacles in the preview.
 
 ## One-time laptop setup (Mac)
 
@@ -33,6 +35,77 @@ Check the laptop install without the robot (about 20 s, writes a video):
 
 On macOS the live viewer (`--viewer`) needs MuJoCo's `mjpython` launcher in place of `python`; `--record` works with plain `python`.
 
+## Overhead camera
+
+### What to prepare
+
+- **Webcam:** 1080p, on the second floor, looking down at the square; the whole square and its corner tags must be in view. A USB 2.0 cable longer than 5 m needs an active (powered) extension cable.
+- **Prints:** `python scripts/camera/make_tags.py --out tags.pdf`, printed at 100 % ("actual size"), 11 letter pages:
+  - corner tags 0 to 3;
+  - robot tag 10;
+  - obstacle tags 20 to 24 (optional);
+  - the ChArUco lens-calibration board.
+- **Measure, then enter in `config/tags.yaml`:**
+  - the black square of one printed tag (`tag_size_m`, 0.18 m if printed true to size);
+  - one square of the board (`charuco.square_m`);
+  - the robot tag's height above the floor with the robot standing (`robot.height_m`). A wrong height shifts the robot's position away from the camera; `tests/test_vision.py` shows the effect.
+- **Mounting:**
+  - **Corner tags:** flat on the floor, each tag's center exactly on a corner of the 3.048 m square; any rotation is fine.
+  - **Robot tag:** on a stiff piece of cardboard, flat on the robot's back, centered left-right, with the printed FRONT arrow toward the head. Overhanging the body is fine.
+  - **Obstacle tags (optional):** flat on the seat or table top, centered.
+- **OWLv2 weights:** download them once while the laptop still has internet, before joining the robot's hotspot (`preview.py --owl` does it, about 0.6 GB).
+
+### Calibration (once per camera placement)
+
+```bash
+.venv/bin/python scripts/camera/list_cameras.py                  # find the webcam's index (0 is usually the built-in camera)
+.venv/bin/python scripts/camera/calibrate_intrinsics.py --camera 1 --width 1920 --height 1080
+#   hold the board in front of the camera and move and tilt it until 25 views are kept; error under 1 px is good
+.venv/bin/python scripts/camera/calibrate_extrinsics.py --camera 1
+#   corner tags in place, square clear; prints the camera height and the robot tag's size in pixels,
+#   and writes calib_check.png: the drawn square must sit on the tape
+```
+
+The lens calibration (first command) can be done anywhere, but the focus and zoom must not change afterwards. The camera pose (second command) must be redone whenever the camera moves.
+
+### Setting up a run from the laptop
+
+```bash
+.venv/bin/python scripts/camera/preview.py --camera 1 --owl --target "red chair"
+```
+
+The preview shows:
+- the square;
+- every tag;
+- the robot's footprint and heading from its tag;
+- OWLv2's boxes;
+- the layout the policy would get, with the target in yellow.
+
+Place the obstacles and the robot until the preview matches the floor, then quit (q). Detection settings are in `config/tags.yaml` `owl`:
+
+| setting | what it does |
+| :--- | :--- |
+| `score_threshold` | lower it if obstacles flicker out of the preview; raise it if things that are not there appear |
+| `half_depth_m` | moves each detection from the box's bottom edge to the object's center: place a chair at a measured spot and adjust until the preview puts it there |
+
+In MuJoCo, OWLv2's positions were 0.1 to 0.35 m nearer the camera than the truth.
+
+### The run
+
+```bash
+.venv/bin/python scripts/robot/run_nav_policy.py --backend webrtc --method ap --camera usb --camera-index 1 --target "red chair"
+```
+
+The robot waits, without moving, until the camera has seen its tag and the target, and until OWLv2 has made 3 passes. Then it stands up and the policy runs. Extra files in the run folder:
+
+| file | content |
+| :--- | :--- |
+| `camera.mp4` | the camera at the policy rate, with the square, tags, robot pose, obstacles and target drawn |
+| `detections.jsonl` | every OWLv2 pass |
+| `perception.jsonl` | every layout the policy got |
+
+In `policy.npz` and `events.jsonl`, each step records whether its pose came from the camera or from odometry. `render_twin.py` draws camera runs from those poses.
+
 ## Wi-Fi connection
 
 Two ways, both from `unitree_webrtc_connect` (`e0abc57`):
@@ -56,7 +129,7 @@ Exam 1 found the robot on firmware 1.1.11 to 1.1.14, which needs no AES key. If 
    .venv/bin/python scripts/robot/list_scenarios.py --max-objects 1
    ```
    Start with one obstacle (for example scenario 2, one chair). Scenarios with walking people are left out.
-3. **Set up the floor.** Print the sheet without connecting:
+3. **Set up the floor.** With the camera, use `preview.py` (above). Without it, print the sheet without connecting:
    ```bash
    .venv/bin/python scripts/robot/run_nav_policy.py --backend webrtc --scenario 2 --sheet-only
    ```

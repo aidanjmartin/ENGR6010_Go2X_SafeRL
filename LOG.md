@@ -314,6 +314,22 @@ Aidan lifted the ban on hardware deployment on 2026-11-06 ("i am lifting the ban
 | live recordings | `--viewer --record`, scenarios 2, 23, 101 | all successes (8.8, 8.3, 11.6 s of video); `results/phase2/live_sim/`, plus the twin of scenario 23 |
 | laptop setup check | `bash scripts/robot/setup_laptop.sh` in an empty folder | sparse clone of `unitree_mujoco` at `1eb6642`; `go2.xml` compiles with its 16 meshes |
 
+## Step 12: overhead camera (2026-11-06)
+
+Aidan: the camera goes on the second floor, set up from the MacBook (24 GB); a USB webcam on a long cable; OWLv2 for obstacles with tags as a backup; printed ArUco tags for calibration.
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| robot link check | `ip -brief addr`, carrier of both Ethernet ports | **not run**: the robot is not reachable from the Dell. The built-in port is on the campus network (10.131.x.x); the USB-C adapter (`cdc_ncm`) has no link. Checks moved to the MacBook (commands in the reply to Aidan) |
+| Mac check | `mujoco` 3.16.0 `rendering/classic/gl_context.py` | offscreen rendering on macOS defaults to CGL, which works off the main thread (recording, twin). The live viewer needs `mjpython`; the MuJoCo backend now runs on without it (`2ad82ec`) |
+| packages | `uv pip install opencv-python==4.11.0.86 transformers==4.57.1` (scratch environment) | ArUco is in the main OpenCV package. OWLv2 then failed to import: a `torchvision` 0.22.0 build that did not match the CPU torch (`operator torchvision::nms does not exist`). Removed (nothing here uses it); `env/requirements-robot.txt` warns against it |
+| vision code | `go2x/vision/` (camera model with distortion, tag detection and plane geometry, OWLv2, perception, camera mode for the runner, frame sources, drawing), `scripts/camera/` (tags PDF, lens and pose calibration, preview, camera list), `config/tags.yaml` | tag PDF checked by rasterizing at 100 dpi: the robot tag measures 18.01 cm (want 18.00) and the board's 24 corners are all detected |
+| first OWLv2 run | `--camera sim --obstacles owl` | detector thread crashed on import; the runner waited until the script cap without standing the robot up. Fixed: thread errors stop the run with the reason; the time cap starts after the camera is ready |
+| flicker | scenario 3 detections | the chair (scores 0.21 to 0.26, threshold 0.20) was in 3 of 6 passes; the layout lost it. Fixed: 6 s persistence, 3 passes before start |
+| colored targets | scenarios 9 and 14 | the target chair was found only by the colored query; the plain query missed it. Fixed: every pass asks for each color, and colored detections are chairs of that color |
+| exit crash | end of an OWLv2 run | `terminate called without an active exception` after all files were written (detector thread still running). Fixed: threads are joined |
+| results | 4 OWLv2 runs, 1 tag run, calibration tests | table in `docs/PHASE2_SIM.md` "Overhead camera in MuJoCo"; 82 tests pass |
+
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
@@ -335,3 +351,7 @@ Aidan lifted the ban on hardware deployment on 2026-11-06 ("i am lifting the ban
 **A pip conflict remains in the Isaac environment.** `fastapi 0.115.7` (Isaac Sim) wants `starlette<0.46`; Isaac Lab's dependencies install 0.49.1. No job has failed from it. Isaac Sim also warns that the CPU power profile is "powersave" (a system setting, not changed).
 
 **The wireless link and the proposed robot limits are untested on the robot.** `go2x/deploy/wireless.py` changes only the connection method and adds the low-state subscription to the backend tested over Ethernet on 2026-10-17. `config/safety_limits_nav.yaml` needs Aidan's approval before the first run.
+
+**OWLv2 positions are biased toward the camera.** In MuJoCo the detected obstacle centers were 0.1 to 0.35 m nearer the camera than the truth, which shrinks the virtual bumper's margin. `config/tags.yaml` `owl.half_depth_m` corrects it; it has to be tuned on the real camera with a measured chair.
+
+**Undetected obstacles are invisible.** The policy and the virtual bumper know only what the camera pipeline reports.

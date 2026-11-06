@@ -43,6 +43,15 @@ from go2x.deploy.nav_runtime import NavPolicy, OdomToSquare, SquareScene, load_s
 from go2x.robot.logger import scrub  # noqa: E402
 from go2x.robot.safety import SafeRobot, SafetyStop  # noqa: E402
 
+CONFIRM_CAMERA = """
+About to run the navigation policy on the Go2 X ({method}) with the overhead camera. Target: {target}.
+Confirm ALL of the following:
+  - scripts/camera/preview.py shows the robot tag and the obstacles where they are, inside the square
+  - nobody walks into the square during the run
+  - the handheld remote is in your hand and on
+Any key or Ctrl+C stops the robot.
+Type 'yes' to start: """
+
 CONFIRM = """
 About to run the navigation policy on the Go2 X ({method}).
 Scenario: {source}. Start pose (square frame): x {sx:+.2f} m, y {sy:+.2f} m, heading {syaw:+.0f} deg.
@@ -100,6 +109,14 @@ def main():
     p.add_argument("--walk-policy", default=str(ROOT / "results/phase2/walk_train/policy.pt"))
     p.add_argument("--viewer", action="store_true")
     p.add_argument("--record", action="store_true", help="mujoco: write sim_video.mp4 in the run folder")
+    # overhead camera (go2x/vision, config/tags.yaml, docs/ROBOT_RUN.md)
+    p.add_argument("--camera", choices=["none", "usb", "sim"], default="none",
+                   help="usb: webcam with config/camera_real.yaml; sim: the MuJoCo backend's overhead camera")
+    p.add_argument("--camera-index", type=int, default=0)
+    p.add_argument("--calib", default=str(ROOT / "config/camera_real.yaml"))
+    p.add_argument("--target", default=None, help='camera mode: "red chair", "chair", "table", "person" or tag:<id>')
+    p.add_argument("--obstacles", choices=["owl", "tags", "both"], default="both")
+    p.add_argument("--sim-obstacle-tags", action="store_true", help="sim camera: draw a tag on each obstacle")
     args = p.parse_args()
 
     scenario, source = load_scenario(None if args.layout else args.scenario, args.layout)
@@ -112,7 +129,10 @@ def main():
         return
 
     real = args.backend == "webrtc"
-    if real and scene.walking_people:
+    use_cam = args.camera != "none"
+    if use_cam and not args.target:
+        raise SystemExit("--target is required with a camera")
+    if real and not use_cam and scene.walking_people:
         raise SystemExit("This scenario has walking people, which the robot run cannot reproduce. Pick a scenario "
                          "without them (scripts/robot/list_scenarios.py).")
     if args.backend == "mujoco":
@@ -126,13 +146,44 @@ def main():
     else:
         from go2x.deploy.wireless import WirelessWebRTCRobot
         backend = WirelessWebRTCRobot(method=args.method, ip=args.ip)
-    if real:
+    cmode = None
+    if use_cam:
+        import copy
+
+        from go2x.vision.geometry import RealCamera
+        from go2x.vision.runtime import CameraMode
+        tags_cfg = load_config("tags")
+        if args.camera == "sim":
+            if args.backend != "mujoco":
+                raise SystemExit("--camera sim needs --backend mujoco")
+            from go2x.atrium.camera import Camera
+            from go2x.vision.sources import SimCamera
+            cam = RealCamera.from_atrium_camera(Camera.from_config(load_config("camera")), scale=2.0)
+            tags_cfg = copy.deepcopy(tags_cfg)
+            tags_cfg["robot"]["height_m"] = 0.384          # MuJoCo Go2 standing: base 0.324 m + tag 0.06 m above it
+            src = SimCamera(cam, tags_cfg, robot_tag_local=(0.0, 0.0, 0.06), obstacle_tags=args.sim_obstacle_tags)
+            backend.attach_camera(src, scale=2.0, hz=15.0)
+        else:
+            from go2x.vision.sources import USBCamera
+            cam = RealCamera.load(args.calib)
+            if cam.R_wc is None:
+                raise SystemExit(f"{args.calib} has no extrinsics: run scripts/camera/calibrate_extrinsics.py first")
+            src = USBCamera(args.camera_index, cam.width, cam.height)
+            if src.size != (cam.width, cam.height):
+                raise SystemExit(f"camera gives {src.size}, calibration is for {(cam.width, cam.height)}")
+        cmode = CameraMode(cam, src, args.target, args.obstacles, tags_cfg)
+        source = f"camera ({args.camera}), target '{args.target}', obstacles from {args.obstacles}"
+    if real and use_cam:
+        if input(CONFIRM_CAMERA.format(method=backend.info()["method"], target=args.target)).strip() != "yes":
+            raise SystemExit("not confirmed; nothing sent")
+    elif real:
         sx, sy, syaw = scene.start_pose
         if input(CONFIRM.format(method=backend.info()["method"], source=source, sx=sx, sy=sy,
                                 syaw=math.degrees(syaw))).strip() != "yes":
             raise SystemExit("not confirmed; nothing sent")
 
-    robot = SafeRobot(backend, script="nav_policy", max_duration_s=args.max_policy_s + 25.0, config=limits,
+    robot = SafeRobot(backend, script="nav_policy", max_duration_s=args.max_policy_s + 25.0,
+                      config=limits,
                       data_dir=args.data_dir,
                       extra_header={"description": f"navigation policy, {source}", "actor": Path(args.actor).name,
                                     "actor_meta": {k: v for k, v in policy.meta.items() if k != "topdown"}})
@@ -157,6 +208,15 @@ def main():
             backend.record_path = str(robot.log.dir / "sim_video.mp4")
             backend.start_recording()
         try:
+            if cmode is not None:
+                cmode.start(robot.log.dir)
+                print("waiting for the camera to see the robot tag and the target ...", flush=True)
+                robot.t_start = time.monotonic() + 120.0   # warm-up: nothing is sent; the time cap starts after it
+                first = cmode.wait_ready(robot.check, timeout_s=110.0)
+                robot.log.event("camera_ready", scenario=first)
+                robot.t_start = time.monotonic()   # the script time cap covers the motion, not the camera warm-up
+                print(f"camera ready: {len(first['chairs'])} chairs, {len(first['table'])} tables, "
+                      f"{len(first['people'])} people; target {first['target']}", flush=True)
             if not args.skip_stand:
                 robot.stand_up()
             s = backend.latest_state()
@@ -172,10 +232,18 @@ def main():
                 robot.check()
                 s = backend.latest_state()
                 odom = odom_pose(s)
-                pose = mapper(odom)
                 speed = float(np.hypot(*s.velocity[:2]))
-                ts = backend.scene_time() if hasattr(backend, "scene_time") else time.monotonic() - t0
-                scene.set_time(ts if ts is not None else time.monotonic() - t0)
+                if cmode is not None:
+                    try:
+                        pose, pose_src = cmode.pose(odom)
+                    except LookupError as e:
+                        raise SafetyStop(str(e))
+                    scene, note = cmode.scene_for(pose, time.monotonic())
+                    scenario = cmode.scen
+                else:
+                    pose, pose_src = mapper(odom), "odometry"
+                    ts = backend.scene_time() if hasattr(backend, "scene_time") else time.monotonic() - t0
+                    scene.set_time(ts if ts is not None else time.monotonic() - t0)
                 if s.rpy is not None and max(abs(s.rpy[0]), abs(s.rpy[1])) > 0.8:
                     raise SafetyStop(f"roll or pitch above 0.8 rad: {s.rpy[0]:.2f}, {s.rpy[1]:.2f}")
                 chk = scene.checks(pose, speed)
@@ -196,8 +264,11 @@ def main():
                                  ("action", a), ("cmd_policy", cmd), ("distance", chk["target_distance"]),
                                  ("frame", frame.numpy().astype(np.float16)), ("people", people)):
                     rec[key].append(val)
-                robot.log.event("policy_step", k=k, pose=pose.tolist(), action=a.tolist(), cmd_policy=cmd.tolist(),
-                                distance=chk["target_distance"], speed=speed)
+                robot.log.event("policy_step", k=k, pose=pose.tolist(), pose_source=pose_src, action=a.tolist(),
+                                cmd_policy=cmd.tolist(), distance=chk["target_distance"], speed=speed)
+                if cmode is not None:
+                    cmode.record(pose, f"t {time.monotonic() - t0:4.1f} s  pose from {pose_src}  cmd vx {cmd[0]:+.2f} "
+                                       f"vy {cmd[1]:+.2f} wz {cmd[2]:+.2f}  target {chk['target_distance']:.2f} m")
                 if hasattr(backend, "annotate"):
                     backend.annotate(frame.numpy(), f"policy step {k}  cmd vx {cmd[0]:+.2f} vy {cmd[1]:+.2f} "
                                                     f"wz {cmd[2]:+.2f}  target {chk['target_distance']:.2f} m")
@@ -206,7 +277,11 @@ def main():
             robot.log.event("policy_end", outcome=outcome)
             robot.hold(1.5)
         finally:
+            if cmode is not None:
+                cmode.close()
             run = {"source": source, "scenario": scenario, "backend": args.backend,
+                   "pose_source": "camera" if cmode is not None else "odometry",
+                   "t0_mono_ns": int(t0 * 1e9) if "t0" in locals() else None,
                    "mapping": mapper.to_dict() if mapper else None, "outcome": outcome,
                    "limits": limits, "actor": args.actor, "policy_steps": len(rec["t"])}
             (robot.log.dir / "run.json").write_text(json.dumps(run, indent=1, default=float))
