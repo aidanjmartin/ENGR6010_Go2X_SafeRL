@@ -239,11 +239,15 @@ class MujocoRobot(RobotInterface):
             return
         viewer = None
         if self.viewer_on:
-            from mujoco import viewer as mj_viewer
-            viewer = mj_viewer.launch_passive(self.model, self.data, show_left_ui=False, show_right_ui=False)
-            viewer.cam.type = mujoco.mjtCamera.mjCAMERA_TRACKING
-            viewer.cam.trackbodyid = self.base_id
-            viewer.cam.distance, viewer.cam.elevation, viewer.cam.azimuth = 3.0, -30.0, 135.0
+            try:   # macOS needs `mjpython` for the viewer; without it, run on and say so
+                from mujoco import viewer as mj_viewer
+                viewer = mj_viewer.launch_passive(self.model, self.data, show_left_ui=False, show_right_ui=False)
+                viewer.cam.type = mujoco.mjtCamera.mjCAMERA_TRACKING
+                viewer.cam.trackbodyid = self.base_id
+                viewer.cam.distance, viewer.cam.elevation, viewer.cam.azimuth = 3.0, -30.0, 135.0
+            except Exception as e:
+                viewer = None
+                print(f"[mujoco] viewer not available ({e}); on macOS start the script with mjpython. Continuing without it.", flush=True)
         renderer = chase = None
         dt = self.MJ["timestep"] * self.MJ["pd_substeps"]
         next_pub, next_rec = 0.0, 0.0
