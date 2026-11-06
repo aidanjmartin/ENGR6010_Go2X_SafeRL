@@ -1,0 +1,100 @@
+{
+ "source": "evaluation scenario 23",
+ "scenario": {
+  "robot_start": [
+   -0.37011974308492623,
+   0.7376676827713797,
+   1.5414647034129052
+  ],
+  "chairs": [],
+  "table": [
+   [
+    -0.7153169600102254,
+    -0.7607035940924721,
+    2.9837817872092165
+   ]
+  ],
+  "people": [
+   {
+    "start": [
+     0.24771515582806788,
+     -0.1482407812159876
+    ],
+    "walking": true,
+    "a": [
+     0.4678499101869106,
+     -1.274
+    ],
+    "b": [
+     -0.0303946031577728,
+     1.274
+    ],
+    "script": [
+     [
+      4.515822850627993,
+      0.8402245416223064
+     ],
+     [
+      3.399429853049855,
+      0.0
+     ],
+     [
+      4.776995795931292,
+      0.5129006712270302
+     ],
+     [
+      4.185715495883986,
+      0.894203277740131
+     ],
+     [
+      4.467178682261071,
+      0.8940163048211549
+     ]
+    ]
+   },
+   {
+    "start": [
+     1.0874487943996671,
+     -0.08165444408564215
+    ],
+    "walking": false,
+    "a": null,
+    "b": null,
+    "script": []
+   }
+  ],
+  "target": [
+   "table",
+   0
+  ]
+ },
+ "backend": "mujoco",
+ "mapping": {
+  "start_pose_square": [
+   -0.37011975049972534,
+   0.7376676797866821,
+   1.5414646863937378
+  ],
+  "first_odom": [
+   0.904942037788992,
+   -0.44312939247587463,
+   2.4484303969510606
+  ]
+ },
+ "outcome": "success: front 0.50 m from the target, speed 0.09 m/s",
+ "limits": {
+  "max_vx": 0.5,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 1.0,
+  "max_yaw_accel": 2.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/ENGR6010_Go2X_SafeRL/results/phase2/nav_policy/nav_actor.pt",
+ "policy_steps": 32,
+ "final": "success: front 0.50 m from the target, speed 0.09 m/s"
+}

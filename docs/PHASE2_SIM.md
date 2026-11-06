@@ -160,6 +160,22 @@ The square and building check results are above (`results/phase2/square_check.js
 - **A* planner:** 0 of 281 A* plans failed.
 - **Collision checks:** they disagree in 0.22 to 0.38 of episodes, and the footprint check fires 3 to 6 times as often as the contact-force check for the baselines and attempt 1 (1.6 times for attempt 3, 2.7 for attempt 4). A likely reason, not yet checked: the 0.70 by 0.31 m footprint rectangle is larger than the robot's legs and body near the floor, so it can overlap an obstacle's footprint before any robot body touches the obstacle.
 
+### Robot runner in MuJoCo (live simulation)
+
+`scripts/robot/run_nav_policy.py` runs the exported attempt 4 actor (`results/phase2/nav_policy/nav_actor.pt`, from `scripts/export_nav_actor.py`) through a robot backend, the same code for the robot and for MuJoCo (`docs/ROBOT_RUN.md`). In the MuJoCo backend (`go2x/deploy/mujoco_robot.py`) the Task 1 walking policy follows the velocity targets in real time on Unitree's `go2.xml`. The backend reports odometry with a fixed offset from the square frame (as the robot's boot-time odometry is), and the runner's mapping undoes it. There is no camera noise: the input is drawn from the scenario and the odometry pose.
+
+First 30 evaluation scenarios, one run each:
+
+| | success | collision (footprint) | 20 s limit |
+| :--- | ---: | ---: | ---: |
+| Isaac Lab evaluation (job 060 attempt 4), same 30 scenarios | 0.767 ± 0.077 (n = 30) | | |
+| MuJoCo, proposed robot limits (`config/safety_limits_nav.yaml`: vx 0.5 m/s, rate limited) | 0.733 ± 0.081 (n = 30) | 7 | 1 |
+| MuJoCo, training limits, no rate limit (`config/safety_limits_nav_sim_training.yaml`) | 0.833 ± 0.068 (n = 30) | 5 | 0 |
+
+The three success rates are within one standard error of each other; 30 scenarios cannot separate them. In MuJoCo every stop is the runner's footprint check (obstacles have no contacts there), so these collisions are footprint collisions only.
+
+Live recordings with the viewer open, robot limits: `results/phase2/live_sim/live_sim_scenario002.mp4` (one chair), `..._scenario023.mp4` (a walking person, table target), `..._scenario101.mp4` (person target), all successes, checked by eye. Each frame shows the fixed camera, a chase camera and the policy's input. `twin_scenario023.mp4` is the same run rebuilt from its log alone by `scripts/robot/render_twin.py`; it matches the simulation.
+
 ### Task 5: language target (60 rendered scenes, 132 prompts)
 
 Job 070: OWLv2 (`google/owlv2-base-patch16-ensemble`, revision `cfd3195`), score threshold 0.1, on the 60 MuJoCo-rendered scenes from job 045. A prompt counts as correct when the floor point projected from the best box lies within 0.3 m of the target's footprint.

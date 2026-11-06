@@ -298,6 +298,22 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 | probe of attempt 4 | `python scripts/probe_nav_policy.py <model_final.pt> robot` | steers by the image: wz has the bearing's sign (-0.84 rad/s at -90 degrees, +1.00 at +90), vx about 0.55 m/s within 30 degrees of ahead, under 0.02 m/s beyond 120 degrees |
 | videos attempt 4, job 065 | `bash jobs/065_nav_videos.sh` (two recording runs) | **succeeded** in 40 s: six videos (`results/phase2/nav_videos/`). Policy success, scenario 0, checked by eye: the robot turns to the yellow target chair and stops at it. These replace attempt 3's videos, which stay in commit `a92dcc8` |
 
+## Step 11: wireless robot runner, MuJoCo live simulation and digital twin (2026-11-06)
+
+Aidan lifted the ban on hardware deployment on 2026-11-06 ("i am lifting the ban on hardware deployment, but i will tell you when we will do it") and asked for wireless runs from the laptop with odometry and a digital twin recorded, and for the live simulation in MuJoCo. No command has been sent to the robot yet.
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| library check | `unitree_webrtc_connect` `e0abc57` source | Wi-Fi methods `LocalSTA` (same network, robot's address) and `LocalAP` (robot hotspot); low state on `rt/lf/lowstate` with 12 motor angles in SDK order. Only velocity requests go over WebRTC, so a wireless run uses Unitree's walking controller, not the Task 1 walking policy (joint commands need wired DDS) |
+| export actor | `python scripts/export_nav_actor.py --checkpoint <050 attempt 4 model_final.pt> --out results/phase2/nav_policy/nav_actor.pt` | 1.2 MB, 302,675 values; loads with torch alone (`go2x/nav_net.py` split from `go2x/nav_policy.py` so RSL-RL is not needed) |
+| deploy code | `go2x/deploy/` (nav runtime, MuJoCo backend, Wi-Fi backend), `scripts/robot/` (runner, twin renderer, link check, scenario list, laptop setup), `config/safety_limits_nav.yaml` (proposed), `docs/ROBOT_RUN.md` | Phase 1 code unchanged: the Wi-Fi backend subclasses `go2x/robot/webrtc.py`, the runner uses `go2x/robot/safety.py` and its logger. 7 new CPU tests (odometry mapping, input layout, scene, an end-to-end mock run, refusal of walking people on the robot); 72 pass |
+| first MuJoCo run | `run_nav_policy.py --backend mujoco --scenario 0 --record` | crashed in the physics thread (`import mujoco.viewer` inside the function made `mujoco` local); the watchdog stopped the run with zero velocity, as designed. Fixed; rerun: success in 8.5 s of policy time |
+| digital twin check | `render_twin.py` on that run | the twin, built from the log alone, matches the simulation's own video in pose and leg angles, so the odometry mapping undoes the backend's offset (1.7 m, -0.6 m, 0.9 rad) |
+| live run, scenario 21 | `--viewer --record` | the viewer opens on the Dell's display. Stopped by the footprint check: the robot cut a chair corner (Isaac: success) |
+| limits comparison | 30 scenarios x 2 limit sets, MuJoCo | success 0.733 ± 0.081 with the proposed robot limits, 0.833 ± 0.068 with the training limits, 0.767 ± 0.077 in Isaac on the same 30; not separable at n = 30 (table in `docs/PHASE2_SIM.md`) |
+| live recordings | `--viewer --record`, scenarios 2, 23, 101 | all successes (8.8, 8.3, 11.6 s of video); `results/phase2/live_sim/`, plus the twin of scenario 23 |
+| laptop setup check | `bash scripts/robot/setup_laptop.sh` in an empty folder | sparse clone of `unitree_mujoco` at `1eb6642`; `go2.xml` compiles with its 16 meshes |
+
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
@@ -317,3 +333,5 @@ CPU tests run in this session in a scratchpad environment: CPython 3.11.17 (uv 0
 **Fewer people walk than configured.** 50 of 207 people in the evaluation scenarios walk, against a 0.5 setting, because a walking path that crosses furniture is redrawn and the redraw may come out standing.
 
 **A pip conflict remains in the Isaac environment.** `fastapi 0.115.7` (Isaac Sim) wants `starlette<0.46`; Isaac Lab's dependencies install 0.49.1. No job has failed from it. Isaac Sim also warns that the CPU power profile is "powersave" (a system setting, not changed).
+
+**The wireless link and the proposed robot limits are untested on the robot.** `go2x/deploy/wireless.py` changes only the connection method and adds the low-state subscription to the backend tested over Ethernet on 2026-10-17. `config/safety_limits_nav.yaml` needs Aidan's approval before the first run.

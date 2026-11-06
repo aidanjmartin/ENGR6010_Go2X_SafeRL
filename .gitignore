@@ -37,3 +37,6 @@ runs/
 .DS_Store
 .vscode/
 .idea/
+
+# Unitree MuJoCo model, fetched by scripts/robot/setup_laptop.sh
+third_party/

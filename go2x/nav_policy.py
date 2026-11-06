@@ -7,32 +7,9 @@ previous normalized velocity target (3).
 """
 import torch
 from rsl_rl.modules import ActorCritic
-from torch import nn
+from torch import nn  # noqa: F401
 
-
-class ImageMLP(nn.Module):
-    def __init__(self, image_shape, extra_dim, out_dim, channels=(16, 32, 32), cnn_out=128, mlp=(128, 64)):
-        super().__init__()
-        self.image_shape = tuple(image_shape)
-        self.image_numel = int(torch.tensor(image_shape).prod())
-        layers, c_in = [], image_shape[0]
-        for c in channels:
-            layers += [nn.Conv2d(c_in, c, 3, stride=2, padding=1), nn.ELU()]
-            c_in = c
-        self.cnn = nn.Sequential(*layers, nn.Flatten())
-        with torch.no_grad():
-            n = self.cnn(torch.zeros(1, *image_shape)).shape[-1]
-        self.proj = nn.Sequential(nn.Linear(n, cnn_out), nn.ELU())
-        dims, d_in = [], cnn_out + extra_dim
-        for h in mlp:
-            dims += [nn.Linear(d_in, h), nn.ELU()]
-            d_in = h
-        self.head = nn.Sequential(*dims, nn.Linear(d_in, out_dim))
-
-    def forward(self, x):
-        img = x[:, : self.image_numel].reshape(-1, *self.image_shape)
-        extra = x[:, self.image_numel:]
-        return self.head(torch.cat([self.proj(self.cnn(img)), extra], -1))
+from go2x.nav_net import ImageMLP
 
 
 class CNNActorCritic(ActorCritic):

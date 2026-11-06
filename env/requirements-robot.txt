@@ -1,0 +1,11 @@
+# Robot-day additions for the Mac laptop, on top of env/environment-mac.yml (the Phase 1 .venv, which already has
+# numpy, pytorch, pyyaml, imageio and unitree_webrtc_connect from the 2026-10-17 robot session):
+#   .venv/bin/pip install -r env/requirements-robot.txt
+# Versions are the ones the deploy code was tested with on the Dell (Python 3.11.17, 2026-11-06).
+scipy==1.17.1
+mujoco==3.16.0
+pillow==11.3.0
+imageio-ffmpeg==0.6.0
+# Already in the Phase 1 .venv; listed so a fresh environment gets it (macOS needs `brew install portaudio` first,
+# and CFLAGS=-I/opt/homebrew/include LDFLAGS=-L/opt/homebrew/lib, as in LOG.md, Mac robot session).
+unitree_webrtc_connect @ git+https://github.com/legion1581/unitree_webrtc_connect.git@e0abc57

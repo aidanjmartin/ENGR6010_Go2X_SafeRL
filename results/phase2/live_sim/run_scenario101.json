@@ -1,0 +1,57 @@
+{
+ "source": "evaluation scenario 101",
+ "scenario": {
+  "robot_start": [
+   1.0519561386991478,
+   -1.0334168112454094,
+   0.7950997339699035
+  ],
+  "chairs": [],
+  "table": [],
+  "people": [
+   {
+    "start": [
+     -1.2385852135809488,
+     -0.3999456252335887
+    ],
+    "walking": false,
+    "a": null,
+    "b": null,
+    "script": []
+   }
+  ],
+  "target": [
+   "person",
+   0
+  ]
+ },
+ "backend": "mujoco",
+ "mapping": {
+  "start_pose_square": [
+   1.0519561767578125,
+   -1.0334168672561646,
+   0.7950997352600098
+  ],
+  "first_odom": [
+   3.1648655297016446,
+   -0.4357029019309011,
+   1.702065400099876
+  ]
+ },
+ "outcome": "success: front 0.49 m from the target, speed 0.01 m/s",
+ "limits": {
+  "max_vx": 0.5,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 1.0,
+  "max_yaw_accel": 2.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/ENGR6010_Go2X_SafeRL/results/phase2/nav_policy/nav_actor.pt",
+ "policy_steps": 62,
+ "final": "success: front 0.49 m from the target, speed 0.01 m/s"
+}
