@@ -40,7 +40,7 @@ On macOS the live viewer (`--viewer`) needs MuJoCo's `mjpython` launcher in plac
 ### What to prepare
 
 - **Webcam:** 1080p, on the second floor, looking down at the square; the whole square and its corner tags must be in view. A USB 2.0 cable longer than 5 m needs an active (powered) extension cable.
-- **Prints:** `python scripts/camera/make_tags.py --out tags.pdf`, printed at 100 % ("actual size"), 11 letter pages:
+- **Prints:** `docs/print/tags.pdf` (or regenerate it with `python scripts/camera/make_tags.py --out tags.pdf`), printed at 100 % ("actual size"), 11 letter pages:
   - corner tags 0 to 3;
   - robot tag 10;
   - obstacle tags 20 to 24 (optional);
@@ -119,9 +119,16 @@ Exam 1 found the robot on firmware 1.1.11 to 1.1.14, which needs no AES key. If 
 
 ## Robot-day procedure
 
-1. **Link check, read-only** (sends nothing; the robot can lie down):
+1. **Link check over the Ethernet cable first, read-only** (sends nothing; the robot can lie down). The temporary address is the one from the Phase 1 session (`en9` is the USB-C adapter; check its name with `ifconfig`):
    ```bash
-   .venv/bin/python scripts/robot/check_link.py --method sta --seconds 10
+   sudo ifconfig en9 alias 192.168.123.99 netmask 255.255.255.0
+   ping -c 3 192.168.123.161
+   nc -z 192.168.123.161 9991 && echo "WebRTC port open"
+   .venv/bin/python scripts/robot/check_link.py --method sta --ip 192.168.123.161 --seconds 10
+   ```
+   Then unplug the cable, join the robot's Wi-Fi hotspot, and check the wireless link the same way:
+   ```bash
+   .venv/bin/python scripts/robot/check_link.py --method ap --seconds 10
    ```
    It must print `LINK OK`, sport state near 20 messages per second, and 12 joint angles. Note the battery charge.
 2. **Pick a scenario** that fits the floor:
