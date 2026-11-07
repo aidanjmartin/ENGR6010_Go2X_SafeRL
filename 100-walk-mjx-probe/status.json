@@ -1,0 +1,14 @@
+{
+  "job": "100-walk-mjx-probe",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "MJX walking: venv setup and a 30M-step Brax PPO run to measure throughput",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "d6091f9e02a60cb7c861109c3504f44aa5f2b02c",
+  "status": "running",
+  "started": "2026-11-06T23:06:43-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/100-walk-mjx-probe/log-attempt1.txt"
+}
