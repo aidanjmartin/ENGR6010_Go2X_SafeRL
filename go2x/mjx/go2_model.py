@@ -130,3 +130,23 @@ def standing_height(model, clearance=0.002):
     feet = [model.geom(f).id for f in FEET]
     low = min(d.geom_xpos[g, 2] - model.geom_size[g, 0] for g in feet)
     return 1.0 - low + clearance
+
+
+def use_position_actuators(model, kp, kd, act_ids):
+    """Turn go2.xml's torque motors into PD position actuators in place: force = kp (ctrl - q) - kd dq, clipped to
+    the motors' torque range. With MuJoCo's explicit Euler integrator this is the PD the runners compute in
+    Python at every physics step (go2x/sim2sim.py pd_torque), but it runs inside mj_step, so a batch of robots
+    steps in C threads. tests/test_mjx.py checks the two give the same motion."""
+    for a in act_ids:
+        lim = model.actuator_ctrlrange[a].copy()
+        model.actuator_gaintype[a] = mujoco.mjtGain.mjGAIN_FIXED
+        model.actuator_gainprm[a, :] = 0
+        model.actuator_gainprm[a, 0] = kp
+        model.actuator_biastype[a] = mujoco.mjtBias.mjBIAS_AFFINE
+        model.actuator_biasprm[a, :] = 0
+        model.actuator_biasprm[a, 1] = -kp
+        model.actuator_biasprm[a, 2] = -kd
+        model.actuator_forcerange[a] = lim
+        model.actuator_forcelimited[a] = 1
+        model.actuator_ctrllimited[a] = 0
+    return model

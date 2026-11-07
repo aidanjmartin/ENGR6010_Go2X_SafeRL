@@ -40,9 +40,13 @@ def main():
     p.add_argument("--num_evals", type=int, default=None)
     p.add_argument("--no-randomize", action="store_true", help="ablation: no domain randomization, no noise, no pushes")
     p.add_argument("--symmetric", action="store_true", help="ablation: the critic sees the policy observation only")
+    p.add_argument("--push_velocity", type=float, default=None,
+                   help="variant: base velocity kicks up to this (m/s); legged_gym (Rudin et al., CoRL 2022) uses 1.0")
     p.add_argument("--small", action="store_true", help="CPU smoke test sizes")
     args = p.parse_args()
     cfg = load_config("walk_mjx")
+    if args.push_velocity is not None:
+        cfg["randomization"]["push_velocity_xy"] = args.push_velocity
     P = dict(cfg["ppo"])
     if args.timesteps:
         P["num_timesteps"] = args.timesteps
