@@ -1,0 +1,14 @@
+{
+  "job": "140-nav-eval-mujoco",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation controllers in CPU MuJoCo on the 200 scenarios, MJX and Isaac walkers",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "0cf5b57e10de153b3869a494d42635b1aa48554a",
+  "status": "running",
+  "started": "2026-11-07T12:24:34-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/140-nav-eval-mujoco/log-attempt1.txt"
+}
