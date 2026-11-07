@@ -1,0 +1,11 @@
+id = "150-videos-mujoco"
+description = "Walking progress and course videos, navigation runs and digital twin in MuJoCo"
+ref = "phase2-rl-sim"
+command = "bash jobs/150_videos_mujoco.sh"
+timeout_hours = 3
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["140-nav-eval-mujoco", "111-walk-mjx-s1"]
+attempt = 1

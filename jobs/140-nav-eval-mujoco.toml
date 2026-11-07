@@ -1,0 +1,11 @@
+id = "140-nav-eval-mujoco"
+description = "Navigation controllers in CPU MuJoCo on the 200 scenarios, MJX and Isaac walkers"
+ref = "phase2-rl-sim"
+command = "bash jobs/140_nav_eval_mujoco.sh"
+timeout_hours = 3
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["110-walk-mjx-s0"]
+attempt = 1
