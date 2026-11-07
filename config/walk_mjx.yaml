@@ -1,0 +1,99 @@
+# Walking policy trained in MuJoCo MJX (GPU) with Brax PPO (go2x/mjx/walk_env.py, scripts/mjx/train_walk.py).
+#
+# Task: the same velocity-tracking task as the Isaac Lab walker (config/walk.yaml, unitree_rl_lab Go2 velocity task):
+# same observation (45 values, go2x/sim2sim.py), same joint PD (kp 25, kd 0.5 at every 5 ms physics step), same
+# reward terms and weights, same termination. The model is Unitree's go2.xml (config/mujoco.yaml), simplified
+# for training speed (go2x/mjx/go2_model.py: feet and knees collide with the floor, nothing else).
+# Trainer settings follow MuJoCo Playground's Go1 joystick task (Zakka et al., RSS 2025; playground 0.2.0
+# config/locomotion_params.py), which is tuned for Brax PPO on MJX.
+
+timing:
+  sim_dt: 0.005               # s, as config/walk.yaml and config/mujoco.yaml
+  substeps: 4                 # policy at 50 Hz
+  episode_steps: 1000         # 20 s
+
+actuator:
+  kp: 25.0
+  kd: 0.5
+  # The policy's raw output is tanh-bounded to [-1, 1] (Brax PPO's tanh-Gaussian policy). Joint target =
+  # default pose + action_scale * output. The exported policy multiplies its output by action_scale / 0.25,
+  # so it keeps the Isaac walker's interface (target = default + 0.25 * exported output).
+  action_scale: 0.5           # rad; Playground's Go1 uses 0.5
+  interface_scale: 0.25       # config/walk.yaml actuator.action_scale
+
+commands:
+  vx: [-0.5, 1.0]             # m/s, config/walk.yaml train_range
+  vy: [-0.5, 0.5]
+  wz: [-1.0, 1.0]             # rad/s
+  resample_s: 10.0
+  standing_fraction: 0.1      # chance that a new command is zero (rel_standing_envs)
+
+# unitree_rl_lab Go2 velocity task rewards (tasks/locomotion/robots/go2/velocity_env_cfg.py at 4960b84).
+# Each term is multiplied by its weight and by the policy step (0.02 s), as Isaac Lab's reward manager does.
+rewards:
+  tracking_sigma: 0.25        # std^2 of the exponential tracking kernels
+  soft_limit_factor: 0.9      # unitree_rl_lab UNITREE_GO2_CFG soft_joint_pos_limit_factor
+  air_time_threshold: 0.5     # s
+  stand_still_scale: 5.0
+  stand_velocity_threshold: 0.3
+  weights:
+    track_lin_vel_xy: 1.5
+    track_ang_vel_z: 0.75
+    lin_vel_z: -2.0
+    ang_vel_xy: -0.05
+    joint_vel: -0.001
+    joint_acc: -2.5e-7
+    joint_torques: -2.0e-4
+    action_rate: -0.1
+    dof_pos_limits: -10.0
+    energy: -2.0e-5
+    flat_orientation: -2.5
+    joint_pos: -0.7
+    feet_air_time: 0.1
+    air_time_variance: -1.0
+    feet_slide: -0.1
+    undesired_contacts: -1.0
+
+termination:
+  tilt_rad: 0.8               # bad_orientation
+  # base_contact: any corner of the base collision box or the head sphere touches the floor (go2x/mjx/go2_model.py)
+
+# Domain randomization (Tobin et al., IROS 2017; Peng et al., ICRA 2018). The first block is config/walk.yaml's
+# ranges; the second adds Playground Go1's model randomization (randomize.py).
+randomization:
+  enabled: true
+  foot_friction: [0.3, 1.2]          # feet have contact priority in go2.xml, so their friction is the contact's
+  base_mass_add_kg: [-1.0, 3.0]
+  motor_strength: [0.8, 1.2]
+  kp_scale: [0.8, 1.2]
+  kd_scale: [0.8, 1.2]
+  action_delay_physics_steps: [0, 8] # 0 to 40 ms; walk.yaml uses 4 to 8, the MuJoCo backend runs with none
+  push_interval_s: [5.0, 10.0]
+  push_velocity_xy: 0.5              # +-, m/s added to the base velocity
+  obs_noise:                         # uniform, before the observation scales, as Isaac Lab
+    base_ang_vel: 0.2
+    projected_gravity: 0.05
+    joint_pos: 0.01
+    joint_vel: 1.5
+  # Playground Go1 additions
+  link_mass_scale: [0.9, 1.1]
+  base_com_offset_m: 0.03            # +- per axis
+  joint_frictionloss_scale: [0.9, 1.1]
+  joint_armature_scale: [1.0, 1.05]
+
+ppo:                                  # Playground brax_ppo_config for Go1JoystickFlatTerrain
+  num_timesteps: 200000000
+  num_evals: 11
+  num_envs: 8192
+  batch_size: 256
+  num_minibatches: 32
+  num_updates_per_batch: 4
+  unroll_length: 20
+  discounting: 0.97
+  learning_rate: 3.0e-4
+  entropy_cost: 1.0e-2
+  max_grad_norm: 1.0
+  reward_scaling: 1.0
+  normalize_observations: true
+  policy_hidden: [512, 256, 128]
+  value_hidden: [512, 256, 128]       # asymmetric actor-critic: the critic sees privileged state (Pinto et al., RSS 2018)

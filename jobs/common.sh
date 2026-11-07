@@ -54,3 +54,20 @@ setup_mujoco() {
     export MUJOCO_GL=glfw
     : "${DISPLAY:?MuJoCo rendering needs the X display}"
 }
+
+# Python 3.12 venv for MuJoCo MJX + Brax PPO (walking training in MuJoCo, jobs 100 to 130).
+setup_mjx() {
+    export MJX_VENV="$JOB_CACHE/venv-mjx"
+    if [ ! -x "$MJX_VENV/bin/python" ]; then
+        "$UV_BIN" python install "$MJX_PYTHON_VERSION"
+        "$UV_BIN" venv -q -p "$MJX_PYTHON_VERSION" "$MJX_VENV"
+    fi
+    # shellcheck disable=SC2086
+    PIP_CONSTRAINT= "$UV_BIN" pip install -q -p "$MJX_VENV/bin/python" $MJX_PINS
+    PIP_CONSTRAINT= "$UV_BIN" pip install -q -p "$MJX_VENV/bin/python" "$MJX_TORCH" --index-url https://download.pytorch.org/whl/cpu
+    export MJ_DIR="$SRC_DIR/unitree_mujoco"
+    export PYTHONPATH="$JOB_CHECKOUT"
+    export XLA_PYTHON_CLIENT_PREALLOCATE=false
+    "$MJX_VENV/bin/python" -c "import jax, mujoco, brax; print('jax', jax.__version__, jax.devices(), 'mujoco', mujoco.__version__, 'brax', brax.__version__)"
+    "$UV_BIN" pip freeze -p "$MJX_VENV/bin/python" > "$RESULTS_DIR/pip_freeze_mjx.txt"
+}
