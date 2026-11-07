@@ -1,0 +1,167 @@
+{
+ "ppo": {
+  "num_timesteps": 200000000,
+  "num_evals": 11,
+  "num_envs": 8192,
+  "batch_size": 256,
+  "num_minibatches": 32,
+  "num_updates_per_batch": 4,
+  "unroll_length": 20,
+  "discounting": 0.97,
+  "learning_rate": 0.0003,
+  "entropy_cost": 0.01,
+  "max_grad_norm": 1.0,
+  "reward_scaling": 1.0,
+  "normalize_observations": true,
+  "policy_hidden": [
+   512,
+   256,
+   128
+  ],
+  "value_hidden": [
+   512,
+   256,
+   128
+  ]
+ },
+ "seed": 0,
+ "randomize": true,
+ "symmetric_critic": false,
+ "devices": [
+  "cuda:0"
+ ],
+ "jax": "0.9.2",
+ "walk_mjx": {
+  "timing": {
+   "sim_dt": 0.005,
+   "substeps": 4,
+   "episode_steps": 1000
+  },
+  "actuator": {
+   "kp": 25.0,
+   "kd": 0.5,
+   "action_scale": 0.5,
+   "interface_scale": 0.25
+  },
+  "commands": {
+   "vx": [
+    -0.5,
+    1.0
+   ],
+   "vy": [
+    -0.5,
+    0.5
+   ],
+   "wz": [
+    -1.0,
+    1.0
+   ],
+   "resample_s": 10.0,
+   "standing_fraction": 0.1
+  },
+  "rewards": {
+   "tracking_sigma": 0.25,
+   "soft_limit_factor": 0.9,
+   "air_time_threshold": 0.5,
+   "stand_still_scale": 5.0,
+   "stand_velocity_threshold": 0.3,
+   "weights": {
+    "track_lin_vel_xy": 1.5,
+    "track_ang_vel_z": 0.75,
+    "lin_vel_z": -2.0,
+    "ang_vel_xy": -0.05,
+    "joint_vel": -0.001,
+    "joint_acc": -2.5e-07,
+    "joint_torques": -0.0002,
+    "action_rate": -0.1,
+    "dof_pos_limits": -10.0,
+    "energy": -2e-05,
+    "flat_orientation": -2.5,
+    "joint_pos": -0.7,
+    "feet_air_time": 0.1,
+    "air_time_variance": -1.0,
+    "feet_slide": -0.1,
+    "undesired_contacts": -1.0
+   }
+  },
+  "termination": {
+   "tilt_rad": 0.8
+  },
+  "randomization": {
+   "enabled": true,
+   "foot_friction": [
+    0.3,
+    1.2
+   ],
+   "base_mass_add_kg": [
+    -1.0,
+    3.0
+   ],
+   "motor_strength": [
+    0.8,
+    1.2
+   ],
+   "kp_scale": [
+    0.8,
+    1.2
+   ],
+   "kd_scale": [
+    0.8,
+    1.2
+   ],
+   "action_delay_physics_steps": [
+    0,
+    8
+   ],
+   "push_interval_s": [
+    5.0,
+    10.0
+   ],
+   "push_velocity_xy": 0.5,
+   "obs_noise": {
+    "base_ang_vel": 0.2,
+    "projected_gravity": 0.05,
+    "joint_pos": 0.01,
+    "joint_vel": 1.5
+   },
+   "link_mass_scale": [
+    0.9,
+    1.1
+   ],
+   "base_com_offset_m": 0.03,
+   "joint_frictionloss_scale": [
+    0.9,
+    1.1
+   ],
+   "joint_armature_scale": [
+    1.0,
+    1.05
+   ]
+  },
+  "ppo": {
+   "num_timesteps": 200000000,
+   "num_evals": 11,
+   "num_envs": 8192,
+   "batch_size": 256,
+   "num_minibatches": 32,
+   "num_updates_per_batch": 4,
+   "unroll_length": 20,
+   "discounting": 0.97,
+   "learning_rate": 0.0003,
+   "entropy_cost": 0.01,
+   "max_grad_norm": 1.0,
+   "reward_scaling": 1.0,
+   "normalize_observations": true,
+   "policy_hidden": [
+    512,
+    256,
+    128
+   ],
+   "value_hidden": [
+    512,
+    256,
+    128
+   ]
+  }
+ }
+}
