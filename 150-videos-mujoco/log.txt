@@ -1,0 +1,48 @@
+# last 47 of 47 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/log-attempt1.txt
+# job 150-videos-mujoco attempt 1 commit 0cf5b57e10de153b3869a494d42635b1aa48554a started 2026-11-07T12:26:19-06:00
+unitree_mujoco at 1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d, mujoco 3.16.0
+jax 0.9.2 [CudaDevice(id=0)] mujoco 3.16.0 brax 0.14.2
+Using Python 3.12.12 environment at: /home/electronics/dell-runner/cache/ENGR6010_Go2X_SafeRL/venv-mjx
+[record_walk] seed 1, after 0 environment steps: no fall
+[record_walk] seed 1, after 20,152,320 environment steps: no fall
+[record_walk] seed 1, after 40,304,640 environment steps: no fall
+[record_walk] seed 1, after 60,456,960 environment steps: no fall
+[record_walk] seed 1, after 80,609,280 environment steps: no fall
+[record_walk] seed 1, after 100,761,600 environment steps: no fall
+[record_walk] seed 1, after 120,913,920 environment steps: no fall
+[record_walk] seed 1, after 141,066,240 environment steps: no fall
+[record_walk] seed 1, after 161,218,560 environment steps: no fall
+[record_walk] seed 1, after 181,370,880 environment steps: no fall
+[record_walk] seed 1, after 201,523,200 environment steps: no fall
+[record_walk] wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/output-attempt1/walk_progress.mp4
+[record_walk] MJX walker (seed 0, 200M steps), full go2.xml: no fall
+[record_walk] wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/output-attempt1/walk_demo_mjx_s0.mp4
+[record_walk] Isaac Lab walker (job 030), full go2.xml: no fall
+[record_walk] wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/output-attempt1/walk_demo_isaac.mp4
+navigation actor for the videos: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/132-nav-mujoco-ent003/nav_mj_ent003/nav_actor.pt
+outcome: success: front 0.48 m from the target, speed 0.04 m/s
+policy steps: 23; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/2/20261107T182757Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/2/20261107T182757Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.40 m from the target, speed 0.06 m/s
+policy steps: 30; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/23/20261107T182805Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/23/20261107T182805Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.38 m from the target, speed 0.01 m/s
+policy steps: 31; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/101/20261107T182814Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/101/20261107T182814Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.46 m from the target, speed 0.08 m/s
+policy steps: 24; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/7/20261107T182824Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/7/20261107T182824Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.49 m from the target, speed 0.07 m/s
+policy steps: 22; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/40/20261107T182832Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/40/20261107T182832Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.30 m from the target, speed 0.10 m/s
+policy steps: 22; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/77/20261107T182840Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/77/20261107T182840Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: success: front 0.32 m from the target, speed 0.10 m/s
+policy steps: 17; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/150/20261107T182849Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/150/20261107T182849Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+outcome: stopped: virtual bumper: the footprint touches an obstacle's footprint
+policy steps: 6; log: /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/190/20261107T182856Z_nav_policy_mujoco
+digital twin video: python scripts/robot/render_twin.py /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/190/20261107T182856Z_nav_policy_mujoco --model_dir <unitree_mujoco>
+twin video /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/nav_runs/23/20261107T182805Z_nav_policy_mujoco/twin.mp4: 163 frames at 20 fps (8.2 s), joints from low state
+[2026-11-07T12:29:03-06:00] done

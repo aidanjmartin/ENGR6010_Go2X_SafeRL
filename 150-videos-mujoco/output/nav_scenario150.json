@@ -1,0 +1,67 @@
+{
+ "source": "evaluation scenario 150",
+ "scenario": {
+  "robot_start": [
+   0.9013126212885334,
+   0.9840634060487106,
+   -1.2903212350167104
+  ],
+  "chairs": [
+   [
+    0.8624970457330483,
+    -0.9763219715808129,
+    -0.9983030400460384,
+    0.0
+   ],
+   [
+    -0.10755021495584072,
+    -1.0500407694364102,
+    -1.3224304191998664,
+    2.0
+   ]
+  ],
+  "table": [
+   [
+    -0.2419694602036213,
+    0.06674456623656089,
+    1.521806755134274
+   ]
+  ],
+  "people": [],
+  "target": [
+   "chair",
+   0
+  ]
+ },
+ "backend": "mujoco",
+ "pose_source": "odometry",
+ "t0_mono_ns": 1294764069227329,
+ "mapping": {
+  "start_pose_square": [
+   0.9013126492500305,
+   0.9840633869171143,
+   -1.2903212308883667
+  ],
+  "first_odom": [
+   1.4681366907144417,
+   0.7196924136467204,
+   -0.37883297122065507
+  ]
+ },
+ "outcome": "success: front 0.32 m from the target, speed 0.10 m/s",
+ "limits": {
+  "max_vx": 0.8,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 100.0,
+  "max_yaw_accel": 100.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/132-nav-mujoco-ent003/nav_mj_ent003/nav_actor.pt",
+ "policy_steps": 17,
+ "final": "success: front 0.32 m from the target, speed 0.10 m/s"
+}

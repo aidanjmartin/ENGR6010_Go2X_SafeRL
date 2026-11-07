@@ -1,0 +1,67 @@
+{
+ "source": "evaluation scenario 190",
+ "scenario": {
+  "robot_start": [
+   -0.40101445938312186,
+   -0.12141147829611731,
+   -2.524629578986703
+  ],
+  "chairs": [
+   [
+    0.3853133737968062,
+    0.4669463986299407,
+    1.862092278528019,
+    0.0
+   ],
+   [
+    0.2686299994818948,
+    -1.0163331974673198,
+    -1.162674216301921,
+    0.0
+   ],
+   [
+    -0.42943139498967575,
+    0.6288038673218121,
+    0.6612773742600542,
+    0.0
+   ]
+  ],
+  "table": [],
+  "people": [],
+  "target": [
+   "chair",
+   0
+  ]
+ },
+ "backend": "mujoco",
+ "pose_source": "odometry",
+ "t0_mono_ns": 1294771798247905,
+ "mapping": {
+  "start_pose_square": [
+   -0.40101444721221924,
+   -0.12141148000955582,
+   -2.524629592895508
+  ],
+  "first_odom": [
+   1.5406586562522402,
+   -0.96885550706845,
+   -1.6131413332277993
+  ]
+ },
+ "outcome": "time limit",
+ "limits": {
+  "max_vx": 0.8,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 100.0,
+  "max_yaw_accel": 100.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/132-nav-mujoco-ent003/nav_mj_ent003/nav_actor.pt",
+ "policy_steps": 6,
+ "final": "stopped: virtual bumper: the footprint touches an obstacle's footprint"
+}
