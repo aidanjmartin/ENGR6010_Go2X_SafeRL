@@ -1,0 +1,14 @@
+{
+  "job": "150-videos-mujoco",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Walking progress and course videos, navigation runs and digital twin in MuJoCo",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "0cf5b57e10de153b3869a494d42635b1aa48554a",
+  "status": "running",
+  "started": "2026-11-07T12:26:19-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/150-videos-mujoco/log-attempt1.txt"
+}
