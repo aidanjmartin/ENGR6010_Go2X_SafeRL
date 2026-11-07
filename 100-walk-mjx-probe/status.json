@@ -8,7 +8,12 @@
   "ros": false,
   "robot": false,
   "commit": "d6091f9e02a60cb7c861109c3504f44aa5f2b02c",
-  "status": "running",
+  "status": "succeeded",
+  "reason": "",
+  "exit_code": 0,
   "started": "2026-11-06T23:06:43-06:00",
-  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/100-walk-mjx-probe/log-attempt1.txt"
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/100-walk-mjx-probe/log-attempt1.txt",
+  "outputs_on_dell": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/100-walk-mjx-probe/output-attempt1",
+  "kept_on_dell": [],
+  "finished": "2026-11-06T23:13:56-06:00"
 }
