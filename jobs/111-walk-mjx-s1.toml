@@ -1,0 +1,11 @@
+id = "111-walk-mjx-s1"
+description = "MJX walking, main configuration, seed 1"
+ref = "phase2-rl-sim"
+command = "bash jobs/100_walk_mjx.sh mjx_s1 --seed 1"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = []
+attempt = 1

@@ -1,0 +1,11 @@
+id = "113-walk-mjx-nodr"
+description = "MJX walking ablation: no domain randomization, noise or pushes (seed 0)"
+ref = "phase2-rl-sim"
+command = "bash jobs/100_walk_mjx.sh mjx_nodr --seed 0 --no-randomize"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = []
+attempt = 1

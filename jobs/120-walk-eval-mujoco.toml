@@ -1,0 +1,11 @@
+id = "120-walk-eval-mujoco"
+description = "All walking policies in CPU MuJoCo, full go2.xml, 13 test conditions x 100 episodes"
+ref = "phase2-rl-sim"
+command = "bash jobs/120_walk_eval.sh"
+timeout_hours = 3
+gpu = false
+ros = false
+robot = false
+code_paths = []
+depends_on = ["110-walk-mjx-s0"]
+attempt = 1

@@ -1,0 +1,11 @@
+id = "131-nav-mujoco-finetune"
+description = "Navigation: attempt 4 (Isaac) fine-tuned in CPU MuJoCo over the MJX walker, 500 iterations"
+ref = "phase2-rl-sim"
+command = "bash jobs/130_nav_mujoco.sh nav_mj_finetune 110-walk-mjx-s0/mjx_s0/policy.pt --iterations 500 --init 050-nav-train/nav/model_final.pt"
+timeout_hours = 4
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["110-walk-mjx-s0"]
+attempt = 1

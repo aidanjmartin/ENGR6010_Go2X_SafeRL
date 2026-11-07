@@ -1,0 +1,11 @@
+id = "114-walk-mjx-sym"
+description = "MJX walking ablation: symmetric critic (seed 0)"
+ref = "phase2-rl-sim"
+command = "bash jobs/100_walk_mjx.sh mjx_sym --seed 0 --symmetric"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = []
+attempt = 1

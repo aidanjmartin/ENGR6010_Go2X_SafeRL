@@ -1,0 +1,11 @@
+id = "115-walk-mjx-push1"
+description = "MJX walking variant: pushes up to 1.0 m/s as legged_gym (seed 0)"
+ref = "phase2-rl-sim"
+command = "bash jobs/100_walk_mjx.sh mjx_push1 --seed 0 --push_velocity 1.0"
+timeout_hours = 2
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = []
+attempt = 1

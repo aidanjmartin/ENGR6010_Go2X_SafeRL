@@ -1,0 +1,11 @@
+id = "132-nav-mujoco-ent003"
+description = "Navigation in CPU MuJoCo, entropy bonus 0.003 instead of 0.01 (attempt 4's action noise grew to 3.3), 1500 iterations"
+ref = "phase2-rl-sim"
+command = "bash jobs/130_nav_mujoco.sh nav_mj_ent003 110-walk-mjx-s0/mjx_s0/policy.pt --entropy_coef 0.003"
+timeout_hours = 9
+gpu = true
+ros = false
+robot = false
+code_paths = []
+depends_on = ["110-walk-mjx-s0"]
+attempt = 1
