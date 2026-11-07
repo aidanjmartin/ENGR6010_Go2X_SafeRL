@@ -1,0 +1,14 @@
+{
+  "job": "130-nav-mujoco-scratch",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation PPO in CPU MuJoCo over the MJX walker (seed 0), attempt 4 settings, 1500 iterations",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "999785b11b481ac54f3db098ba8a29f591536e75",
+  "status": "running",
+  "started": "2026-11-07T02:08:29-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/130-nav-mujoco-scratch/log-attempt1.txt"
+}
