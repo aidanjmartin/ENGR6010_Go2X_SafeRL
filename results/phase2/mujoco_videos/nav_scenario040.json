@@ -1,0 +1,94 @@
+{
+ "source": "evaluation scenario 40",
+ "scenario": {
+  "robot_start": [
+   0.2559694288507053,
+   -0.9400445159847186,
+   -1.8551846792265179
+  ],
+  "chairs": [
+   [
+    1.0093520300195769,
+    -0.8952598481931543,
+    -0.5100410574268381,
+    2.0
+   ],
+   [
+    -0.4245568639317703,
+    0.873601283090768,
+    -0.8178144144624455,
+    0.0
+   ],
+   [
+    1.1684396556124637,
+    0.28613026007464337,
+    0.379059599666844,
+    3.0
+   ]
+  ],
+  "table": [
+   [
+    -0.07446101668241223,
+    0.0004733898660089775,
+    -3.101771648453453
+   ]
+  ],
+  "people": [
+   {
+    "start": [
+     0.40348022658514093,
+     0.9708239146931743
+    ],
+    "walking": false,
+    "a": null,
+    "b": null,
+    "script": []
+   },
+   {
+    "start": [
+     -1.072234755418911,
+     0.14366010529335926
+    ],
+    "walking": false,
+    "a": null,
+    "b": null,
+    "script": []
+   }
+  ],
+  "target": [
+   "person",
+   1
+  ]
+ },
+ "backend": "mujoco",
+ "pose_source": "odometry",
+ "t0_mono_ns": 1294747454195849,
+ "mapping": {
+  "start_pose_square": [
+   0.25596943497657776,
+   -0.9400445222854614,
+   -1.8551846742630005
+  ],
+  "first_odom": [
+   2.5785493673651336,
+   -0.9707785782931613,
+   -0.9436964145952875
+  ]
+ },
+ "outcome": "success: front 0.49 m from the target, speed 0.07 m/s",
+ "limits": {
+  "max_vx": 0.8,
+  "max_vy": 0.3,
+  "max_wz": 1.0,
+  "max_lin_accel": 100.0,
+  "max_yaw_accel": 100.0,
+  "command_hz": 20,
+  "state_timeout_s": 0.5,
+  "first_state_timeout_s": 5.0,
+  "max_script_s": 60.0,
+  "stop_repeats": 5
+ },
+ "actor": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/132-nav-mujoco-ent003/nav_mj_ent003/nav_actor.pt",
+ "policy_steps": 22,
+ "final": "success: front 0.49 m from the target, speed 0.07 m/s"
+}

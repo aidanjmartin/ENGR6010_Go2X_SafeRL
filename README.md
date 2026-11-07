@@ -43,6 +43,8 @@ scripts/
 tests/                         pytest, all against the mock or the simulator
 results/                       evaluation table, training curve, rollout video
 docs/LAPTOP_SESSION.md         brief for the robot session on the Ubuntu laptop
+docs/PHASE2_SIM.md             Phase 2: walking and navigation policies in simulation
+docs/MUJOCO_TRAINING.md        Phase 2: both policies trained in MuJoCo, with results and videos
 data/  models/  runs/          untracked: robot logs, checkpoints, training runs
 ```
 

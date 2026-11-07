@@ -2,7 +2,9 @@
 
 Phase 2 trained both policies in Isaac Lab (Tasks 1 and 4) and used MuJoCo only to check them. This part trains both policies inside MuJoCo, on Unitree's own Go2 model, and evaluates them on the full model with many more test conditions. Isaac Sim's renderer does not run on the Dell's driver (`LOG.md`, job 041), so this also brings training and video onto one simulator.
 
-**Status:** see "Results" (filled from the Dell jobs listed there). Every number comes from a job's output on `dell-results`.
+**Status (2026-11-07):** built and run. Every number comes from a Dell job's output (jobs 100 to 150).
+- **Walking:** the MuJoCo-trained walker (200M steps, 27 min) falls less and tracks forward speed about twice as well as the Isaac walker on Unitree's full model. The stronger-push variant falls in 13 of 1300 test episodes.
+- **Navigation:** the navigation policy trained in MuJoCo over that walker reaches the target in 0.860 ± 0.025 of the 200 test scenarios, against 0.675 for A*.
 
 ## What was built
 
@@ -164,6 +166,66 @@ What the data shows:
   - This is a single seed. It is the recommended walker for a next round, but `mjx_s0` stays the navigation walker because it was fixed before any evaluation.
 - **Power:** the MuJoCo walkers draw 25 to 28 W on flat ground, against the Isaac walker's 22 W.
 
-### Navigation (jobs 130 to 140)
+### Navigation training (jobs 130 to 132)
 
-(Plan, not yet built: filled when jobs 130 to 140 finish.)
+All three runs train over the frozen `mjx_s0` walker, with 1024 robots on the full `go2.xml`, at 10 to 11 s per iteration. Files: `results/phase2/mujoco_nav/<run>/` (actor, settings, per-iteration scalars).
+
+![navigation training curves](../results/phase2/mujoco_nav/training_curves.png)
+
+| run | iterations | hours | training success at the end | action noise at the end |
+| :--- | ---: | ---: | ---: | ---: |
+| `nav_mj_scratch` (entropy 0.01) | 1500 | 4.5 | 0.74 | 4.4 |
+| `nav_mj_finetune` (from Isaac attempt 4) | 500 | 1.5 | 0.82 | 4.9 |
+| `nav_mj_ent003` (entropy 0.003) | 1500 | 4.3 | 0.82 | 0.64 |
+
+- Success during training includes the policy's random action noise, so it understates the test numbers below.
+- With attempt 4's entropy bonus (0.01), the action noise grew without limit in both runs, as it did in Isaac (3.3).
+- With 0.003, the noise stayed below 1 and the run trained to a better policy (next table).
+
+### Navigation evaluation (job 140)
+
+The 200 fixed scenarios (`config/nav_eval_scenarios.json`) in CPU MuJoCo on the full `go2.xml`, deterministic actions, over the `mjx_s0` walker. Rates are over 200 scenarios with binomial standard errors. Full tables: `results/phase2/mujoco_nav_eval/`.
+
+| controller | success | collision | fall | time to goal (s) |
+| :--- | ---: | ---: | ---: | ---: |
+| straight line | 0.575 ± 0.035 | 0.425 ± 0.035 | 0 | 3.78 ± 0.12 |
+| A* planner | 0.675 ± 0.033 | 0.315 ± 0.033 | 0 | 4.54 ± 0.14 |
+| Isaac attempt 4 (trained in Isaac Lab) | 0.810 ± 0.028 | 0.170 ± 0.027 | 0 | 3.44 ± 0.14 |
+| `nav_mj_scratch` | 0.735 ± 0.031 | 0.255 ± 0.031 | 0 | 2.83 ± 0.09 |
+| `nav_mj_finetune` | 0.835 ± 0.026 | 0.160 ± 0.026 | 0 | 3.28 ± 0.13 |
+| **`nav_mj_ent003`** | **0.860 ± 0.025** | **0.135 ± 0.024** | 0 | 3.48 ± 0.14 |
+
+Every controller faces the same 200 scenarios, so differences are paired per scenario (mean difference in success ± standard error, n = 200):
+
+| comparison | difference | scenarios only the first solves | only the second |
+| :--- | ---: | ---: | ---: |
+| `nav_mj_ent003` - A* | +0.185 ± 0.029 | 39 | 2 |
+| `nav_mj_ent003` - straight line | +0.285 ± 0.035 | 61 | 4 |
+| `nav_mj_ent003` - `nav_mj_scratch` (entropy 0.003 vs 0.01) | +0.125 ± 0.026 | 28 | 3 |
+| `nav_mj_ent003` - Isaac attempt 4 | +0.050 ± 0.026 | 19 | 9 |
+| `nav_mj_ent003` - `nav_mj_finetune` | +0.025 ± 0.022 | 12 | 7 |
+| Isaac attempt 4: `mjx_s0` walker - Isaac walker | -0.025 ± 0.022 | 7 | 12 |
+
+What the data shows:
+- **The navigation policy trained entirely in MuJoCo works.**
+  - `nav_mj_ent003` reaches the target in 86 % of the scenarios and collides in 13.5 %, with no falls.
+  - It beats the A* planner by 18.5 ± 2.9 points and straight-line driving by 28.5 ± 3.5 points.
+- **The entropy bonus was the one setting that mattered.** Lowering it from 0.01 to 0.003 kept the action noise bounded and raised success by 12.5 ± 2.6 points, on one seed each.
+- **Against Isaac attempt 4** the MuJoCo policy is ahead by 5.0 ± 2.6 points. That is under two standard errors on one seed, so the two are about equal.
+- **Fine-tuning Isaac attempt 4 in MuJoCo** for 500 iterations gives 0.835, no clear change (+2.5 ± 2.4).
+- **Walker swap:** attempt 4 does about as well on the new walker as on the Isaac walker (-2.5 ± 2.2 points). The walker is a clean drop-in.
+- **Collisions remain the main failure.** People are the hardest targets: `nav_mj_ent003` succeeds on 0.79 ± 0.05 of person targets against 0.90 ± 0.03 for chairs.
+
+### Videos (job 150)
+
+`results/phase2/mujoco_videos/`, all physics in CPU MuJoCo on the full `go2.xml`, checked by eye:
+
+| file | what it shows |
+| :--- | :--- |
+| `walk_progress.mp4` | the walker learning to walk: one 8 s clip per training snapshot of `mjx_s1` (0 to 200M steps, 11 clips). At 0 steps it stands still; from 20M steps it walks and turns |
+| `walk_demo_mjx_s0.mp4` | 33 s course: forward at 0.3, 0.6 and 1.0 m/s, turns, sideways, backward, standing, two 0.8 m/s side kicks. No fall |
+| `walk_demo_isaac.mp4` | the same course with the Isaac walker. No fall |
+| `nav_scenario<NNN>.mp4` | `nav_mj_ent003` through the robot runner (`safety_limits_nav_sim_training`) on scenarios 2, 7, 23, 40, 77, 101, 150 (all reach the target) and 190 (the virtual bumper stops it after 6 steps) |
+| `twin_scenario023.mp4` | the digital twin rebuilt from the scenario 23 log |
+
+`mjx_s0` has no snapshots (job 110 started before the snapshot code), so the progress video uses seed 1.

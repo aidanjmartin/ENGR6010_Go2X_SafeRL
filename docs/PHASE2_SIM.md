@@ -232,3 +232,9 @@ Job 080, MuJoCo 3.16.0 with Unitree's `go2.xml` (`unitree_mujoco` `1eb6642`) on 
 | falls | 2 | 0 |
 
 The policy walks in MuJoCo without falls, with tracking errors about twice those in Isaac Lab. Unitree's MuJoCo model gives each joint damping 0.1, friction loss 0.2 and armature 0.01, which the Isaac Lab model does not, and the check steps physics at 0.005 s (`LOG.md`, steps 3 to 6); whether these explain the gap is not yet checked.
+
+### Training in MuJoCo (jobs 100 to 150)
+
+Both policies were also trained inside MuJoCo: walking with MJX and Brax PPO on the GPU, navigation with RSL-RL over CPU MuJoCo. Methods, sources, results and videos are in [`docs/MUJOCO_TRAINING.md`](MUJOCO_TRAINING.md).
+- **Walking:** the MuJoCo walker falls 63 to 79 times in 1300 test episodes (3 seeds), against 114 for the Isaac walker.
+- **Navigation:** the navigation policy trained in MuJoCo reaches 0.860 ± 0.025 success on the 200 scenarios (A* 0.675).

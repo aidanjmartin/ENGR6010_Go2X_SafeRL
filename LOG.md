@@ -354,13 +354,31 @@ Machine: the MacBook (Darwin 25.6.0), Logitech Brio 100 webcam on the second flo
 | runs 2 to 25 | `start_run.py --target ...` (red, blue, green, yellow chair, table) | `results/robot/nav_camera_runs_webrtc.md`: 19 runs with policy steps, **14 successes** (Isaac Lab evaluation 0.78), 4 virtual-bumper stops, 1 camera loss; 8 of 9 from under 1.9 m, 6 of 10 from 1.9 to 2.4 m. Pose from the camera on 507 of 521 steps. Measured forward speed follows the 0.8 m/s command (95th percentile 0.81) |
 | fixes after the runs | `run_nav_policy.py`, `go2x/vision/runtime.py`, `perception.py` | wait up to 3 s for a robot-tag fix after the stand-up (two runs stopped at the first step without one); every frame's robot-tag reading in `tag_fixes.jsonl`; unknown colors ("orange chair") refused. 84 tests pass |
 
+## Step 14: training walking and navigation in MuJoCo (2026-11-06 to 2026-11-07)
+
+Machine: the Dell (NVIDIA RTX 4000 Ada, 20 GB), jobs 100 to 150 through the runner. Session with Claude Code. Methods and results: `docs/MUJOCO_TRAINING.md`.
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| MJX environment | `setup_mjx` in `jobs/common.sh` | JAX 0.11.2 removed `device_put_replicated`, which Brax 0.14.2 uses. Pinned `jax[cuda12]==0.9.2`, flax 0.12.6, Python 3.12 |
+| contact settings | `scripts/mjx/check_contacts.py` | feet-only contacts with the elliptic cone at 4 solver iterations chattered (40 cm hops, 0.8 m drift in 4 s standing). The pyramidal cone at impratio 1 stands still (0.016 m drift) |
+| first episodes | job 100 probe | episodes ended at step 14: the drop from 0.40 m pitched the head into the floor. Episodes now start at standing height, and a head touch is an undesired contact rather than a termination |
+| export | `go2x/mjx/export.py` | TorchScript failed on a tensor that required gradients; parameters are now copied without gradients. Export matches Brax to 3e-7 in every run |
+| walking runs | jobs 110 to 115 | 6 runs of 200M steps, 27 to 28 min each, all succeeded. Job 110 started 20 s before the snapshot code was committed, so the learning video uses seed 1 |
+| walking evaluation | job 120 | 7 walkers by 13 conditions by 100 episodes on the full model: falls 63 to 79 (MJX seeds), 114 (Isaac), 217 (no randomization), 13 (1.0 m/s pushes) |
+| navigation environment | `go2x/mjnav/env.py` | Python threads over `mj_step` and CPU drawing were too slow (0.6 s per draw). Physics moved to `mujoco.rollout` (about 520k steps per second), drawing to the GPU: 10 to 11 s per PPO iteration at 1024 robots |
+| iteration counter | `scripts/mjnav/train_nav.py` | RSL-RL leaves `current_learning_iteration` at the last iteration run, so chunked training repeated one iteration number; the script adds 1 after each chunk |
+| navigation runs | jobs 130 to 132 | all succeeded; with entropy 0.01 the action noise grew to 4.4 to 4.9 (as in attempt 4); with 0.003 it stayed at 0.64 |
+| navigation evaluation | job 140 | `nav_mj_ent003` 0.860 ± 0.025 success, A* 0.675, straight line 0.575, Isaac attempt 4 0.810 (same 200 scenarios, `mjx_s0` walker) |
+| videos | job 150 | learning progress, two walking courses (no fall), 8 navigation runs (7 reach the target, scenario 190 stopped by the virtual bumper), digital twin. Checked by eye |
+
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
 
 **The navigation policy was below both baselines until attempt 4. Resolved on 2026-11-04.** Attempts 1 and 3 did not steer by the world-view image (step 10). With the robot view, attempt 4 reaches 0.780 ± 0.029 against 0.695 for A*.
 
-**Action noise grows without limit in attempt 4.** The noise standard deviation rose from 0.5 to 3.27: actions are clipped, so the entropy bonus raises the noise at no cost. The evaluation uses the noise-free action. A smaller entropy coefficient or a squashed action distribution would stop it; not changed.
+**Action noise grows without limit in attempt 4.** The noise standard deviation rose from 0.5 to 3.27: actions are clipped, so the entropy bonus raises the noise at no cost. The evaluation uses the noise-free action. A smaller entropy coefficient or a squashed action distribution would stop it. Not changed in Isaac Lab. In MuJoCo (step 14), entropy 0.003 kept the noise at 0.64 and raised success from 0.735 to 0.860.
 
 **People are cylinders, so person prompts cannot succeed.** OWLv2 grounds 0 of 25 "go to the person" prompts. The scene models a person as an orange cylinder; the result measures the scene model, not the detector.
 
