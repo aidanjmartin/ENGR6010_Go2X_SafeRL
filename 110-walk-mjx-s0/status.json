@@ -1,0 +1,14 @@
+{
+  "job": "110-walk-mjx-s0",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "MJX walking, main configuration, seed 0 (200M steps)",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "343db369a33fc72f407f419de3241a1273040518",
+  "status": "running",
+  "started": "2026-11-06T23:18:05-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/110-walk-mjx-s0/log-attempt1.txt"
+}
