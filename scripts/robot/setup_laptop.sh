@@ -12,3 +12,15 @@ git -C "$DEST" fetch -q origin "$COMMIT"
 git -C "$DEST" checkout -q "$COMMIT"
 ls "$DEST/unitree_robots/go2/go2.xml"
 echo "unitree_mujoco at $(git -C "$DEST" rev-parse --short HEAD) in $DEST"
+
+# uvc-util (github.com/jtfrey/uvc-util, pinned commit): sets the webcam's exposure, which OpenCV cannot on macOS
+# (go2x/vision/uvc.py). macOS only; needs the Xcode command line tools (clang).
+if [ "$(uname)" = "Darwin" ]; then
+    UVC_COMMIT=8110da7025c95eea3096a7181af9a46c0cc7ac37
+    UVC=third_party/uvc-util
+    [ -d "$UVC/.git" ] || git clone -q https://github.com/jtfrey/uvc-util.git "$UVC"
+    git -C "$UVC" fetch -q origin "$UVC_COMMIT"
+    git -C "$UVC" checkout -q "$UVC_COMMIT"
+    (cd "$UVC/src" && clang -o ../uvc-util -framework IOKit -framework Foundation uvc-util.m UVCController.m UVCType.m UVCValue.m)
+    echo "uvc-util at $(git -C "$UVC" rev-parse --short HEAD) in $UVC"
+fi

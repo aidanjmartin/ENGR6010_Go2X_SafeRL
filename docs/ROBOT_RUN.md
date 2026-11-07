@@ -2,7 +2,28 @@
 
 This is the procedure for the first real-robot runs of the Task 4 navigation policy (job 050 attempt 4). The laptop runs the policy and talks to the robot over Wi-Fi (WebRTC). Everything is recorded, and each run can be replayed as a digital twin in MuJoCo.
 
-**Status: Plan, not yet run on the robot.** The software path is tested in MuJoCo and against the mock robot (`tests/test_deploy.py`). The camera path is tested in MuJoCo with a simulated webcam: tags drawn into rendered frames, OWLv2 on the renders (`tests/test_vision.py`, `tests/test_camera_calibration.py`, `docs/PHASE2_SIM.md`). The Wi-Fi link (`go2x/deploy/wireless.py`) differs from the tested Ethernet backend only in its connection method and one extra subscription, and it has not been tried yet.
+**Status: run on the robot on 2026-11-06 with the overhead camera, over the robot's hotspot: 14 successes in 19 runs** (`results/robot/nav_camera_runs_webrtc.md`, `LOG.md` step 13). The setup below is the one used there.
+
+## One command (after the setup below)
+
+Join the robot's Wi-Fi hotspot (the Unitree Go app shows its name and password; this Mac then has no internet), then:
+
+```bash
+.venv/bin/python scripts/robot/check_link.py --method ap --seconds 10     # read-only: LINK OK, about 20 sport-state messages per second
+.venv/bin/python scripts/robot/start_run.py --target "red chair"          # or "blue chair", "green chair", "yellow chair", "table"
+```
+
+`start_run.py`:
+1. locks the webcam's exposure (`config/camera_real.yaml` `controls`);
+2. finds the camera that sees the four corner tags (OpenCV's camera numbers change between plug-ins);
+3. stops if the camera or a corner tag moved since the floor calibration (`--recalibrate-floor` solves it again);
+4. checks that the OWLv2 weights are cached (it runs offline);
+5. checks that the robot answers;
+6. opens the preview: click its window, check the robot's outline, heading arrow and target, press q there;
+7. runs the policy after a typed `yes`;
+8. renders the digital-twin video.
+
+`--check-only` runs steps 1 to 5. A chair's color is its tag's (`config/tags.yaml` `obstacles`), whatever the chair looks like.
 
 ## What runs, and what does not
 
@@ -39,7 +60,7 @@ On macOS the live viewer (`--viewer`) needs MuJoCo's `mjpython` launcher in plac
 
 ### What to prepare
 
-- **Webcam:** 1080p, on the second floor, looking down at the square; the whole square and its corner tags must be in view. A USB 2.0 cable longer than 5 m needs an active (powered) extension cable.
+- **Webcam:** 1080p, on the second floor, looking down at the square; the whole square and its corner tags must be in view. A USB 2.0 cable longer than 5 m needs an active (powered) extension cable. Used on 2026-11-06: a Logitech Brio 100 (fixed focus) 6.8 m above the floor. Its exposure is locked through `third_party/uvc-util` (built by `setup_laptop.sh`; OpenCV cannot set it on macOS): on auto exposure the dark floor washed out the tags.
 - **Prints:** `docs/print/tags.pdf` (or regenerate it with `python scripts/camera/make_tags.py --out tags.pdf`), printed at 100 % ("actual size"), 11 letter pages:
   - corner tags 0 to 3;
   - robot tag 10;
@@ -51,7 +72,7 @@ On macOS the live viewer (`--viewer`) needs MuJoCo's `mjpython` launcher in plac
   - the robot tag's height above the floor with the robot standing (`robot.height_m`). A wrong height shifts the robot's position away from the camera; `tests/test_vision.py` shows the effect.
 - **Mounting:**
   - **Corner tags:** flat on the floor, each tag's center exactly on a corner of the 3.048 m square; any rotation is fine.
-  - **Robot tag:** on a stiff piece of cardboard, flat on the robot's back, centered left-right, with the printed FRONT arrow toward the head. Overhanging the body is fine.
+  - **Robot tag:** on a stiff piece of cardboard, flat on the robot's back, centered left-right, with the printed FRONT arrow toward the head. Overhanging the body is fine. If it has to go elsewhere, measure and set `robot.forward_offset_m` (tag center ahead of the body's middle) and `robot.yaw_offset_deg` (arrow turned; 2026-11-06: 0.171 m and 90 degrees, tag at the front, arrow to the robot's right). Keep the white margin unbroken all round the black border, and no glossy tape over the face.
   - **Obstacle tags (optional):** flat on the seat or table top, centered.
 - **OWLv2 weights:** download them once while the laptop still has internet, before joining the robot's hotspot (`preview.py --owl` does it, about 0.6 GB).
 
@@ -174,6 +195,6 @@ Each run makes `data/<UTC time>_nav_policy_<backend>/` (gitignored):
 | `policy.npz` | per policy step: time, pose in the square, odometry, speed, the drawn input image, action, command, target distance |
 | `twin.mp4` | after `render_twin.py`: the run replayed on Unitree's Go2 model from the log alone |
 
-## Safety limits (PROPOSED, need Aidan's approval)
+## Safety limits (approved by Aidan on 2026-11-06)
 
-`config/safety_limits_nav.yaml`: forward speed at most 0.5 m/s (the policy was trained to 0.8), sideways 0.3 m/s, turning 1.0 rad/s. Speed changes are rate-limited to 1.0 m/s² and 2.0 rad/s². The script time cap is 60 s. Phase 1's `config/safety_limits.yaml` (0.2 m/s, 0.5 rad/s) is unchanged and still used by the Phase 1 scripts. Measured effect of these limits in MuJoCo: see `docs/PHASE2_SIM.md`, "Robot runner in MuJoCo".
+`config/safety_limits_nav.yaml`: forward speed at most 0.8 m/s (the training limit; 0.5 for the first run), sideways 0.3 m/s, turning 1.0 rad/s. Speed changes are rate-limited to 1.0 m/s² and 2.0 rad/s². The script time cap is 60 s. Phase 1's `config/safety_limits.yaml` (0.2 m/s, 0.5 rad/s) is unchanged and still used by the Phase 1 scripts. Measured effect of these limits in MuJoCo: see `docs/PHASE2_SIM.md`, "Robot runner in MuJoCo".

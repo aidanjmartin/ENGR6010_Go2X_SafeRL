@@ -15,11 +15,15 @@ corners:                         # tags flat on the floor, tag CENTER exactly on
 
 robot:
   id: 10
-  height_m: 0.36                 # MEASURE: floor to the tag on the robot's back with the robot standing
-  forward_offset_m: 0.0          # MEASURE: tag center ahead (+) or behind (-) the middle of the robot's body
-  # mount the tag flat, centered left-right, with the printed "FRONT" arrow toward the robot's head
+  height_m: 0.41                 # floor to the tag on the robot's back, robot standing (about 16 in, 2026-11-07)
+  forward_offset_m: 0.171        # tag center ahead (+) or behind (-) the middle of the robot's body (6.75 in, 2026-11-07)
+  yaw_offset_deg: 90.0           # robot heading = FRONT arrow direction + this (counterclockwise seen from above).
+                                 # 2026-11-07: tag at the robot's front, turned 90 deg clockwise (arrow to the robot's right)
+  # mount the tag flat and centered left-right; with the FRONT arrow toward the head, yaw_offset_deg is 0
 
 obstacles:                       # optional tags on obstacles, flat on the top, centered, arrow along the object's +x
+                                 # a color here is the chair's color for targeting ("red chair" = tag 20), whatever the
+                                 # chair looks like; the detector's color guesses are then not used for that color
   20: {kind: chair, color: red, height_m: 0.45}
   21: {kind: chair, color: blue, height_m: 0.45}
   22: {kind: chair, color: green, height_m: 0.45}
@@ -48,3 +52,4 @@ owl:                             # obstacle detection with OWLv2 (model and revi
 tracking:
   pose_max_age_s: 0.5            # older camera pose: odometry carries the pose from the last camera fix
   camera_loss_stop_s: 2.0        # no camera fix for this long: stop the robot
+  tag_hold_s: 1.0                # an obstacle tag missed in a frame stays this long (and so does a target it carries)

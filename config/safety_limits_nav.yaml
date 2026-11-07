@@ -1,14 +1,16 @@
 # Limits for scripts/robot/run_nav_policy.py (the navigation policy on the Go2 X), read by go2x/robot/safety.py.
-# Same keys as config/safety_limits.yaml (Phase 1, unchanged). PROPOSED, NOT YET APPROVED by Aidan.
+# Same keys as config/safety_limits.yaml (Phase 1, unchanged). Approved by Aidan on 2026-11-07; forward speed
+# raised to the training limit after the first camera run (data/20261107T012917Z_nav_policy_webrtc, success).
 # The policy was trained with vx 0 to 0.8 m/s, vy -0.3 to 0.3 m/s, wz -1.0 to 1.0 rad/s. Phase 1 measured that
 # the robot barely turns below 0.5 rad/s and barely moves sideways below 0.3 m/s, so wz and vy keep the training
-# limits; forward speed is capped at 0.5 m/s, below the training limit.
+# limits. Forward speed was first capped at 0.5 m/s; in MuJoCo the full training limits did no worse (0.83 against
+# 0.73 success on 30 scenarios, docs/PHASE2_SIM.md), so it is now the training limit, still rate limited.
 
-max_vx: 0.5            # m/s (training limit 0.8)
+max_vx: 0.8            # m/s (training limit; was 0.5 until 2026-11-07)
 max_vy: 0.3            # m/s (training limit)
 max_wz: 1.0            # rad/s (training limit)
 
-max_lin_accel: 1.0     # m/s^2: 0 to 0.5 m/s in 0.5 s
+max_lin_accel: 1.0     # m/s^2: 0 to 0.8 m/s in 0.8 s
 max_yaw_accel: 2.0     # rad/s^2: 0 to 1.0 rad/s in 0.5 s
 
 command_hz: 20         # the policy acts at 10 Hz; each target is sent twice

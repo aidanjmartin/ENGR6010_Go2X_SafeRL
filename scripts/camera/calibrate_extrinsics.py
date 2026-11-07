@@ -74,7 +74,9 @@ def main():
     mean_err, max_err = solve(cam, centers, T)
     d = yaml.safe_load(open(args.calib))
     d["extrinsics"] = {"R_wc": cam.R_wc.tolist(), "C": cam.C.tolist(), "reprojection_px": [mean_err, max_err],
-                       "frames": len(frames)}
+                       "frames": len(frames),
+                       # where each corner tag was seen: scripts/robot/start_run.py checks that the camera has not moved
+                       "corner_px": {int(i): np.mean(centers[i], 0).round(2).tolist() for i in ids}}
     Path(args.calib).write_text("# written by scripts/camera/calibrate_*.py\n" + yaml.safe_dump(d, sort_keys=False))
     # how big the robot tag looks in the middle of the square
     h = T["robot"]["height_m"]
@@ -87,6 +89,10 @@ def main():
     print(f"camera at x {cam.C[0]:+.2f} y {cam.C[1]:+.2f} m, {cam.C[2]:.2f} m above the floor; "
           f"distance to the square center {np.linalg.norm(cam.C):.2f} m")
     print(f"reprojection error of the corner tags: mean {mean_err:.2f} px, max {max_err:.2f} px (under 2 px is good)")
+    P = cam.pixel_to_plane(np.array([np.mean(centers[i], 0) for i in ids]), 0.0)
+    print("corner tags on the floor after the fit (a large offset means a tag is off its corner or the square is not "
+          "square): " + ", ".join(f"{i}: {np.linalg.norm(P[k, :2] - np.array(T['corners']['xy'][k])) * 100:.1f} cm"
+                                  for k, i in enumerate(ids)))
     print(f"robot tag in the square's center: about {edge_px:.0f} px wide (above 25 px is comfortable for detection)")
     print("whole square in view" if inside else "WARNING: part of the square is outside the image")
     img = annotate.draw(last, cam, half, det.detect(last), None)

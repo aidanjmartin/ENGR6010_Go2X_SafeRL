@@ -1,18 +1,24 @@
 """From camera frames to what the navigation policy needs: the robot's pose and the obstacles, in the square frame.
 
 - Robot: the tag on its back (config/tags.yaml robot), every frame. Its center and FRONT arrow on the plane at the
-  tag's height give (x, y, yaw); forward_offset_m moves the point to the middle of the robot's body.
+  tag's height give (x, y, yaw); yaw_offset_deg turns the arrow's direction into the robot's heading (tag mounted
+  turned), and forward_offset_m (tag center ahead of the body's middle) moves the point back to the body's middle.
 - Obstacles: OWLv2 ("a chair", "a table", "a person"; model and revision of config/grounding.yaml) on the newest
   frame at about owl.rate_hz, in its own thread. A box's bottom center is projected to the floor and moved
   half_depth_m further from the camera (the box bottom is the object's near edge). Obstacle tags, when present,
   give exact position and heading and replace detections near them.
-- The target: a phrase ("red chair", "table", "person", "chair") or a tag id. Every pass also asks for a chair of
-  each color ("a red chair", ...); such a detection is a chair of that color (the best-scoring color wins when
-  detections of one chair overlap), and a colored target picks the chair detected with that color.
+- The target: a phrase ("red chair", "table", "person", "chair") or a tag id. A color named by an obstacle tag in
+  config/tags.yaml (tag 20 is red, ...) comes from the tags only: "red chair" is the chair carrying the red tag,
+  whatever the chair itself looks like, and the detector's own color guesses can never make another chair the
+  target. Colors that no tag names come from the detector: every pass also asks for a chair of each color
+  ("a red chair", ...); such a detection is a chair of that color (the best-scoring color wins when detections of
+  one chair overlap), and a colored target picks the chair detected with that color.
+- Obstacle tags are kept for tracking.tag_hold_s after their last detection, so one missed frame does not drop
+  them (or the target they carry).
 
 `to_scenario()` writes the result in config/nav_eval_scenarios.json format so go2x.deploy.nav_runtime.SquareScene
 draws it exactly as in training. The scene has slots for 12 chairs (3 per color), 1 table and 2 people; extra
-objects are dropped (nearest to the robot kept) and reported.
+objects are dropped (tagged ones kept first, then the nearest to the robot) and reported.
 """
 import math
 import threading
@@ -28,7 +34,7 @@ KINDS = ("chair", "table", "person")
 
 class Perception:
     def __init__(self, cam, source, target, obstacles="both", tags_cfg=None, atrium_cfg=None, device=None,
-                 on_detections=None):
+                 on_detections=None, on_frame=None):
         self.cam, self.source = cam, source
         self.T = tags_cfg or load_config("tags")
         self.A = atrium_cfg or load_config("atrium")
@@ -36,6 +42,12 @@ class Perception:
         self.half = self.A["square"]["side"] / 2
         self.mode = obstacles                     # "owl", "tags" or "both"
         self.target = str(target)
+        words = self.target.lower().replace(":", " ").split()
+        if "chair" in words and not self.target.lower().startswith("tag:"):
+            w = words[words.index("chair") - 1] if words.index("chair") > 0 else None
+            if w and w not in self.colors and w not in ("a", "the", "any"):
+                raise ValueError(f"unknown chair color '{w}' in target {self.target!r}; colors: {', '.join(self.colors)}")
+        self.on_frame = on_frame
         self.tags = TagDetector(self.T["dictionary"])
         self.device = device
         self.on_detections = on_detections
@@ -48,6 +60,9 @@ class Perception:
         self._owl = None
         self.error = None
         self.tracks, self.owl_passes = [], 0
+        self._tag_seen = {}                       # tag id: (obstacle, time last seen)
+        self.tag_hold_s = self.T.get("tracking", {}).get("tag_hold_s", 1.0)
+        self.tag_colors = {spec["color"] for spec in self.T["obstacles"].values() if spec.get("color")}
 
     # -- threads ---------------------------------------------------------------------
     def start(self):
@@ -81,22 +96,25 @@ class Perception:
                 continue
             frame, t = got
             found = self.tags.detect(frame)
-            robot, obst = None, []
+            robot = None
             if rob["id"] in found:
                 pose, edge = tag_pose_on_plane(self.cam, found[rob["id"]], rob["height_m"])
-                pose[:2] += rob["forward_offset_m"] * np.array([math.cos(pose[2]), math.sin(pose[2])])
+                pose[2] = math.remainder(pose[2] + math.radians(rob.get("yaw_offset_deg", 0.0)), math.tau)
+                pose[:2] -= rob["forward_offset_m"] * np.array([math.cos(pose[2]), math.sin(pose[2])])
                 robot = (t, pose, edge)
             for tid, spec in self.T["obstacles"].items():
                 if int(tid) in found:
                     pose, _ = tag_pose_on_plane(self.cam, found[int(tid)], spec["height_m"])
-                    obst.append({"kind": spec["kind"], "color": spec.get("color"), "x": pose[0], "y": pose[1],
-                                 "yaw": pose[2], "source": f"tag {tid}", "score": 1.0})
+                    self._tag_seen[int(tid)] = ({"kind": spec["kind"], "color": spec.get("color"), "x": pose[0],
+                                                 "y": pose[1], "yaw": pose[2], "source": f"tag {tid}", "score": 1.0}, t)
+            obst = [o for o, last in self._tag_seen.values() if t - last <= self.tag_hold_s]
+            if self.on_frame:
+                self.on_frame(t, None if robot is None else robot[1], None if robot is None else robot[2])
             with self._lock:
                 self.frame, self.frame_t, self.frame_tags = frame, t, found
                 if robot is not None:
                     self.robot = robot
-                if obst or self.mode == "tags":
-                    self.tag_obstacles = obst
+                self.tag_obstacles = obst
 
     def _owl_loop(self):
         try:
@@ -194,7 +212,9 @@ class Perception:
         """(scenario dict, notes) for go2x.deploy.nav_runtime.SquareScene, or (None, reason)."""
         objs, hint = self.objects()
         rp = np.asarray(robot_pose[:2])
-        objs.sort(key=lambda d: np.hypot(d["x"] - rp[0], d["y"] - rp[1]))
+        # tagged obstacles first (exact), then detections, each nearest first: when slots run out, a doubtful
+        # detection never pushes out a tagged obstacle
+        objs.sort(key=lambda d: (not str(d.get("source", "")).startswith("tag"), np.hypot(d["x"] - rp[0], d["y"] - rp[1])))
         notes = []
         target_obj = self._pick_target(objs, hint)
         if target_obj is None:
@@ -246,7 +266,8 @@ class Perception:
         cands = [d for d in objs if d["kind"] == kind]
         color = self._target_color()
         if color:
-            same = [d for d in cands if d.get("color") == color]
+            same = [d for d in cands if d.get("color") == color
+                    and (color not in self.tag_colors or str(d.get("source", "")).startswith("tag"))]
             return max(same, key=lambda d: d["score"]) if same else None
         if not cands:
             return None

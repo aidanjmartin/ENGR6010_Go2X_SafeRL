@@ -87,20 +87,35 @@ class RealCamera:
 
 # -- tags ------------------------------------------------------------------------------
 class TagDetector:
-    def __init__(self, dictionary="DICT_4X4_50"):
+    """ArUco detection in two passes. The second pass runs on the image after a 5 x 5 grey-level closing, which
+    bridges thin dark gaps in a tag's white margin (a cut or a seam that joins the black border to a dark
+    background and so hides the border's outline from the detector); it only adds tags the first pass missed.
+    2026-11-07, Brio 100 at 7.4 m: the robot tag, with a notch cut in its margin, went from 0 to 40 of 40 frames;
+    on tags both passes found, the closing moved centers by 0.2 px on average (corners by up to 2.4 px); 3 ms."""
+
+    def __init__(self, dictionary="DICT_4X4_50", fill_gaps=True):
         self.dict = cv2.aruco.getPredefinedDictionary(ARUCO_DICTS[dictionary])
         params = cv2.aruco.DetectorParameters()
         params.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_SUBPIX
         self.det = cv2.aruco.ArucoDetector(self.dict, params)
+        self.fill_gaps = fill_gaps
+        self._kernel = np.ones((5, 5), np.uint8)
+
+    def _detect(self, img):
+        corners, ids, _ = self.det.detectMarkers(img)
+        if ids is None:
+            return {}
+        return {int(i): c.reshape(4, 2) for i, c in zip(ids.ravel(), corners)}
 
     def detect(self, image_rgb_or_gray):
         """{id: corners (4, 2) in pixels}, corners in the tag's own order: top-left, top-right, bottom-right,
         bottom-left of the printed tag (top = the side the FRONT arrow points to)."""
         img = image_rgb_or_gray if image_rgb_or_gray.ndim == 2 else cv2.cvtColor(image_rgb_or_gray, cv2.COLOR_RGB2GRAY)
-        corners, ids, _ = self.det.detectMarkers(img)
-        if ids is None:
-            return {}
-        return {int(i): c.reshape(4, 2) for i, c in zip(ids.ravel(), corners)}
+        found = self._detect(img)
+        if self.fill_gaps:
+            for i, c in self._detect(cv2.morphologyEx(img, cv2.MORPH_CLOSE, self._kernel)).items():
+                found.setdefault(i, c)
+        return found
 
 
 def tag_center_px(corners):

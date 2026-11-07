@@ -6,7 +6,8 @@ mapping (go2x.deploy.nav_runtime.OdomToSquare) at that pose; between fixes the o
 last fix. With no fix for tracking.camera_loss_stop_s the runner stops the robot.
 Scene: rebuilt (go2x.deploy.nav_runtime.SquareScene) whenever the perceived layout changes by more than 5 cm.
 Records in the run folder: camera.mp4 (frames at the policy rate with the square, tags, robot pose and obstacles
-drawn), detections.jsonl (every OWLv2 pass), perception.jsonl (every layout given to the policy, with time).
+drawn), detections.jsonl (every OWLv2 pass), perception.jsonl (every layout given to the policy, with time),
+tag_fixes.jsonl (every camera frame from start to end: time and the robot pose from its tag, or null if unseen).
 """
 import json
 import time
@@ -25,7 +26,9 @@ class CameraMode:
         self.T = tags_cfg or load_config("tags")
         self.A = load_config("atrium")
         self.det_file = None
-        self.perc = Perception(cam, source, target, obstacles, self.T, self.A, device, on_detections=self._on_det)
+        self.perc = Perception(cam, source, target, obstacles, self.T, self.A, device, on_detections=self._on_det,
+                               on_frame=self._on_frame)
+        self.fix_file = None
         self.mapper, self.scene, self.scen, self._key = None, None, None, None
         self.last_fix_t = None
         self.writer = None
@@ -36,12 +39,31 @@ class CameraMode:
         self.dir = run_dir
         self.det_file = open(run_dir / "detections.jsonl", "w")
         self.perc_file = open(run_dir / "perception.jsonl", "w")
+        self.fix_file = open(run_dir / "tag_fixes.jsonl", "w")
         self.writer = imageio.get_writer(run_dir / "camera.mp4", fps=10, quality=7, macro_block_size=8)
         self.perc.start()
 
     def _on_det(self, d):
         if self.det_file and not self.det_file.closed:
             self.det_file.write(json.dumps({"t_mono": time.monotonic(), **d}, default=float) + "\n")
+
+    def _on_frame(self, t, pose, edge):
+        f = self.fix_file
+        if f is not None and not f.closed:
+            f.write(json.dumps({"t_mono": t, "pose": None if pose is None else [float(v) for v in pose],
+                                "edge_m": None if edge is None else float(edge)}) + "\n")
+
+    def wait_fresh_fix(self, check, timeout_s=3.0):
+        """Block (robot standing still) until a robot tag fix younger than tracking.pose_max_age_s exists.
+        Returns True, or False after timeout_s."""
+        t_end = time.monotonic() + timeout_s
+        while time.monotonic() < t_end:
+            check()
+            fix = self.perc.robot_pose()
+            if fix is not None and time.monotonic() - fix[0] <= self.T["tracking"]["pose_max_age_s"]:
+                return True
+            time.sleep(0.03)
+        return False
 
     def wait_ready(self, check, timeout_s=90.0):
         """Block until the robot tag and the target are seen. Returns the first scenario dict."""
@@ -110,7 +132,7 @@ class CameraMode:
 
     def close(self):
         self.perc.stop()
-        for f in (self.det_file, getattr(self, "perc_file", None)):
+        for f in (self.det_file, getattr(self, "perc_file", None), self.fix_file):
             if f and not f.closed:
                 f.close()
         if self.writer is not None:

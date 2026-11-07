@@ -64,6 +64,21 @@ Any key or Ctrl+C stops the robot.
 Type 'yes' to start: """
 
 
+def confirm(prompt):
+    """True only for a typed 'yes'. Keys pressed earlier (a 'q' meant for the preview window lands in the terminal)
+    are thrown away first, so they cannot join the answer."""
+    try:
+        import termios
+        if sys.stdin.isatty():
+            termios.tcflush(sys.stdin, termios.TCIFLUSH)
+    except (ImportError, OSError):
+        pass
+    answer = input(prompt).strip()
+    if answer != "yes":
+        raise SystemExit(f"not confirmed (got {answer!r}); nothing sent")
+    return True
+
+
 def setup_sheet(scene):
     """Where everything goes, in the square frame and from the square's (-x, -y) corner."""
     h = scene.cfg["square"]["side"] / 2
@@ -123,8 +138,13 @@ def main():
     scene = SquareScene(scenario)
     policy = NavPolicy(args.actor)
     limits = load_config(args.limits)
-    print(f"{source}; policy {Path(args.actor).name} ({policy.view} view, {policy.meta.get('note', '')})")
-    setup_sheet(scene)
+    camera_layout = args.camera != "none" and args.backend != "mujoco"
+    if camera_layout:     # the layout comes from the camera; the scenario file only sets the run's defaults
+        print(f"policy {Path(args.actor).name} ({policy.view} view, {policy.meta.get('note', '')})")
+        print("layout: from the overhead camera (no scenario file)")
+    else:
+        print(f"{source}; policy {Path(args.actor).name} ({policy.view} view, {policy.meta.get('note', '')})")
+        setup_sheet(scene)
     if args.sheet_only:
         return
 
@@ -161,6 +181,7 @@ def main():
             cam = RealCamera.from_atrium_camera(Camera.from_config(load_config("camera")), scale=2.0)
             tags_cfg = copy.deepcopy(tags_cfg)
             tags_cfg["robot"]["height_m"] = 0.384          # MuJoCo Go2 standing: base 0.324 m + tag 0.06 m above it
+            tags_cfg["robot"].update(forward_offset_m=0.0, yaw_offset_deg=0.0)   # drawn centered, arrow forward
             src = SimCamera(cam, tags_cfg, robot_tag_local=(0.0, 0.0, 0.06), obstacle_tags=args.sim_obstacle_tags)
             backend.attach_camera(src, scale=2.0, hz=15.0)
         else:
@@ -174,13 +195,10 @@ def main():
         cmode = CameraMode(cam, src, args.target, args.obstacles, tags_cfg)
         source = f"camera ({args.camera}), target '{args.target}', obstacles from {args.obstacles}"
     if real and use_cam:
-        if input(CONFIRM_CAMERA.format(method=backend.info()["method"], target=args.target)).strip() != "yes":
-            raise SystemExit("not confirmed; nothing sent")
+        confirm(CONFIRM_CAMERA.format(method=backend.info()["method"], target=args.target))
     elif real:
         sx, sy, syaw = scene.start_pose
-        if input(CONFIRM.format(method=backend.info()["method"], source=source, sx=sx, sy=sy,
-                                syaw=math.degrees(syaw))).strip() != "yes":
-            raise SystemExit("not confirmed; nothing sent")
+        confirm(CONFIRM.format(method=backend.info()["method"], source=source, sx=sx, sy=sy, syaw=math.degrees(syaw)))
 
     robot = SafeRobot(backend, script="nav_policy", max_duration_s=args.max_policy_s + 25.0,
                       config=limits,
@@ -202,6 +220,8 @@ def main():
     rec = {k: [] for k in ("t", "pose", "odom", "speed", "action", "cmd_policy", "cmd_sent", "distance", "frame", "people")}
     outcome, mapper = "not started", None
     n_people = scene.batch.n_people
+    if use_cam:           # the camera's layout can hold more people than the scenario file the run started from
+        n_people = max(n_people, load_config("atrium")["obstacles"]["person"]["count"][1])
     with robot:
         low_file[0] = open(robot.log.dir / "lowstate.jsonl", "w")
         if args.backend == "mujoco" and args.record:
@@ -219,6 +239,8 @@ def main():
                       f"{len(first['people'])} people; target {first['target']}", flush=True)
             if not args.skip_stand:
                 robot.stand_up()
+            if cmode is not None and not cmode.wait_fresh_fix(robot.check, timeout_s=3.0):
+                raise SafetyStop("the camera did not see the robot tag in the 3 s after the stand-up")
             s = backend.latest_state()
             mapper = OdomToSquare(scene.start_pose, odom_pose(s))
             if hasattr(backend, "start_scene_clock"):

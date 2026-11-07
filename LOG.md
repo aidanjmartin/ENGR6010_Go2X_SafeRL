@@ -330,6 +330,30 @@ Aidan: the camera goes on the second floor, set up from the MacBook (24 GB); a U
 | exit crash | end of an OWLv2 run | `terminate called without an active exception` after all files were written (detector thread still running). Fixed: threads are joined |
 | results | 4 OWLv2 runs, 1 tag run, calibration tests | table in `docs/PHASE2_SIM.md` "Overhead camera in MuJoCo"; 82 tests pass |
 
+## Step 13: camera runs on the Go2 X from the MacBook (2026-11-06)
+
+Machine: the MacBook (Darwin 25.6.0), Logitech Brio 100 webcam on the second floor over the square, robot reached over its Wi-Fi hotspot. Session with Claude Code; run folders are named in UTC (2026-11-07).
+
+| step | command | outcome |
+| :--- | :--- | :--- |
+| environment | `conda env create -p .venv -f env/environment-mac.yml`; `CFLAGS=-I/opt/homebrew/include LDFLAGS=-L/opt/homebrew/lib .venv/bin/pip install -r env/requirements-robot.txt`; `pip install -e . --no-deps`; `setup_laptop.sh` | success, `pip check` clean. aiortc resolved to 1.16.0 (1.15.0 on 2026-10-17); the link worked. 79 tests pass; `tests/test_nav_policy.py` needs `tensordict` (training only, Dell) |
+| MuJoCo check | `run_nav_policy.py --backend mujoco --scenario 2 --record` | first run stopped at once on a state timeout (the simulation thread stalled about 1.3 s, probably macOS checking the new ffmpeg binary on its first start; not confirmed); second run success |
+| tags | `docs/print/tags.pdf` as printed | tags measure about 16.9 cm, not 18 (printed with "fit to page", 94 %). Positions do not depend on the size |
+| camera index | `list_cameras.py`, ffmpeg `-list_devices` | OpenCV and ffmpeg number the cameras differently: OpenCV index 0 is the Brio, 1 the built-in camera. A first lens calibration ran on the built-in camera by mistake (Aidan noticed) and was discarded. `start_run.py` now picks the camera that sees the four corner tags |
+| lens calibration | `calibrate_intrinsics.py --camera 0 --frames 40`, then `--images data/intrinsics_20261107T003255Z` | 40 views, 1.16 px with five distortion terms. The script now saves its frames, drops views above 1.5 px (7, motion blur) and fixes k3 at 0: 0.59 px on 33 views; held-out error 0.59 px (k3 free: 0.60 px, but up to 35 px different in the image corners). fx 1887, a 60 degree diagonal field of view (Logitech: 58) |
+| floor calibration | `start_run.py --check-only --recalibrate-floor` | camera 6.76 m above the floor, 7.42 m from the square center. Corner-tag fit 7.7 px: the tags are not on a true square (sides 2.98 and 3.11 m against 3.048; tag 3 about 5.5 cm off its corner). Aidan: leave it, correct afterwards. The fit's floor offset per tag is now printed, and the calibration keeps where each corner tag was seen, so the drift check compares against that (limit 3 px) |
+| target by tag color | live, `"red chair"` with OWLv2 | the chairs all look alike; the color is the tag's. Detector color guesses could pick another chair whenever tag 20 was missed in a frame. Now a color named by a tag comes from tags only, and obstacle tags are held 1 s through missed frames: tag 20 picked in 180 of 180 checks |
+| robot tag | live | not read at all: washed out (darkest pixel 64, other tags 25) and, once remounted, a notch cut in its margin joined the black border to the dark background. Mounted at the robot's front, turned 90 degrees clockwise: `config/tags.yaml` `forward_offset_m` 0.171 (6.75 in), new `yaw_offset_deg` 90, `height_m` 0.41 (16 in). The forward offset was applied with the wrong sign (it had always been 0); fixed and tested |
+| exposure | `third_party/uvc-util` (jtfrey/uvc-util `8110da7`, built by `setup_laptop.sh`), `go2x/vision/uvc.py` | OpenCV cannot set exposure on macOS. Auto exposure washed out every tag once the lights were dimmed (corner tags 2 and 3 in 13 and 30 of 60 frames). Sweep of 4 exposures by 5 gains: all floor tags in every frame at 8.3 to 25 ms with moderate gain. Locked at 16.7 ms, gain 96, then 8.3 ms, gain 160 for 0.8 m/s (same detection, half the blur); kept in `config/camera_real.yaml` `controls`, applied by `start_run.py` each run |
+| robot tag, second detection pass | `go2x/vision/geometry.py` `TagDetector` | a 5 by 5 grey-level closing bridges the notch: robot tag 0 to 40 of 40 frames. The pass only adds tags the first pass missed; on tags both found, centers moved 0.2 px on average; 3 ms per frame |
+| tag priority | `perception.to_scenario` | a faint OWLv2 "table" (score 0.20) just outside the square could have taken the one table slot from the tagged one. Tagged obstacles now take slots first |
+| link check | `check_link.py --method ap --seconds 10` | LINK OK: sport state 20.1 per second (largest gap 155 ms), low state only 1.1 per second, battery 64 % |
+| first run | `start_run.py --target "red chair"` | refused at the prompt: a `q` meant for the preview window reached the terminal and the answer read `qyes`; nothing sent. Typed-ahead keys are now discarded before the prompt. The runner also printed the unused scenario file's layout in camera mode (removed) and sized its people log from it (now 2) |
+| run 1 | same, `max_vx` 0.5 | **success**, front 0.38 m from the tag-20 chair, 13 steps. Camera and odometry agree: 20.7 against 17.4 cm, -43 against -48 degrees |
+| forward speed | `config/safety_limits_nav.yaml` (Aidan's decision) | limits approved; `max_vx` 0.5 to 0.8 m/s, the training limit. The policy walks forward only with the target ahead or to its left (probe: vx 0.8 at bearings 0 to +90 degrees, 0 behind or to the right), so run 1 never used vx |
+| runs 2 to 25 | `start_run.py --target ...` (red, blue, green, yellow chair, table) | `results/robot/nav_camera_runs_webrtc.md`: 19 runs with policy steps, **14 successes** (Isaac Lab evaluation 0.78), 4 virtual-bumper stops, 1 camera loss; 8 of 9 from under 1.9 m, 6 of 10 from 1.9 to 2.4 m. Pose from the camera on 507 of 521 steps. Measured forward speed follows the 0.8 m/s command (95th percentile 0.81) |
+| fixes after the runs | `run_nav_policy.py`, `go2x/vision/runtime.py`, `perception.py` | wait up to 3 s for a robot-tag fix after the stand-up (two runs stopped at the first step without one); every frame's robot-tag reading in `tag_fixes.jsonl`; unknown colors ("orange chair") refused. 84 tests pass |
+
 ## Problems found (Phase 2)
 
 **Isaac Sim 5.1 cannot render on the Dell's driver.** Every app with cameras crashes in `librtx.scenedb.plugin.so` at start (exit code 139) on driver 595.99.02; the supported Linux driver is 580.65.06 (step 7). Physics and training are unaffected. All images and videos are drawn with MuJoCo from recorded Isaac states. A driver change is a system setting and was not made.
@@ -350,7 +374,15 @@ Aidan: the camera goes on the second floor, set up from the MacBook (24 GB); a U
 
 **A pip conflict remains in the Isaac environment.** `fastapi 0.115.7` (Isaac Sim) wants `starlette<0.46`; Isaac Lab's dependencies install 0.49.1. No job has failed from it. Isaac Sim also warns that the CPU power profile is "powersave" (a system setting, not changed).
 
-**The wireless link and the proposed robot limits are untested on the robot.** `go2x/deploy/wireless.py` changes only the connection method and adds the low-state subscription to the backend tested over Ethernet on 2026-10-17. `config/safety_limits_nav.yaml` needs Aidan's approval before the first run.
+**The wireless link and the robot limits: resolved on 2026-11-06.** The hotspot link worked in 24 runs (step 13); the limits are approved, with `max_vx` at the training limit.
+
+**The robot reaches the target too fast at 0.8 m/s.** Two of the four virtual-bumper stops (step 13) entered the success distance at 0.39 and 0.20 m/s, above the 0.1 m/s success speed, and touched the target on the next step. A lower `max_vx` (0.65) would trade speed for these; not changed.
+
+**The trash can is a 1.2 by 0.75 m table to the policy.** The training has one table size, larger than the can, so the virtual bumper keeps the robot well away from it (one stop in step 13). Aidan used it little for that reason.
+
+**Low state arrives at about 1 per second over Wi-Fi.** Sport state is at 20 per second. The digital twin takes its leg angles from low state, so its legs move in steps.
+
+**The corner tags are not on a true square.** Tag 3 is about 5.5 cm off its corner (step 13), so positions near it are off by up to that much; to be corrected afterwards.
 
 **OWLv2 positions are biased toward the camera.** In MuJoCo the detected obstacle centers were 0.1 to 0.35 m nearer the camera than the truth, which shrinks the virtual bumper's margin. `config/tags.yaml` `owl.half_depth_m` corrects it; it has to be tuned on the real camera with a measured chair.
 
