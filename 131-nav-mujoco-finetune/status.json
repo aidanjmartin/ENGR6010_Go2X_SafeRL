@@ -1,0 +1,14 @@
+{
+  "job": "131-nav-mujoco-finetune",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation: attempt 4 (Isaac) fine-tuned in CPU MuJoCo over the MJX walker, 500 iterations",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "a241cff0e78c26fbf310d0032e89f072c0313d43",
+  "status": "running",
+  "started": "2026-11-07T06:40:02-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/131-nav-mujoco-finetune/log-attempt1.txt"
+}
