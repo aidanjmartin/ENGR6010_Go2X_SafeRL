@@ -1,0 +1,14 @@
+{
+  "job": "132-nav-mujoco-ent003",
+  "attempt": 1,
+  "repo": "ENGR6010_Go2X_SafeRL",
+  "ref": "phase2-rl-sim",
+  "description": "Navigation in CPU MuJoCo, entropy bonus 0.003 instead of 0.01 (attempt 4's action noise grew to 3.3), 1500 iterations",
+  "gpu": true,
+  "ros": false,
+  "robot": false,
+  "commit": "a241cff0e78c26fbf310d0032e89f072c0313d43",
+  "status": "running",
+  "started": "2026-11-07T08:09:17-06:00",
+  "log": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/132-nav-mujoco-ent003/log-attempt1.txt"
+}
