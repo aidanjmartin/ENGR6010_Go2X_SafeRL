@@ -1,0 +1,35 @@
+# last 34 of 34 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/140-nav-eval-mujoco/log-attempt1.txt
+# job 140-nav-eval-mujoco attempt 1 commit 0cf5b57e10de153b3869a494d42635b1aa48554a started 2026-11-07T12:24:34-06:00
+unitree_mujoco at 1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d, mujoco 3.16.0
+{"name": "nav_mj_scratch", "success_rate": {"mean": 0.735, "se": 0.0312852815908872, "n": 200}, "collision_rate": {"mean": 0.255, "se": 0.03089738243291865, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+[eval_nav_mujoco] actor: 198/200 scenarios, 8 s
+{"name": "nav_mj_finetune", "success_rate": {"mean": 0.835, "se": 0.02631229148928473, "n": 200}, "collision_rate": {"mean": 0.16, "se": 0.02598801424545766, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+[eval_nav_mujoco] actor: 198/200 scenarios, 8 s
+{"name": "nav_mj_ent003", "success_rate": {"mean": 0.86, "se": 0.024597258498217655, "n": 200}, "collision_rate": {"mean": 0.135, "se": 0.024224141785131024, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+[eval_nav_mujoco] actor: 197/200 scenarios, 8 s
+{"name": "isaac_attempt4", "success_rate": {"mean": 0.81, "se": 0.027809473820460073, "n": 200}, "collision_rate": {"mean": 0.17, "se": 0.026627903149340413, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+{"name": "straight", "success_rate": {"mean": 0.575, "se": 0.03504304603451139, "n": 200}, "collision_rate": {"mean": 0.425, "se": 0.03504304603451139, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+{"name": "astar", "success_rate": {"mean": 0.675, "se": 0.033202212797844764, "n": 200}, "collision_rate": {"mean": 0.315, "se": 0.03292865746446491, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+Navigation in CPU MuJoCo (full go2.xml), 200 scenarios, walker /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/110-walk-mjx-s0/mjx_s0/policy.pt.
+
+| controller | success | collision | fall | out of square | timeout | time to goal (s) | chair | table | person |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| nav_mj_scratch | 0.735 ± 0.031 | 0.255 ± 0.031 | 0.000 ± 0.000 | 0.010 ± 0.007 | 0.000 ± 0.000 | 2.827 ± 0.088 | 0.764 ± 0.041 | 0.792 ± 0.085 | 0.667 ± 0.058 |
+| nav_mj_finetune | 0.835 ± 0.026 | 0.160 ± 0.026 | 0.000 ± 0.000 | 0.000 ± 0.000 | 0.005 ± 0.005 | 3.281 ± 0.127 | 0.882 ± 0.031 | 0.833 ± 0.078 | 0.758 ± 0.053 |
+| nav_mj_ent003 | 0.860 ± 0.025 | 0.135 ± 0.024 | 0.000 ± 0.000 | 0.000 ± 0.000 | 0.005 ± 0.005 | 3.478 ± 0.135 | 0.900 ± 0.029 | 0.875 ± 0.069 | 0.788 ± 0.051 |
+| isaac_attempt4 | 0.810 ± 0.028 | 0.170 ± 0.027 | 0.000 ± 0.000 | 0.015 ± 0.009 | 0.005 ± 0.005 | 3.442 ± 0.138 | 0.818 ± 0.037 | 0.875 ± 0.069 | 0.773 ± 0.052 |
+| straight | 0.575 ± 0.035 | 0.425 ± 0.035 | 0.000 ± 0.000 | 0.000 ± 0.000 | 0.000 ± 0.000 | 3.778 ± 0.122 | 0.627 ± 0.046 | 0.667 ± 0.098 | 0.455 ± 0.062 |
+| astar | 0.675 ± 0.033 | 0.315 ± 0.033 | 0.000 ± 0.000 | 0.010 ± 0.007 | 0.000 ± 0.000 | 4.536 ± 0.141 | 0.718 ± 0.043 | 0.750 ± 0.090 | 0.576 ± 0.061 |
+[eval_nav_mujoco] actor: 198/200 scenarios, 8 s
+{"name": "isaac_attempt4", "success_rate": {"mean": 0.835, "se": 0.02631229148928473, "n": 200}, "collision_rate": {"mean": 0.16, "se": 0.02598801424545766, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+{"name": "straight", "success_rate": {"mean": 0.59, "se": 0.034865138597849225, "n": 200}, "collision_rate": {"mean": 0.41, "se": 0.034865138597849225, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+[eval_nav_mujoco] astar: 194/200 scenarios, 11 s
+{"name": "astar", "success_rate": {"mean": 0.71, "se": 0.032166339033750345, "n": 200}, "collision_rate": {"mean": 0.28, "se": 0.03182868716477583, "n": 200}, "fall_rate": {"mean": 0.0, "se": 0.0, "n": 200}}
+Navigation in CPU MuJoCo (full go2.xml), 200 scenarios, walker /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/030-walk-full/walk/exported/policy.pt.
+
+| controller | success | collision | fall | out of square | timeout | time to goal (s) | chair | table | person |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| isaac_attempt4 | 0.835 ± 0.026 | 0.160 ± 0.026 | 0.000 ± 0.000 | 0.005 ± 0.005 | 0.000 ± 0.000 | 3.587 ± 0.148 | 0.845 ± 0.035 | 0.875 ± 0.069 | 0.803 ± 0.049 |
+| straight | 0.590 ± 0.035 | 0.410 ± 0.035 | 0.000 ± 0.000 | 0.000 ± 0.000 | 0.000 ± 0.000 | 3.799 ± 0.112 | 0.627 ± 0.046 | 0.667 ± 0.098 | 0.500 ± 0.062 |
+| astar | 0.710 ± 0.032 | 0.280 ± 0.032 | 0.000 ± 0.000 | 0.010 ± 0.007 | 0.000 ± 0.000 | 4.901 ± 0.134 | 0.736 ± 0.042 | 0.708 ± 0.095 | 0.667 ± 0.058 |
+[2026-11-07T12:26:14-06:00] done
