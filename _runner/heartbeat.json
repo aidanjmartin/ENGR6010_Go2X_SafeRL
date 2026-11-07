@@ -1,8 +1,7 @@
 {
-  "time": "2026-11-06T23:20:24-06:00",
-  "current_job": "ENGR6010_Go2X_SafeRL/110-walk-mjx-s0",
+  "time": "2026-11-06T23:50:25-06:00",
+  "current_job": "ENGR6010_Go2X_SafeRL/111-walk-mjx-s1",
   "pending_jobs": [
-    "110-walk-mjx-s0",
     "111-walk-mjx-s1",
     "112-walk-mjx-s2",
     "113-walk-mjx-nodr",
@@ -11,9 +10,11 @@
     "120-walk-eval-mujoco",
     "130-nav-mujoco-scratch",
     "131-nav-mujoco-finetune",
-    "132-nav-mujoco-ent003"
+    "132-nav-mujoco-ent003",
+    "140-nav-eval-mujoco",
+    "150-videos-mujoco"
   ],
-  "gpu": "NVIDIA RTX 4000 Ada Generation, 100 %, 2525 MiB, 20475 MiB, 60",
+  "gpu": "NVIDIA RTX 4000 Ada Generation, 0 %, 2527 MiB, 20475 MiB, 52",
   "disk_free_gb": 842.2,
   "robot_enabled": true
 }
