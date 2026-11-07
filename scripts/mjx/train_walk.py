@@ -83,6 +83,16 @@ def main():
               f"{row.get('eval/episode_reward', float('nan')):8.3f}  len {row.get('eval/avg_episode_length', float('nan')):6.1f}",
               flush=True)
 
+    snaps = out / "snapshots"
+    snaps.mkdir(exist_ok=True)
+
+    def policy_params_fn(step, make_policy, params):
+        # TorchScript snapshot at every evaluation, for the learning-progress video
+        try:
+            export_torchscript(jax.device_get(params), P["policy_hidden"], cfg, snaps / f"policy_{int(step):011d}.pt")
+        except Exception as exc:          # a snapshot must never stop training
+            print(f"[walk_mjx] snapshot at {step} failed: {exc}", flush=True)
+
     train_fn = functools.partial(
         ppo.train, num_timesteps=P["num_timesteps"], num_evals=P["num_evals"], reward_scaling=P["reward_scaling"],
         episode_length=cfg["timing"]["episode_steps"], normalize_observations=P["normalize_observations"],
@@ -91,7 +101,7 @@ def main():
         learning_rate=P["learning_rate"], entropy_cost=P["entropy_cost"], num_envs=P["num_envs"],
         batch_size=P["batch_size"], max_grad_norm=P["max_grad_norm"], network_factory=net, seed=args.seed,
         randomization_fn=rand_fn, wrap_env_fn=wrapper.wrap_for_brax_training,
-        num_eval_envs=min(128, P["num_envs"]), progress_fn=progress_fn)
+        num_eval_envs=min(128, P["num_envs"]), progress_fn=progress_fn, policy_params_fn=policy_params_fn)
     make_inference_fn, params, _ = train_fn(environment=env, eval_env=eval_env)
     t_train = time.time() - t0
     params = jax.device_get(params)
