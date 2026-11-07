@@ -1,0 +1,2001 @@
+# last 2000 of 12035 lines; full log on the Dell at /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/130-nav-mujoco-scratch/log-attempt1.txt
+                 /episode/time_out: 0.0016
+                     [1m Learning iteration 1251/1300 [0m                     
+                       Mean reward: 10.83
+               Mean episode length: 26.78
+                  /episode/success: 0.7567
+                /episode/collision: 0.2373
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0041
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1252/1300 [0m                     
+                       Mean reward: 9.46
+               Mean episode length: 25.88
+                  /episode/success: 0.7550
+                /episode/collision: 0.2349
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0069
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1253/1300 [0m                     
+                       Mean reward: 11.61
+               Mean episode length: 29.63
+                  /episode/success: 0.7338
+                /episode/collision: 0.2546
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0109
+                 /episode/time_out: 0.0007
+                     [1m Learning iteration 1254/1300 [0m                     
+                       Mean reward: 12.12
+               Mean episode length: 27.18
+                  /episode/success: 0.7093
+                /episode/collision: 0.2756
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0122
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1255/1300 [0m                     
+                       Mean reward: 11.80
+               Mean episode length: 28.62
+                  /episode/success: 0.7369
+                /episode/collision: 0.2518
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0086
+                 /episode/time_out: 0.0027
+                     [1m Learning iteration 1256/1300 [0m                     
+                       Mean reward: 14.60
+               Mean episode length: 28.16
+                  /episode/success: 0.7424
+                /episode/collision: 0.2449
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0125
+                 /episode/time_out: 0.0010
+                     [1m Learning iteration 1257/1300 [0m                     
+                       Mean reward: 10.73
+               Mean episode length: 27.10
+                  /episode/success: 0.7502
+                /episode/collision: 0.2393
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0098
+                 /episode/time_out: 0.0007
+                     [1m Learning iteration 1258/1300 [0m                     
+                       Mean reward: 9.87
+               Mean episode length: 30.33
+                  /episode/success: 0.7324
+                /episode/collision: 0.2578
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1259/1300 [0m                     
+                       Mean reward: 9.56
+               Mean episode length: 25.52
+                  /episode/success: 0.7021
+                /episode/collision: 0.2835
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0138
+                 /episode/time_out: 0.0016
+                     [1m Learning iteration 1260/1300 [0m                     
+                       Mean reward: 11.61
+               Mean episode length: 32.65
+                  /episode/success: 0.7506
+                /episode/collision: 0.2360
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0118
+                 /episode/time_out: 0.0016
+                     [1m Learning iteration 1261/1300 [0m                     
+                       Mean reward: 9.68
+               Mean episode length: 28.94
+                  /episode/success: 0.7205
+                /episode/collision: 0.2626
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0135
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1262/1300 [0m                     
+                       Mean reward: 10.48
+               Mean episode length: 31.43
+                  /episode/success: 0.7155
+                /episode/collision: 0.2730
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0086
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1263/1300 [0m                     
+                       Mean reward: 12.31
+               Mean episode length: 28.90
+                  /episode/success: 0.7407
+                /episode/collision: 0.2537
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0057
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1264/1300 [0m                     
+                       Mean reward: 11.13
+               Mean episode length: 29.39
+                  /episode/success: 0.7311
+                /episode/collision: 0.2605
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0075
+                 /episode/time_out: 0.0009
+                     [1m Learning iteration 1265/1300 [0m                     
+                       Mean reward: 12.65
+               Mean episode length: 28.46
+                  /episode/success: 0.7511
+                /episode/collision: 0.2350
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0139
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1266/1300 [0m                     
+                       Mean reward: 12.52
+               Mean episode length: 33.18
+                  /episode/success: 0.7420
+                /episode/collision: 0.2419
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0105
+                 /episode/time_out: 0.0065
+                     [1m Learning iteration 1267/1300 [0m                     
+                       Mean reward: 12.57
+               Mean episode length: 32.01
+                  /episode/success: 0.7332
+                /episode/collision: 0.2539
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1268/1300 [0m                     
+                       Mean reward: 12.30
+               Mean episode length: 27.55
+                  /episode/success: 0.7368
+                /episode/collision: 0.2527
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1269/1300 [0m                     
+                       Mean reward: 12.63
+               Mean episode length: 27.34
+                  /episode/success: 0.7488
+                /episode/collision: 0.2378
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0076
+                 /episode/time_out: 0.0058
+                     [1m Learning iteration 1270/1300 [0m                     
+                       Mean reward: 12.73
+               Mean episode length: 27.34
+                  /episode/success: 0.7620
+                /episode/collision: 0.2272
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0088
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1271/1300 [0m                     
+                       Mean reward: 10.73
+               Mean episode length: 30.51
+                  /episode/success: 0.7148
+                /episode/collision: 0.2713
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0074
+                 /episode/time_out: 0.0065
+                     [1m Learning iteration 1272/1300 [0m                     
+                       Mean reward: 12.76
+               Mean episode length: 30.68
+                  /episode/success: 0.7276
+                /episode/collision: 0.2586
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0096
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1273/1300 [0m                     
+                       Mean reward: 13.02
+               Mean episode length: 29.71
+                  /episode/success: 0.7235
+                /episode/collision: 0.2612
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0095
+                 /episode/time_out: 0.0058
+                     [1m Learning iteration 1274/1300 [0m                     
+                       Mean reward: 12.34
+               Mean episode length: 27.43
+                  /episode/success: 0.7488
+                /episode/collision: 0.2427
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0059
+                 /episode/time_out: 0.0026
+                     [1m Learning iteration 1275/1300 [0m                     
+                       Mean reward: 11.29
+               Mean episode length: 29.78
+                  /episode/success: 0.7451
+                /episode/collision: 0.2426
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0122
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1276/1300 [0m                     
+                       Mean reward: 11.24
+               Mean episode length: 31.37
+                  /episode/success: 0.7440
+                /episode/collision: 0.2493
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0052
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1277/1300 [0m                     
+                       Mean reward: 12.46
+               Mean episode length: 27.96
+                  /episode/success: 0.7371
+                /episode/collision: 0.2522
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0079
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1278/1300 [0m                     
+                       Mean reward: 12.82
+               Mean episode length: 28.97
+                  /episode/success: 0.7400
+                /episode/collision: 0.2479
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0103
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1279/1300 [0m                     
+                       Mean reward: 11.58
+               Mean episode length: 30.61
+                  /episode/success: 0.7344
+                /episode/collision: 0.2532
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0095
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1280/1300 [0m                     
+                       Mean reward: 13.99
+               Mean episode length: 29.79
+                  /episode/success: 0.7486
+                /episode/collision: 0.2404
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0072
+                 /episode/time_out: 0.0038
+                     [1m Learning iteration 1281/1300 [0m                     
+                       Mean reward: 12.03
+               Mean episode length: 30.48
+                  /episode/success: 0.7449
+                /episode/collision: 0.2399
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0107
+                 /episode/time_out: 0.0052
+                     [1m Learning iteration 1282/1300 [0m                     
+                       Mean reward: 13.90
+               Mean episode length: 28.55
+                  /episode/success: 0.7634
+                /episode/collision: 0.2292
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0057
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1283/1300 [0m                     
+                       Mean reward: 13.37
+               Mean episode length: 29.02
+                  /episode/success: 0.7172
+                /episode/collision: 0.2679
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0080
+                 /episode/time_out: 0.0069
+                     [1m Learning iteration 1284/1300 [0m                     
+                       Mean reward: 12.27
+               Mean episode length: 29.70
+                  /episode/success: 0.7324
+                /episode/collision: 0.2583
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1285/1300 [0m                     
+                       Mean reward: 11.13
+               Mean episode length: 28.53
+                  /episode/success: 0.7272
+                /episode/collision: 0.2559
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0122
+                 /episode/time_out: 0.0047
+                     [1m Learning iteration 1286/1300 [0m                     
+                       Mean reward: 13.16
+               Mean episode length: 27.78
+                  /episode/success: 0.7287
+                /episode/collision: 0.2539
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0142
+                 /episode/time_out: 0.0041
+                     [1m Learning iteration 1287/1300 [0m                     
+                       Mean reward: 12.50
+               Mean episode length: 30.33
+                  /episode/success: 0.7328
+                /episode/collision: 0.2485
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0153
+                 /episode/time_out: 0.0034
+                     [1m Learning iteration 1288/1300 [0m                     
+                       Mean reward: 12.37
+               Mean episode length: 31.08
+                  /episode/success: 0.7465
+                /episode/collision: 0.2405
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0097
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1289/1300 [0m                     
+                       Mean reward: 11.67
+               Mean episode length: 32.36
+                  /episode/success: 0.7238
+                /episode/collision: 0.2653
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0045
+                     [1m Learning iteration 1290/1300 [0m                     
+                       Mean reward: 12.52
+               Mean episode length: 26.82
+                  /episode/success: 0.7087
+                /episode/collision: 0.2761
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0120
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1291/1300 [0m                     
+                       Mean reward: 13.31
+               Mean episode length: 28.11
+                  /episode/success: 0.7120
+                /episode/collision: 0.2765
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0075
+                 /episode/time_out: 0.0040
+                     [1m Learning iteration 1292/1300 [0m                     
+                       Mean reward: 12.06
+               Mean episode length: 27.22
+                  /episode/success: 0.7276
+                /episode/collision: 0.2530
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0187
+                 /episode/time_out: 0.0007
+                     [1m Learning iteration 1293/1300 [0m                     
+                       Mean reward: 12.13
+               Mean episode length: 32.00
+                  /episode/success: 0.7403
+                /episode/collision: 0.2462
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0099
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1294/1300 [0m                     
+                       Mean reward: 11.18
+               Mean episode length: 26.92
+                  /episode/success: 0.7317
+                /episode/collision: 0.2471
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0187
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1295/1300 [0m                     
+                       Mean reward: 10.53
+               Mean episode length: 27.26
+                  /episode/success: 0.7263
+                /episode/collision: 0.2640
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0090
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1296/1300 [0m                     
+                       Mean reward: 13.19
+               Mean episode length: 29.40
+                  /episode/success: 0.7481
+                /episode/collision: 0.2371
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0116
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1297/1300 [0m                     
+                       Mean reward: 12.55
+               Mean episode length: 30.47
+                  /episode/success: 0.7311
+                /episode/collision: 0.2592
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0088
+                 /episode/time_out: 0.0008
+                     [1m Learning iteration 1298/1300 [0m                     
+                       Mean reward: 11.30
+               Mean episode length: 30.11
+                  /episode/success: 0.7371
+                /episode/collision: 0.2459
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0131
+                 /episode/time_out: 0.0050
+                     [1m Learning iteration 1299/1300 [0m                     
+                       Mean reward: 11.65
+               Mean episode length: 26.51
+                  /episode/success: 0.7313
+                /episode/collision: 0.2559
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0120
+                 /episode/time_out: 0.0009
+[train_nav_mujoco] 1300/1500 iterations, 14096 s, 10.95 s/iteration
+                     [1m Learning iteration 1300/1350 [0m                     
+                       Mean reward: 12.67
+               Mean episode length: 22.53
+                  /episode/success: 0.7289
+                /episode/collision: 0.2619
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0065
+                 /episode/time_out: 0.0027
+                     [1m Learning iteration 1301/1350 [0m                     
+                       Mean reward: 13.99
+               Mean episode length: 27.95
+                  /episode/success: 0.7326
+                /episode/collision: 0.2536
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1302/1350 [0m                     
+                       Mean reward: 10.71
+               Mean episode length: 29.54
+                  /episode/success: 0.7471
+                /episode/collision: 0.2438
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0058
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1303/1350 [0m                     
+                       Mean reward: 9.17
+               Mean episode length: 30.98
+                  /episode/success: 0.7168
+                /episode/collision: 0.2699
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1304/1350 [0m                     
+                       Mean reward: 11.76
+               Mean episode length: 29.13
+                  /episode/success: 0.7410
+                /episode/collision: 0.2464
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0105
+                 /episode/time_out: 0.0021
+                     [1m Learning iteration 1305/1350 [0m                     
+                       Mean reward: 13.19
+               Mean episode length: 28.34
+                  /episode/success: 0.7319
+                /episode/collision: 0.2598
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0019
+                     [1m Learning iteration 1306/1350 [0m                     
+                       Mean reward: 10.67
+               Mean episode length: 26.75
+                  /episode/success: 0.7311
+                /episode/collision: 0.2561
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0081
+                 /episode/time_out: 0.0054
+                     [1m Learning iteration 1307/1350 [0m                     
+                       Mean reward: 11.80
+               Mean episode length: 26.09
+                  /episode/success: 0.7263
+                /episode/collision: 0.2620
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0092
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1308/1350 [0m                     
+                       Mean reward: 11.93
+               Mean episode length: 31.15
+                  /episode/success: 0.7312
+                /episode/collision: 0.2580
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0089
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1309/1350 [0m                     
+                       Mean reward: 10.19
+               Mean episode length: 29.53
+                  /episode/success: 0.7340
+                /episode/collision: 0.2552
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1310/1350 [0m                     
+                       Mean reward: 9.21
+               Mean episode length: 28.38
+                  /episode/success: 0.7094
+                /episode/collision: 0.2803
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0035
+                     [1m Learning iteration 1311/1350 [0m                     
+                       Mean reward: 11.73
+               Mean episode length: 27.58
+                  /episode/success: 0.7223
+                /episode/collision: 0.2683
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0066
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1312/1350 [0m                     
+                       Mean reward: 10.81
+               Mean episode length: 32.41
+                  /episode/success: 0.7184
+                /episode/collision: 0.2752
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0033
+                 /episode/time_out: 0.0030
+                     [1m Learning iteration 1313/1350 [0m                     
+                       Mean reward: 10.90
+               Mean episode length: 30.30
+                  /episode/success: 0.7341
+                /episode/collision: 0.2555
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0074
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1314/1350 [0m                     
+                       Mean reward: 14.13
+               Mean episode length: 29.14
+                  /episode/success: 0.7298
+                /episode/collision: 0.2600
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0109
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1315/1350 [0m                     
+                       Mean reward: 14.62
+               Mean episode length: 27.95
+                  /episode/success: 0.7233
+                /episode/collision: 0.2616
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0081
+                 /episode/time_out: 0.0070
+                     [1m Learning iteration 1316/1350 [0m                     
+                       Mean reward: 12.54
+               Mean episode length: 32.84
+                  /episode/success: 0.7335
+                /episode/collision: 0.2489
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0123
+                 /episode/time_out: 0.0053
+                     [1m Learning iteration 1317/1350 [0m                     
+                       Mean reward: 12.36
+               Mean episode length: 26.75
+                  /episode/success: 0.7526
+                /episode/collision: 0.2337
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0112
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1318/1350 [0m                     
+                       Mean reward: 9.07
+               Mean episode length: 31.33
+                  /episode/success: 0.7374
+                /episode/collision: 0.2578
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0037
+                 /episode/time_out: 0.0011
+                     [1m Learning iteration 1319/1350 [0m                     
+                       Mean reward: 13.26
+               Mean episode length: 27.12
+                  /episode/success: 0.7281
+                /episode/collision: 0.2577
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0125
+                 /episode/time_out: 0.0016
+                     [1m Learning iteration 1320/1350 [0m                     
+                       Mean reward: 13.01
+               Mean episode length: 29.12
+                  /episode/success: 0.7485
+                /episode/collision: 0.2347
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0136
+                 /episode/time_out: 0.0031
+                     [1m Learning iteration 1321/1350 [0m                     
+                       Mean reward: 8.80
+               Mean episode length: 30.16
+                  /episode/success: 0.7468
+                /episode/collision: 0.2436
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0070
+                 /episode/time_out: 0.0026
+                     [1m Learning iteration 1322/1350 [0m                     
+                       Mean reward: 11.99
+               Mean episode length: 29.19
+                  /episode/success: 0.7500
+                /episode/collision: 0.2396
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0081
+                 /episode/time_out: 0.0023
+                     [1m Learning iteration 1323/1350 [0m                     
+                       Mean reward: 14.46
+               Mean episode length: 31.64
+                  /episode/success: 0.7605
+                /episode/collision: 0.2317
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0067
+                 /episode/time_out: 0.0011
+                     [1m Learning iteration 1324/1350 [0m                     
+                       Mean reward: 13.03
+               Mean episode length: 29.94
+                  /episode/success: 0.7186
+                /episode/collision: 0.2693
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0093
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1325/1350 [0m                     
+                       Mean reward: 11.10
+               Mean episode length: 28.22
+                  /episode/success: 0.7188
+                /episode/collision: 0.2735
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0059
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1326/1350 [0m                     
+                       Mean reward: 14.79
+               Mean episode length: 27.15
+                  /episode/success: 0.7479
+                /episode/collision: 0.2413
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0081
+                 /episode/time_out: 0.0027
+                     [1m Learning iteration 1327/1350 [0m                     
+                       Mean reward: 13.94
+               Mean episode length: 28.39
+                  /episode/success: 0.7567
+                /episode/collision: 0.2350
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0048
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1328/1350 [0m                     
+                       Mean reward: 11.38
+               Mean episode length: 27.69
+                  /episode/success: 0.7451
+                /episode/collision: 0.2432
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0085
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1329/1350 [0m                     
+                       Mean reward: 12.51
+               Mean episode length: 27.41
+                  /episode/success: 0.7336
+                /episode/collision: 0.2577
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0103
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1330/1350 [0m                     
+                       Mean reward: 11.94
+               Mean episode length: 27.92
+                  /episode/success: 0.7282
+                /episode/collision: 0.2677
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0031
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1331/1350 [0m                     
+                       Mean reward: 10.73
+               Mean episode length: 29.91
+                  /episode/success: 0.7304
+                /episode/collision: 0.2529
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0102
+                 /episode/time_out: 0.0072
+                     [1m Learning iteration 1332/1350 [0m                     
+                       Mean reward: 11.12
+               Mean episode length: 27.35
+                  /episode/success: 0.7448
+                /episode/collision: 0.2476
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0047
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1333/1350 [0m                     
+                       Mean reward: 8.76
+               Mean episode length: 30.87
+                  /episode/success: 0.7472
+                /episode/collision: 0.2468
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0052
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1334/1350 [0m                     
+                       Mean reward: 13.12
+               Mean episode length: 28.39
+                  /episode/success: 0.7184
+                /episode/collision: 0.2703
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0044
+                     [1m Learning iteration 1335/1350 [0m                     
+                       Mean reward: 9.97
+               Mean episode length: 31.54
+                  /episode/success: 0.7191
+                /episode/collision: 0.2718
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0055
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1336/1350 [0m                     
+                       Mean reward: 12.82
+               Mean episode length: 28.70
+                  /episode/success: 0.7336
+                /episode/collision: 0.2524
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0047
+                     [1m Learning iteration 1337/1350 [0m                     
+                       Mean reward: 13.68
+               Mean episode length: 28.95
+                  /episode/success: 0.7305
+                /episode/collision: 0.2599
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0078
+                 /episode/time_out: 0.0026
+                     [1m Learning iteration 1338/1350 [0m                     
+                       Mean reward: 10.82
+               Mean episode length: 26.55
+                  /episode/success: 0.7403
+                /episode/collision: 0.2498
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0081
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1339/1350 [0m                     
+                       Mean reward: 13.25
+               Mean episode length: 28.69
+                  /episode/success: 0.7420
+                /episode/collision: 0.2419
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0150
+                 /episode/time_out: 0.0011
+                     [1m Learning iteration 1340/1350 [0m                     
+                       Mean reward: 11.24
+               Mean episode length: 29.13
+                  /episode/success: 0.7372
+                /episode/collision: 0.2539
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0016
+                     [1m Learning iteration 1341/1350 [0m                     
+                       Mean reward: 12.88
+               Mean episode length: 27.09
+                  /episode/success: 0.7244
+                /episode/collision: 0.2676
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0071
+                 /episode/time_out: 0.0009
+                     [1m Learning iteration 1342/1350 [0m                     
+                       Mean reward: 11.75
+               Mean episode length: 29.35
+                  /episode/success: 0.7265
+                /episode/collision: 0.2547
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0168
+                 /episode/time_out: 0.0021
+                     [1m Learning iteration 1343/1350 [0m                     
+                       Mean reward: 13.21
+               Mean episode length: 25.89
+                  /episode/success: 0.7491
+                /episode/collision: 0.2338
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0159
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1344/1350 [0m                     
+                       Mean reward: 13.35
+               Mean episode length: 25.83
+                  /episode/success: 0.7220
+                /episode/collision: 0.2700
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0063
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1345/1350 [0m                     
+                       Mean reward: 14.72
+               Mean episode length: 28.99
+                  /episode/success: 0.7338
+                /episode/collision: 0.2605
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0057
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1346/1350 [0m                     
+                       Mean reward: 12.66
+               Mean episode length: 26.37
+                  /episode/success: 0.7371
+                /episode/collision: 0.2534
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0086
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1347/1350 [0m                     
+                       Mean reward: 9.95
+               Mean episode length: 31.82
+                  /episode/success: 0.7341
+                /episode/collision: 0.2542
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0108
+                 /episode/time_out: 0.0008
+                     [1m Learning iteration 1348/1350 [0m                     
+                       Mean reward: 12.06
+               Mean episode length: 28.33
+                  /episode/success: 0.7454
+                /episode/collision: 0.2479
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0041
+                 /episode/time_out: 0.0026
+                     [1m Learning iteration 1349/1350 [0m                     
+                       Mean reward: 12.31
+               Mean episode length: 28.59
+                  /episode/success: 0.7310
+                /episode/collision: 0.2619
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0070
+                 /episode/time_out: 0.0000
+[train_nav_mujoco] 1350/1500 iterations, 14647 s, 11.02 s/iteration
+                     [1m Learning iteration 1350/1400 [0m                     
+                       Mean reward: 13.66
+               Mean episode length: 25.42
+                  /episode/success: 0.7322
+                /episode/collision: 0.2559
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0096
+                 /episode/time_out: 0.0022
+                     [1m Learning iteration 1351/1400 [0m                     
+                       Mean reward: 11.99
+               Mean episode length: 26.81
+                  /episode/success: 0.7234
+                /episode/collision: 0.2630
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0077
+                 /episode/time_out: 0.0059
+                     [1m Learning iteration 1352/1400 [0m                     
+                       Mean reward: 12.72
+               Mean episode length: 27.78
+                  /episode/success: 0.7232
+                /episode/collision: 0.2623
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0051
+                     [1m Learning iteration 1353/1400 [0m                     
+                       Mean reward: 14.89
+               Mean episode length: 29.69
+                  /episode/success: 0.7628
+                /episode/collision: 0.2251
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0107
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1354/1400 [0m                     
+                       Mean reward: 12.89
+               Mean episode length: 29.44
+                  /episode/success: 0.7599
+                /episode/collision: 0.2350
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0044
+                 /episode/time_out: 0.0008
+                     [1m Learning iteration 1355/1400 [0m                     
+                       Mean reward: 10.77
+               Mean episode length: 34.58
+                  /episode/success: 0.7473
+                /episode/collision: 0.2385
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0142
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1356/1400 [0m                     
+                       Mean reward: 13.14
+               Mean episode length: 28.79
+                  /episode/success: 0.7291
+                /episode/collision: 0.2558
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0057
+                     [1m Learning iteration 1357/1400 [0m                     
+                       Mean reward: 14.07
+               Mean episode length: 29.09
+                  /episode/success: 0.7535
+                /episode/collision: 0.2315
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0128
+                 /episode/time_out: 0.0023
+                     [1m Learning iteration 1358/1400 [0m                     
+                       Mean reward: 12.62
+               Mean episode length: 29.33
+                  /episode/success: 0.7450
+                /episode/collision: 0.2469
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0057
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1359/1400 [0m                     
+                       Mean reward: 13.96
+               Mean episode length: 33.63
+                  /episode/success: 0.7527
+                /episode/collision: 0.2355
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0079
+                 /episode/time_out: 0.0039
+                     [1m Learning iteration 1360/1400 [0m                     
+                       Mean reward: 11.85
+               Mean episode length: 28.11
+                  /episode/success: 0.7459
+                /episode/collision: 0.2493
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0048
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1361/1400 [0m                     
+                       Mean reward: 12.53
+               Mean episode length: 27.35
+                  /episode/success: 0.7414
+                /episode/collision: 0.2433
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0116
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1362/1400 [0m                     
+                       Mean reward: 13.47
+               Mean episode length: 32.24
+                  /episode/success: 0.7490
+                /episode/collision: 0.2401
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0100
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1363/1400 [0m                     
+                       Mean reward: 13.19
+               Mean episode length: 30.05
+                  /episode/success: 0.7257
+                /episode/collision: 0.2617
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0093
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1364/1400 [0m                     
+                       Mean reward: 12.81
+               Mean episode length: 28.58
+                  /episode/success: 0.7198
+                /episode/collision: 0.2684
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0093
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1365/1400 [0m                     
+                       Mean reward: 11.75
+               Mean episode length: 27.29
+                  /episode/success: 0.7287
+                /episode/collision: 0.2545
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0143
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1366/1400 [0m                     
+                       Mean reward: 11.63
+               Mean episode length: 29.71
+                  /episode/success: 0.7449
+                /episode/collision: 0.2457
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1367/1400 [0m                     
+                       Mean reward: 9.51
+               Mean episode length: 27.16
+                  /episode/success: 0.7116
+                /episode/collision: 0.2811
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0000
+                     [1m Learning iteration 1368/1400 [0m                     
+                       Mean reward: 9.05
+               Mean episode length: 32.73
+                  /episode/success: 0.7349
+                /episode/collision: 0.2523
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0103
+                 /episode/time_out: 0.0024
+                     [1m Learning iteration 1369/1400 [0m                     
+                       Mean reward: 11.82
+               Mean episode length: 27.65
+                  /episode/success: 0.7193
+                /episode/collision: 0.2628
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0152
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1370/1400 [0m                     
+                       Mean reward: 12.49
+               Mean episode length: 28.20
+                  /episode/success: 0.7250
+                /episode/collision: 0.2605
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0114
+                 /episode/time_out: 0.0031
+                     [1m Learning iteration 1371/1400 [0m                     
+                       Mean reward: 14.88
+               Mean episode length: 27.73
+                  /episode/success: 0.7326
+                /episode/collision: 0.2569
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0097
+                 /episode/time_out: 0.0007
+                     [1m Learning iteration 1372/1400 [0m                     
+                       Mean reward: 10.34
+               Mean episode length: 28.18
+                  /episode/success: 0.7483
+                /episode/collision: 0.2429
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1373/1400 [0m                     
+                       Mean reward: 10.39
+               Mean episode length: 28.84
+                  /episode/success: 0.7372
+                /episode/collision: 0.2501
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1374/1400 [0m                     
+                       Mean reward: 12.52
+               Mean episode length: 30.35
+                  /episode/success: 0.7217
+                /episode/collision: 0.2675
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1375/1400 [0m                     
+                       Mean reward: 12.73
+               Mean episode length: 29.72
+                  /episode/success: 0.7065
+                /episode/collision: 0.2811
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1376/1400 [0m                     
+                       Mean reward: 13.39
+               Mean episode length: 28.15
+                  /episode/success: 0.7230
+                /episode/collision: 0.2725
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0044
+                 /episode/time_out: 0.0008
+                     [1m Learning iteration 1377/1400 [0m                     
+                       Mean reward: 11.63
+               Mean episode length: 27.08
+                  /episode/success: 0.7282
+                /episode/collision: 0.2590
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0095
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1378/1400 [0m                     
+                       Mean reward: 11.16
+               Mean episode length: 27.91
+                  /episode/success: 0.7227
+                /episode/collision: 0.2608
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0139
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1379/1400 [0m                     
+                       Mean reward: 10.66
+               Mean episode length: 33.15
+                  /episode/success: 0.7215
+                /episode/collision: 0.2611
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0145
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1380/1400 [0m                     
+                       Mean reward: 9.46
+               Mean episode length: 30.58
+                  /episode/success: 0.7318
+                /episode/collision: 0.2553
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0061
+                     [1m Learning iteration 1381/1400 [0m                     
+                       Mean reward: 13.85
+               Mean episode length: 32.96
+                  /episode/success: 0.7231
+                /episode/collision: 0.2642
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0092
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1382/1400 [0m                     
+                       Mean reward: 13.15
+               Mean episode length: 26.80
+                  /episode/success: 0.7438
+                /episode/collision: 0.2502
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0042
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1383/1400 [0m                     
+                       Mean reward: 11.34
+               Mean episode length: 31.50
+                  /episode/success: 0.7369
+                /episode/collision: 0.2524
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0060
+                 /episode/time_out: 0.0054
+                     [1m Learning iteration 1384/1400 [0m                     
+                       Mean reward: 9.65
+               Mean episode length: 26.06
+                  /episode/success: 0.7297
+                /episode/collision: 0.2574
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0090
+                 /episode/time_out: 0.0038
+                     [1m Learning iteration 1385/1400 [0m                     
+                       Mean reward: 13.38
+               Mean episode length: 28.57
+                  /episode/success: 0.7514
+                /episode/collision: 0.2406
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0060
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1386/1400 [0m                     
+                       Mean reward: 12.34
+               Mean episode length: 30.16
+                  /episode/success: 0.7330
+                /episode/collision: 0.2550
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0034
+                     [1m Learning iteration 1387/1400 [0m                     
+                       Mean reward: 11.95
+               Mean episode length: 32.06
+                  /episode/success: 0.7263
+                /episode/collision: 0.2607
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0082
+                 /episode/time_out: 0.0048
+                     [1m Learning iteration 1388/1400 [0m                     
+                       Mean reward: 7.91
+               Mean episode length: 31.31
+                  /episode/success: 0.7337
+                /episode/collision: 0.2545
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0089
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1389/1400 [0m                     
+                       Mean reward: 11.14
+               Mean episode length: 30.87
+                  /episode/success: 0.7461
+                /episode/collision: 0.2418
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0075
+                 /episode/time_out: 0.0046
+                     [1m Learning iteration 1390/1400 [0m                     
+                       Mean reward: 14.61
+               Mean episode length: 27.10
+                  /episode/success: 0.7513
+                /episode/collision: 0.2410
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0041
+                 /episode/time_out: 0.0035
+                     [1m Learning iteration 1391/1400 [0m                     
+                       Mean reward: 11.53
+               Mean episode length: 27.45
+                  /episode/success: 0.7332
+                /episode/collision: 0.2525
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0104
+                 /episode/time_out: 0.0039
+                     [1m Learning iteration 1392/1400 [0m                     
+                       Mean reward: 12.97
+               Mean episode length: 28.25
+                  /episode/success: 0.7280
+                /episode/collision: 0.2555
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0125
+                 /episode/time_out: 0.0040
+                     [1m Learning iteration 1393/1400 [0m                     
+                       Mean reward: 14.25
+               Mean episode length: 26.85
+                  /episode/success: 0.7656
+                /episode/collision: 0.2239
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0077
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1394/1400 [0m                     
+                       Mean reward: 12.73
+               Mean episode length: 30.94
+                  /episode/success: 0.7448
+                /episode/collision: 0.2427
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0024
+                     [1m Learning iteration 1395/1400 [0m                     
+                       Mean reward: 11.34
+               Mean episode length: 31.54
+                  /episode/success: 0.7304
+                /episode/collision: 0.2547
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0135
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1396/1400 [0m                     
+                       Mean reward: 12.70
+               Mean episode length: 28.99
+                  /episode/success: 0.7488
+                /episode/collision: 0.2371
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0104
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1397/1400 [0m                     
+                       Mean reward: 13.15
+               Mean episode length: 31.20
+                  /episode/success: 0.7402
+                /episode/collision: 0.2460
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0114
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1398/1400 [0m                     
+                       Mean reward: 11.87
+               Mean episode length: 28.98
+                  /episode/success: 0.7495
+                /episode/collision: 0.2398
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0052
+                 /episode/time_out: 0.0054
+                     [1m Learning iteration 1399/1400 [0m                     
+                       Mean reward: 12.16
+               Mean episode length: 28.09
+                  /episode/success: 0.7457
+                /episode/collision: 0.2424
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0102
+                 /episode/time_out: 0.0017
+[train_nav_mujoco] 1400/1500 iterations, 15194 s, 10.93 s/iteration
+                     [1m Learning iteration 1400/1450 [0m                     
+                       Mean reward: 14.00
+               Mean episode length: 24.42
+                  /episode/success: 0.7253
+                /episode/collision: 0.2552
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0157
+                 /episode/time_out: 0.0038
+                     [1m Learning iteration 1401/1450 [0m                     
+                       Mean reward: 11.44
+               Mean episode length: 28.07
+                  /episode/success: 0.7457
+                /episode/collision: 0.2450
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0055
+                 /episode/time_out: 0.0038
+                     [1m Learning iteration 1402/1450 [0m                     
+                       Mean reward: 10.53
+               Mean episode length: 28.95
+                  /episode/success: 0.7382
+                /episode/collision: 0.2519
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0084
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1403/1450 [0m                     
+                       Mean reward: 12.87
+               Mean episode length: 30.92
+                  /episode/success: 0.7497
+                /episode/collision: 0.2397
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0054
+                 /episode/time_out: 0.0052
+                     [1m Learning iteration 1404/1450 [0m                     
+                       Mean reward: 11.98
+               Mean episode length: 29.76
+                  /episode/success: 0.7493
+                /episode/collision: 0.2356
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0072
+                     [1m Learning iteration 1405/1450 [0m                     
+                       Mean reward: 12.33
+               Mean episode length: 34.45
+                  /episode/success: 0.7381
+                /episode/collision: 0.2502
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0044
+                     [1m Learning iteration 1406/1450 [0m                     
+                       Mean reward: 11.41
+               Mean episode length: 30.42
+                  /episode/success: 0.7294
+                /episode/collision: 0.2613
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0052
+                 /episode/time_out: 0.0040
+                     [1m Learning iteration 1407/1450 [0m                     
+                       Mean reward: 14.01
+               Mean episode length: 28.63
+                  /episode/success: 0.7524
+                /episode/collision: 0.2348
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0063
+                 /episode/time_out: 0.0066
+                     [1m Learning iteration 1408/1450 [0m                     
+                       Mean reward: 12.89
+               Mean episode length: 31.27
+                  /episode/success: 0.7634
+                /episode/collision: 0.2208
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0116
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1409/1450 [0m                     
+                       Mean reward: 10.94
+               Mean episode length: 31.13
+                  /episode/success: 0.7416
+                /episode/collision: 0.2473
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0071
+                 /episode/time_out: 0.0049
+                     [1m Learning iteration 1410/1450 [0m                     
+                       Mean reward: 9.72
+               Mean episode length: 27.23
+                  /episode/success: 0.7259
+                /episode/collision: 0.2665
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0058
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1411/1450 [0m                     
+                       Mean reward: 12.85
+               Mean episode length: 28.37
+                  /episode/success: 0.7192
+                /episode/collision: 0.2705
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0067
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1412/1450 [0m                     
+                       Mean reward: 11.96
+               Mean episode length: 29.82
+                  /episode/success: 0.7254
+                /episode/collision: 0.2658
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1413/1450 [0m                     
+                       Mean reward: 12.51
+               Mean episode length: 30.94
+                  /episode/success: 0.7205
+                /episode/collision: 0.2723
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0046
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1414/1450 [0m                     
+                       Mean reward: 13.58
+               Mean episode length: 29.01
+                  /episode/success: 0.7359
+                /episode/collision: 0.2540
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0065
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1415/1450 [0m                     
+                       Mean reward: 12.58
+               Mean episode length: 26.79
+                  /episode/success: 0.7474
+                /episode/collision: 0.2428
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0073
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1416/1450 [0m                     
+                       Mean reward: 11.63
+               Mean episode length: 30.23
+                  /episode/success: 0.7333
+                /episode/collision: 0.2561
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0087
+                 /episode/time_out: 0.0019
+                     [1m Learning iteration 1417/1450 [0m                     
+                       Mean reward: 13.27
+               Mean episode length: 28.75
+                  /episode/success: 0.7489
+                /episode/collision: 0.2444
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0026
+                 /episode/time_out: 0.0041
+                     [1m Learning iteration 1418/1450 [0m                     
+                       Mean reward: 12.53
+               Mean episode length: 34.47
+                  /episode/success: 0.7437
+                /episode/collision: 0.2478
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0054
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1419/1450 [0m                     
+                       Mean reward: 12.18
+               Mean episode length: 28.42
+                  /episode/success: 0.7082
+                /episode/collision: 0.2729
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0125
+                     [1m Learning iteration 1420/1450 [0m                     
+                       Mean reward: 13.56
+               Mean episode length: 29.20
+                  /episode/success: 0.7196
+                /episode/collision: 0.2699
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0085
+                 /episode/time_out: 0.0020
+                     [1m Learning iteration 1421/1450 [0m                     
+                       Mean reward: 14.60
+               Mean episode length: 26.51
+                  /episode/success: 0.7510
+                /episode/collision: 0.2397
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0025
+                     [1m Learning iteration 1422/1450 [0m                     
+                       Mean reward: 11.72
+               Mean episode length: 31.33
+                  /episode/success: 0.7499
+                /episode/collision: 0.2377
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0106
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1423/1450 [0m                     
+                       Mean reward: 11.38
+               Mean episode length: 31.78
+                  /episode/success: 0.7188
+                /episode/collision: 0.2689
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0069
+                 /episode/time_out: 0.0055
+                     [1m Learning iteration 1424/1450 [0m                     
+                       Mean reward: 12.61
+               Mean episode length: 28.64
+                  /episode/success: 0.7220
+                /episode/collision: 0.2714
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0058
+                 /episode/time_out: 0.0008
+                     [1m Learning iteration 1425/1450 [0m                     
+                       Mean reward: 12.95
+               Mean episode length: 30.49
+                  /episode/success: 0.7362
+                /episode/collision: 0.2524
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0085
+                 /episode/time_out: 0.0030
+                     [1m Learning iteration 1426/1450 [0m                     
+                       Mean reward: 13.11
+               Mean episode length: 26.70
+                  /episode/success: 0.7443
+                /episode/collision: 0.2522
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0018
+                 /episode/time_out: 0.0017
+                     [1m Learning iteration 1427/1450 [0m                     
+                       Mean reward: 13.19
+               Mean episode length: 29.17
+                  /episode/success: 0.7501
+                /episode/collision: 0.2407
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0063
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1428/1450 [0m                     
+                       Mean reward: 11.43
+               Mean episode length: 32.21
+                  /episode/success: 0.7491
+                /episode/collision: 0.2364
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0103
+                 /episode/time_out: 0.0042
+                     [1m Learning iteration 1429/1450 [0m                     
+                       Mean reward: 14.85
+               Mean episode length: 28.69
+                  /episode/success: 0.7283
+                /episode/collision: 0.2567
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0114
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1430/1450 [0m                     
+                       Mean reward: 11.76
+               Mean episode length: 28.28
+                  /episode/success: 0.7670
+                /episode/collision: 0.2219
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0074
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1431/1450 [0m                     
+                       Mean reward: 10.59
+               Mean episode length: 32.27
+                  /episode/success: 0.7399
+                /episode/collision: 0.2455
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0071
+                 /episode/time_out: 0.0074
+                     [1m Learning iteration 1432/1450 [0m                     
+                       Mean reward: 13.57
+               Mean episode length: 35.37
+                  /episode/success: 0.7668
+                /episode/collision: 0.2245
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0026
+                 /episode/time_out: 0.0062
+                     [1m Learning iteration 1433/1450 [0m                     
+                       Mean reward: 14.53
+               Mean episode length: 28.02
+                  /episode/success: 0.7513
+                /episode/collision: 0.2332
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0087
+                     [1m Learning iteration 1434/1450 [0m                     
+                       Mean reward: 8.66
+               Mean episode length: 33.79
+                  /episode/success: 0.7321
+                /episode/collision: 0.2566
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0076
+                 /episode/time_out: 0.0037
+                     [1m Learning iteration 1435/1450 [0m                     
+                       Mean reward: 10.71
+               Mean episode length: 29.24
+                  /episode/success: 0.7379
+                /episode/collision: 0.2495
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0065
+                 /episode/time_out: 0.0061
+                     [1m Learning iteration 1436/1450 [0m                     
+                       Mean reward: 12.99
+               Mean episode length: 32.78
+                  /episode/success: 0.7637
+                /episode/collision: 0.2245
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0061
+                 /episode/time_out: 0.0067
+                     [1m Learning iteration 1437/1450 [0m                     
+                       Mean reward: 13.36
+               Mean episode length: 32.86
+                  /episode/success: 0.7320
+                /episode/collision: 0.2532
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0105
+                 /episode/time_out: 0.0053
+                     [1m Learning iteration 1438/1450 [0m                     
+                       Mean reward: 12.58
+               Mean episode length: 30.30
+                  /episode/success: 0.7420
+                /episode/collision: 0.2471
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0042
+                 /episode/time_out: 0.0068
+                     [1m Learning iteration 1439/1450 [0m                     
+                       Mean reward: 13.28
+               Mean episode length: 28.87
+                  /episode/success: 0.7540
+                /episode/collision: 0.2333
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0072
+                 /episode/time_out: 0.0055
+                     [1m Learning iteration 1440/1450 [0m                     
+                       Mean reward: 13.08
+               Mean episode length: 28.44
+                  /episode/success: 0.7382
+                /episode/collision: 0.2494
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0079
+                 /episode/time_out: 0.0045
+                     [1m Learning iteration 1441/1450 [0m                     
+                       Mean reward: 13.54
+               Mean episode length: 29.40
+                  /episode/success: 0.7395
+                /episode/collision: 0.2481
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0094
+                 /episode/time_out: 0.0030
+                     [1m Learning iteration 1442/1450 [0m                     
+                       Mean reward: 10.81
+               Mean episode length: 31.06
+                  /episode/success: 0.7205
+                /episode/collision: 0.2600
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0120
+                 /episode/time_out: 0.0075
+                     [1m Learning iteration 1443/1450 [0m                     
+                       Mean reward: 14.09
+               Mean episode length: 35.16
+                  /episode/success: 0.7631
+                /episode/collision: 0.2200
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0116
+                 /episode/time_out: 0.0052
+                     [1m Learning iteration 1444/1450 [0m                     
+                       Mean reward: 11.10
+               Mean episode length: 33.24
+                  /episode/success: 0.7536
+                /episode/collision: 0.2303
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0091
+                 /episode/time_out: 0.0078
+                     [1m Learning iteration 1445/1450 [0m                     
+                       Mean reward: 11.45
+               Mean episode length: 32.11
+                  /episode/success: 0.7514
+                /episode/collision: 0.2357
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0047
+                 /episode/time_out: 0.0082
+                     [1m Learning iteration 1446/1450 [0m                     
+                       Mean reward: 14.22
+               Mean episode length: 29.23
+                  /episode/success: 0.7419
+                /episode/collision: 0.2458
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0095
+                 /episode/time_out: 0.0028
+                     [1m Learning iteration 1447/1450 [0m                     
+                       Mean reward: 13.54
+               Mean episode length: 30.51
+                  /episode/success: 0.7277
+                /episode/collision: 0.2553
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0067
+                 /episode/time_out: 0.0104
+                     [1m Learning iteration 1448/1450 [0m                     
+                       Mean reward: 13.23
+               Mean episode length: 31.59
+                  /episode/success: 0.7315
+                /episode/collision: 0.2486
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0154
+                 /episode/time_out: 0.0044
+                     [1m Learning iteration 1449/1450 [0m                     
+                       Mean reward: 10.70
+               Mean episode length: 29.24
+                  /episode/success: 0.7347
+                /episode/collision: 0.2493
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0079
+                 /episode/time_out: 0.0081
+[train_nav_mujoco] 1450/1500 iterations, 15739 s, 10.91 s/iteration
+                     [1m Learning iteration 1450/1500 [0m                     
+                       Mean reward: 14.16
+               Mean episode length: 24.91
+                  /episode/success: 0.7466
+                /episode/collision: 0.2333
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0086
+                 /episode/time_out: 0.0115
+                     [1m Learning iteration 1451/1500 [0m                     
+                       Mean reward: 14.70
+               Mean episode length: 29.27
+                  /episode/success: 0.7375
+                /episode/collision: 0.2482
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0075
+                 /episode/time_out: 0.0077
+                     [1m Learning iteration 1452/1500 [0m                     
+                       Mean reward: 11.13
+               Mean episode length: 28.12
+                  /episode/success: 0.7334
+                /episode/collision: 0.2556
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0078
+                 /episode/time_out: 0.0032
+                     [1m Learning iteration 1453/1500 [0m                     
+                       Mean reward: 8.63
+               Mean episode length: 30.95
+                  /episode/success: 0.7275
+                /episode/collision: 0.2593
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0083
+                 /episode/time_out: 0.0049
+                     [1m Learning iteration 1454/1500 [0m                     
+                       Mean reward: 12.52
+               Mean episode length: 36.23
+                  /episode/success: 0.7508
+                /episode/collision: 0.2313
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0078
+                     [1m Learning iteration 1455/1500 [0m                     
+                       Mean reward: 11.48
+               Mean episode length: 32.71
+                  /episode/success: 0.7635
+                /episode/collision: 0.2135
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0116
+                 /episode/time_out: 0.0114
+                     [1m Learning iteration 1456/1500 [0m                     
+                       Mean reward: 12.84
+               Mean episode length: 35.88
+                  /episode/success: 0.7437
+                /episode/collision: 0.2329
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0163
+                 /episode/time_out: 0.0084
+                     [1m Learning iteration 1457/1500 [0m                     
+                       Mean reward: 15.13
+               Mean episode length: 29.44
+                  /episode/success: 0.7436
+                /episode/collision: 0.2437
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0068
+                 /episode/time_out: 0.0059
+                     [1m Learning iteration 1458/1500 [0m                     
+                       Mean reward: 11.33
+               Mean episode length: 30.62
+                  /episode/success: 0.7480
+                /episode/collision: 0.2376
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0083
+                 /episode/time_out: 0.0060
+                     [1m Learning iteration 1459/1500 [0m                     
+                       Mean reward: 12.23
+               Mean episode length: 28.34
+                  /episode/success: 0.7486
+                /episode/collision: 0.2378
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0096
+                 /episode/time_out: 0.0040
+                     [1m Learning iteration 1460/1500 [0m                     
+                       Mean reward: 12.44
+               Mean episode length: 30.18
+                  /episode/success: 0.7226
+                /episode/collision: 0.2634
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0088
+                 /episode/time_out: 0.0052
+                     [1m Learning iteration 1461/1500 [0m                     
+                       Mean reward: 12.46
+               Mean episode length: 29.83
+                  /episode/success: 0.7358
+                /episode/collision: 0.2521
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0072
+                 /episode/time_out: 0.0048
+                     [1m Learning iteration 1462/1500 [0m                     
+                       Mean reward: 9.75
+               Mean episode length: 30.68
+                  /episode/success: 0.7427
+                /episode/collision: 0.2477
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0058
+                 /episode/time_out: 0.0038
+                     [1m Learning iteration 1463/1500 [0m                     
+                       Mean reward: 10.93
+               Mean episode length: 31.42
+                  /episode/success: 0.7392
+                /episode/collision: 0.2518
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0026
+                     [1m Learning iteration 1464/1500 [0m                     
+                       Mean reward: 13.13
+               Mean episode length: 27.98
+                  /episode/success: 0.7441
+                /episode/collision: 0.2422
+                     /episode/fall: 0.0008
+            /episode/out_of_square: 0.0044
+                 /episode/time_out: 0.0086
+                     [1m Learning iteration 1465/1500 [0m                     
+                       Mean reward: 11.60
+               Mean episode length: 32.19
+                  /episode/success: 0.7253
+                /episode/collision: 0.2542
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0120
+                 /episode/time_out: 0.0092
+                     [1m Learning iteration 1466/1500 [0m                     
+                       Mean reward: 9.25
+               Mean episode length: 27.75
+                  /episode/success: 0.7416
+                /episode/collision: 0.2485
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0084
+                 /episode/time_out: 0.0015
+                     [1m Learning iteration 1467/1500 [0m                     
+                       Mean reward: 11.77
+               Mean episode length: 36.26
+                  /episode/success: 0.7592
+                /episode/collision: 0.2308
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0036
+                     [1m Learning iteration 1468/1500 [0m                     
+                       Mean reward: 10.14
+               Mean episode length: 31.74
+                  /episode/success: 0.7449
+                /episode/collision: 0.2333
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0111
+                 /episode/time_out: 0.0108
+                     [1m Learning iteration 1469/1500 [0m                     
+                       Mean reward: 12.43
+               Mean episode length: 32.24
+                  /episode/success: 0.7430
+                /episode/collision: 0.2388
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0142
+                 /episode/time_out: 0.0051
+                     [1m Learning iteration 1470/1500 [0m                     
+                       Mean reward: 13.99
+               Mean episode length: 31.08
+                  /episode/success: 0.7606
+                /episode/collision: 0.2243
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0113
+                 /episode/time_out: 0.0039
+                     [1m Learning iteration 1471/1500 [0m                     
+                       Mean reward: 13.28
+               Mean episode length: 28.61
+                  /episode/success: 0.7570
+                /episode/collision: 0.2358
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0041
+                 /episode/time_out: 0.0031
+                     [1m Learning iteration 1472/1500 [0m                     
+                       Mean reward: 12.75
+               Mean episode length: 30.12
+                  /episode/success: 0.7510
+                /episode/collision: 0.2330
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0125
+                 /episode/time_out: 0.0035
+                     [1m Learning iteration 1473/1500 [0m                     
+                       Mean reward: 12.35
+               Mean episode length: 33.23
+                  /episode/success: 0.7448
+                /episode/collision: 0.2421
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0083
+                 /episode/time_out: 0.0048
+                     [1m Learning iteration 1474/1500 [0m                     
+                       Mean reward: 14.97
+               Mean episode length: 34.06
+                  /episode/success: 0.7624
+                /episode/collision: 0.2247
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0042
+                 /episode/time_out: 0.0087
+                     [1m Learning iteration 1475/1500 [0m                     
+                       Mean reward: 12.53
+               Mean episode length: 29.51
+                  /episode/success: 0.7454
+                /episode/collision: 0.2366
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0108
+                 /episode/time_out: 0.0072
+                     [1m Learning iteration 1476/1500 [0m                     
+                       Mean reward: 10.71
+               Mean episode length: 31.77
+                  /episode/success: 0.7292
+                /episode/collision: 0.2531
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0084
+                 /episode/time_out: 0.0093
+                     [1m Learning iteration 1477/1500 [0m                     
+                       Mean reward: 12.00
+               Mean episode length: 31.91
+                  /episode/success: 0.7459
+                /episode/collision: 0.2393
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0092
+                 /episode/time_out: 0.0063
+                     [1m Learning iteration 1478/1500 [0m                     
+                       Mean reward: 13.93
+               Mean episode length: 33.81
+                  /episode/success: 0.7220
+                /episode/collision: 0.2604
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0083
+                 /episode/time_out: 0.0093
+                     [1m Learning iteration 1479/1500 [0m                     
+                       Mean reward: 11.62
+               Mean episode length: 36.29
+                  /episode/success: 0.7509
+                /episode/collision: 0.2362
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0092
+                 /episode/time_out: 0.0055
+                     [1m Learning iteration 1480/1500 [0m                     
+                       Mean reward: 11.17
+               Mean episode length: 30.14
+                  /episode/success: 0.7403
+                /episode/collision: 0.2409
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0139
+                 /episode/time_out: 0.0049
+                     [1m Learning iteration 1481/1500 [0m                     
+                       Mean reward: 14.18
+               Mean episode length: 28.07
+                  /episode/success: 0.7594
+                /episode/collision: 0.2203
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0142
+                 /episode/time_out: 0.0061
+                     [1m Learning iteration 1482/1500 [0m                     
+                       Mean reward: 11.61
+               Mean episode length: 31.70
+                  /episode/success: 0.7188
+                /episode/collision: 0.2678
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0085
+                 /episode/time_out: 0.0061
+                     [1m Learning iteration 1483/1500 [0m                     
+                       Mean reward: 14.34
+               Mean episode length: 29.43
+                  /episode/success: 0.7363
+                /episode/collision: 0.2485
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0103
+                 /episode/time_out: 0.0049
+                     [1m Learning iteration 1484/1500 [0m                     
+                       Mean reward: 12.97
+               Mean episode length: 29.48
+                  /episode/success: 0.7465
+                /episode/collision: 0.2425
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0076
+                 /episode/time_out: 0.0033
+                     [1m Learning iteration 1485/1500 [0m                     
+                       Mean reward: 9.45
+               Mean episode length: 29.82
+                  /episode/success: 0.7475
+                /episode/collision: 0.2401
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0064
+                 /episode/time_out: 0.0059
+                     [1m Learning iteration 1486/1500 [0m                     
+                       Mean reward: 15.46
+               Mean episode length: 27.27
+                  /episode/success: 0.7378
+                /episode/collision: 0.2456
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0137
+                 /episode/time_out: 0.0029
+                     [1m Learning iteration 1487/1500 [0m                     
+                       Mean reward: 12.64
+               Mean episode length: 28.39
+                  /episode/success: 0.7194
+                /episode/collision: 0.2695
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0092
+                 /episode/time_out: 0.0018
+                     [1m Learning iteration 1488/1500 [0m                     
+                       Mean reward: 13.52
+               Mean episode length: 29.14
+                  /episode/success: 0.7325
+                /episode/collision: 0.2523
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0051
+                     [1m Learning iteration 1489/1500 [0m                     
+                       Mean reward: 13.43
+               Mean episode length: 31.42
+                  /episode/success: 0.7430
+                /episode/collision: 0.2432
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0114
+                 /episode/time_out: 0.0023
+                     [1m Learning iteration 1490/1500 [0m                     
+                       Mean reward: 9.85
+               Mean episode length: 36.65
+                  /episode/success: 0.7200
+                /episode/collision: 0.2641
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0106
+                 /episode/time_out: 0.0052
+                     [1m Learning iteration 1491/1500 [0m                     
+                       Mean reward: 13.57
+               Mean episode length: 37.47
+                  /episode/success: 0.7419
+                /episode/collision: 0.2374
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0128
+                 /episode/time_out: 0.0079
+                     [1m Learning iteration 1492/1500 [0m                     
+                       Mean reward: 11.64
+               Mean episode length: 33.35
+                  /episode/success: 0.7473
+                /episode/collision: 0.2337
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0107
+                 /episode/time_out: 0.0089
+                     [1m Learning iteration 1493/1500 [0m                     
+                       Mean reward: 11.67
+               Mean episode length: 29.77
+                  /episode/success: 0.7216
+                /episode/collision: 0.2605
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0089
+                 /episode/time_out: 0.0089
+                     [1m Learning iteration 1494/1500 [0m                     
+                       Mean reward: 12.15
+               Mean episode length: 28.98
+                  /episode/success: 0.7501
+                /episode/collision: 0.2266
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0145
+                 /episode/time_out: 0.0087
+                     [1m Learning iteration 1495/1500 [0m                     
+                       Mean reward: 14.31
+               Mean episode length: 28.85
+                  /episode/success: 0.7509
+                /episode/collision: 0.2343
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0101
+                 /episode/time_out: 0.0047
+                     [1m Learning iteration 1496/1500 [0m                     
+                       Mean reward: 11.55
+               Mean episode length: 29.34
+                  /episode/success: 0.7388
+                /episode/collision: 0.2436
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0141
+                 /episode/time_out: 0.0035
+                     [1m Learning iteration 1497/1500 [0m                     
+                       Mean reward: 12.74
+               Mean episode length: 31.30
+                  /episode/success: 0.7353
+                /episode/collision: 0.2489
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0131
+                 /episode/time_out: 0.0027
+                     [1m Learning iteration 1498/1500 [0m                     
+                       Mean reward: 12.31
+               Mean episode length: 30.41
+                  /episode/success: 0.7254
+                /episode/collision: 0.2533
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0165
+                 /episode/time_out: 0.0059
+                     [1m Learning iteration 1499/1500 [0m                     
+                       Mean reward: 9.18
+               Mean episode length: 34.76
+                  /episode/success: 0.7366
+                /episode/collision: 0.2475
+                     /episode/fall: 0.0000
+            /episode/out_of_square: 0.0118
+                 /episode/time_out: 0.0050
+[train_nav_mujoco] 1500/1500 iterations, 16282 s, 10.86 s/iteration
+wrote /home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/130-nav-mujoco-scratch/nav_mj_scratch/nav_actor.pt: 302675 actor values, view robot
+[2026-11-07T06:39:57-06:00] done

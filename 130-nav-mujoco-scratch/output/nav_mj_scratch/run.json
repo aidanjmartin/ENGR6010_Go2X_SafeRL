@@ -1,0 +1,9 @@
+{
+ "walk_policy": "/home/electronics/dell-runner/data/ENGR6010_Go2X_SafeRL/110-walk-mjx-s0/mjx_s0/policy.pt",
+ "num_envs": 1024,
+ "seed": 7,
+ "entropy_coef": 0.01,
+ "iterations": 1500,
+ "init": null,
+ "image_view": "robot"
+}
