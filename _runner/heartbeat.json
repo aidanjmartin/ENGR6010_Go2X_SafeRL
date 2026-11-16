@@ -1,8 +1,8 @@
 {
-  "time": "2026-11-15T22:00:44-06:00",
+  "time": "2026-11-15T22:31:47-06:00",
   "current_job": "",
   "pending_jobs": [],
-  "gpu": "NVIDIA RTX 4000 Ada Generation, 21 %, 1554 MiB, 20475 MiB, 29",
+  "gpu": "NVIDIA RTX 4000 Ada Generation, 20 %, 1554 MiB, 20475 MiB, 29",
   "disk_free_gb": 832.1,
   "robot_enabled": true
 }
